@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;width:fit-content;height:fit-content;background:transparent}
+*{box-sizing:border-box}
+.fig{width:fit-content;padding:10px 20px;background:transparent;--edge:#000;--txt:#000;--line:#000;
+}
+.fig,.fig *{font-family:"Times New Roman","SimSun","Songti SC","Microsoft YaHei",serif;
+  font-style:normal!important;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:328px 156px;gap:16px;align-items:stretch}
+.main{display:flex;flex-direction:column;align-items:center}
+.n{border:1px solid var(--edge);background:#fff;color:var(--txt);width:100%;
+  padding:5px 11px;font-size:13px;font-weight:500;line-height:1.3;text-align:center}
+.n .t{font-weight:700;font-size:13px}
+.n .d{font-size:12px;letter-spacing:.03em;margin-top:2px;line-height:1.4}
+.n.focus{border:2px solid var(--edge)}
+.arw{font-size:14px;font-weight:700;color:var(--line);line-height:1;padding:1px 0}
+.rail{width:156px;border:1px dashed var(--edge);background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:4px;padding:10px 9px;text-align:center}
+.rail .rt{font-weight:700;font-size:13px}
+.rail .rd{font-size:12px;line-height:1.45}
+.base{border:1px solid var(--edge);background:#fff;margin-top:9px;padding:8px 12px}
+.base .bl{font-size:12px;line-height:1.5;text-align:left}
+</style></head>
+<body>
+<div class="fig" data-mh-palette="mono">
+  <div class="wrap">
+    <div class="main">
+      <div class="n"><div class="t">输入：化学谱 x + 风格标签 s</div><div class="d">s 为按风格独热编码（22 种精细风格）</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">编码器 q(z｜x,s)</div><div class="d">谱与风格 → 低维后验分布</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">隐空间 z（d = 8~16 维）</div><div class="d">重参数采样，隐维小以适配 250 样本</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">条件解码器 p(x｜z,s)</div><div class="d">隐码与风格 → 重构 / 生成化学谱 x̂</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">缺陷阈值投影</div><div class="d">DMS·Diacetyl·4VG·t2n·Stale hops 超阈值 τ 则拉回安全区</div></div>
+      <div class="arw">↓</div>
+      <div class="n focus"><div class="t">输出：风格合理化合物谱</div><div class="d">可按风格条件产出，缺陷不恶化</div></div>
+    </div>
+    <div class="rail"><div class="rt">训练目标</div><div class="rd">重构误差 + KL 正则<br><br>小样本风格辅以<br>高斯 / Copula 采样</div></div>
+  </div>
+  <div class="base">
+    <div class="bl"><b>跨风格迁移：</b>隐空间平移 Δ = μₜ − μₛ（Pils / Lager → Tripel），缺陷受阈值约束</div>
+    <div class="bl"><b>感官画像：</b>生成谱套用 Q1 模型 → 50 维 0–6 雷达画像，验证真实与生成分布重叠</div>
+  </div>
+</div>
+</body></html>

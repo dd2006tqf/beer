@@ -1,0 +1,15 @@
+{
+  "deliverables": [
+    {"path": "submission/q1_sensory_scores.csv", "desc": "问题一：250 样本 × 50 感官维 0-6 分级评分结果"},
+    {"path": "submission/q2_top3_compounds.csv", "desc": "问题二：每个感官维度 Top-3 关键化合物 + 入选频率 + 跨方法 Jaccard + 机理"},
+    {"path": "submission/q3_generated_profiles.csv", "desc": "问题三：Tripel/Kriek/Lambic 生成化合物谱 + Q1 感官画像 + Pils/Lager→Tripel 迁移缺陷对照"},
+    {"path": "figures/problem_1_results.json", "desc": "问题一逐维 QWK/MAE/R² + 基线对照 + 缺失模式 + 校准数据"},
+    {"path": "figures/problem_2_results.json", "desc": "问题二共表达图/社区 + 融合 Top-3 + bootstrap 频率 + Jaccard + 网络图数据"},
+    {"path": "figures/problem_3_results.json", "desc": "问题三生成/迁移指标 + KS 分布距离 + PCA 坐标 + 雷达 + 缺陷哑铃数据"},
+    {"path": "figures/all_results.json", "desc": "三问汇总 + 逻辑合同回填键 + 跨问一致性"},
+    {"path": "code/main.py", "desc": "一键运行入口"},
+    {"path": "code/README.md", "desc": "操作说明"},
+    {"path": "code/requirements.txt", "desc": "依赖清单"},
+    {"path": "RESULTS.md", "desc": "方法与结果汇总报告"}
+  ]
+}

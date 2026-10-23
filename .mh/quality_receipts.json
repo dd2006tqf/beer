@@ -1,0 +1,77 @@
+{
+  "step:comp-modeling": {
+    "rule_version": "2026-09-11.core-2",
+    "at": "2026-10-23T11:56:29.292307+00:00",
+    "passed": true,
+    "files": {
+      "CROSS_PROBLEM_LEDGER.json": "2a05df55f4c8308d87f4613c6b499c7485f25c2f8120408ffe3a950c4a76060a",
+      "DATA_FACTS.json": "6f4076449e687917ff16b920c3ec18105ce9648281a5e139d84967e7d918fa05",
+      "DATA_PROFILE.json": "59ed069505a72030bd39ce47430943435d09e40b60bffe83d9cff7589538445b",
+      "MODELING_REPORT.md": "bdff4b4413347086aea72caf60d7836b017cc63ce8326818ea8d4ec098af6216",
+      "PROBLEM_ANALYSIS.md": "0ee6a500d1bb9210edc1be21136431c54577bd7f0e84fa491253ea9dafdff90a",
+      "user_data/1.csv": "419849227a02e0c792cd405e6865035b7f58af1a92efa362dbb68a7ca2882f69",
+      "user_data/2.csv": "415709ac10f2f730d31f249bd6ac108250bdfbfd62e0055f4d8db9b41ec9cc4c",
+      "user_data/2026年MathorCup大数据挑战赛-赛道A初赛.pdf": "494025cf76c5d47af576927fcf6cd3a073d61db5842d56aaf0ad4da5f4660a78",
+      "user_data/2026年MathorCup大数据挑战赛-赛道A初赛_extracted.txt": "7648b8632e56aae07266cc1825893ee3a25b0b5312298a193f30903c6a09d3be",
+      "user_data/3.xlsx": "fe4dcabd48431e6d677c095962ea9c447e10e509c4f3f8dd511a48c5541ab587",
+      "user_data/4.csv": "43a7b38682ed81ce64d97ebc1874c09dffac023ade4877f34e3c83ef7d42dc1c",
+      "user_data/5.csv": "c512eed108de6f98e0c6ed66497ed2319745d30ca7f6f4acac4f175a4bdcde9a",
+      "user_data/6.csv": "a55004fb0390299a5c8089f0c37d3bfc006e7049963c84d7d9652affabe614ae",
+      "user_data/7.csv": "2083138df46640e20b46f7e76ec32cf9b380fd34e019269afd819edeb546ff5e",
+      "user_data/8.xlsx": "f2316766792111d98281bd35c8403682be8c8069d166a7a7d5887ffbb227700a",
+      "user_data/PROBLEM_STATEMENT.md": "92c4ab9ec6b0fdf6c855d43f9447aca86bf578480343f6908d902857ca066436",
+      "user_data/数据说明.txt": "40813e273e081ae0dc6d6fa76838c5cdbaa721335df3648b4b29d5f76b6378d7"
+    },
+    "checks": [
+      "主产物健康与必需配套文件检查通过；不代表独立数学复核或重新运行验证"
+    ],
+    "scope": "comp-modeling"
+  },
+  "step:comp-code": {
+    "rule_version": "2026-09-11.core-2",
+    "at": "2026-10-23T12:38:14.563547+00:00",
+    "passed": true,
+    "files": {
+      "CAPABILITY_CHECKLIST.json": "eb39d4a9618bf29e74e72fb83480ceb705f0a7cb8bc9b31c82c94cad5d414118",
+      "CAPABILITY_VERDICT.json": "3d75fcbf9e5375bd6bb5d70a4c8759370ef9bd2bd635d7c71b30d6946f70c3f2",
+      "CODE_CHECK.json": "15f6f417c5a386b478b38b3c322701a74f318e36f393ba17bbbc9dc5ef398277",
+      "CROSS_PROBLEM_LEDGER.json": "19e0ae598728f71769cafbd2700a718da513da1c66df842e96184b0ad96b6da8",
+      "DATA_FACTS.json": "6f4076449e687917ff16b920c3ec18105ce9648281a5e139d84967e7d918fa05",
+      "DATA_PROFILE.json": "59ed069505a72030bd39ce47430943435d09e40b60bffe83d9cff7589538445b",
+      "DELIVERABLES.json": "7debb3131c887161dc23e8ac59cf421047263ac523b691666a43d40bcc8ebb9c",
+      "MODELING_REPORT.md": "bdff4b4413347086aea72caf60d7836b017cc63ce8326818ea8d4ec098af6216",
+      "PROBLEM_ANALYSIS.md": "0ee6a500d1bb9210edc1be21136431c54577bd7f0e84fa491253ea9dafdff90a",
+      "RESULTS.md": "fbd06679a01a34cf3afdc3b7b526292eba184ccc48219f61c6637ae296d5d25d",
+      "SUBMISSION_CHECK.json": "9cd8f55109bf61d9aebd01833b18f2cea65c6b9023666f74d8e4a3bf931c83b4",
+      "SUBMISSION_SPEC.json": "369df2202d73d8ccddce78f33f6e44af2e3e3b52ea5c6667239fbc45fff6d047",
+      "code/README.md": "b7f63b29b22d19cdf4666f7c444abe95465552d6e3f541fc08381b02d5b1580d",
+      "code/constraint_audit.py": "346446e9e3f6d69d34e0599133ae7703b3e8e784dd02740186cbe493c5fa09fe",
+      "code/data_check.py": "169975efc24e05f47e66a467bafd80ba6d3ff10763f1527b043563f4f4f27c7a",
+      "code/main.py": "ce39d132d040d22f58728ecc8cf809392e903c9b8647d3589bc0b990c40481c3",
+      "code/params.py": "0e3a3887e16acae1750c9a55250d0c5861c7c329e044bce9d78519792cb4c3b1",
+      "code/problem1.py": "557ae934d66a7e54dfc870b9bc16501ba4adbf0cba7b50c645f956ec19ad0828",
+      "code/problem2.py": "2475c60fa4b27838dfd67cbbdecf3aaacf01924ba6f0c712602fe4a7fa141d89",
+      "code/problem3.py": "ef9cac89699a63d61d12207c532122ee2dfcb09e38d0bfd4c9aad92f87bcc7d5",
+      "code/requirements.txt": "54b9d67a2a0a93b3006f0193a10bc4382b5a5a2b12ceed341a0ec0da54c6a85b",
+      "code/sanity_check.py": "6e58fecf7a7c88e22881d4299479fd548edddb4ff79112132be68771006b866e",
+      "code/utils.py": "3bc383f173309369d8e7e7a8ae3968e2baada2fef340e4159fbed7f07ef83c69",
+      "figures/all_results.json": "f1b6b224a4aeb485ff988a90c5f11c60c199b4abf3490e49fde4e03d580d49a5",
+      "user_data/1.csv": "419849227a02e0c792cd405e6865035b7f58af1a92efa362dbb68a7ca2882f69",
+      "user_data/2.csv": "415709ac10f2f730d31f249bd6ac108250bdfbfd62e0055f4d8db9b41ec9cc4c",
+      "user_data/2026年MathorCup大数据挑战赛-赛道A初赛.pdf": "494025cf76c5d47af576927fcf6cd3a073d61db5842d56aaf0ad4da5f4660a78",
+      "user_data/2026年MathorCup大数据挑战赛-赛道A初赛_extracted.txt": "7648b8632e56aae07266cc1825893ee3a25b0b5312298a193f30903c6a09d3be",
+      "user_data/3.xlsx": "fe4dcabd48431e6d677c095962ea9c447e10e509c4f3f8dd511a48c5541ab587",
+      "user_data/4.csv": "43a7b38682ed81ce64d97ebc1874c09dffac023ade4877f34e3c83ef7d42dc1c",
+      "user_data/5.csv": "c512eed108de6f98e0c6ed66497ed2319745d30ca7f6f4acac4f175a4bdcde9a",
+      "user_data/6.csv": "a55004fb0390299a5c8089f0c37d3bfc006e7049963c84d7d9652affabe614ae",
+      "user_data/7.csv": "2083138df46640e20b46f7e76ec32cf9b380fd34e019269afd819edeb546ff5e",
+      "user_data/8.xlsx": "f2316766792111d98281bd35c8403682be8c8069d166a7a7d5887ffbb227700a",
+      "user_data/PROBLEM_STATEMENT.md": "92c4ab9ec6b0fdf6c855d43f9447aca86bf578480343f6908d902857ca066436",
+      "user_data/数据说明.txt": "40813e273e081ae0dc6d6fa76838c5cdbaa721335df3648b4b29d5f76b6378d7"
+    },
+    "checks": [
+      "主产物健康与必需配套文件检查通过；不代表独立数学复核或重新运行验证"
+    ],
+    "scope": "comp-code"
+  }
+}

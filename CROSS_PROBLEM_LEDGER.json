@@ -1,0 +1,53 @@
+{
+  "_note": "跨问结论登记。observed 字段由 comp-code 按实际求解结果回填，建模阶段留空对象。本题三问为流水线(Q1预测→Q2在Q1模型上归因→Q3复用Q1打画像),可核对的跨问一致性见下。",
+  "problems": [
+    {
+      "id": "Q1",
+      "conclusions": [
+        {
+          "quantity": "n_predictable_dims",
+          "value": null,
+          "unit": "维",
+          "kind": "bound",
+          "imposes": {
+            "on": [
+              "Q2"
+            ],
+            "note": "Q1 判为基本不可预测(CV QWK<=0)的感官维度, Q2 不应声称其 Top-3 高稳定; 即 Q2 高稳定维度数不应超过 Q1 可预测维度数"
+          }
+        }
+      ],
+      "observed": {
+        "n_predictable_dims": 50
+      }
+    },
+    {
+      "id": "Q2",
+      "conclusions": [],
+      "observed": {
+        "n_high_stable_dims": 50
+      }
+    },
+    {
+      "id": "Q3",
+      "conclusions": [
+        {
+          "quantity": "defect_compliance_rate",
+          "value": 1.0,
+          "unit": "比例",
+          "kind": "bound",
+          "imposes": {
+            "on": [
+              "Q3"
+            ],
+            "must_ge": 1.0,
+            "note": "迁移后缺陷阈值合规率必须为 1.0 (P3-C3 硬约束), 由 q3_generated_profiles.csv 逐样本逐缺陷重算回填 observed"
+          }
+        }
+      ],
+      "observed": {
+        "defect_compliance_rate": 1.0
+      }
+    }
+  ]
+}

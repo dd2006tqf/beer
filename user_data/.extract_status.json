@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "files": {
+    "2026年MathorCup大数据挑战赛-赛道A初赛.pdf": {
+      "status": "done",
+      "started_at": 1792754905,
+      "error": null,
+      "extracted_path": "2026年MathorCup大数据挑战赛-赛道A初赛_extracted.txt",
+      "extracted_chars": 1934,
+      "duration_ms": 2101,
+      "extracted_by": "pypdf2/pdftotext"
+    }
+  }
+}

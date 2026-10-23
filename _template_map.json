@@ -1,0 +1,13 @@
+{
+  "language": "zh",
+  "title_anchor_para_idx": 3,
+  "abstract_anchor_para_idx": 4,
+  "body_anchor_para_idx": 36,
+  "body_anchor_mode": "delete",
+  "references_anchor_para_idx": null,
+  "appendix_anchor_para_idx": null,
+  "en_abstract_anchor_para_idx": null,
+  "keep_for_user_paragraph_indices": [],
+  "delete_paragraph_indices": [5],
+  "preserve_table_indices": []
+}

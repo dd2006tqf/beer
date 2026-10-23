@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;width:fit-content;height:fit-content;background:transparent}
+*{box-sizing:border-box}
+.fig{width:fit-content;padding:10px 20px;background:transparent;--edge:#000;--txt:#000;--line:#000;
+  display:flex;flex-direction:column;align-items:stretch}
+.fig,.fig *{font-family:"Times New Roman","SimSun","Songti SC","Microsoft YaHei",serif;
+  font-style:normal!important;-webkit-font-smoothing:antialiased}
+.wrap{display:flex;align-items:stretch;gap:16px}
+.main{display:flex;flex-direction:column;align-items:center;width:320px}
+.n{border:1px solid var(--edge);background:#fff;color:var(--txt);width:100%;
+  padding:6px 11px;font-size:13px;font-weight:500;line-height:1.35;text-align:center}
+.n .t{font-weight:700;font-size:13px}
+.n .d{font-size:12px;letter-spacing:.03em;margin-top:2px;line-height:1.75}
+.n.focus{border:2px solid var(--edge)}
+.arw{font-size:15px;font-weight:700;color:var(--line);line-height:1;padding:2px 0}
+.rail{width:150px;border:1px dashed var(--edge);background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;padding:10px 9px;text-align:center}
+.rail .rt{font-weight:700;font-size:13px}
+.rail .rd{font-size:12px;line-height:1.42}
+.base{border:1px solid var(--edge);background:#fff;width:100%;margin-top:2px;
+  padding:7px 11px;font-size:12px;line-height:1.4;text-align:center}
+</style></head>
+<body>
+<div class="fig" data-mh-palette="mono">
+  <div class="wrap">
+    <div class="main">
+      <div class="n"><div class="t">输入：化学特征矩阵</div><div class="d">X（250 样本 × 231 特征）与缺失掩码 M，真实缺失不删行</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">缺失感知梯度提升</div><div class="d">缺失值走默认分裂方向（LightGBM / XGBoost）</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">多输出有序回归</div><div class="d">每个感官维一回归器，约 50 维共享特征表示</div></div>
+      <div class="arw">↓</div>
+      <div class="n"><div class="t">预测值离散化映射</div><div class="d">标准化预测 → 训练折分位分箱 → 0–6 整数分级 ŷᵢⱼ</div></div>
+      <div class="arw">↓</div>
+      <div class="n focus"><div class="t">分层五折交叉验证</div><div class="d">按风格分层，逐维 QWK / MAE / R²</div></div>
+    </div>
+    <div class="rail"><div class="rt">防数据泄漏</div><div class="rd">分箱阈值与<br>标准化参数<br>仅由训练折估计，<br>再套用到验证折</div></div>
+  </div>
+  <div class="base">基线对比：均值预测 · ElasticNet · KNN —— 量化树模型相对线性/近邻基线的增益</div>
+</div>
+</body></html>

@@ -1,0 +1,29 @@
+{
+ "schema_version": 1,
+ "store": "user_template",
+ "status": "ready",
+ "kind": "word",
+ "main": "2026年MathorCup数学应用挑战赛—大数据竞赛论文模板.docx",
+ "reason": "你选的 Word 模板",
+ "candidates": [],
+ "word_templates": [
+  {
+   "path": "2026年MathorCup数学应用挑战赛—大数据竞赛论文模板.docx",
+   "macro": false,
+   "converted_from": null,
+   "mac_variant": false
+  }
+ ],
+ "conversions": [],
+ "file_count": 1,
+ "warnings": [],
+ "word": {
+  "converted_from": null,
+  "macro_removed": false
+ },
+ "uploads": [
+  "2026年MathorCup数学应用挑战赛—大数据竞赛论文模板.docx"
+ ],
+ "rejected": [],
+ "inspected_at": "2026-10-23 19:28"
+}

@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "这些库按可选依赖导入（缺了会走备用分支），可在 requirements.txt 注明：community"
+  ],
+  "code_dir": "code",
+  "py_files": [
+    "code/constraint_audit.py",
+    "code/data_check.py",
+    "code/main.py",
+    "code/params.py",
+    "code/problem1.py",
+    "code/problem2.py",
+    "code/problem3.py",
+    "code/sanity_check.py",
+    "code/utils.py"
+  ],
+  "third_party": [
+    "joblib",
+    "lightgbm",
+    "networkx",
+    "numpy",
+    "pandas",
+    "scipy",
+    "shap",
+    "sklearn",
+    "torch"
+  ],
+  "requirements": [
+    "joblib",
+    "lightgbm",
+    "networkx",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "python-louvain",
+    "scikit-learn",
+    "scipy",
+    "shap",
+    "torch"
+  ],
+  "readme": "code/README.md"
+}

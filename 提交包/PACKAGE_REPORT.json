@@ -1,0 +1,42 @@
+{
+  "base_name": "AMCB2600304",
+  "paper": "AMCB2600304.docx",
+  "attachment": "AMCB2600304附件.zip",
+  "attachment_mb": 0.13,
+  "members": 14,
+  "skipped_large_files": [],
+  "result_files": [
+    "q1_sensory_scores.csv",
+    "q2_top3_compounds.csv",
+    "q3_generated_profiles.csv"
+  ],
+  "checks": {
+    "results": {
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "paper_tables": [
+        "表 各感官维度预测性能（交叉验证 QWK/MAE/R²）",
+        "表 每个感官维度的 Top-3 关键化合物及稳定性指标",
+        "表 代表性风格（Tripel/Kriek/Lambic）生成化合物谱与感官画像及缺陷阈值合规"
+      ]
+    },
+    "code": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "这些库按可选依赖导入（缺了会走备用分支），可在 requirements.txt 注明：community"
+      ]
+    },
+    "appendix": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  "todo": [
+    "论文是 Word 文件：用 Word 打开 AMCB2600304.docx 另存为 PDF（AMCB2600304.pdf）后再上传；另存前在 Word 里右键目录选“更新域”，PDF 的论文格式（第一页摘要、第二页目录、正文从 1 编页码）请自己翻一遍"
+  ],
+  "promise_templates": [],
+  "generated_at": "2026-10-23T22:03:48"
+}

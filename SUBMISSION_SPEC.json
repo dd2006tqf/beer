@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "_meta": {
+    "problem_id": "A",
+    "team_id": "MCB2600304",
+    "note": "题面『要求』仅规定提交完整论文、可复现源代码、量化图表，未指定官方结果文件名/列名/测试集，也未命名评价指标。result_files 为我方按三问deliverable自定义的结果文件（path/列名非题面强制）；metrics 为空，验证指标在 PROBLEM_ANALYSIS.md『建模思路』中说明（Q1 用分层交叉验证的 QWK/MAE/R²，Q2 用 bootstrap Top-3 入选频率与跨方法 Jaccard，Q3 用分布距离与缺陷阈值合规率）。"
+  },
+  "result_files": [
+    {
+      "id": "R1", "subproblem": 1, "path": "submission/q1_sensory_scores.csv", "format": "csv",
+      "columns": [], "key_column": "beer_id",
+      "key_source": {"file": "user_data/1.csv", "column": "beer_id"},
+      "expected_rows": 250, "encoding": "utf-8-sig", "sheet": null,
+      "value_rules": {},
+      "raw_quote": "问题 1：数据缺失条件下的感官评分。以 1.csv 化合物数据为基础，给出 3.xlsx 中定义的 Aroma 与 Flavour 两套、共约 40 个感官维度的 0‐6 分制的分级评分结果。"
+    },
+    {
+      "id": "R2", "subproblem": 2, "path": "submission/q2_top3_compounds.csv", "format": "csv",
+      "columns": [], "key_column": null,
+      "key_source": null,
+      "expected_rows": null, "encoding": "utf-8-sig", "sheet": null,
+      "value_rules": {},
+      "raw_quote": "问题 2：化合物‐风味分析。利用 2.csv 的化合物相关数据构建化合物共表达图，结合 1.csv 特征，给出每个感官维度的 Top-3 关键因素化合物，并进行稳定性与化学合理性论证。"
+    },
+    {
+      "id": "R3", "subproblem": 3, "path": "submission/q3_generated_profiles.csv", "format": "csv",
+      "columns": [], "key_column": null,
+      "key_source": null,
+      "expected_rows": null, "encoding": "utf-8-sig", "sheet": null,
+      "value_rules": {},
+      "raw_quote": "问题 3：风味与『风味指纹』生成。以 tasting_category_fine 为风格标签，学习风格条件生成模型，在给定风格（如 Tripel、Kriek、Lambic）下生成合理的化合物谱，并给出其感官画像；同时做跨风格迁移（如把 Pils/Lager 的化合物谱『迁移』为 Tripel 风格，保持缺陷化合物不恶化）。"
+    }
+  ],
+  "paper_tables": [
+    {"id": "T1", "subproblem": 1, "title": "表 各感官维度预测性能（交叉验证 QWK/MAE/R²）", "raw_quote": "给出 3.xlsx 中定义的 Aroma 与 Flavour 两套、共约 40 个感官维度的 0‐6 分制的分级评分结果。"},
+    {"id": "T2", "subproblem": 2, "title": "表 每个感官维度的 Top-3 关键化合物及稳定性指标", "raw_quote": "给出每个感官维度的 Top-3 关键因素化合物，并进行稳定性与化学合理性论证。"},
+    {"id": "T3", "subproblem": 3, "title": "表 代表性风格（Tripel/Kriek/Lambic）生成化合物谱与感官画像及缺陷阈值合规", "raw_quote": "在给定风格（如 Tripel、Kriek、Lambic）下生成合理的化合物谱，并给出其感官画像；缺陷化合物以所列 DMS/Diacetyl/4VG/trans-2-nonenal/Stale hops 等超阈值项为准。"}
+  ],
+  "metrics": []
+}

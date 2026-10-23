@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "entries": {
+  "2:37c7118f998ffcfb2344223f305f7474e68bf7e5537f4f68a7927ca54a7b63dd": {
+   "figure": "fig_roadmap",
+   "kind": "drawio",
+   "source": "figures/fig_roadmap.pdf",
+   "status": "pass",
+   "reason": "",
+   "reply": "EDGE 1: 01数据基础中列节点 → 02问题一中列节点；接好；标注：自变量含缺失掩码 M\nEDGE 2: 02问题一中列节点 → 03问题二中列节点；接好；标注：基于 Q1 模型与特征重要性\nEDGE 3: 03问题二中列节点 → 04问题三中列节点；接好；标注：关键化合物先验 + Q1 感官画像\nEDGE 4: 04问题三中列节点 → 05综合输出节点；接好；标注：无\n\nPASS",
+   "attempts": 1,
+   "calls": [
+    1792762239.6887798
+   ],
+   "at": "2026-10-23T13:30:39+00:00",
+   "at_ts": 1792762239.6887798
+  },
+  "2:7dd24f90ff8c624780104a87491544461e3b7119d968caf7e94cb9c0c7398de7": {
+   "figure": "fig_arch_q1",
+   "kind": "drawio",
+   "source": "figures/fig_arch_q1.pdf",
+   "status": "pass",
+   "reason": "",
+   "reply": "EDGE 1: 输入：化学特征矩阵 → 缺失感知梯度提升；接好；标注：无\nEDGE 2: 缺失感知梯度提升 → 多输出有序回归；接好；标注：无\nEDGE 3: 多输出有序回归 → 预测值离散化映射；接好；标注：无\nEDGE 4: 预测值离散化映射 → 分层五折交叉验证；接好；标注：无\n\nPASS",
+   "attempts": 1,
+   "calls": [
+    1792762247.7837183
+   ],
+   "at": "2026-10-23T13:30:47+00:00",
+   "at_ts": 1792762247.7837183
+  },
+  "2:e125510d55bd27f0d8f46330f7b7848166488dff13604ee63d5476670750bcfb": {
+   "figure": "fig_arch_q3",
+   "kind": "drawio",
+   "source": "figures/fig_arch_q3.pdf",
+   "status": "pass",
+   "reason": "",
+   "reply": "EDGE 1: 输入节点 → 编码器节点；接好；标注：无\nEDGE 2: 编码器节点 → 隐空间节点；接好；标注：无\nEDGE 3: 隐空间节点 → 条件解码器节点；接好；标注：无\nEDGE 4: 条件解码器节点 → 缺陷阈值投影节点；接好；标注：无\nEDGE 5: 缺陷阈值投影节点 → 输出节点；接好；标注：无\n\nPASS",
+   "attempts": 1,
+   "calls": [
+    1792762259.4571428
+   ],
+   "at": "2026-10-23T13:30:59+00:00",
+   "at_ts": 1792762259.4571428
+  }
+ }
+}

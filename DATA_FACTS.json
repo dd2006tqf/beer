@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "problem_id": "A",
+    "note": "本题为大数据/机器学习题，附件均为实测数据表，非参数密集型机理题（题面可量化的硬参数<20），故未建 PROBLEM_FACTS.json，不触发 facts_audit。本台账登记附件硬事实，供下游逻辑体检。",
+    "profile_ref": "DATA_PROFILE.json"
+  },
+  "variables": [
+    {"name": "1.csv 化合物丰度矩阵", "role": "observed", "unit": "mixed(对数变换丰度+原量纲理化参数)", "range": [null, null], "granularity": "per_sample", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "250样本×231化合物/理化列(另有beer/beer_id/tasting_category_fine 3列)。部分化合物列为原始浓度对数变换(负值=原浓度<1，底数需自核log10/ln)；ethanol/color/bitterness/pH/CO2等理化列保留原量纲。63/250行含缺失值。"},
+    {"name": "1.csv 缺失值", "role": "observed", "unit": "count", "range": [0, 27], "granularity": "per_column", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "真实缺失：amyl.acetate(27)、aroma_hops_sum(13)、methylpyrazine(12)、X2.3.butanedione(9)、X3.methylbutanal(7)、ethyl.nicotinate(2)及若干单列=1，合计73个NA。缺失是问题1『数据缺失条件下』的核心难点。"},
+    {"name": "2.csv 化合物相关性矩阵", "role": "observed", "unit": "corr_coef[-1,1]", "range": [-1, 1], "granularity": "matrix", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "231×231化合物-化合物相关矩阵(首列为化合物名)。题面称皮尔逊，数据说明称Spearman——以附件实际为准，建图时注明口径冲突。"},
+    {"name": "3.xlsx 感官品评表", "role": "observed", "unit": "0-6离散等级", "range": [0, 6], "granularity": "per_beer_card", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "实际13 sheet(beer_1~beer_12品评卡+summary)，题面称10 sheet——以实际为准。每张卡定义Aroma与Flavour两套维度、0-6分制；summary sheet给出结构化维度列名(A_*/F_*+理化/缺陷/口感共50维)，但其数值为全0模板。"},
+    {"name": "4.csv 感官分析结果", "role": "observed", "unit": "标准化/中心化连续值", "range": [-2.15, 6.17], "granularity": "per_sample", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "250样本×50感官维(15 A_ + 15 F_ + 20理化/缺陷/口感)，均值≈0，非原始0-6分；是问题1的训练标签来源，需与0-6刻度建立映射。无缺失。"},
+    {"name": "5.csv 感官相关性矩阵", "role": "observed", "unit": "corr_coef", "range": [-1, 1], "granularity": "matrix", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "50×50感官属性-感官属性Spearman相关矩阵(首列为名)。"},
+    {"name": "6.csv 化学×感官交叉相关矩阵", "role": "observed", "unit": "corr_coef", "range": [-1, 1], "granularity": "matrix", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "非方阵，实际44行(化合物/理化指标)×50列(感官属性)，题面称46×50——以实际为准。问题2化学合理性论证的直接证据。"},
+    {"name": "7.csv 论坛评论感官描述符", "role": "observed", "unit": "标准化/中心化连续值", "range": [null, null], "granularity": "per_sample", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "250样本×187感官属性(aroma_* 62 + taste_* 62 + 其他)，来自论坛评论，含NA(750)，为训练小组评分外的补充/交叉感官来源。"},
+    {"name": "8.xlsx 综合参考数据", "role": "observed", "unit": "mixed", "range": [null, null], "granularity": "mixed", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "7 sheet：Sensory thresholds(261行,各化合物感官阈值,Q3缺陷判定依据)、Sensory names(101行,感官维度→Aroma/Flavour类别+DataType映射)、GBM importance MDI(231行,参考特征重要性)、GBM SHAP Values(500行,参考SHAP)、Calibrated chemical dataset(250×72校准化学)、Beer Prices(250行价格/ABV)、Sheet2(空)。"},
+    {"name": "tasting_category_fine 风格标签", "role": "observed", "unit": "category", "range": [null, null], "granularity": "per_sample", "censored": {"kind": "none", "at": null}, "has_data": true, "note": "22个风格类别。样本量：Blond 31, Tripel 28, Strong ale 18, Hoppy 17, Stout/Porter 13, Brown/Amber/Wheat 各12, Lambic/Pils-Lager 各11, Dubbel/Saison/Kriek 各10, …Faro 3。Q3风格条件生成的标签；小样本风格(Faro=3,Brut=4)生成需谨慎。"},
+    {"name": "Kaggle 公开啤酒数据集", "role": "assumed", "unit": "external", "range": [null, null], "granularity": "external", "censored": {"kind": "none", "at": null}, "has_data": false, "note": "题面允许参考 kaggle stephenpolozoff/top-beer-information 补充数据(可选增强)；非本地附件，仅在需要时按相对路径下载缓存，不作为主结论依据。"}
+  ],
+  "given": [
+    {"name": "感官评分刻度", "kind": "constant", "value": "0-6离散7级", "raw_quote": "评分采用 0‐6 离散等级", "must_use_verbatim": true},
+    {"name": "缺陷化合物清单", "kind": "table", "raw_quote": "缺陷化合物以所列 DMS/Diacetyl/4VG/trans-2-nonenal/Stale hops 等超阈值项为准", "rows": [{"when": {"defect": "DMS"}, "value": "dimethyl sulfide, 1.csv列名 DMS"}, {"when": {"defect": "Diacetyl"}, "value": "2,3-butanedione, 1.csv列名 X2.3.butanedione"}, {"when": {"defect": "4VG"}, "value": "4-vinyl guaiacol, 1.csv列名 X4VG"}, {"when": {"defect": "trans-2-nonenal"}, "value": "1.csv列名 X.E..2.nonenal"}, {"when": {"defect": "Stale hops"}, "value": "陈化酒花，对应老化标记，阈值见8.xlsx Sensory thresholds"}], "must_use_verbatim": true},
+    {"name": "Top-N 要求", "kind": "constant", "value": 3, "raw_quote": "给出每个感官维度的 Top-3 关键因素化合物", "must_use_verbatim": true},
+    {"name": "代表风格示例", "kind": "table", "raw_quote": "在给定风格（如 Tripel、Kriek、Lambic）下生成合理的化合物谱；把 Pils/Lager 的化合物谱迁移为 Tripel 风格", "rows": [{"when": {"role": "生成示例"}, "value": "Tripel, Kriek, Lambic"}, {"when": {"role": "迁移源→目标"}, "value": "Pils/Lager → Tripel"}], "must_use_verbatim": true}
+  ],
+  "discrepancies": [
+    {"item": "啤酒数量", "problem_text": "226 种不同啤酒", "actual_data": "250 样本", "resolution": "226为独立商用啤酒数，附件为250样本(含复测)，以250行建模"},
+    {"item": "3.xlsx sheet 数", "problem_text": "10 个 sheet(beer_1~beer_10)", "actual_data": "13 sheet(beer_1~beer_12+summary)", "resolution": "以实际13 sheet为准"},
+    {"item": "6.csv 维度", "problem_text": "46 行×50 列", "actual_data": "44 行×50 列", "resolution": "以实际44×50为准"},
+    {"item": "相关系数口径", "problem_text": "2.csv 为皮尔逊相关", "actual_data": "数据说明称 Spearman", "resolution": "建图/分析时注明口径，按附件数值直接使用"}
+  ]
+}
