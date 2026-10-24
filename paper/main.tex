@@ -29,10 +29,10 @@
 \renewcommand{\heiti}{\CJKfamily{zhhei}}
 \setCJKmonofont{SimSun.ttc}[Path=fonts/]
 
-% 代码块（lstlisting）：等宽用 Consolas、中文注释走 SimSun；∈ 归 CJK 类由 SimSun 渲染；
-% emoji（✅❌）经 listings 的 escape 切到 Segoe UI Symbol（本机无彩色 emoji 字体的排版适配）
+% 代码块（lstlisting）：等宽用 Consolas（Windows 内置）、中文注释走 SimSun；∈ 归 CJK 类由 SimSun 渲染；
+% emoji（✅❌）切到 Segoe UI Symbol（Windows 内置 seguisym.ttf）
 \setmonofont{Consolas}[Scale=MatchLowercase]
-\newfontfamily{\emojisymfont}{seguisym.ttf}[Path=C:/Windows/Fonts/]
+\newfontfamily{\emojisymfont}{seguisym.ttf}
 \xeCJKDeclareCharClass{CJK}{"2208}
 
 % ============ 图形与代码 ============

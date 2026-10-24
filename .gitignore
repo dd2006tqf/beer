@@ -26,6 +26,7 @@
 
 # ===== LaTeX 构建临时输出（保留 _docx_*.json 等辅助脚本输出 =====
 paper/build*.txt
+paper/compile*.txt
 
 # ===== Python =====
 __pycache__/
@@ -72,10 +73,6 @@ templates/
 # ===== 大文件（竞赛 .zip 提交包）=====
 提交包/*.zip
 提交包/*.pdf
-
-# ===== CUMCM 竞赛模板（main.tex 用 ctexart，不需要）=====
-paper/cumcm2026.sty
-paper/fonts/
 
 # ===== 额外探索/补充分析的图和脚本（非论文正文所需）=====
 figures/fig_prep_*
