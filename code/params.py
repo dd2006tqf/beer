@@ -88,8 +88,22 @@ PHYSICOCHEM_COLS = {
 }
 
 
+# 聚合/派生列（由多个单独测量化合物计算得出；来源 DATA_FACTS.json「5 个派生属性」）。
+# 热量值 kcalperc 已归入 PHYSICOCHEM_COLS，故此处为其余 4 个求和列。
+# 与 PHYSICOCHEM_COLS 一并从「化合物集 C」中剔除，避免 Q2 归因把派生量当独立化合物。
+AGG_COLS = {"esters_sum", "aroma_hops_sum", "acids_sum", "sulfur_sum"}
+
+
 def feature_type(name):
     return "physicochemical" if name in PHYSICOCHEM_COLS else "volatile_compound"
+
+
+def compound_set(feat_cols):
+    """从全部特征列中取「纯化合物集 C」：剔除 16 个理化列 + 4 个派生求和列。
+
+    231 − 16 − 4 = 211 列。供 Q2/Q3 的化合物共表达与归因使用，不影响 Q1。
+    """
+    return [c for c in feat_cols if c not in PHYSICOCHEM_COLS and c not in AGG_COLS]
 
 
 def core_sensory(sens_cols):

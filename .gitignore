@@ -1,0 +1,100 @@
+# ============================================================
+# Beer Competition LaTeX + Code Project — .gitignore
+# ============================================================
+
+# ===== LaTeX 构建产物（保留 .tex/.sty/.pdf/.docx 等源码和成品）=====
+*.aux
+*.log
+*.toc
+*.out
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nlo
+*.nls
+*.run.xml
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.xdv
+*.dvi
+*.ps
+
+# ===== LaTeX 构建临时输出（保留 _docx_*.json 等辅助脚本输出 =====
+paper/build*.txt
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# ===== 虚拟环境 =====
+venv/
+.venv/
+env/
+
+# ===== 临时文件 / 调试 / 分析脚本 =====
+_tmp/
+
+# ===== IDE / 编辑器 =====
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== Word 临时文件 =====
+~$*.docx
+~$*.doc
+
+# ===== 内部工具状态（Trae / MH agent 缓存 / 会话 / 数据库）=====
+.mh/
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===== 敏感 =====
+.env
+.env.*
+
+# ===== 空目录（如果存在）=====
+templates/
+
+# ===== 大文件（竞赛 .zip 提交包）=====
+提交包/*.zip
+提交包/*.pdf
+
+# ===== CUMCM 竞赛模板（main.tex 用 ctexart，不需要）=====
+paper/cumcm2026.sty
+paper/fonts/
+
+# ===== 额外探索/补充分析的图和脚本（非论文正文所需）=====
+figures/fig_prep_*
+figures/fig_q1_model_bar.*
+figures/fig_q1_r2_qwk.*
+figures/fig_q2_communities.*
+figures/fig_q2_sankey.*
+figures/fig_q2_source_freq.*
+figures/fig_q2_top1_bar.*
+figures/gen_fig_prep_*
+figures/gen_fig_q1_model_bar.*
+figures/gen_fig_q1_r2_qwk.*
+figures/gen_fig_q2_communities.*
+figures/gen_fig_q2_sankey.*
+figures/gen_fig_q2_source_freq.*
+figures/gen_fig_q2_top1_bar.*
+figures/supp_kaggle*
+figures/supp_preprocess*
+figures/TABLE_q1_group_AF*
+figures/TABLE_q2_source*
+figures/supp_kaggle/
+

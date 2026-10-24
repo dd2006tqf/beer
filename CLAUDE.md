@@ -337,3 +337,28 @@ ls -1 figures/TABLE_*.md 2>/dev/null
 4. 每张正文图都要有图前问题/判断和图后完整解释；禁止连续贴图；任何生成图未嵌入都阻断
 
 <!-- /INJECT:PAPER_PLAN_BACKLINK -->
+
+<!-- MH_MEMO:BEGIN -->
+## ⛔ 本工作区的记忆（引擎自动维护，每步刷新）
+
+### 已确认的决定（贯穿全程，不得推翻）
+- **重修任务书执行方式（定稿v2 自包含）**：方案A：以 paper/main.md→Word导出docx 为唯一正式稿，main.tex/main.pdf 作历史副本不同步不重编，最终PDF由定稿docx另存。A→B→C→D 一次性全部做完再导出Word，不逐批停下等确认。全程SEED=42；防泄漏（标准化/KNN/未检出下限ℓ_k/指示变量入选/分箱切点只在训练折拟合）；风格标签不进Q1特征；Q1主模型保留全231特征；仅Q2归因候选集限（⛔ 用户已否决：方案B（main.md与main.tex两套同步、PDF重编）；逐批停下等用户确认后再进下一批，不要加回来）
+
+### 已完成的工作（局部完成不等于整步完成）
+- comp-code [局部完成：按拆开的来] → 已完成「改 problem1.py 补 Q1 指标 + params.py 加化合物集C，跑 problem1.py 重算」：修改源文件 code/params.py、code/problem1.py、figures/problem_1_results.json。只写入了这次说好的文件，写入前后都核对过；不满意可以撤销。
+这次只做了说好的部分，已有成果都保留；整个步骤的完成状态不变。
+- comp-code [局部完成：好的，继续q2吧] → 已完成「改 problem2.py 候选集限定化合物集C重算Q2全套，跑 problem2.py」：修改源文件 code/problem2.py、figures/problem_2_results.json、submission/q2_top3_compounds.csv。只写入了这次说好的文件，写入前后都核对过；不满意可以撤销。
+这次只做了说好的部分，已有成果都保留；整个步骤的完成状态不变。
+
+### ⛔ 已经踩过的坑（别重犯）
+- comp-code 失败：聚焦任务没有产生任何实际产物变化
+- comp-code 失败：MHcoding Key 所在账户额度不足：技能内容只在能正常调用模型时下发，这次没有领取
+
+（另有 2 次失败运行，详见 `.mh/JOURNAL.md`）
+
+### ⚠ 6 个产物的依赖已过期（用它们之前先确认要不要重跑）
+- **comp-code** 的 3 个产物：上游变更（code/params.py）
+- **comp-code** 的 3 个产物：上游变更（code/problem2.py）
+
+完整历史 → `.mh/JOURNAL.md`；结构化状态 → `.mh/STATE.json`（要溯源某个数字来自哪次运行时读它）
+<!-- MH_MEMO:END -->

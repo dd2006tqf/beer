@@ -46,8 +46,9 @@ for col, ax in enumerate(axes):
         ax.scatter(vals[gi], yy[k], s=22 + 26 * t, color=c, edgecolors='white',
                    linewidths=0.5, zorder=3)
     ax.set_yticks(yy)
-    ax.set_yticklabels([names[i] if len(names[i]) <= 15 else names[i][:14] + '…' for i in sub],
-                       fontsize=6.6)
+    ax.set_yticklabels([(dim_zh(names[i]) if len(dim_zh(names[i])) <= 9
+                        else dim_zh(names[i])[:8] + '…') for i in sub],
+                       fontsize=7.0)
     ax.set_xlabel('交叉验证 QWK')
     ax.set_xlim(0, vmax * 1.16)
     declutter_axes(ax, grid_axis='x')

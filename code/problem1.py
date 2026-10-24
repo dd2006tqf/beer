@@ -30,6 +30,7 @@ from sklearn.linear_model import ElasticNet
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import KNNImputer, SimpleImputer
 from sklearn.metrics import mean_absolute_error, r2_score
+from scipy.stats import spearmanr
 import lightgbm as lgb
 
 LGB_PARAMS = dict(
@@ -76,6 +77,9 @@ def run(data_dir="user_data", out_dir=None):
     oof_knn = np.full((P.N_SAMPLES, J), np.nan)        # KNN 插补+LGB 对照
     oof_true_lvl = np.full((P.N_SAMPLES, J), -1, dtype=int)
     oof_main_cont = np.full((P.N_SAMPLES, J), np.nan)  # 连续输出（R² 用）
+    # 等距分箱灵敏度（仅额外对同一主模型输出施加 uniform 分箱，不改主结果）
+    oof_true_lvl_uniform = np.full((P.N_SAMPLES, J), -1, dtype=int)
+    oof_main_uniform = np.full((P.N_SAMPLES, J), -1, dtype=int)
 
     Yv = Y.values.astype(float)
 
@@ -91,12 +95,16 @@ def run(data_dir="user_data", out_dir=None):
             ytr_c, yva_c = Yv[tr, j], Yv[va, j]
             binner = U.Binner().fit(ytr_c)                 # 仅训练折估分箱
             oof_true_lvl[va, j] = binner.transform(yva_c)
+            # 等距分箱（仅训练折 fit），仅用于分箱灵敏度，不参与主结果/提交
+            binner_u = U.Binner(scheme="uniform").fit(ytr_c)
+            oof_true_lvl_uniform[va, j] = binner_u.transform(yva_c)
 
             # 主模型：原生缺失 LightGBM（含缺失行训练）
             m = _fit_lgb(Xv[tr], ytr_c)
             rc = m.predict(Xv[va])
             oof_main_cont[va, j] = rc
             oof_main[va, j] = binner.transform_continuous(rc)
+            oof_main_uniform[va, j] = binner_u.transform_continuous(rc)
 
             # 基线：均值等级
             oof_mean[va, j] = binner.transform_continuous(np.full(len(va), ytr_c.mean()))
@@ -115,7 +123,8 @@ def run(data_dir="user_data", out_dir=None):
 
     # placeholder-metrics
     results = _summarize(sens_cols, oof_true_lvl, oof_main, oof_mean,
-                         oof_enet, oof_rf, oof_knn, oof_main_cont, Yv, n_na_rows)
+                         oof_enet, oof_rf, oof_knn, oof_main_cont, Yv, n_na_rows,
+                         oof_true_lvl_uniform, oof_main_uniform)
     _full_retrain_and_submit(data_dir, out_dir, df1, Xv, Yv, feat_cols, sens_cols,
                              meta, results)
     build_figdata(results, Xv, oof_true_lvl, oof_main, oof_main_cont, Yv, sens_cols, feat_cols)
@@ -128,14 +137,28 @@ def run(data_dir="user_data", out_dir=None):
     U.save_json(results, os.path.join(fig_dir, "problem_1_results.json"))
     print("[Q1] 完成，结果写入 figures/problem_1_results.json")
     return results
-def _summarize(sens_cols, true_lvl, main, mean_b, enet, rf, knn, main_cont, Yv, n_na_rows):
-    """逐维 QWK/MAE/R²，选择每维提交模型（主 vs 均值基线，取 QWK 高者）。"""
+def _spearman(cont_true, pred):
+    """Spearman 秩相关；一侧退化为常数时相关系数定义为 0（无单调关系）。"""
+    rho = spearmanr(np.asarray(cont_true, float), np.asarray(pred, float)).correlation
+    return float(rho) if np.isfinite(rho) else 0.0
+
+
+def _acc_within1(pred_lvl, true_lvl):
+    """±1 等级命中率：mean(|pred_level - true_level| <= 1)。"""
+    return float(np.mean(np.abs(np.asarray(pred_lvl, int) - np.asarray(true_lvl, int)) <= 1))
+
+
+def _summarize(sens_cols, true_lvl, main, mean_b, enet, rf, knn, main_cont, Yv, n_na_rows,
+               true_lvl_uniform, main_uniform):
+    """逐维 QWK/MAE/R²/Spearman/±1命中，选择每维提交模型（主 vs 均值基线，取 QWK 高者）。"""
     J = len(sens_cols)
     per_dim = {}
     qwk_main_list, qwk_mean_list = [], []
+    qwk_uniform_list = []
     chosen = {}
     for j, col in enumerate(sens_cols):
         yt = true_lvl[:, j]
+        yc = Yv[:, j]                                   # 真实连续（标准化）值
         qwk_m = U.quadratic_weighted_kappa(yt, main[:, j].astype(int))
         qwk_0 = U.quadratic_weighted_kappa(yt, mean_b[:, j].astype(int))
         qwk_e = U.quadratic_weighted_kappa(yt, enet[:, j].astype(int))
@@ -143,7 +166,22 @@ def _summarize(sens_cols, true_lvl, main, mean_b, enet, rf, knn, main_cont, Yv, 
         qwk_k = U.quadratic_weighted_kappa(yt, knn[:, j].astype(int))
         mae_m = float(mean_absolute_error(yt, main[:, j]))
         # R² 在连续回归输出上（标准回归口径）
-        r2_m = float(r2_score(Yv[:, j], main_cont[:, j]))
+        r2_m = float(r2_score(yc, main_cont[:, j]))
+        # 等距分箱灵敏度：对同一主模型输出用 uniform 分箱重算 QWK
+        qwk_m_uniform = U.quadratic_weighted_kappa(true_lvl_uniform[:, j], main_uniform[:, j].astype(int))
+        qwk_uniform_list.append(qwk_m_uniform)
+        # Spearman：主模型用连续输出；基线用各自等级预测（均对真实连续 yc）
+        sp_m = _spearman(yc, main_cont[:, j])
+        sp_0 = _spearman(yc, mean_b[:, j])
+        sp_e = _spearman(yc, enet[:, j])
+        sp_r = _spearman(yc, rf[:, j])
+        sp_k = _spearman(yc, knn[:, j])
+        # ±1 等级命中率（各模型等级预测 vs 真实等级）
+        aw_m = _acc_within1(main[:, j], yt)
+        aw_0 = _acc_within1(mean_b[:, j], yt)
+        aw_e = _acc_within1(enet[:, j], yt)
+        aw_r = _acc_within1(rf[:, j], yt)
+        aw_k = _acc_within1(knn[:, j], yt)
         # 提交模型：主模型 CV QWK 不劣于均值基线则用主模型，否则用基线
         use_main = qwk_m >= qwk_0
         chosen[col] = "lightgbm" if use_main else "mean_baseline"
@@ -152,6 +190,11 @@ def _summarize(sens_cols, true_lvl, main, mean_b, enet, rf, knn, main_cont, Yv, 
             "qwk_elasticnet": round(qwk_e, 4), "qwk_rf": round(qwk_r, 4),
             "qwk_knn_impute": round(qwk_k, 4),
             "mae_main": round(mae_m, 4), "r2_main": round(r2_m, 4),
+            "spearman_main": round(sp_m, 4), "acc_within1_main": round(aw_m, 4),
+            "spearman_mean_baseline": round(sp_0, 4), "acc_within1_mean_baseline": round(aw_0, 4),
+            "spearman_elasticnet": round(sp_e, 4), "acc_within1_elasticnet": round(aw_e, 4),
+            "spearman_rf": round(sp_r, 4), "acc_within1_rf": round(aw_r, 4),
+            "spearman_knn_impute": round(sp_k, 4), "acc_within1_knn_impute": round(aw_k, 4),
             "chosen_model": chosen[col], "is_core": col.startswith(P.CORE_PREFIXES),
         }
         qwk_main_list.append(qwk_m)
@@ -160,6 +203,36 @@ def _summarize(sens_cols, true_lvl, main, mean_b, enet, rf, knn, main_cont, Yv, 
     qwk_main_arr = np.array(qwk_main_list)
     # 可预测维度：主模型 CV QWK > 0（供 Q2 跨问一致性）
     predictable = [sens_cols[j] for j in range(J) if qwk_main_arr[j] > 0]
+
+    # A/F 分组（核心 30 维，A_/F_ 前缀各 15）：平均 QWK/R²
+    def _group_stat(prefix):
+        cols = [c for c in sens_cols if c.startswith(prefix)]
+        return {
+            "mean_qwk": round(float(np.mean([per_dim[c]["qwk_main"] for c in cols])), 4) if cols else None,
+            "mean_r2": round(float(np.mean([per_dim[c]["r2_main"] for c in cols])), 4) if cols else None,
+            "n": len(cols),
+        }
+    group_AF = {"A": _group_stat("A_"), "F": _group_stat("F_")}
+
+    # 多模型对比（全 50 维平均）：mean_qwk / mean_spearman / mean_acc_within1
+    _model_suffix = {
+        "lightgbm": "main", "knn_impute": "knn_impute", "rf": "rf",
+        "elasticnet": "elasticnet", "mean_baseline": "mean_baseline",
+    }
+    by_model = {}
+    for mname, sfx in _model_suffix.items():
+        by_model[mname] = {
+            "mean_qwk": round(float(np.mean([per_dim[c][f"qwk_{sfx}"] for c in sens_cols])), 4),
+            "mean_spearman": round(float(np.mean([per_dim[c][f"spearman_{sfx}"] for c in sens_cols])), 4),
+            "mean_acc_within1": round(float(np.mean([per_dim[c][f"acc_within1_{sfx}"] for c in sens_cols])), 4),
+        }
+
+    # 分箱灵敏度：分位 vs 等距 平均 QWK（同一主模型输出，仅分箱方案不同）
+    binning_sensitivity = {
+        "quantile_mean_qwk": round(float(qwk_main_arr.mean()), 4),
+        "uniform_mean_qwk": round(float(np.mean(qwk_uniform_list)), 4),
+    }
+
     summary = {
         "n_samples": int(Yv.shape[0]), "n_features": P.N_FEATURES, "n_dims": J,
         "n_na_rows": int(n_na_rows),
@@ -171,10 +244,20 @@ def _summarize(sens_cols, true_lvl, main, mean_b, enet, rf, knn, main_cont, Yv, 
         "n_predictable_dims": len(predictable),
         "n_main_chosen": int(sum(1 for v in chosen.values() if v == "lightgbm")),
         "n_dims_main_beats_baseline": int((qwk_main_arr > np.array(qwk_mean_list)).sum()),
+        "group_AF": group_AF,
+        "by_model": by_model,
+        "binning_sensitivity": binning_sensitivity,
     }
     print(f"[Q1] 平均QWK 主={summary['mean_qwk_main']} 均值基线={summary['mean_qwk_mean_baseline']} "
           f"ElasticNet={summary['mean_qwk_elasticnet']} RF={summary['mean_qwk_rf']} "
           f"KNN插补={summary['mean_qwk_knn_impute']}  可预测维={summary['n_predictable_dims']}")
+    print(f"[Q1] A/F分组  A: QWK={group_AF['A']['mean_qwk']} R2={group_AF['A']['mean_r2']} n={group_AF['A']['n']}"
+          f"  |  F: QWK={group_AF['F']['mean_qwk']} R2={group_AF['F']['mean_r2']} n={group_AF['F']['n']}")
+    print(f"[Q1] 分箱灵敏度  分位QWK={binning_sensitivity['quantile_mean_qwk']} "
+          f"等距QWK={binning_sensitivity['uniform_mean_qwk']}")
+    for mname, mv in by_model.items():
+        print(f"[Q1] by_model {mname:<13} QWK={mv['mean_qwk']:.4f} "
+              f"Spearman={mv['mean_spearman']:.4f} acc_within1={mv['mean_acc_within1']:.4f}")
     return {
         "problem": 1, "method": "LightGBM(native missing) + 7级分位分箱 + 分层5折CV",
         "summary": summary, "per_dim": per_dim,
@@ -239,6 +322,16 @@ def build_figdata(results, Xv, oof_true_lvl, oof_main, oof_main_cont, Yv, sens_c
         "pred_cont": [round(float(v), 4) for v in oof_main_cont[:, jr]],
     }
     results["fig_data"]["rep_dim"] = rep
+    # 多模型柱状图：[模型, 平均QWK, 平均Spearman, 平均±1命中]
+    results["fig_data"]["model_cmp"] = [
+        [m, v["mean_qwk"], v["mean_spearman"], v["mean_acc_within1"]]
+        for m, v in results["summary"]["by_model"].items()
+    ]
+    # R²-QWK 散点：[维度, r2_main, qwk_main]
+    results["fig_data"]["r2_qwk"] = [
+        [c, results["per_dim"][c]["r2_main"], results["per_dim"][c]["qwk_main"]]
+        for c in sens_cols
+    ]
 
 
 def _validate(out_dir, sens_cols, results):

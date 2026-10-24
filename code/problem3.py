@@ -114,6 +114,9 @@ def run(data_dir="user_data", out_dir=None):
 
     # 验证指标
     metrics = _eval_metrics(Xv, styles, feat_cols, gen_native, gen_records, transfer_info)
+    # 生成质量：风格分类器 top3 识别率（对比随机基线）+ 生成画像 vs 真实画像 Spearman
+    metrics.update(_gen_quality(Xv, styles, gen_native, gen_records,
+                                sens_pred_gen, sens_cols, mu_f, sd_f))
 
     results = _assemble(out_dir, data_dir, feat_cols, sens_cols, gen_records, gen_native,
                         sens_pred_gen, transfer_records, sens_pred_tr, transfer_info,
@@ -221,6 +224,7 @@ def _transfer(model, style_list, s2i, S, Xstd, Xv, styles, feat_cols, mu_f, sd_f
     before = {d: [] for d in defect_pos}
     after = {d: [] for d in defect_pos}
     cap_rec = {d: [] for d in defect_pos}
+    raw_after = {d: [] for d in defect_pos}   # 无约束纯平移对照（缺陷投影前的解码值）
     for src in P.TRANSFER_SOURCES:
         if src not in s2i:
             print(f"[Q3] 迁移源 {src} 不存在，跳过")
@@ -243,33 +247,52 @@ def _transfer(model, style_list, s2i, S, Xstd, Xv, styles, feat_cols, mu_f, sd_f
                 xb = Xv[si, pos]
                 if not np.isfinite(xb):
                     xb = float(col_med_all[pos])
-                cap = max(xb, m_t[d])          # USE_ABS_THRESHOLD=False → 无 τ，相对判据
+                raw_val = float(x_after_vec[pos])           # 无约束纯平移的缺陷取值（对照）
+                raw_after[d].append(raw_val)
+                # 严格不恶化：迁移后缺陷既不得高于源款原值 xb，也不高于目标典型安全值 m_t，取严
+                cap = min(xb, m_t[d])
                 if P.USE_ABS_THRESHOLD:
                     pass  # 可换算时此处并入 τ 上界（本题单位不可比，默认关闭）
                 # 缺陷列逐样本投影回安全区（式13，np.minimum 下截断）
-                xa = float(np.minimum(float(x_after_vec[pos]), cap))
+                xa = float(np.minimum(raw_val, cap))
                 x_after_vec[pos] = xa
                 before[d].append(float(xb)); after[d].append(xa); cap_rec[d].append(cap)
             records.append({"style": f"{src}->{tgt}", "sample_type": "transfer",
                             "src_beer_row": int(si), "_native": x_after_vec})
         print(f"[Q3] 迁移 {src}->{tgt}: {len(sidx)} 条")
-    # 合规率（式13：x_after <= cap）
+    # 合规率（式13：x_after <= min(xb, m_t)）
     n_tot = n_ok = 0
+    n_rise_raw = n_rise_constrained = 0
     per_defect = {}
     for d in defect_pos:
         bf = np.array(before[d]); af = np.array(after[d]); cp = np.array(cap_rec[d])
+        raw = np.array(raw_after[d])
         ok = int((af <= cp + 1e-9).sum())
+        rise_raw = int((raw > bf + 1e-9).sum())    # 无约束时缺陷升高的样本数
+        rise_c = int((af > bf + 1e-9).sum())       # 严格约束后缺陷升高数（应为 0）
         n_tot += len(af); n_ok += ok
+        n_rise_raw += rise_raw; n_rise_constrained += rise_c
         per_defect[d] = {"n": len(af), "n_compliant": ok,
                          "before_mean": round(float(bf.mean()), 4),
                          "after_mean": round(float(af.mean()), 4),
+                         "raw_after_mean": round(float(raw.mean()), 4),
                          "m_t": round(m_t[d], 4),
-                         "delta_mean": round(float((af - bf).mean()), 4)}
+                         "delta_mean": round(float((af - bf).mean()), 4),
+                         "delta_raw_mean": round(float((raw - bf).mean()), 4),
+                         "n_rise_unconstrained": rise_raw,
+                         "n_rise_constrained": rise_c}
     rate = n_ok / n_tot if n_tot else 1.0
     info = {"compliance_rate": round(rate, 6), "n_checks": n_tot, "n_compliant": n_ok,
             "per_defect": per_defect, "defect_cols": list(P.DEFECT_COL_MAP.values()),
-            "defect_no_chem": P.DEFECT_NO_CHEM, "m_t": {k: round(v, 4) for k, v in m_t.items()}}
-    print(f"[Q3] 缺陷合规率={rate:.4f}（{n_ok}/{n_tot}）")
+            "defect_no_chem": P.DEFECT_NO_CHEM, "m_t": {k: round(v, 4) for k, v in m_t.items()},
+            "unconstrained_control": {
+                "description": "同批迁移仅做隐空间平移、不做缺陷投影（对照），量化约束必要性",
+                "n_defect_rise_unconstrained": n_rise_raw, "n_total": n_tot,
+                "rise_frac_unconstrained": round(n_rise_raw / n_tot, 4) if n_tot else None,
+                "n_defect_rise_constrained": n_rise_constrained,
+                "rise_frac_constrained": round(n_rise_constrained / n_tot, 4) if n_tot else None}}
+    print(f"[Q3] 缺陷合规率={rate:.4f}（{n_ok}/{n_tot}）；无约束升高 {n_rise_raw}/{n_tot}，"
+          f"严格约束后升高 {n_rise_constrained}/{n_tot}")
     return records, info
 
 
@@ -319,6 +342,69 @@ def _eval_metrics(Xv, styles, feat_cols, gen_native, gen_records, transfer_info)
     return {"ks_distance_by_style": ks_per_style, "pca": pca_data}
 
 
+def _gen_quality(Xv, styles, gen_native, gen_records, sens_pred_gen, sens_cols, mu_f, sd_f):
+    """生成质量的两道独立证据：风格分类器 top3 识别率（对比随机基线）；生成画像 vs 真实画像 Spearman。"""
+    import joblib
+    from scipy.stats import spearmanr
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import StratifiedKFold, cross_val_predict
+    col_med = np.nanmedian(Xv, axis=0)
+    Xfill = np.where(np.isnan(Xv), col_med, Xv)
+    Xstd = (Xfill - mu_f) / sd_f
+    gstd = (gen_native - mu_f) / sd_f
+    styles = np.asarray(styles)
+    uniq = sorted(pd.unique(styles).tolist()); S = len(uniq)
+    clf = LogisticRegression(max_iter=2000).fit(Xstd, styles)
+    classes = clf.classes_
+    proba = clf.predict_proba(gstd)
+    top3 = classes[np.argsort(-proba, axis=1)[:, :3]]
+    top3_acc = {}
+    for style in P.GEN_STYLES:
+        rows = [i for i, r in enumerate(gen_records) if r["style"] == style]
+        if rows:
+            top3_acc[style] = round(float(np.mean([style in top3[i] for i in rows])), 4)
+    # 真实谱分层 OOF top3 作为分类器自身能力参照
+    min_cnt = min(int((styles == s).sum()) for s in uniq)
+    nsplit = max(2, min(5, min_cnt))
+    cv = StratifiedKFold(n_splits=nsplit, shuffle=True, random_state=P.SEED)
+    oof = cross_val_predict(LogisticRegression(max_iter=2000),
+                            Xstd, styles, cv=cv, method="predict_proba")
+    oof_top3 = classes[np.argsort(-oof, axis=1)[:, :3]]
+    real_oof = {s: round(float(np.mean([s in oof_top3[i] for i in np.where(styles == s)[0]])), 4)
+                for s in P.GEN_STYLES}
+    real_overall = round(float(np.mean([styles[i] in oof_top3[i] for i in range(len(styles))])), 4)
+    # 画像 Spearman：真实同风格谱套 Q1 打分均值 vs 生成谱打分均值（均为 1–7 感官等级）
+    bundle = joblib.load(U.ckpt_path("q1_models.pkl"))
+    models, binners = bundle["models"], bundle["binners"]
+    def score_native(rows_native):
+        out = np.zeros((rows_native.shape[0], len(binners)), dtype=float)
+        for j, col in enumerate(binners.keys()):
+            if col in models:
+                rc = models[col].predict(rows_native)
+                out[:, j] = binners[col].transform_continuous(rc)
+            else:
+                out[:, j] = 3.0
+        return out
+    profile_rho = {}
+    real_levels = {}
+    bcols = list(binners.keys())
+    for style in P.GEN_STYLES:
+        ridx = np.where(styles == style)[0]
+        gidx = [i for i, r in enumerate(gen_records) if r["style"] == style]
+        if len(ridx) < 2 or not gidx:
+            continue
+        real_prof = score_native(Xfill[ridx]).mean(axis=0)
+        gen_prof = sens_pred_gen[gidx].mean(axis=0)
+        profile_rho[style] = round(float(spearmanr(real_prof, gen_prof).statistic), 4)
+        real_levels[style] = {bcols[j]: round(float(real_prof[j]), 3) for j in range(len(bcols))}
+    return {"classifier_top3_generated": top3_acc,
+            "classifier_top3_random_baseline": round(3.0 / S, 4),
+            "classifier_top3_real_oof": real_oof,
+            "classifier_top3_real_overall": real_overall,
+            "profile_spearman_by_style": profile_rho,
+            "profile_real_levels": real_levels}
+
+
 def _assemble(out_dir, data_dir, feat_cols, sens_cols, gen_records, gen_native, sens_pred_gen,
               transfer_records, sens_pred_tr, transfer_info, metrics, Xv, styles):
     # 写宽表交付：生成 + 迁移，231 化学 + 50 感官 + 元信息
@@ -359,14 +445,21 @@ def _assemble(out_dir, data_dir, feat_cols, sens_cols, gen_records, gen_native, 
             "gen_styles": P.GEN_STYLES, "transfer": f"{P.TRANSFER_SOURCES}->{P.TRANSFER_TARGET}",
             "latent_dim": P.LATENT_DIM, "beta_kl": P.BETA_KL,
             "defect_compliance_rate": transfer_info["compliance_rate"],
+            "unconstrained_control": transfer_info["unconstrained_control"],
             "ks_distance_by_style": metrics["ks_distance_by_style"],
+            "classifier_top3_generated": metrics["classifier_top3_generated"],
+            "classifier_top3_random_baseline": metrics["classifier_top3_random_baseline"],
+            "classifier_top3_real_oof": metrics["classifier_top3_real_oof"],
+            "classifier_top3_real_overall": metrics["classifier_top3_real_overall"],
+            "profile_spearman_by_style": metrics["profile_spearman_by_style"],
             "gen_tripel_ester_level": round(gen_ester, 4) if gen_ester is not None else None,
             "real_tripel_ester_level": round(real_ester, 4),
             "gen_dim": int(gen_native.shape[1]),
         },
         "transfer_info": transfer_info,
         "fig_data": {"pca": metrics["pca"],
-                     "radar": _radar_data(gen_records, sens_pred_gen, sens_cols),
+                     "radar": {**_radar_data(gen_records, sens_pred_gen, sens_cols),
+                               "real_by_style": metrics["profile_real_levels"]},
                      "defect_dumbbell": transfer_info["per_defect"]},
         "sensory_cols": sens_cols,
         "submission": {"path": "submission/q3_generated_profiles.csv",
@@ -398,7 +491,11 @@ def _validate(out_dir, results):
     # 缺陷合规率==1.0
     rate = results["summary"]["defect_compliance_rate"]
     assert abs(rate - 1.0) < 1e-6, f"[P3-C3] 缺陷合规率!=1.0: {rate}"
-    print("[Q3] validate_constraints PASS（生成谱231维 / 缺陷合规率==1.0）")
+    # 严格不恶化：每个缺陷迁移后均值 Δ ≤ 0（含 DMS），且严格约束后无任一样本升高
+    for d, pd_ in results["transfer_info"]["per_defect"].items():
+        assert pd_["delta_mean"] <= 1e-9, f"[P3-C3] 缺陷 {d} 迁移后均值升高 Δ={pd_['delta_mean']}"
+        assert pd_["n_rise_constrained"] == 0, f"[P3-C3] 缺陷 {d} 仍有 {pd_['n_rise_constrained']} 条升高"
+    print("[Q3] validate_constraints PASS（生成谱231维 / 缺陷合规率==1.0 / 4缺陷 Δ 均 ≤0）")
     # 能力断言：P3-C1 不同风格可区分（KS>0 且非全相同）；P3-C3 迁移缺陷不升超限
     ks = results["summary"]["ks_distance_by_style"]
     assert len(ks) >= 1 and all(v >= 0 for v in ks.values()), "[P3-C1] 分布距离缺失"

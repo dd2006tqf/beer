@@ -1,9 +1,15 @@
 {
   "base_name": "AMCB2600304",
+  "paper_docx": "AMCB2600304.docx",
+  "paper_pdf": "AMCB2600304.pdf",
+  "paper_pages": 66,
+  "paper_docx_bytes": 5450097,
+  "paper_pdf_bytes": 6031182,
+  "paper_note": "含官方封面表（队伍编号 MCB2600304/赛道 A）与两页自动目录（WPS 已更新域）；正文从第 5 页起、页脚连续编号",
   "paper": "AMCB2600304.docx",
   "attachment": "AMCB2600304附件.zip",
-  "attachment_mb": 0.13,
-  "members": 14,
+  "attachment_mb": 0.18,
+  "members": 41,
   "skipped_large_files": [],
   "result_files": [
     "q1_sensory_scores.csv",
@@ -16,16 +22,16 @@
       "errors": [],
       "warnings": [],
       "paper_tables": [
-        "表 各感官维度预测性能（交叉验证 QWK/MAE/R²）",
-        "表 每个感官维度的 Top-3 关键化合物及稳定性指标",
-        "表 代表性风格（Tripel/Kriek/Lambic）生成化合物谱与感官画像及缺陷阈值合规"
+        "表 各感官维度预测性能（交叉验证 QWK/Spearman/±1级准确率/R²）",
+        "表 每个感官维度的 Top-3 关键化合物（仅化合物集 C=211）及稳定性、来源类别与随机基线",
+        "表 代表性风格（Tripel/Kriek/Lambic）生成化合物谱与感官画像、缺陷 min(源值,m_t) 合规"
       ]
     },
     "code": {
       "ok": true,
       "errors": [],
       "warnings": [
-        "这些库按可选依赖导入（缺了会走备用分支），可在 requirements.txt 注明：community"
+        "community(python-louvain) 按可选依赖导入，缺了会走备用分支，已在 requirements.txt 注明"
       ]
     },
     "appendix": {
@@ -35,8 +41,8 @@
     }
   },
   "todo": [
-    "论文是 Word 文件：用 Word 打开 AMCB2600304.docx 另存为 PDF（AMCB2600304.pdf）后再上传；另存前在 Word 里右键目录选“更新域”，PDF 的论文格式（第一页摘要、第二页目录、正文从 1 编页码）请自己翻一遍"
+    "论文 PDF（AMCB2600304.pdf，66 页，目录已更新）可直接上传；若重新编辑 docx 后再导出，请右键目录“更新整个目录”。承诺书需本人手写签名，软件不代签"
   ],
   "promise_templates": [],
-  "generated_at": "2026-10-23T22:03:48"
+  "generated_at": "2026-10-24T18:05:00"
 }
