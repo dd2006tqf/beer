@@ -79,7 +79,10 @@ Desktop.ini
 .env.*
 
 # ===== 空目录（如果存在）=====
-templates/
+# 只忽略根目录的 templates/（LaTeX 模板，28MB）；写成不带前导 / 的
+# templates/ 会连 .claude/skills/modelviz-skill/templates/ 一起忽略，
+# 导致 skill 落库后 clone 下来缺模板库。
+/templates/
 
 # ===== 大文件（竞赛 .zip 提交包）=====
 提交包/*.zip

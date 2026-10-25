@@ -76,6 +76,8 @@
 ├── _utils/                    # 🔧 绘图公共工具（plot_utils.py）
 ├── submission/                # 📊 竞赛提交结果（3 个 CSV）
 ├── user_data/                 # 📥 原始数据（只读，不入库）
+├── .claude/skills/            # 🤖 项目级 Agent Skill（见下节）
+│   └── modelviz-skill/        #   ModelViz：科研绘图模板库（89 个模板）
 └── 提交包/                     # 📦 最终提交打包
 ```
 
@@ -131,6 +133,37 @@ python main.py --data-dir ../user_data
 
 固定随机种子 `SEED=42`。`CODE_CHECK.json` 记录各文件是否可独立运行。
 
+### 5️⃣ 用 ModelViz 画图（可选）
+
+`.claude/skills/modelviz-skill/` 是从 [hrdZhu/modelviz-skill](https://github.com/hrdZhu/modelviz-skill)
+迁入的项目级 Skill：89 个科研绘图模板，按「自然语言需求 + 真实数据」选模板、改写模板代码、执行、质检。
+
+```powershell
+cd .claude\skills\modelviz-skill
+
+# 原生 Windows 不认 .venv/Scripts，用这个 python 跑
+.venv\Scripts\python.exe -c "import sys; sys.path.insert(0,'.'); print('ok')"
+```
+
+首次在别的机器上 clone 后，先重建依赖（`requirements.txt` 只含编排核心库，
+模板各自的 matplotlib/scipy/seaborn/shap 等按需安装）：
+
+```powershell
+cd .claude\skills\modelviz-skill
+python -m venv --system-site-packages .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+使用要点（与主流水线的约定）：
+
+- **模板库只读**：`templates/` 下的脚本不修改，改写产物落在 `workspace/adapted_plot.py`，图落在 `outputs/`。
+- **输出要搬进 `figures/` 并转成论文规范**：ModelViz 默认按模板自身 DPI 出图，论文要求 350 DPI PNG、
+  正文引用用 `figures/fig_xxx.png`，拿到 `outputs/` 的图后需另存到 `figures/` 并改 `paper/main.md` 的引用。
+- **管线入口是 Python**：`src/services/*_pipeline.py` 需要宿主传入支持 `with_structured_output` 的模型对象，
+  不是纯命令行工具；在本仓库里由 Claude 按 `SKILL.md` 的分阶段流程调用。
+- 模板库体积 145MB（其中模板示例数据 108MB、预览图 39MB），**随仓库提交**；`.venv/` 与
+  `workspace/`、`outputs/` 的运行产物不入库。
+
 ---
 
 ## 🛠️ 技术栈
@@ -142,6 +175,7 @@ python main.py --data-dir ../user_data
 | 公式 | LaTeX → latex2mathml → OMML（Word 原生公式） |
 | 建模 | Python（LightGBM / CatBoost / XGBoost / PyTorch） |
 | 图表 | matplotlib / seaborn（350 DPI PNG） |
+| 绘图模板 | ModelViz Skill（`.claude/skills/modelviz-skill`，89 个科研模板） |
 
 ---
 
