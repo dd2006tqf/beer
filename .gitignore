@@ -42,7 +42,18 @@ venv/
 env/
 
 # ===== 临时文件 / 调试 / 分析脚本 =====
-_tmp/
+_tmp/*
+# 但论文生成流水线本身要入库，否则 clone 后 README 里的命令指向不存在的文件
+!_tmp/md2docx.py
+!_tmp/make_toc.py
+!_tmp/pagemap.ps1
+!_tmp/pagemap.tsv
+!_tmp/toc_entries.json
+# 以下仍忽略：模型检查点（可重算）、Kaggle 公开数据、本地备用库、密钥备份
+_tmp/checkpoints/
+_tmp/kaggle/
+_tmp/pylibs/
+_tmp/*.env
 
 # ===== IDE / 编辑器 =====
 .idea/
@@ -74,24 +85,10 @@ templates/
 提交包/*.zip
 提交包/*.pdf
 
-# ===== 额外探索/补充分析的图和脚本（非论文正文所需）=====
-figures/fig_prep_*
-figures/fig_q1_model_bar.*
-figures/fig_q1_r2_qwk.*
-figures/fig_q2_communities.*
-figures/fig_q2_sankey.*
-figures/fig_q2_source_freq.*
-figures/fig_q2_top1_bar.*
-figures/gen_fig_prep_*
-figures/gen_fig_q1_model_bar.*
-figures/gen_fig_q1_r2_qwk.*
-figures/gen_fig_q2_communities.*
-figures/gen_fig_q2_sankey.*
-figures/gen_fig_q2_source_freq.*
-figures/gen_fig_q2_top1_bar.*
-figures/supp_kaggle*
-figures/supp_preprocess*
-figures/TABLE_q1_group_AF*
-figures/TABLE_q2_source*
-figures/supp_kaggle/
+# ===== 说明 =====
+# 本块原先忽略 figures/fig_prep_*、fig_q1_model_bar 等 9 张图，
+# 但它们均被 paper/main.md 正文引用（figures/ 共 23 张图全部入正文），
+# 忽略会导致 clone 后论文缺图。已全部取消忽略，随仓库一起提交。
+# figures/supp_preprocess.json、supp_kaggle.json 被 main.md 附录 B
+# 列为支撑材料文件，同样保留。
 

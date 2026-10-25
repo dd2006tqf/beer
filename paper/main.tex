@@ -90,9 +90,35 @@
 \end{cumcmabstract}
 
 % ===================== 目录 =====================
+% 目录必须压进单页（官方要求第二页为目录页）。article 类默认的 \l@section 在每个
+% 一级条目之前加 1.0em 段前距，叠加 sty 的 \linespread{1.35} 后 40 条会溢出到第二页。
+% 这里只压缩目录：段前距降到 0.30em，行距局部改为 1.05（正文仍为 1.35）。
+\makeatletter
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{0.30em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+\makeatother
+
 \pagenumbering{arabic}
-\tableofcontents
+{\linespread{1.05}\selectfont
+\tableofcontents}
+\thispagestyle{empty}
 \clearpage
+% 官方要求「目录之后开始正文，从正文开始编页码，从 1 连续编号」。
+% \pagenumbering 会把页计数器重置为 1，所以必须放在目录之后，正文才从 1 开始。
+\pagenumbering{arabic}
 
 \section{问题重述}
 

@@ -1,0 +1,336 @@
+{
+  "source": {
+    "name": "Top Beer Information - Tasting Profiles (Kaggle, stephenpolozoff)",
+    "url": "https://www.kaggle.com/datasets/stephenpolozoff/top-beer-information",
+    "n_rows": 5558,
+    "n_styles": 112,
+    "abv_median": 6.0,
+    "ibu_median": 27.5,
+    "rating_median": 3.82,
+    "rating_min": 1.27,
+    "rating_max": 4.83
+  },
+  "local": {
+    "n_rows": 250,
+    "n_styles": 22,
+    "abv_median": 7.19,
+    "ibu_median": 18.16
+  },
+  "mapping": {
+    "Tripel": {
+      "zh": "Tripel",
+      "kaggle_styles": [
+        "Tripel"
+      ],
+      "n": 50,
+      "local_abv": 8.77,
+      "kaggle_abv_five": [
+        7.59,
+        8.22,
+        9.0,
+        9.65,
+        11.0
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 20.04,
+      "kaggle_ibu_med": 30.0
+    },
+    "Dubbel": {
+      "zh": "Dubbel",
+      "kaggle_styles": [
+        "Dubbel"
+      ],
+      "n": 50,
+      "local_abv": 6.91,
+      "kaggle_abv_five": [
+        6.5,
+        6.93,
+        7.5,
+        8.0,
+        8.61
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": true,
+      "local_ibu": 15.45,
+      "kaggle_ibu_med": 22.5
+    },
+    "Strong ale": {
+      "zh": "比利时烈性",
+      "kaggle_styles": [
+        "Strong Ale - Belgian Dark",
+        "Strong Ale - Belgian Pale"
+      ],
+      "n": 100,
+      "local_abv": 10.09,
+      "kaggle_abv_five": [
+        7.19,
+        8.0,
+        9.0,
+        10.0,
+        12.0
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": true,
+      "local_ibu": 15.99,
+      "kaggle_ibu_med": 33.75
+    },
+    "Blond": {
+      "zh": "金色艾尔",
+      "kaggle_styles": [
+        "Blonde Ale - Belgian"
+      ],
+      "n": 50,
+      "local_abv": 6.91,
+      "kaggle_abv_five": [
+        5.09,
+        6.0,
+        6.5,
+        6.67,
+        7.77
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": true,
+      "local_ibu": 19.99,
+      "kaggle_ibu_med": 22.5
+    },
+    "Saison": {
+      "zh": "季节啤",
+      "kaggle_styles": [
+        "Farmhouse Ale - Saison"
+      ],
+      "n": 50,
+      "local_abv": 6.71,
+      "kaggle_abv_five": [
+        4.34,
+        6.03,
+        6.75,
+        7.97,
+        9.5
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 30.05,
+      "kaggle_ibu_med": 29.0
+    },
+    "Pils/Lager": {
+      "zh": "皮尔森/拉格",
+      "kaggle_styles": [
+        "Pilsner - German",
+        "Pilsner - Bohemian / Czech"
+      ],
+      "n": 100,
+      "local_abv": 5.19,
+      "kaggle_abv_five": [
+        4.5,
+        4.8,
+        5.0,
+        5.3,
+        5.62
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 22.33,
+      "kaggle_ibu_med": 35.0
+    },
+    "Wheat": {
+      "zh": "小麦白啤",
+      "kaggle_styles": [
+        "Wheat Beer - Witbier"
+      ],
+      "n": 50,
+      "local_abv": 5.08,
+      "kaggle_abv_five": [
+        4.5,
+        4.8,
+        5.15,
+        5.47,
+        8.55
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 5.43,
+      "kaggle_ibu_med": 15.0
+    },
+    "Stout/Porter": {
+      "zh": "世涛/波特",
+      "kaggle_styles": [
+        "Stout - English",
+        "Stout - Foreign / Export"
+      ],
+      "n": 100,
+      "local_abv": 8.0,
+      "kaggle_abv_five": [
+        4.5,
+        5.5,
+        6.55,
+        7.5,
+        8.5
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": true,
+      "local_ibu": 25.93,
+      "kaggle_ibu_med": 40.0
+    },
+    "Brown": {
+      "zh": "棕色艾尔",
+      "kaggle_styles": [
+        "Brown Ale - Belgian Dark"
+      ],
+      "n": 48,
+      "local_abv": 7.92,
+      "kaggle_abv_five": [
+        5.54,
+        6.0,
+        6.5,
+        7.2,
+        8.56
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": true,
+      "local_ibu": 18.59,
+      "kaggle_ibu_med": 20.0
+    },
+    "Amber": {
+      "zh": "琥珀红啤",
+      "kaggle_styles": [
+        "Red Ale - American Amber / Red"
+      ],
+      "n": 50,
+      "local_abv": 7.64,
+      "kaggle_abv_five": [
+        5.04,
+        5.7,
+        6.2,
+        6.8,
+        7.35
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": false,
+      "local_ibu": 20.57,
+      "kaggle_ibu_med": 35.0
+    },
+    "Hoppy": {
+      "zh": "酒花(IPA)",
+      "kaggle_styles": [
+        "IPA - Belgian"
+      ],
+      "n": 50,
+      "local_abv": 7.82,
+      "kaggle_abv_five": [
+        5.59,
+        6.26,
+        7.45,
+        9.0,
+        10.23
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 31.38,
+      "kaggle_ibu_med": 65.0
+    },
+    "Kriek": {
+      "zh": "克里克",
+      "kaggle_styles": [
+        "Lambic - Fruit"
+      ],
+      "n": 49,
+      "local_abv": 6.36,
+      "kaggle_abv_five": [
+        3.5,
+        5.0,
+        6.0,
+        6.4,
+        7.88
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 4.6,
+      "kaggle_ibu_med": 18.0
+    },
+    "Lambic": {
+      "zh": "兰比克",
+      "kaggle_styles": [
+        "Lambic - Traditional",
+        "Lambic - Gueuze"
+      ],
+      "n": 98,
+      "local_abv": 6.31,
+      "kaggle_abv_five": [
+        5.0,
+        5.0,
+        6.0,
+        6.5,
+        7.66
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 3.77,
+      "kaggle_ibu_med": 5.0
+    },
+    "Faro": {
+      "zh": "法柔",
+      "kaggle_styles": [
+        "Lambic - Faro"
+      ],
+      "n": 16,
+      "local_abv": 4.5,
+      "kaggle_abv_five": [
+        3.8,
+        4.42,
+        5.0,
+        5.0,
+        5.62
+      ],
+      "abv_hit_iqr": true,
+      "abv_hit_p95": true,
+      "local_ibu": 4.9,
+      "kaggle_ibu_med": 5.0
+    },
+    "Fruitbeer": {
+      "zh": "果啤",
+      "kaggle_styles": [
+        "Fruit and Field Beer"
+      ],
+      "n": 50,
+      "local_abv": 3.23,
+      "kaggle_abv_five": [
+        4.0,
+        4.25,
+        5.1,
+        5.97,
+        10.0
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": false,
+      "local_ibu": 5.52,
+      "kaggle_ibu_med": 25.0
+    },
+    "Brett/cofermented": {
+      "zh": "布雷特混酿",
+      "kaggle_styles": [
+        "Brett Beer"
+      ],
+      "n": 50,
+      "local_abv": 7.49,
+      "kaggle_abv_five": [
+        5.29,
+        5.93,
+        6.15,
+        7.0,
+        9.66
+      ],
+      "abv_hit_iqr": false,
+      "abv_hit_p95": true,
+      "local_ibu": 29.8,
+      "kaggle_ibu_med": null
+    }
+  },
+  "abv_hit_iqr": 0.5,
+  "abv_hit_p95": 0.875,
+  "abv_spearman": 0.839,
+  "ibu_spearman": 0.863,
+  "n_local_above_kaggle_median": 10,
+  "n_compared": 16,
+  "n_ibu_compared": 15
+}

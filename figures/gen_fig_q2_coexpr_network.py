@@ -71,9 +71,6 @@ for k, i in enumerate(order):
 ax.set_xticks([]); ax.set_yticks([])
 for sp in ax.spines.values():
     sp.set_visible(False)
-ax.set_title(f'化合物集 C 共表达网络（{g["n_nodes"]} 节点 / {g["n_edges"]} 边 / '
-             f'{g["n_communities"]} 社区 / 模块度 {g["modularity"]}），仅显示 60 个主要节点',
-             fontsize=10.5, fontweight='bold', loc='left', pad=4)
 handles = [Patch(facecolor=comm_col[c], label=comm_name[c]) for c in big]
 ax.legend(handles=handles, loc='lower center', fontsize=7.5, ncol=2, frameon=True,
           framealpha=0.92, edgecolor='#DDD')

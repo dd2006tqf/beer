@@ -41,7 +41,6 @@ ax.set_ylabel(f'含缺失样本（共 {n_na_rows} 行）')
 from matplotlib.patches import Patch
 ax.legend(handles=[Patch(color=PALETTE[3], label='缺失'), Patch(color='#EDEFF2', label='观测')],
           loc='lower right', fontsize=6.8, framealpha=0.9)
-panel(ax, '(a)')
 
 # ── 右：列缺失率条形 ─────────────────────────
 ax = axes[1]
@@ -57,7 +56,6 @@ ax.set_yticklabels([c if len(c) <= 13 else c[:12] + '…' for c in cnames], font
 ax.set_xlabel('列缺失率（%）')
 ax.set_xlim(0, max(rates) * 1.25)
 declutter_axes(ax, grid_axis='x')
-panel(ax, '(b)')
 
 fig.tight_layout()
 save_fig(fig, 'figures/fig_q1_missing_pattern.png')

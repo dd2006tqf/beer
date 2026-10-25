@@ -85,15 +85,16 @@ per1 = P1['per_dim']
 strong = [d for d in rank if d in per1][:12]
 weak = [d for d in rank if d in per1][-4:]
 L = ['**表：最强 12 维与最弱 4 维的预测性能（QWK / $R^2$ / Spearman / ±1 准确率）**', '',
-     '| 感官维度 | QWK | $R^2$ | Spearman | ±1 准确率 |', '|---|---|---|---|---|']
+     '| 感官维度 | 字段名 | QWK | $R^2$ | Spearman | ±1 准确率 |',
+     '|:---|:---:|---:|---:|---:|---:|']
 for d in strong:
     p = per1[d]
-    L.append(f'| {dimname(d)}（{esc(d)}） | {p["qwk_main"]:.3f} | {p["r2_main"]:.3f} '
+    L.append(f'| {dimname(d)} | {esc(d)} | {p["qwk_main"]:.3f} | {p["r2_main"]:.3f} '
              f'| {p["spearman_main"]:.3f} | {p["acc_within1_main"]:.3f} |')
-L.append('| …（中间 30 维见支撑材料）… | | | | |')
+L.append('| …（中间 30 维）… | 见支撑材料 | | | | |')
 for d in weak:
     p = per1[d]
-    L.append(f'| {dimname(d)}（{esc(d)}） | {p["qwk_main"]:.3f} | {p["r2_main"]:.3f} '
+    L.append(f'| {dimname(d)} | {esc(d)} | {p["qwk_main"]:.3f} | {p["r2_main"]:.3f} '
              f'| {p["spearman_main"]:.3f} | {p["acc_within1_main"]:.3f} |')
 L += ['', '> 注：完整 50 维见 `submission/q1_sensory_scores.csv`；$R^2$ 为连续预测值的决定系数（可为负），'
       'QWK 为分箱后的二次加权 Kappa。', '', '<!-- label: tab:q1_perf -->']

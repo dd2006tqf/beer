@@ -34,7 +34,6 @@ ax.legend(loc='upper left', fontsize=7, framealpha=0.9)
 ax.text(0.97, 0.05, f'Pearson r={r:.2f}', transform=ax.transAxes, ha='right',
         va='bottom', fontsize=8, color=COLORS['text'])
 declutter_axes(ax)
-panel(ax, '(a)')
 
 # ── (b) 等级混淆热力 0-6 ───────────────────
 ax = axes[1]
@@ -47,7 +46,6 @@ draw_vector_heatmap(ax, cm, xlabels=list(range(L)), ylabels=list(range(L)),
                     cbar_label='样本数', origin='lower')
 ax.set_xlabel('预测等级')
 ax.set_ylabel('真实等级')
-panel(ax, '(b)')
 
 fig.tight_layout()
 save_fig(fig, 'figures/fig_q1_calibration.png')

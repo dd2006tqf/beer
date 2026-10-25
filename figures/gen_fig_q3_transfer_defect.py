@@ -57,9 +57,6 @@ ax.set_yticklabels([zh.get(k, k) for k in names], fontsize=9)
 ax.set_xlabel('标准化含量（迁移 11 款的均值）')
 n_unc = ctrl.get('n_defect_rise_unconstrained', 0); n_tot = ctrl.get('n_total', 44)
 n_c = ctrl.get('n_defect_rise_constrained', 0)
-ax.set_title(f'严格投影 min(源值, m_t) 后缺陷升高 {n_c}/{n_tot}；'
-             f'无约束纯平移 {n_unc}/{n_tot} 升高（{n_unc/n_tot:.0%}）',
-             fontsize=11, fontweight='bold', loc='left', pad=4)
 ax.set_xlim(-2.55, 5.7)
 declutter_axes(ax, grid_axis='x')
 handles = [

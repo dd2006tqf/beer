@@ -158,7 +158,7 @@
 
 ### 5.5 外部数据旁证：Kaggle 公开啤酒集
 
-为校验本文风格规格是否符合行业常识，引入 Kaggle 公开数据集 *Top Beer Information*[18]（Stephen Polozoff，5558 款、112 个风格，含 ABV、IBU 区间与网友平均评分）作为外部旁证。它与本数据是互补而非替代关系：Kaggle 是大众风格的「网友评分 + 规格」大样本库，本文是 22 个比利时/欧洲小众风格的「实验室化学谱 + 单一小组标准化分」精标小样本。两者没有共同主键，因此不逐行合并、不进入任何模型，仅作宏观对照。
+为校验本文风格规格是否符合行业常识，引入 Kaggle 公开数据集 *Top Beer Information*[4]（Stephen Polozoff，5558 款、112 个风格，含 ABV、IBU 区间与网友平均评分）作为外部旁证。它与本数据是互补而非替代关系：Kaggle 是大众风格的「网友评分 + 规格」大样本库，本文是 22 个比利时/欧洲小众风格的「实验室化学谱 + 单一小组标准化分」精标小样本。两者没有共同主键，因此不逐行合并、不进入任何模型，仅作宏观对照。
 
 ![图 6：Kaggle 公开啤酒集与本文的风格规格宏观对照](figures/fig_prep_kaggle.png)
 
@@ -168,7 +168,7 @@
 
 ### 6.1 缺失结构与建模策略选择
 
-问题一要解决的第一道关卡是缺失数据。如 5.4 节所述（图 5），73 个真实缺失单元格集中在 9 列、涉及 63 个样本，呈「少数列集中、多数样本完好」的模式；此外化合物集里还有平均 14.4% 的未检出值，它们携带「该化合物极少」的信息而非缺失。若按常规做法删除含缺失的 63 行，将损失全部样本的四分之一并引入选择偏差，这与题面「数据缺失条件下」的要求背道而驰。由此本文确立策略：不删行，真正缺失由折内 KNN 插补、未检出由指示变量标记，而主模型改用原生支持缺失的梯度提升树[4-6]，让模型在训练中直接为每个含缺失的分裂学习一个默认方向，把缺失本身也当作可利用的信息，而非需要先行填补的空白。该流水线的整体结构如下。
+问题一要解决的第一道关卡是缺失数据。如 5.4 节所述（图 5），73 个真实缺失单元格集中在 9 列、涉及 63 个样本，呈「少数列集中、多数样本完好」的模式；此外化合物集里还有平均 14.4% 的未检出值，它们携带「该化合物极少」的信息而非缺失。若按常规做法删除含缺失的 63 行，将损失全部样本的四分之一并引入选择偏差，这与题面「数据缺失条件下」的要求背道而驰。由此本文确立策略：不删行，真正缺失由折内 KNN 插补、未检出由指示变量标记，而主模型改用原生支持缺失的梯度提升树[5-7]，让模型在训练中直接为每个含缺失的分裂学习一个默认方向，把缺失本身也当作可利用的信息，而非需要先行填补的空白。该流水线的整体结构如下。
 
 ![图 7：问题一感官评分预测流水线架构](figures/fig_arch_q1.png)
 
@@ -231,7 +231,7 @@ $$
 
 ![图 8：多模型平均 QWK 对比（主模型高亮）](figures/fig_q1_model_bar.png)
 
-原生缺失的梯度提升主模型平均 QWK 0.3663、Spearman 0.4109、±1 级准确率 56.1%，三项均为最优；它显著高于逐维均值基线（QWK 0.0015、±1 仅 42.7%）与线性收缩模型 ElasticNet（0.2762，与岭回归[16]、偏最小二乘回归[17]同属正则化回归族），也优于随机森林[7]的 0.3280，说明缺失感知与非线性建模共同带来了可观增益。本文同时以 KNN 插补[8]作为缺失处理对照，原生缺失处理（0.3663）略优于 KNN 插补后再建模（0.3652），差距虽小但方向稳定，从正面印证题面强调「在缺失条件下建模」的必要性：缺失位置本身携带信息，恰当处理优于先验填补。±1 级准确率还表明，即便在等级上偏差一级，主模型仍有过半预测落在真实等级相邻的 ±1 级以内。逐维选型上，50 维主模型指标均不劣于朴素基线，故全部 50 维提交主模型预测。
+原生缺失的梯度提升主模型平均 QWK 0.3663、Spearman 0.4109、±1 级准确率 56.1%，三项均为最优（图 8 以条形对比五种模型的平均 QWK，主模型以高亮标出）；它显著高于逐维均值基线（QWK 0.0015、±1 仅 42.7%）与线性收缩模型 ElasticNet（0.2762，与岭回归[8]、偏最小二乘回归[9]同属正则化回归族），也优于随机森林[10]的 0.3280，说明缺失感知与非线性建模共同带来了可观增益。本文同时以 KNN 插补[11]作为缺失处理对照，原生缺失处理（0.3663）略优于 KNN 插补后再建模（0.3652），差距虽小但方向稳定，从正面印证题面强调「在缺失条件下建模」的必要性：缺失位置本身携带信息，恰当处理优于先验填补。±1 级准确率还表明，即便在等级上偏差一级，主模型仍有过半预测落在真实等级相邻的 ±1 级以内。逐维选型上，50 维主模型指标均不劣于朴素基线，故全部 50 维提交主模型预测。
 
 把感官维度按香气（`A_` 前缀，15 维）与风味（`F_` 前缀，15 维）两组统计，另 20 维为口感、缺陷与总体评价。
 
@@ -256,29 +256,29 @@ $$
 
 **表 6：最强 12 维与最弱 4 维的预测性能（QWK / $R^2$ / Spearman / ±1 准确率）**
 
-| 感官维度 | QWK | $R^2$ | Spearman | ±1 准确率 |
-|---|---|---|---|---|
-| 酒精（alcohol） | 0.819 | 0.713 | 0.829 | 0.816 |
-| 苦味（bitternes） | 0.776 | 0.634 | 0.782 | 0.792 |
-| 酒体（body） | 0.682 | 0.525 | 0.728 | 0.752 |
-| 味·酒花（F_hops_all） | 0.670 | 0.505 | 0.698 | 0.716 |
-| 余味（aftertaste） | 0.651 | 0.468 | 0.654 | 0.660 |
-| 味·麦芽（F_malt_all） | 0.616 | 0.456 | 0.642 | 0.644 |
-| 味·贵族花（F_hops_noble） | 0.602 | 0.391 | 0.636 | 0.684 |
-| 香·麦芽（A_malt_all） | 0.601 | 0.447 | 0.650 | 0.668 |
-| 甜味（sweetness） | 0.600 | 0.390 | 0.602 | 0.668 |
-| 香·酒花（A_hops_all） | 0.573 | 0.328 | 0.583 | 0.672 |
-| 味·酯（F_esters_all） | 0.544 | 0.334 | 0.563 | 0.616 |
-| 碳酸（co2） | 0.537 | 0.314 | 0.561 | 0.596 |
-| …（中间 30 维见支撑材料）… | | | | |
-| 香·果香酯（A_esters_fruity） | 0.141 | 0.025 | 0.138 | 0.488 |
-| 味·花香酯（F_esters_flower） | 0.135 | -0.013 | 0.160 | 0.468 |
-| 丁香（clove） | 0.127 | 0.058 | 0.255 | 0.436 |
-| 芫荽（coriander） | 0.092 | 0.115 | 0.157 | 0.428 |
+| 感官维度 | 字段名 | QWK | $R^2$ | Spearman | ±1 准确率 |
+|:---|:---:|---:|---:|---:|---:|
+| 酒精 | alcohol | 0.819 | 0.713 | 0.829 | 0.816 |
+| 苦味 | bitternes | 0.776 | 0.634 | 0.782 | 0.792 |
+| 酒体 | body | 0.682 | 0.525 | 0.728 | 0.752 |
+| 味·酒花 | F_hops_all | 0.670 | 0.505 | 0.698 | 0.716 |
+| 余味 | aftertaste | 0.651 | 0.468 | 0.654 | 0.660 |
+| 味·麦芽 | F_malt_all | 0.616 | 0.456 | 0.642 | 0.644 |
+| 味·贵族花 | F_hops_noble | 0.602 | 0.391 | 0.636 | 0.684 |
+| 香·麦芽 | A_malt_all | 0.601 | 0.447 | 0.650 | 0.668 |
+| 甜味 | sweetness | 0.600 | 0.390 | 0.602 | 0.668 |
+| 香·酒花 | A_hops_all | 0.573 | 0.328 | 0.583 | 0.672 |
+| 味·酯 | F_esters_all | 0.544 | 0.334 | 0.563 | 0.616 |
+| 碳酸 | co2 | 0.537 | 0.314 | 0.561 | 0.596 |
+| …（中间 30 维）… | 见支撑材料 | | | | |
+| 香·果香酯 | A_esters_fruity | 0.141 | 0.025 | 0.138 | 0.488 |
+| 味·花香酯 | F_esters_flower | 0.135 | -0.013 | 0.160 | 0.468 |
+| 丁香 | clove | 0.127 | 0.058 | 0.255 | 0.436 |
+| 芫荽 | coriander | 0.092 | 0.115 | 0.157 | 0.428 |
 
 > 注：完整 50 维见 `submission/q1_sensory_scores.csv`；$R^2$ 为连续预测值的决定系数（可为负），QWK 为分箱后的二次加权 Kappa。
 
-表中酒精维 QWK 0.819、Spearman 0.829、±1 级准确率 0.816，苦味维 QWK 0.776、Spearman 0.782、±1 准确率 0.792，均属高置信预测；而芫荽维 QWK 仅 0.092、±1 准确率 0.428（接近随机相邻的水平），与其近噪声的化学信号一致。这一「梯度提升树最优、按风格分层 5 折、单维可预测性强弱分化」的整体格局，与 Schreurs 等[15]在啤酒化学-感官机器学习研究中报告的「化学信号对酒精、苦度等维度预测力强、对细微香料/香气维度预测力弱」的发现一致；本文的特征解释以 SHAP 为主、8.xlsx 的树不纯度重要性（MDI）仅作旁证。为进一步核验预测质量，本文对代表维度做了校准检查。
+表中酒精维 QWK 0.819、Spearman 0.829、±1 级准确率 0.816，苦味维 QWK 0.776、Spearman 0.782、±1 准确率 0.792，均属高置信预测；而芫荽维 QWK 仅 0.092、±1 准确率 0.428（接近随机相邻的水平），与其近噪声的化学信号一致。这一「梯度提升树最优、按风格分层 5 折、单维可预测性强弱分化」的整体格局，与 Schreurs 等[12]在啤酒化学-感官机器学习研究中报告的「化学信号对酒精、苦度等维度预测力强、对细微香料/香气维度预测力弱」的发现一致；本文的特征解释以 SHAP 为主、8.xlsx 的树不纯度重要性（MDI）仅作旁证。为进一步核验预测质量，本文对代表维度做了校准检查。
 
 ![图 11：代表维度预测校准与等级混淆](figures/fig_q1_calibration.png)
 
@@ -288,13 +288,13 @@ $$
 
 ### 7.1 共表达图构建与模块结构
 
-问题二要为每个感官维度找出 Top-3 关键**化合物**，而化合物之间高度相关会干扰归因。为严格贴合「找化合物」的题意，本文先把 231 个化学特征中的 16 个理化/过程参数（酒精度、色度、pH、苦度、二氧化碳压力、蛋白、甘油、未发酵糖等）与 4 个多化合物汇总列（总酯、酒花香气总量、总酸、含硫总量）排除，仅在 **211 个单一化合物构成的候选集 $C$（$|C|=231-16-4=211$）** 内建图与归因；问题一的特征矩阵仍保留全部 231 列（理化指标对预测有用）。借鉴基因共表达网络的建模思想[9,10]，本文以 $C$ 中化合物为节点、以化合物相关系数为边权构建无向图，并按相关强度阈值化去除弱边：
+问题二要为每个感官维度找出 Top-3 关键**化合物**，而化合物之间高度相关会干扰归因。为严格贴合「找化合物」的题意，本文先把 231 个化学特征中的 16 个理化/过程参数（酒精度、色度、pH、苦度、二氧化碳压力、蛋白、甘油、未发酵糖等）与 4 个多化合物汇总列（总酯、酒花香气总量、总酸、含硫总量）排除，仅在 **211 个单一化合物构成的候选集 $C$（$|C|=231-16-4=211$）** 内建图与归因；问题一的特征矩阵仍保留全部 231 列（理化指标对预测有用）。借鉴基因共表达网络的建模思想[13,14]，本文以 $C$ 中化合物为节点、以化合物相关系数为边权构建无向图，并按相关强度阈值化去除弱边：
 
 $$
 E=\big\{(p,q):\ p,q\in C,\ |R_{pq}|\ge \rho\big\},\qquad w_{pq}=R_{pq},\quad \rho=0.5,\ |C|=211. \tag{4}
 $$
 
-关于相关系数口径：附件 2 标称 Pearson，本文从 1.csv 重算 Pearson 与 Spearman，26565 对化合物相关系数的中位绝对差仅 0.062，二者对模块结构的刻画几乎一致。为与附件保持一致，边权沿用附件 2 的相关值；7.3 节的建图阈值灵敏度还会说明结论对该选择不敏感。在所得图上做 Louvain 贪心模块度社区检测[11]以识别化合物模块，模块度定义为
+关于相关系数口径：附件 2 标称 Pearson，本文从 1.csv 重算 Pearson 与 Spearman，26565 对化合物相关系数的中位绝对差仅 0.062，二者对模块结构的刻画几乎一致。为与附件保持一致，边权沿用附件 2 的相关值；7.3 节的建图阈值灵敏度还会说明结论对该选择不敏感。在所得图上做 Louvain 贪心模块度社区检测[15]以识别化合物模块，模块度定义为
 
 $$
 Q_{mod}=\frac{1}{2m}\sum_{p,q}\Big(w_{pq}-\frac{k_p k_q}{2m}\Big)\,\delta(c_p,c_q),\qquad k_p=\sum_q w_{pq}. \tag{5}
@@ -322,7 +322,7 @@ $$
 \phi_{jp}=\alpha\,\widetilde{\mathrm{SHAP}}_{jp}+\beta\,\big|\tilde C_{pj}\big|+\gamma\,\mathrm{rep}_{jp},\qquad \alpha+\beta+\gamma=1. \tag{6}
 $$
 
-其中 $\widetilde{\mathrm{SHAP}}_{jp}$ 是问题一模型对维度 $j$ 的归一化 SHAP 值，刻画非线性预测贡献；$\tilde C_{pj}$ 是化学与感官交叉相关的归一化绝对值，刻画线性关联；$\mathrm{rep}_{jp}$ 是模块代表加权，使同模块内多个可互替化合物只保留关键度最高者进入候选，避免 Top-3 被单一模块占满，这一「簇代表」思路与稳健特征选择中的聚类代表方法一致[12]。按权重 $\alpha=0.5,\beta=0.3,\gamma=0.2$ 取每维得分前三者：
+其中 $\widetilde{\mathrm{SHAP}}_{jp}$ 是问题一模型对维度 $j$ 的归一化 SHAP 值，刻画非线性预测贡献；$\tilde C_{pj}$ 是化学与感官交叉相关的归一化绝对值，刻画线性关联；$\mathrm{rep}_{jp}$ 是模块代表加权，使同模块内多个可互替化合物只保留关键度最高者进入候选，避免 Top-3 被单一模块占满，这一「簇代表」思路与稳健特征选择中的聚类代表方法一致[16]。按权重 $\alpha=0.5,\beta=0.3,\gamma=0.2$ 取每维得分前三者：
 
 $$
 \mathrm{Top3}(j)=\operatorname*{arg\,top3}_{p}\ \phi_{jp}. \tag{7}
@@ -383,7 +383,7 @@ $$
 
 Top-3 结果需经得起酿造机理的检验。方法学上最具说服力的一例是酯香维度：异戊酯香气维（A_esters_isoaa，香蕉味）的 Top-1 关键化合物正是 isopentyl_acetate（异戊基乙酸酯），它恰恰是公认的香蕉味酯，其 Top-3 三者（异戊基乙酸酯、正己醇、苯甲醛）均为酵母发酵产物、bootstrap 频率均为 1.0、来源判定为「一致」；指甲油味酯维（A_esters_ethac）的 Top-1 是 ethyl_acetate（乙酸乙酯，即指甲油气味的主体），同样机理一致。这说明在因果清晰的维度上，数据驱动的归因确实命中了正确的分子。
 
-为系统检验而非只举成功个例，本文借助 8.xlsx 的 Sensory thresholds 表对每个化合物标注的来源（酵母、酒花、麦芽、香料、野生菌群、其他），按感官类别推断每个感官维的期望来源，逐维判定 Top-3 是「一致（三者全部来自期望来源）」「部分一致（至少一个来自期望来源）」还是「不一致（无一个来自期望来源）」，并按来源绘制 bootstrap 入选频率小提琴与感官类别到化合物来源的桑基图。
+为系统检验而非只举成功个例，本文借助 8.xlsx 的 Sensory thresholds 表对每个化合物标注的来源（酵母、酒花、麦芽、香料、野生菌群、其他），按感官类别推断每个感官维的期望来源，逐维判定 Top-3 是「一致（三者全部来自期望来源）」「部分一致（至少一个来自期望来源）」还是「不一致（无一个来自期望来源）」。图 18 按化合物来源分组给出 bootstrap 入选频率的分布：酵母来源（90 个化合物）与酒花来源（32 个）的入选频率均值分别为 0.956 与 0.944，绝大多数化合物在 500 次重抽样中稳定入选；麦芽来源（13 个）的均值最低、离散最大（0.903，标准差 0.199，最低仅 0.376），说明麦芽系分子的归因结论对样本扰动更敏感——这与发酵后风味载体以酵母代谢产物为主、麦芽贡献更多体现在前期可发酵糖与前体物质上的事实相符。图 19 的桑基图把「感官类别 → Top-3 化合物来源」的流向逐维摊开，可直观看出酯香、酒精等类别主要流向酵母来源，而麦芽香、焦糖等类别虽以麦芽来源为期望，实际流向却大量落在酵母酯醇上。
 
 ![图 18：不同来源化合物的 bootstrap 入选频率分布](figures/fig_q2_source_freq.png)
 
@@ -405,7 +405,7 @@ Top-3 结果需经得起酿造机理的检验。方法学上最具说服力的�
 
 ### 8.1 条件变分自编码器
 
-问题三要学习一个以风格为条件的化学谱生成模型，并在小样本下保持风格可区分。本文采用条件变分自编码器[13]：编码器 $q_\phi(z\mid x,s)$ 把 231 维化学谱连同风格条件压缩进低维隐空间，解码器 $p_\theta(x\mid z,s)$ 从隐变量与风格条件重建化学谱。模型最大化证据下界
+问题三要学习一个以风格为条件的化学谱生成模型，并在小样本下保持风格可区分。本文采用条件变分自编码器[17]：编码器 $q_\phi(z\mid x,s)$ 把 231 维化学谱连同风格条件压缩进低维隐空间，解码器 $p_\theta(x\mid z,s)$ 从隐变量与风格条件重建化学谱。模型最大化证据下界
 
 $$
 \mathcal{L}(\theta,\phi)=\mathbb{E}_{q_\phi(z\mid x,s)}\big[\log p_\theta(x\mid z,s)\big]-\beta_{KL}\,\mathrm{KL}\!\big(q_\phi(z\mid x,s)\,\big\|\,p(z)\big), \tag{10}
@@ -457,7 +457,7 @@ $$
 
 > 注：随机猜测 Top-3 的识别率基线为 13.6%，真实谱整体 OOF 识别率为 72.8%；KS 越小越接近真实分布，画像 Spearman 为生成谱与同风格真实谱经问题一打分后的感官画像相关。Tripel 生成酯香 3.90（真实 3.21）。
 
-三个风格的 KS 分布距离分别为 0.357、0.398、0.408，属于小样本条件下 CPU 生成的合理水平；其中 Kriek 作为酸樱桃拉比克类风格与另两者化学分布差异最大，与其独特工艺相符，也佐证模型捕捉到了风格间的化学差异。更关键的是，三个风格生成谱的分类器 Top-3 识别率均为 **100%**，远高于随机猜测的 13.6%，也达到或超过真实谱自身 OOF 识别率（Tripel 86%、Kriek/Lambic 100%，整体 72.8%）；生成画像与真实画像的 Spearman 相关达 **0.68–0.93**，Kriek 高达 0.93。这两道相互独立的证据共同表明：生成谱在风格层面真实可辨、感官画像与真实同风格高度一致，而非仅靠 KS 单一指标自证。真实谱与生成谱经主成分降维[14]后的重叠可直观验证这一点。
+三个风格的 KS 分布距离分别为 0.357、0.398、0.408，属于小样本条件下 CPU 生成的合理水平；其中 Kriek 作为酸樱桃拉比克类风格与另两者化学分布差异最大，与其独特工艺相符，也佐证模型捕捉到了风格间的化学差异。更关键的是，三个风格生成谱的分类器 Top-3 识别率均为 **100%**，远高于随机猜测的 13.6%，也达到或超过真实谱自身 OOF 识别率（Tripel 86%、Kriek/Lambic 100%，整体 72.8%）；生成画像与真实画像的 Spearman 相关达 **0.68–0.93**，Kriek 高达 0.93。这两道相互独立的证据共同表明：生成谱在风格层面真实可辨、感官画像与真实同风格高度一致，而非仅靠 KS 单一指标自证。真实谱与生成谱经主成分降维[18]后的重叠可直观验证这一点。
 
 ![图 21：真实谱与生成谱的主成分重叠](figures/fig_q3_realvsgen.png)
 
@@ -528,35 +528,35 @@ $$
 
 [3] Zhang C, Liu W. Effects of lactic acid bacteria fermentation on bioactive compounds and flavor profiles of Siraitia grosvenorii and prediction of flavor profiles by machine learning[J]. SSRN Electronic Journal, 2024. DOI: 10.2139/ssrn.6116637.
 
-[4] Chen T, Guestrin C. XGBoost: A scalable tree boosting system[C]. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016: 785-794. DOI: 10.1145/2939672.2939785.
+[4] Polozoff S. Top Beer Information (Kaggle dataset)[DB/OL]. Kaggle, 2024. https://www.kaggle.com/datasets/stephenpolozoff/top-beer-information.
 
-[5] Ke G, Meng Q, Finley T, et al. LightGBM: A highly efficient gradient boosting decision tree[C]. Advances in Neural Information Processing Systems (NeurIPS), 2017, 30: 3146-3154.
+[5] Chen T, Guestrin C. XGBoost: A scalable tree boosting system[C]. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016: 785-794. DOI: 10.1145/2939672.2939785.
 
-[6] Yıldız A Y, Kalayci A. Gradient boosting decision trees on medical diagnosis over tabular data[C]. 2025 IEEE International Conference on AI and Data Analytics (ICAD), 2025. DOI: 10.1109/icad65464.2025.11114069.
+[6] Ke G, Meng Q, Finley T, et al. LightGBM: A highly efficient gradient boosting decision tree[C]. Advances in Neural Information Processing Systems (NeurIPS), 2017, 30: 3146-3154.
 
-[7] Breiman L. Random forests[J]. Machine Learning, 2001, 45(1): 5-32. DOI: 10.1023/A:1010933404324.
+[7] Yıldız A Y, Kalayci A. Gradient boosting decision trees on medical diagnosis over tabular data[C]. 2025 IEEE International Conference on AI and Data Analytics (ICAD), 2025. DOI: 10.1109/icad65464.2025.11114069.
 
-[8] Troyanskaya O, Cantor M, Sherlock G, et al. Missing value estimation methods for DNA microarrays[J]. Bioinformatics, 2001, 17(6): 520-525. DOI: 10.1093/bioinformatics/17.6.520.
+[8] Hoerl A E, Kennard R W. Ridge regression: Biased estimation for nonorthogonal problems[J]. Technometrics, 1970, 12(1): 55-67. DOI: 10.1080/00401706.1970.10488634.
 
-[9] Blondel V D, Guillaume J L, Lambiotte R, et al. Fast unfolding of communities in large networks[J]. Journal of Statistical Mechanics: Theory and Experiment, 2008, 2008(10): P10008. DOI: 10.1088/1742-5468/2008/10/p10008.
+[9] Wold S, Sjöström M, Eriksson L. PLS-regression: a basic tool of chemometrics[J]. Chemometrics and Intelligent Laboratory Systems, 2001, 58(2): 109-130. DOI: 10.1016/S0169-7439(01)00155-1.
 
-[10] Melo D, Pallares L F. Reassessing the modularity of gene co-expression networks using the stochastic block model[J]. PLoS Computational Biology, 2024, 20(7): e1012300. DOI: 10.1371/journal.pcbi.1012300.
+[10] Breiman L. Random forests[J]. Machine Learning, 2001, 45(1): 5-32. DOI: 10.1023/A:1010933404324.
 
-[11] Clemente J B, Besas G. Predicting the biological classification of cell-cycle regulated genes of Saccharomyces cerevisiae using community detection algorithms on gene co-expression networks[C]. 2022.
+[11] Troyanskaya O, Cantor M, Sherlock G, et al. Missing value estimation methods for DNA microarrays[J]. Bioinformatics, 2001, 17(6): 520-525. DOI: 10.1093/bioinformatics/17.6.520.
 
-[12] Gauraha N. Stability feature selection using cluster representative LASSO[C]. Proceedings of the 5th International Conference on Pattern Recognition Applications and Methods, 2016: 381-386. DOI: 10.5220/0005827003810386.
+[12] Schreurs M, Piampongsant S, Roncoroni M, et al. Predicting and improving complex beer flavor through machine learning[J]. Nature Communications, 2024, 15: 2596. DOI: 10.1038/s41467-024-46346-0.
 
-[13] Chaibi I, Njah H. Conditional variational autoencoder with Bayesian layers for robust tabular data generation from small datasets[J]. SSRN Electronic Journal, 2025. DOI: 10.2139/ssrn.5991727.
+[13] Blondel V D, Guillaume J L, Lambiotte R, et al. Fast unfolding of communities in large networks[J]. Journal of Statistical Mechanics: Theory and Experiment, 2008, 2008(10): P10008. DOI: 10.1088/1742-5468/2008/10/p10008.
 
-[14] Flexa C, Gomes W. Polygonal coordinate system: Visualizing high-dimensional data using geometric DR, and a deterministic version of t-SNE[J]. Expert Systems with Applications, 2021, 175: 114741. DOI: 10.1016/j.eswa.2021.114741.
+[14] Melo D, Pallares L F. Reassessing the modularity of gene co-expression networks using the stochastic block model[J]. PLoS Computational Biology, 2024, 20(7): e1012300. DOI: 10.1371/journal.pcbi.1012300.
 
-[15] Schreurs M, Piampongsant S, Roncoroni M, et al. Predicting and improving complex beer flavor through machine learning[J]. Nature Communications, 2024, 15: 2596. DOI: 10.1038/s41467-024-46346-0.
+[15] Clemente J B, Besas G. Predicting the biological classification of cell-cycle regulated genes of Saccharomyces cerevisiae using community detection algorithms on gene co-expression networks[C]. 2022.
 
-[16] Hoerl A E, Kennard R W. Ridge regression: Biased estimation for nonorthogonal problems[J]. Technometrics, 1970, 12(1): 55-67. DOI: 10.1080/00401706.1970.10488634.
+[16] Gauraha N. Stability feature selection using cluster representative LASSO[C]. Proceedings of the 5th International Conference on Pattern Recognition Applications and Methods, 2016: 381-386. DOI: 10.5220/0005827003810386.
 
-[17] Wold S, Sjöström M, Eriksson L. PLS-regression: a basic tool of chemometrics[J]. Chemometrics and Intelligent Laboratory Systems, 2001, 58(2): 109-130. DOI: 10.1016/S0169-7439(01)00155-1.
+[17] Chaibi I, Njah H. Conditional variational autoencoder with Bayesian layers for robust tabular data generation from small datasets[J]. SSRN Electronic Journal, 2025. DOI: 10.2139/ssrn.5991727.
 
-[18] Polozoff S. Top Beer Information (Kaggle dataset)[DB/OL]. Kaggle, 2024. https://www.kaggle.com/datasets/stephenpolozoff/top-beer-information.
+[18] Flexa C, Gomes W. Polygonal coordinate system: Visualizing high-dimensional data using geometric DR, and a deterministic version of t-SNE[J]. Expert Systems with Applications, 2021, 175: 114741. DOI: 10.1016/j.eswa.2021.114741.
 
 ## 附录
 

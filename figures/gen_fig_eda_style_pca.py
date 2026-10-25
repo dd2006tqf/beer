@@ -34,7 +34,6 @@ ax.set_yticklabels(names, fontsize=6.6)
 ax.set_xlabel('样本量（款）')
 ax.set_xlim(0, max(counts) * 1.08)
 declutter_axes(ax, grid_axis='x')
-panel(ax, '(a)')
 
 # ── panel (b): 化学谱 PCA 散点，按风格着色（高亮本题 Q3 的 3 风格）───
 ax = axes[1]
@@ -55,7 +54,6 @@ ax.set_xlabel(f'PC1（{ev[0]*100:.1f}%）')
 ax.set_ylabel(f'PC2（{ev[1]*100:.1f}%）')
 ax.legend(loc='upper right', fontsize=7, framealpha=0.85, handletextpad=0.3)
 declutter_axes(ax)
-panel(ax, '(b)')
 
 fig.tight_layout()
 save_fig(fig, 'figures/fig_eda_style_pca.png')

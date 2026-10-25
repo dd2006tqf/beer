@@ -23,8 +23,8 @@ xp = (xlim[1] - xlim[0]) * 0.06; yp = (ylim[1] - ylim[0]) * 0.06
 fig, axes = plt.subplots(1, 2, figsize=(6.6, 3.6), sharex=True, sharey=True)
 set_paper_placement(fig)
 
-for ax, data, tag, title in [(axes[0], real, '(a)', '真实样本'),
-                             (axes[1], gen, '(b)', '生成样本')]:
+for ax, data, title in [(axes[0], real, '真实样本'),
+                        (axes[1], gen, '生成样本')]:
     for s in styles:
         xs = [d['x'] for d in data if d['style'] == s]
         ys = [d['y'] for d in data if d['style'] == s]
@@ -34,7 +34,7 @@ for ax, data, tag, title in [(axes[0], real, '(a)', '真实样本'),
     ax.set_xlabel(f'PC1（{ev[0]*100:.1f}%）')
     ax.set_xlim(xlim[0] - xp, xlim[1] + xp); ax.set_ylim(ylim[0] - yp, ylim[1] + yp)
     declutter_axes(ax)
-    panel(ax, f'{tag} {title}')
+    panel(ax, title)
 axes[0].set_ylabel(f'PC2（{ev[1]*100:.1f}%）')
 axes[1].legend(loc='upper right', fontsize=7.2, framealpha=0.9,
                title='风格 (KS≈%.2f~%.2f)' % (min(ks.values()), max(ks.values())),
