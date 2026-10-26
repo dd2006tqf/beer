@@ -77,19 +77,22 @@
   \setlength{\topsep}{3pt}%
   \setlength{\leftskip}{0pt}%
   \setlength{\labelsep}{0pt}%
+  \setlength{\labelwidth}{0pt}%
+  \setlength{\itemindent}{0pt}%
+  \setlength{\listparindent}{0pt}%
 }{\end{tablenotes}}
-% 用法：\tabnote[数据来源]{注释正文}；来源可省略，注释与来源各成一条
+% 用法：\tabnote[数据来源]{注释正文}
+% 版式：注首行缩进两字，数据来源紧接注文之后、不另起一行
 \newcommand{\tabnote}[2][]{%
   \begin{tabnotes}%
-  \item[] \textbf{注：}#2%
-  \if\relax\detokenize{#1}\relax\else\item[] \textbf{数据来源：}#1\fi
+  \item[] \hspace{2em}\textbf{注：}#2%
+  \if\relax\detokenize{#1}\relax\else\ \textbf{数据来源：}#1\fi
   \end{tabnotes}}
 \newcommand{\tabnoteLT}[2][]{%
   \par\vspace{0.25em}%
-  \noindent\hangindent=2em\hangafter=1\zihao{-5}\songti
-  \textbf{注：}#2%
-  \if\relax\detokenize{#1}\relax\else\par\vspace{1pt}\noindent\hangindent=2em\hangafter=1
-  \zihao{-5}\songti\textbf{数据来源：}#1\fi\par}
+  \noindent\raggedright\zihao{-5}\songti
+  \hspace{2em}\textbf{注：}#2%
+  \if\relax\detokenize{#1}\relax\else\ \textbf{数据来源：}#1\fi\par}
 \newcommand{\tabmark}[1]{\textsuperscript{#1}}
 
 % ============ 超链接可换行 ============
@@ -168,7 +171,7 @@
 
 问题二：利用化合物相关数据构建化合物共表达图，结合化学特征，给出每一个感官维度的 Top-3 关键因素化合物，并对所得结果做稳定性与化学合理性论证。稳定性按题面指定的两种口径量化——bootstrap 重采样下化合物进入 Top-3 的入选频率，以及不同建模方法间 Top-3 集合的 Jaccard 系数。本问依赖问题一的预测模型做可解释归因，其产出的关键化合物清单又为问题三识别风格判别成分提供先验。
 
-问题三：以风格标签 \texttt{tasting\_category\_fine} 为条件学习一个风格条件生成模型，在给定风格时，例如 Tripel、Kriek、Lambic，生成合理的化合物谱并给出对应感官画像；同时完成跨风格迁移，即把 Pils/Lager 的化合物谱迁移为 Tripel 风格，并保持 DMS、Diacetyl、4VG、trans-2-nonenal、Stale hops 等缺陷化合物不恶化。该问反向利用问题一的感官画像与问题二的关键化合物，是三问的综合应用。
+问题三：以风格标签 \texttt{tasting\_\allowbreak{}category\_\allowbreak{}fine} 为条件学习一个风格条件生成模型，在给定风格时，例如 Tripel、Kriek、Lambic，生成合理的化合物谱并给出对应感官画像；同时完成跨风格迁移，即把 Pils/Lager 的化合物谱迁移为 Tripel 风格，并保持 DMS、Diacetyl、4VG、trans-2-nonenal、Stale hops 等缺陷化合物不恶化。该问反向利用问题一的感官画像与问题二的关键化合物，是三问的综合应用。
 
 三个问题沿数据预处理、化学到感官的判别式预测、可解释归因、风格到化学的条件生成与迁移逐级推进，构成一条从理解到生成的完整流水线，其整体求解思路与依赖关系概括如下。
 
@@ -456,7 +459,7 @@ ElasticNet（中位插补） & 0.2762 & 0.3105 & 0.5081 \\
 
 原生缺失的梯度提升主模型平均 QWK 0.3663、Spearman 0.4109、$\pm$1 级准确率 56.1\%，三项均为最优；它显著高于逐维均值基线，QWK 仅 0.0015、$\pm$1 仅 42.7\%，也高于线性收缩模型 ElasticNet，QWK 0.2762，后者与岭回归[16]、偏最小二乘回归[17]同属正则化回归族，也优于随机森林[7]的 0.3280，说明缺失感知与非线性建模共同带来了可观增益。本文同时以 KNN 插补[8]作为缺失处理对照，原生缺失处理 0.3663 略优于 KNN 插补后再建模 0.3652，差距虽小但方向稳定，从正面印证题面强调在缺失条件下建模的必要性：缺失位置本身携带信息，恰当处理优于先验填补。$\pm$1 级准确率还表明，即便在等级上偏差一级，主模型仍有过半预测落在真实等级相邻的 $\pm$1 级以内。逐维选型上，50 维主模型指标均不劣于朴素基线，故全部 50 维提交主模型预测。
 
-把感官维度按 \texttt{A\_} 与 \texttt{F\_} 两个前缀分为香气与风味两组，各 15 维，另 20 维为口感、缺陷与总体评价。
+把感官维度按 \texttt{A\_\allowbreak{}} 与 \texttt{F\_\allowbreak{}} 两个前缀分为香气与风味两组，各 15 维，另 20 维为口感、缺陷与总体评价。
 
 \begin{table}[H]
 \begin{threeparttable}
@@ -466,8 +469,8 @@ ElasticNet（中位插补） & 0.2762 & 0.3105 & 0.5081 \\
 \begin{tabularx}{\textwidth}{@{}LLLL@{}}
 \toprule
 \textbf{组别} & \textbf{维度数} & \textbf{平均 QWK} & \textbf{平均 $R^2$} \\ \midrule
-香气 Aroma（\texttt{A\_} 前缀） & 15 & 0.322 & 0.146 \\
-风味 Flavour（\texttt{F\_} 前缀） & 15 & 0.400 & 0.222 \\
+香气 Aroma（\texttt{A\_\allowbreak{}} 前缀） & 15 & 0.322 & 0.146 \\
+风味 Flavour（\texttt{F\_\allowbreak{}} 前缀） & 15 & 0.400 & 0.222 \\
 \bottomrule
 \end{tabularx}
 \tabnote[problem\_1\_results.json]{风味组整体比香气组更可预测，与其化学信号更直接有关。}
@@ -493,7 +496,7 @@ ElasticNet（中位插补） & 0.2762 & 0.3105 & 0.5081 \\
 图 9 显示出清晰的强弱分化：排在前列的酒精、苦味、酒体等维度 Kappa 超过 0.68，与酒精浓度、异 $\alpha$-酸苦度等明确的化学信号直接挂钩；排在末端的芫荽、丁香等维度 Kappa 接近 0，对应化学信号微弱、近乎噪声。图 10 进一步以 $R^2$–QWK 散点呈现：强信号维在两个指标上同时居前，芫荽、丁香、果香酯等弱信号维两指标都低；酸度、乳酸等少数酸感维度连续预测的 $R^2$ 较高，分别为 0.70、0.68，但分级 QWK 仅 0.44、0.32，说明连续值趋势可预测、映射到 7 级离散等级后判别力打折，这是连续回归加单调分箱口径的固有折损。这种可预测性随信号强度单调分化的现象是正确且需要如实报告的——它既反映了不同感官属性在化学层面可解释程度的客观差异，也为问题二强信号维度归因稳定、弱信号维度不稳定的预期埋下伏笔。代表性维度的详细指标见下表。
 
 {\small
-\begin{longtable}{@{}p{\dimexpr(\textwidth-2\tabcolsep*4)/5\relax}p{\dimexpr(\textwidth-2\tabcolsep*4)/5\relax}p{\dimexpr(\textwidth-2\tabcolsep*4)/5\relax}p{\dimexpr(\textwidth-2\tabcolsep*4)/5\relax}p{\dimexpr(\textwidth-2\tabcolsep*4)/5\relax}@{}}
+\begin{longtable}{@{}p{0.34\textwidth}p{0.12\textwidth}p{0.12\textwidth}p{0.14\textwidth}p{0.14\textwidth}@{}}
 \caption{最强 12 维与最弱 4 维的预测性能（QWK / $R^2$ / Spearman / $\pm$1 准确率）} \\
 \toprule
 \textbf{感官维度} & \textbf{QWK} & \textbf{$R^2$} & \textbf{Spearman} & \textbf{$\pm$1 准确率} \\ \midrule
@@ -519,13 +522,13 @@ ElasticNet（中位插补） & 0.2762 & 0.3105 & 0.5081 \\
 香$\cdot$酒花（A\_hops\_all） & 0.573 & 0.328 & 0.583 & 0.672 \\
 味$\cdot$酯（F\_esters\_all） & 0.544 & 0.334 & 0.563 & 0.616 \\
 碳酸（co2） & 0.537 & 0.314 & 0.561 & 0.596 \\
-$\ldots$（中间 30 维见支撑材料）$\ldots$ &  &  &  &  \\
+\multicolumn{5}{c}{$\ldots$ 中间 30 维见支撑材料 $\ldots$} \\
 香$\cdot$果香酯（A\_esters\_fruity） & 0.141 & 0.025 & 0.138 & 0.488 \\
 味$\cdot$花香酯（F\_esters\_flower） & 0.135 & -0.013 & 0.160 & 0.468 \\
 丁香（clove） & 0.127 & 0.058 & 0.255 & 0.436 \\
 芫荽（coriander） & 0.092 & 0.115 & 0.157 & 0.428 \\
 \end{longtable}}
-\tabnote[problem\_1\_results.json]{$R^2$ 为连续预测值的决定系数，可为负；QWK 为分箱后的二次加权 Kappa。完整 50 维见 \texttt{submission/q1\_sensory\_scores.csv}。}
+\tabnote[problem\_1\_results.json]{$R^2$ 为连续预测值的决定系数，可为负；QWK 为分箱后的二次加权 Kappa。完整 50 维见 \texttt{submission/\allowbreak{}q1\_\allowbreak{}sensory\_\allowbreak{}scores.csv}。}
 
 表 6 中酒精维 QWK 0.819、Spearman 0.829、$\pm$1 级准确率 0.816，苦味维 QWK 0.776、Spearman 0.782、$\pm$1 准确率 0.792，均属高置信预测；而芫荽维 QWK 仅 0.092、$\pm$1 准确率 0.428，接近随机相邻的水平，与其接近噪声的化学信号一致。这一梯度提升树最优、按风格分层 5 折、单维可预测性强弱分化的整体格局，与 Schreurs 等[15]在啤酒化学-感官机器学习研究中报告的化学信号对酒精、苦度等维度预测力强、对细微香料与香气维度预测力弱的发现一致；本文的特征解释以 SHAP 为主、8.xlsx 的树不纯度重要性 MDI 仅作旁证。为进一步核验预测质量，本文对代表维度做了校准检查。
 
@@ -573,11 +576,23 @@ Q_{mod}=\frac{1}{2m}\sum_{p,q}\Big(w_{pq}-\frac{k_p k_q}{2m}\Big)\,\delta(c_p,c_
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.92\textwidth]{fig_q2_chem_sensory_corr.png}
-\caption{代表性化合物与 50 个感官维的交叉相关（按香气/风味/口感分组）}
+\includegraphics[width=0.86\textwidth]{fig_q2_chem_sensory_a.png}
+\caption{代表性化合物与感官维的交叉相关（香气维 A\_，15 维）}
 \end{figure}
 
-图 14 的交叉相关矩阵按感官分组重排，并以加粗黑线分隔给出了 14 个代表性化合物对 50 个感官维度的线性关联：酯类化合物与果香、酒花类维度呈较强正相关，硫化物与蔬菜硫味维度相关显著，这些条带状的强相关区域与酿造机理高度吻合，构成归因的线性证据一路。但线性相关无法捕捉非线性贡献，也无法识别共线性冗余，故需与模型的非线性归因联合使用。
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.86\textwidth]{fig_q2_chem_sensory_f.png}
+\caption{代表性化合物与感官维的交叉相关（风味维 F\_，15 维）}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.86\textwidth]{fig_q2_chem_sensory_x.png}
+\caption{代表性化合物与感官维的交叉相关（口感、缺陷与总体评价，20 维）}
+\end{figure}
+
+图 14 至图 16 把 14 个代表性化合物对 50 个感官维的线性关联拆成三张整宽图：图 14 为 15 个香气维，图 15 为 15 个风味维，图 16 为 20 个口感、缺陷与总体评价维；三图共用同一色标范围与同一化合物列顺序，因此可以逐列横向对照。拆分后每格都可读出数值，主带也更清楚：酯类化合物与果香、酒花类维度呈较强正相关，硫化物与蔬菜硫味维度相关显著，这些条带状的强相关区域与酿造机理高度吻合，构成归因的线性证据一路。但线性相关无法捕捉非线性贡献，也无法识别共线性冗余，故需与模型的非线性归因联合使用。
 
 \subsection{多证据融合 Top-3 归因}
 
@@ -617,9 +632,9 @@ f_{jp}=\frac{1}{B}\sum_{b=1}^{B}\mathbb{1}\!\left[p\in\mathrm{Top3}^{(b)}(j)\rig
 \caption{Top-1 入选频率与跨方法 Jaccard 分布（两序列同纵轴对齐）}
 \end{figure}
 
-由图 15 可读出，50 个维度的 Top-1 bootstrap 入选频率普遍接近 1、平均达 \textbf{0.991}，说明单方法内部的 Top-1 选择极其稳健；跨方法 Jaccard 平均为 \textbf{0.186}，即三类证据的 Top-3 集合平均约两成重叠。而 10 万次随机抽取的 Jaccard 期望仅 \textbf{0.0086}，本文 0.186 是随机基线的 \textbf{21.7 倍}——这意味着虽然三类证据视角互补、绝对 Jaccard 不高，但相对于随机抽取已高度显著，归因绝非偶然。这一高入选频率、中等 Jaccard、远高于随机的组合恰如实反映了 SHAP、线性相关与共表达三类证据侧重不同、各自内部稳定而彼此互补，而非虚高的一致。
+由图 17 可读出，50 个维度的 Top-1 bootstrap 入选频率普遍接近 1、平均达 \textbf{0.991}，说明单方法内部的 Top-1 选择极其稳健；跨方法 Jaccard 平均为 \textbf{0.186}，即三类证据的 Top-3 集合平均约两成重叠。而 10 万次随机抽取的 Jaccard 期望仅 \textbf{0.0086}，本文 0.186 是随机基线的 \textbf{21.7 倍}——这意味着虽然三类证据视角互补、绝对 Jaccard 不高，但相对于随机抽取已高度显著，归因绝非偶然。这一高入选频率、中等 Jaccard、远高于随机的组合恰如实反映了 SHAP、线性相关与共表达三类证据侧重不同、各自内部稳定而彼此互补，而非虚高的一致。
 
-为便于在稀疏的 Top-3 中直接读取每维最稳健的化合物，另把每维第 1、2、3 位化合物的入选频率画成三点图，见图 16。
+为便于在稀疏的 Top-3 中直接读取每维最稳健的化合物，另把每维第 1、2、3 位化合物的入选频率画成三点图，见图 18。
 
 \begin{figure}[H]
 \centering
@@ -627,9 +642,9 @@ f_{jp}=\frac{1}{B}\sum_{b=1}^{B}\mathbb{1}\!\left[p\in\mathrm{Top3}^{(b)}(j)\rig
 \caption{各感官维前三名化合物的 bootstrap 入选频率}
 \end{figure}
 
-图 16 把每个感官维第 1、2、3 位化合物的 bootstrap 入选频率并置展示，横轴为 500 次重采样中该化合物进入 Top-3 的比例。第 1 位化合物在 50 维中有 47 维的频率恰为 \textbf{1.000}，即点估计选出的头名在每次重采样中都稳定留在 Top-3；第 2 位次之，均值 0.979；第 3 位均值 0.888，是个别维度波动的主要来源，最低出现在 DMS 维，仅 \textbf{0.376}。三点图的用意正是把这种“头名稳固、末位承压”的结构摊开：若只看 Top-1 的入选频率，50 维几乎全部饱和，无法分辨差异；把第 2、3 位一并画出后可以看出，多数维度的 Top-3 组合整体稳定，只有 DMS、麦芽面包香、酯香·指甲油等少数维度在第三席位上出现明显竞争。这一格局与问题一的可预测性分化一致：强信号维的 Top-3 三席均接近 1.000，弱信号维的末位最易被同层候选替换。
+图 18 把每个感官维第 1、2、3 位化合物的 bootstrap 入选频率并置展示，横轴为 500 次重采样中该化合物进入 Top-3 的比例。第 1 位化合物在 50 维中有 47 维的频率恰为 \textbf{1.000}，即点估计选出的头名在每次重采样中都稳定留在 Top-3；第 2 位次之，均值 0.979；第 3 位均值 0.888，是个别维度波动的主要来源，最低出现在 DMS 维，仅 \textbf{0.376}。三点图的用意正是把这种“头名稳固、末位承压”的结构摊开：若只看 Top-1 的入选频率，50 维几乎全部饱和，无法分辨差异；把第 2、3 位一并画出后可以看出，多数维度的 Top-3 组合整体稳定，只有 DMS、麦芽面包香、酯香·指甲油等少数维度在第三席位上出现明显竞争。这一格局与问题一的可预测性分化一致：强信号维的 Top-3 三席均接近 1.000，弱信号维的末位最易被同层候选替换。
 
-各维度的融合重要度热力进一步揭示关键化合物的分布，见图 17。
+各维度的融合重要度热力进一步揭示关键化合物的分布，见图 19。
 
 \begin{figure}[H]
 \centering
@@ -637,7 +652,7 @@ f_{jp}=\frac{1}{B}\sum_{b=1}^{B}\mathbb{1}\!\left[p\in\mathrm{Top3}^{(b)}(j)\rig
 \caption{感官维与关键化合物的融合重要度热力}
 \end{figure}
 
-图 17 的融合重要度热力图把代表性感官维度对关键化合物的重要度平铺展开，热点并非均匀散布，而是集中在少数几个化合物列上——癸酸乙酯、乙醛、乙酸乙酯、异丁酸乙酯、二甲基硫醚等酵母酯、醇、醛类反复成为多个维度的关键驱动。由于候选集已限定为 211 个单一化合物，酒精度、苦度、色度、蛋白等理化/汇总列不再出现在 Top-3 中，归因结果严格回应找出关键化合物的题意。代表性维度的 Top-3 清单、稳定性指标与来源类别判定汇总如下表。
+图 19 的融合重要度热力图把代表性感官维度对关键化合物的重要度平铺展开，热点并非均匀散布，而是集中在少数几个化合物列上——癸酸乙酯、乙醛、乙酸乙酯、异丁酸乙酯、二甲基硫醚等酵母酯、醇、醛类反复成为多个维度的关键驱动。由于候选集已限定为 211 个单一化合物，酒精度、苦度、色度、蛋白等理化/汇总列不再出现在 Top-3 中，归因结果严格回应找出关键化合物的题意。代表性维度的 Top-3 清单、稳定性指标与来源类别判定汇总如下表。
 
 {\footnotesize
 \begin{longtable}{@{}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}p{\dimexpr(\textwidth-2\tabcolsep*7)/8\relax}@{}}
@@ -667,7 +682,7 @@ f_{jp}=\frac{1}{B}\sum_{b=1}^{B}\mathbb{1}\!\left[p\in\mathrm{Top3}^{(b)}(j)\rig
 味$\cdot$酯 & ethyl\_\allowbreak{}acetate & phenethyl\_\allowbreak{}alcohol & acetaldehyde & 1.000 & 0.400 & Yeast & 一致 \\
 碳酸 & ethyl\_\allowbreak{}octanoate & ethyl\_\allowbreak{}hexanoate & MeSH & 1.000 & 0.500 & Yeast & 一致 \\
 \end{longtable}}
-\tabnote[problem\_2\_results.json、8.xlsx]{Top-1 频率为 500 次 bootstrap 入选比例；Jaccard 为共表达、SHAP、相关三法 Top-3 的一致性，全维均值 0.186。期望来源与判定依据 8.xlsx 化合物来源标注，完整 50 维见 \texttt{submission/q2\_top3\_compounds.csv}。}
+\tabnote[problem\_2\_results.json、8.xlsx]{Top-1 频率为 500 次 bootstrap 入选比例；Jaccard 为共表达、SHAP、相关三法 Top-3 的一致性，全维均值 0.186。期望来源与判定依据 8.xlsx 化合物来源标注，完整 50 维见 \texttt{submission/\allowbreak{}q2\_\allowbreak{}top3\_\allowbreak{}compounds.csv}。}
 
 \subsection{化学合理性论证}
 
@@ -700,11 +715,11 @@ Top-3 结果需经得起酿造机理的检验。方法学上最具说服力的�
 不一致 & Top-3 无一个来自期望来源 & 27 & 54\% \\
 \bottomrule
 \end{tabularx}
-\tabnote[problem\_2\_results.json]{随机从化合物集 $C$ 抽 3 个的 Jaccard 基线经 10 万次模拟仅为 0.0086，本文跨方法 Jaccard 0.186 是其 21.7 倍，说明归因显著优于随机。}
+\tabnote[problem\_2\_results.json、8.xlsx]{随机从化合物集 $C$ 抽 3 个的 Jaccard 基线经 10 万次模拟仅为 0.0086，本文跨方法 Jaccard 0.186 是其 21.7 倍；来源判定按 Top-3 是否落在期望来源类别统计，50 维合计 150 条。}
 \end{threeparttable}
 \end{table}
 
-表 8 与图 19 如实显示：完全一致的维度为 7 个，占 14\%，集中在酯香、酒精、碳酸等酵母主导维度；部分一致 16 个，占 32\%；其余 27 个，占 54\%，判定为不一致。本文不粉饰这个偏低的一致率，而是把它作为真实发现报告。最显眼的错位是麦芽感官与酵母化合物：香/味麦芽两个维度的 Top-3 几乎全是乙醛、二甲基硫醚、癸酸乙酯等酵母发酵产物。这一现象有化学与数据双重原因：一方面，麦芽焙烤的香气化合物，如吡嗪、糠醛，在成品啤酒中检出稀疏、阈值标注中麦芽来源仅 24 个，模型在候选集 $C$ 内缺少足够稳定的麦芽来源分子可选；另一方面，发酵是啤酒风味的主导环节，乙醛、高级醇、酯等酵母产物丰度最高、最稳定，成为与麦芽甜香感官评分共变最强的可测量载体——它们是麦芽感官的统计代理，而非麦芽香气的直接分子。因此这类不一致不应被误读为方法错误，而应理解为发酵后风味载体主要由酵母产物承担的真实反映；要分离因果仍需受控实验，见 10.2 节。需要强调的是，弱信号维度的 Top-3 稳定性更低、来源也更分散，而这些维度在问题一中的可预测性本就接近噪声，两问结论彼此印证：归因不稳不是方法缺陷，而是该维度本身缺乏明确化学驱动的客观反映。
+表 8 与图 21 如实显示：完全一致的维度为 7 个，占 14\%，集中在酯香、酒精、碳酸等酵母主导维度；部分一致 16 个，占 32\%；其余 27 个，占 54\%，判定为不一致。本文不粉饰这个偏低的一致率，而是把它作为真实发现报告。最显眼的错位是麦芽感官与酵母化合物：香/味麦芽两个维度的 Top-3 几乎全是乙醛、二甲基硫醚、癸酸乙酯等酵母发酵产物。这一现象有化学与数据双重原因：一方面，麦芽焙烤的香气化合物，如吡嗪、糠醛，在成品啤酒中检出稀疏、阈值标注中麦芽来源仅 24 个，模型在候选集 $C$ 内缺少足够稳定的麦芽来源分子可选；另一方面，发酵是啤酒风味的主导环节，乙醛、高级醇、酯等酵母产物丰度最高、最稳定，成为与麦芽甜香感官评分共变最强的可测量载体——它们是麦芽感官的统计代理，而非麦芽香气的直接分子。因此这类不一致不应被误读为方法错误，而应理解为发酵后风味载体主要由酵母产物承担的真实反映；要分离因果仍需受控实验，见 10.2 节。需要强调的是，弱信号维度的 Top-3 稳定性更低、来源也更分散，而这些维度在问题一中的可预测性本就接近噪声，两问结论彼此印证：归因不稳不是方法缺陷，而是该维度本身缺乏明确化学驱动的客观反映。
 
 \section{问题三：风格条件生成与跨风格迁移}
 
@@ -730,7 +745,7 @@ Top-3 结果需经得起酿造机理的检验。方法学上最具说服力的�
 \caption{问题三风格条件生成（CVAE）架构}
 \end{figure}
 
-图 20 自左向右呈现了编码器、隐空间、条件解码器、缺陷阈值投影到感官画像打分的完整链路。架构中缺陷阈值投影是迁移任务的硬约束执行点，Q1 感官画像则把问题一的预测模型接回来形成闭环，二者是本问区别于一般无条件生成的两处关键设计。
+图 22 自左向右呈现了编码器、隐空间、条件解码器、缺陷阈值投影到感官画像打分的完整链路。架构中缺陷阈值投影是迁移任务的硬约束执行点，Q1 感官画像则把问题一的预测模型接回来形成闭环，二者是本问区别于一般无条件生成的两处关键设计。
 
 训练初期曾出现后验坍塌：当 $\beta_{KL}=1$ 时 KL 项迅速趋零、重构质量差，KS 距离约 0.6。本文按建模阶段预案做等价的数值稳定化——把 $\beta_{KL}$ 降至 0.1，并对 KL 项施加前 120 轮线性退火与每维 0.5 nats 的 free-bits 下限，重构损失由 0.765 降至 0.255，KS 距离随之降到 0.36 至 0.41 区间。这一处理只改变优化过程、不改变题设与数据。
 
@@ -779,7 +794,7 @@ Lambic & 30 & 0.4084 & 100\% & 100\% & 0.814 \\
 \caption{真实谱与生成谱的主成分重叠}
 \end{figure}
 
-由图 21 可见，生成样本在主成分平面上落入对应真实风格簇的邻近区域、而非彼此混为一团，表明不同风格条件确实产出了可区分的分布，问题三风格条件生成的目标达成。生成谱经问题一模型打分后的感官画像进一步从感官层面印证了风格特征。
+由图 23 可见，生成样本在主成分平面上落入对应真实风格簇的邻近区域、而非彼此混为一团，表明不同风格条件确实产出了可区分的分布，问题三风格条件生成的目标达成。生成谱经问题一模型打分后的感官画像进一步从感官层面印证了风格特征。
 
 \begin{figure}[H]
 \centering
@@ -787,7 +802,7 @@ Lambic & 30 & 0.4084 & 100\% & 100\% & 0.814 \\
 \caption{三代表风格生成谱感官画像雷达（实线为生成、虚线为同风格真实均值）}
 \end{figure}
 
-雷达图（图 22）以实线给出生成画像、虚线给出同风格真实画像均值：Tripel 在酯香与酒精轴上明显外扩，Lambic 在酸味与野味轴上突出，Kriek 则兼具酸味与果香特征；三条实线的形态与各自的真实虚线贴合、与风格常识一致。定量看，生成 Tripel 的酯香等级为 \textbf{3.90}，与真实 Tripel 的 \textbf{3.21} 相对偏差 0.21、落在 0.25 的容差内，说明生成化学谱、经问题一打分、复现该风格感官特征的闭环自洽。最后考察迁移中最关键的缺陷约束。
+雷达图（图 24）以实线给出生成画像、虚线给出同风格真实画像均值：Tripel 在酯香与酒精轴上明显外扩，Lambic 在酸味与野味轴上突出，Kriek 则兼具酸味与果香特征；三条实线的形态与各自的真实虚线贴合、与风格常识一致。定量看，生成 Tripel 的酯香等级为 \textbf{3.90}，与真实 Tripel 的 \textbf{3.21} 相对偏差 0.21、落在 0.25 的容差内，说明生成化学谱、经问题一打分、复现该风格感官特征的闭环自洽。最后考察迁移中最关键的缺陷约束。
 
 为证明式 (13) 的约束不可或缺，本文对同一批 11 条 Pils/Lager 到 Tripel 迁移做了\textbf{无约束纯平移对照}：若隐空间平移解码后不做任何投影，44 个缺陷-样本检查中有 32 个、即 72.7\% 的缺陷浓度高于源款；施加式 (13) 后，缺陷升高数为 0、合规率 100\%。逐缺陷的迁移前后、无约束对照与典型阈值如下表。
 
@@ -817,7 +832,7 @@ trans-2-nonenal & 0.004 & -0.022 & -0.026 & 0.232 & 9/11 & 0.011 & 11/11 \\
 \caption{跨风格迁移前后缺陷化合物对比（实心点为投影后、红叉为无约束、绿菱形为 $m_t$）}
 \end{figure}
 
-图 23 的哑铃图把每个缺陷迁移前后的取值用连线相连，红色叉号标出无约束纯平移值，多个越到源值之上，即恶化，绿色菱形标出目标典型值 $m_t$。可以看到所有受约束的终点都不高于源值、没有任何一个缺陷越界，而红叉普遍位于源值上方。这直观证明式 (13) 的逐样本 min 投影严格执行了缺陷不恶化的硬约束，迁移在改变风格的同时守住了质量底线。
+图 25 的哑铃图把每个缺陷迁移前后的取值用连线相连，红色叉号标出无约束纯平移值，多个越到源值之上，即恶化，绿色菱形标出目标典型值 $m_t$。可以看到所有受约束的终点都不高于源值、没有任何一个缺陷越界，而红叉普遍位于源值上方。这直观证明式 (13) 的逐样本 min 投影严格执行了缺陷不恶化的硬约束，迁移在改变风格的同时守住了质量底线。
 
 \section{模型检验与灵敏度分析}
 
@@ -895,7 +910,7 @@ cd code
 python main.py --data-dir ../user_data
 \end{lstlisting}
 
-程序依次执行问题一（感官分级预测）、问题二（关键化合物归因）、问题三（风格条件生成与迁移），结果文件写入 \texttt{submission/}，过程数据写入 \texttt{figures/}。
+程序依次执行问题一（感官分级预测）、问题二（关键化合物归因）、问题三（风格条件生成与迁移），结果文件写入 \texttt{submission/\allowbreak{}}，过程数据写入 \texttt{figures/\allowbreak{}}。
 
 \section{支撑材料文件清单}
 
@@ -912,13 +927,13 @@ python main.py --data-dir ../user_data
 \endfoot
 \bottomrule
 \endlastfoot
-\texttt{code/main.py} & 一键入口，串联三问并汇总结果 \\
-\texttt{code/params.py} & 全局常数（种子、维度、缺陷列、风格、超参） \\
-\texttt{code/utils.py} & 数据加载、0-6 分箱映射、二次加权 Kappa、检查点 \\
+\texttt{code/\allowbreak{}main.py} & 一键入口，串联三问并汇总结果 \\
+\texttt{code/\allowbreak{}params.py} & 全局常数（种子、维度、缺陷列、风格、超参） \\
+\texttt{code/\allowbreak{}utils.py} & 数据加载、0-6 分箱映射、二次加权 Kappa、检查点 \\
 \texttt{code/data\_\allowbreak{}check.py} & 数据读取与维度对齐自检 \\
-\texttt{code/problem1.py} & 问题一：缺失感知梯度提升 + 分箱 + 分层交叉验证 \\
-\texttt{code/problem2.py} & 问题二：化合物集 C=211 共表达图 + 社区检测 + 多证据 Top-3（去冗余）+ bootstrap/Jaccard + 来源判定 + 随机基线 \\
-\texttt{code/problem3.py} & 问题三：CVAE 条件生成 + 风格识别率/画像评估 + 隐空间迁移 + min 缺陷投影 + 无约束对照 \\
+\texttt{code/\allowbreak{}problem1.py} & 问题一：缺失感知梯度提升 + 分箱 + 分层交叉验证 \\
+\texttt{code/\allowbreak{}problem2.py} & 问题二：化合物集 C=211 共表达图 + 社区检测 + 多证据 Top-3（去冗余）+ bootstrap/Jaccard + 来源判定 + 随机基线 \\
+\texttt{code/\allowbreak{}problem3.py} & 问题三：CVAE 条件生成 + 风格识别率/画像评估 + 隐空间迁移 + min 缺陷投影 + 无约束对照 \\
 \texttt{code/constraint\_\allowbreak{}audit.py} & 从落盘结果重算硬约束 \\
 \texttt{code/sanity\_\allowbreak{}check.py} & 结果数值自动审查 \\
 \texttt{figures/supp\_\allowbreak{}prep\_\allowbreak{}eda.py} & 预处理实证：附件概况/差异、对数底核实、未检出-缺失分类、三类划分 \\
@@ -933,7 +948,7 @@ python main.py --data-dir ../user_data
 
 \section{核心源程序}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/main.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}main.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """一键入口：依次运行 Q1→Q2→Q3，并汇总 figures/all_results.json。
@@ -1050,7 +1065,7 @@ if __name__ == "__main__":
     main()
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/params.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}params.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """全局参数与命名常数（赛道 A 啤酒风味）。
@@ -1164,7 +1179,7 @@ def core_sensory(sens_cols):
     return [c for c in sens_cols if c.startswith(CORE_PREFIXES)]
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/utils.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}utils.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """公共工具：数据加载、0-6 分箱映射、QWK、随机种子、轻量检查点。
@@ -1357,7 +1372,7 @@ def load_json(path):
         return json.load(f)
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/data\_check.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}data\_\allowbreak{}check.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """数据读取验证：确认 1/2/4/6.csv、8.xlsx 读取正确 + 231/50 维位置对齐。
@@ -1446,7 +1461,7 @@ if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "user_data")
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/problem1.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}problem1.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """问题一：含缺失的多输出有序感官分级预测（能力 P1-C1/C2/C3/C4）。
@@ -1717,7 +1732,7 @@ if __name__ == "__main__":
     run(dd)
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/problem2.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}problem2.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """问题二：化合物共表达图 + 多证据 Top-3 + 稳定性（P2-C1/C2/C3/C4）。
@@ -2103,7 +2118,7 @@ if __name__ == "__main__":
     run(dd)
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/problem3.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}problem3.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """问题三：风格条件生成 CVAE + 跨风格迁移（缺陷不恶化）（P3-C1/C2/C3）。
@@ -2531,7 +2546,7 @@ if __name__ == "__main__":
     run(dd)
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/constraint\_audit.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}constraint\_\allowbreak{}audit.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """约束闭环审计：从最终落盘的 submission/*.csv 与 figures/*_results.json 重算全部硬约束。
@@ -2635,7 +2650,7 @@ if __name__ == "__main__":
     main()
 \end{lstlisting}
 
-\vspace{0.6em}\noindent\textbf{\texttt{code/sanity\_check.py}}
+\vspace{0.6em}\noindent\textbf{\texttt{code/\allowbreak{}sanity\_\allowbreak{}check.py}}
 \begin{lstlisting}[language=Python]
 # -*- coding: utf-8 -*-
 """自动化结果数值审查（NaN/Inf/区间/过拟合信号）。只打印结论，不打印整表。"""
