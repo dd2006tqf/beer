@@ -4,7 +4,7 @@
 
 **论文题目**：面向啤酒酿造化合物的感官分级预测、关键化合物归因与风格条件生成
 
-本仓库包含：论文（Word 定稿 + Markdown 源 + LaTeX 存档版）、建模源码、图表、竞赛提交结果。
+本仓库包含：论文（Word 定稿 + Markdown 源 + LaTeX 版及其 PDF）、建模源码、图表、竞赛提交结果。
 
 ---
 
@@ -15,9 +15,11 @@
 | `paper/main.md` | **正式稿源文件** | 全部内容以它为准，`_tmp/md2docx.py` 由它生成 Word |
 | `paper/main.docx` | **正式交付稿** | 由 `main.md` 自动排版，官方格式（封面表、目录、正文页码从 1） |
 | `提交包/AMCB2600304.docx` / `.pdf` | **提交包** | 最终提交用 |
-| `paper/main.tex` / `main.pdf` | **历史存档副本** | LaTeX 版，供阅读与二次编译；**不是交付稿**，不随 `main.md` 自动同步 |
+| `paper/main.tex` | **LaTeX 源** | 与 `main.md` 并行维护的第二套稿子，不是自动派生 |
+| `paper/main.pdf` | **`main.tex` 的编译产物** | **改了 `main.tex` 必须重编出新的 `main.pdf`**（见「快速开始 3️⃣」） |
 
-改论文请改 `paper/main.md` 后重新生成 docx；`main.tex` 只在需要 LaTeX 版本时单独维护。
+改论文请改 `paper/main.md` 后重新生成 docx；改 `paper/main.tex` 后必须两遍 `xelatex` 重新编译 `main.pdf`。
+两套稿子互不自动同步，内容修改要么两边都做，要么明确只维护其中一套。
 
 ---
 
@@ -54,7 +56,7 @@
 ├── paper/                     # 📄 论文
 │   ├── main.md                #   正式稿源文件（Markdown，改这里）
 │   ├── main.docx              #   由 main.md 生成的 Word 定稿
-│   ├── main.tex / main.pdf    #   LaTeX 存档版（不自动同步）
+│   ├── main.tex / main.pdf    #   LaTeX 版源与编译产物（不自动同步）
 │   ├── cumcm2026.sty          #   LaTeX 样式
 │   └── fonts/                 #   本地字体（Times New Roman / SimSun / SimHei）
 │
@@ -89,12 +91,14 @@
 
 - **Word 定稿**：`paper/main.docx`
 - Markdown 源：`paper/main.md`
-- LaTeX 存档版：`paper/main.pdf`
+- LaTeX 版 PDF：`paper/main.pdf`（由 `main.tex` 编译，改 tex 必须重编）
 
 ### 2️⃣ 重新生成 Word（改完 main.md 之后）
 
 ```powershell
 # 依赖：python-docx、lxml、latex2mathml
+# latex2mathml 装在 _tmp/pylibs 里，必须先把它加进 PYTHONPATH，否则 import 直接报错
+$env:PYTHONPATH="$PWD\_tmp\pylibs"
 python _tmp\md2docx.py paper\main.docx
 ```
 
@@ -103,25 +107,47 @@ python _tmp\md2docx.py paper\main.docx
 实测得到：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File _tmp\pagemap.ps1   # 生成 _tmp/pagemap.tsv
-python _tmp\make_toc.py                                                # 生成 _tmp/toc_entries.json
-python _tmp\md2docx.py paper\main.docx                                 # 重排目录
+& .\_tmp\pagemap.ps1            # 生成 _tmp/pagemap.tsv（正调 PowerShell，不要加 -ExecutionPolicy Bypass）
+$env:PYTHONPATH="$PWD\_tmp\pylibs"
+python _tmp\make_toc.py         # 生成 _tmp/toc_entries.json
+python _tmp\md2docx.py paper\main.docx   # 重排目录
 ```
 
-正文内容有增删时按此顺序走一遍，否则目录页码会与实际分页不符。
+正文内容有增删时按此顺序走一遍，**并且要循环到目录收敛**：重排后分页会变，
+页码跟着变，再探测一次、再比对 `toc_entries.json` 是否与上一轮完全一致；
+一致才算稳定，否则再走一轮。
 
-### 3️⃣ 编译 LaTeX 存档版（可选）
+### 3️⃣ 编译 LaTeX 版（main.tex → main.pdf）
 
-需要 MiKTeX / TeX Live + XeLaTeX。
+**硬规则：改了 `paper/main.tex` 就必须编译出新的 `paper/main.pdf`，不许留下与源码不符的旧 PDF。**
+本仓库的 `paper/main.pdf` 不是「随手存的旧档」，它是 `main.tex` 的编译产物，两者必须同步。
+
+需要 MiKTeX / TeX Live + XeLaTeX，**必须编两遍**（第一遍写目录与交叉引用，第二遍才填对页码）：
 
 ```powershell
 cd paper
-xelatex -interaction=nonstopmode main.tex
-xelatex -interaction=nonstopmode main.tex   # 第二遍填目录与交叉引用
+xelatex -interaction=nonstopmode -output-directory=..\_tmp\lx main.tex
+xelatex -interaction=nonstopmode -output-directory=..\_tmp\lx main.tex   # 第二遍填目录与交叉引用
+Copy-Item ..\_tmp\lx\main.pdf main.pdf -Force
 ```
 
-目录压到单页的设置在 `main.tex` 的「目录」注释块里：`\l@section` 段前距改为
-0.30em，目录局部行距 1.05（正文仍为 1.35）。
+编译产物先落在 `_tmp/lx/`，确认无误后再覆盖 `paper/main.pdf`，这样编坏了不会把好文件冲掉。
+
+编完必须核对两件事（官方格式硬要求）：
+
+```powershell
+pdfinfo paper\main.pdf | Select-String Pages
+pdftotext -f 3 -l 4 paper\main.pdf -    # 第 3 页应是完整目录（单页），第 4 页才是正文第 1 页
+```
+
+- 目录必须压进**单页**。相关设置在 `main.tex` 的「目录」注释块里：`\l@section` 段前距改为
+  0.30em，目录局部行距 1.05（正文仍为 1.35）。若新增章节导致目录溢出到第二页，先压缩目录排版，
+  不要靠删条目解决。
+- 正文页码从 1 起连续编号、位于页脚中部，不能有页眉。
+
+**`main.tex` 与 `main.md` 是两套并行的稿子，不互相自动同步。** 改哪一套就重新生成哪一套的产物：
+改 `main.md` → 生成 `main.docx`；改 `main.tex` → 生成 `main.pdf`。内容修改要两边都做，
+或者明确只维护其中一套。Word 是正式交付稿，LaTeX 版用于阅读与二次编译。
 
 ### 4️⃣ 复现建模
 
@@ -171,7 +197,7 @@ python -m venv --system-site-packages .venv
 | 用途 | 工具 |
 |------|------|
 | 正式稿排版 | Markdown → python-docx（`_tmp/md2docx.py`） |
-| LaTeX 存档版 | XeLaTeX + ctexart + cumcm2026 |
+| LaTeX 版 | XeLaTeX + ctexart + cumcm2026 |
 | 公式 | LaTeX → latex2mathml → OMML（Word 原生公式） |
 | 建模 | Python（LightGBM / CatBoost / XGBoost / PyTorch） |
 | 图表 | matplotlib / seaborn（350 DPI PNG） |

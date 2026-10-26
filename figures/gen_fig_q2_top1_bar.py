@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-"""fig_q2_top1_bar — 50 个感官维 Top1 化合物的 bootstrap 入选频率（双列条形）
-替代稀疏 Top3 热图：每个感官维只显示其最稳定的 Top1 化合物，条尾标注化合物名与频率。
-数据源：submission/q2_top3_compounds.csv（rank=1）、problem_2_results.json::summary。"""
+"""fig_q2_top1_bar — 问题二：每维 Top-1/2/3 化合物的 bootstrap 入选频率（三点图，双列）
+横轴为 500 次 bootstrap 的入选频率 f_jp（化合物进入该维 Top-3 的比例），
+每维三行分别给出第 1、2、3 位：第 1 位几乎全为 1（47/50 恰为 1.000），
+差异体现在第 2、3 位。用点形与灰度区分名次，不再用条形长度表达近乎饱和的量。
+数据源：submission/q2_top3_compounds.csv（rank=1/2/3）。"""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pandas as pd
@@ -11,28 +13,39 @@ from _figbase import P2, save_fig, set_paper_placement, declutter_axes, dim_zh
 from _utils.plot_utils import ROOT
 
 df = pd.read_csv(os.path.join(ROOT, 'submission', 'q2_top3_compounds.csv'))
-t1 = df[df['rank'] == 1].copy().sort_values(
-    'bootstrap_select_freq', ascending=False).reset_index(drop=True)
-meanfreq = P2['summary']['mean_top1_select_freq']
-n = len(t1); half = (n + 1) // 2
+piv = df.pivot(index='sensory_dim', columns='rank',
+               values='bootstrap_select_freq')
+piv['mean'] = piv.mean(axis=1)
+piv = piv.sort_values('mean', ascending=False)
 
-fig, axes = plt.subplots(1, 2, figsize=(10.2, 7.6))
-set_paper_placement(fig)
+STYLE = {1: dict(marker='o', s=26, c='#2F4F4F', z=3, label='第 1 位'),
+         2: dict(marker='s', s=18, c='#7A8B99', z=2, label='第 2 位'),
+         3: dict(marker='^', s=20, c='#C9CED6', z=1,
+                 edgecolors='#7A8B99', label='第 3 位')}
+
+n = len(piv); half = (n + 1) // 2
+n_full = int((piv[1] >= 0.9999).sum())
+fig, axes = plt.subplots(1, 2, figsize=(6.9, 5.4), layout='constrained')
+set_paper_placement(fig, width_fraction=0.98)
+
 for col, ax in enumerate(axes):
-    sub = t1.iloc[col * half:min((col + 1) * half, n)]
+    sub = piv.iloc[col * half:min((col + 1) * half, n)]
     yy = np.arange(len(sub))[::-1]
-    for k, (_, r) in enumerate(sub.iterrows()):
-        f = r['bootstrap_select_freq']
-        c = '#2E5C8A' if f >= 0.95 else ('#7FA8CF' if f >= 0.8 else '#E8833A')
-        ax.barh(yy[k], max(f - 0.80, 0.001), left=0.80, color=c, zorder=3, height=0.62)
-        nm = r['compound'] if len(r['compound']) <= 15 else r['compound'][:14] + '…'
-        ax.text(1.008, yy[k], f'{nm}', va='center', ha='left', fontsize=6.6, color='#333')
+    for r in (3, 2, 1):
+        st = STYLE[r]
+        ax.scatter(sub[r].values, yy, marker=st['marker'], s=st['s'],
+                   color=st['c'], edgecolors=st.get('edgecolors', 'white'),
+                   linewidths=0.4, zorder=st['z'], label=st['label'])
     ax.set_yticks(yy)
-    ax.set_yticklabels([dim_zh(d) for d in sub['sensory_dim']], fontsize=7.2)
-    ax.set_xlim(0.80, 1.22)
-    ax.set_xticks([0.80, 0.85, 0.90, 0.95, 1.00])
-    ax.set_xlabel('Top1 入选频率（B=500）')
+    ax.set_yticklabels([dim_zh(d) for d in sub.index], fontsize=6.8)
+    ax.set_xlim(0.30, 1.04)
+    ax.set_ylim(-0.8, len(sub) - 0.2)
+    ax.set_xticks([0.4, 0.6, 0.8, 1.0])
+    ax.set_xlabel('bootstrap 入选频率')
     declutter_axes(ax, grid_axis='x')
-fig.tight_layout()
+
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, loc='outside lower center', ncol=3, fontsize=7.5,
+           frameon=False, handletextpad=0.4, columnspacing=1.6)
 save_fig(fig, 'figures/fig_q2_top1_bar.png')
-print('fig_q2_top1_bar done; n=%d mean=%.4f' % (n, meanfreq))
+print('fig_q2_top1_bar done; n=%d first_rank_eq_1=%d' % (n, n_full))

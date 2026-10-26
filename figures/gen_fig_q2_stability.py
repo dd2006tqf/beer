@@ -43,7 +43,6 @@ for col, ax in enumerate(axes):
     ax.set_yticks(yy)
     ax.set_yticklabels([dim_zh(names[i]) if len(dim_zh(names[i])) <= 15
                         else names[i][:14] + '…' for i in idx], fontsize=6.6)
-    ax.set_xlabel('比例（0–1）')
     ax.set_xlim(-0.03, 1.05)
     ax.set_ylim(-1, len(idx))
     declutter_axes(ax, grid_axis='x')
