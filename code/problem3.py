@@ -101,12 +101,17 @@ def run(data_dir="user_data", out_dir=None):
 
     model = _train_cvae(Xstd, mask, onehot, device)
 
+    # 观测范围（模型假设 5）：生成谱与迁移谱都截断到该列训练观测区间
+    obs_lo = np.nanmin(Xv, axis=0)
+    obs_hi = np.nanmax(Xv, axis=0)
+
     # 生成代表风格谱
     gen_records, gen_native = _generate(model, style_list, s2i, S, Xstd, styles,
-                                        mu_f, sd_f, device)
+                                        mu_f, sd_f, device, lo=obs_lo, hi=obs_hi)
     # 迁移 Pils/Lager -> Tripel + 缺陷投影
     transfer_records, transfer_info = _transfer(model, style_list, s2i, S, Xstd, Xv,
-                                                styles, feat_cols, mu_f, sd_f, device)
+                                                styles, feat_cols, mu_f, sd_f, device,
+                                                lo=obs_lo, hi=obs_hi)
     # 感官画像（Q1 模型）
     sens_pred_gen, sens_cols = _sensory_profile(gen_native, feat_cols)
     sens_pred_tr, _ = _sensory_profile(
@@ -180,7 +185,17 @@ def _style_latent_mean(model, Xstd, styles, target_style, s2i, S, device):
     return mu.cpu().numpy().mean(axis=0), idx
 
 
-def _generate(model, style_list, s2i, S, Xstd, styles, mu_f, sd_f, device, n_gen=30):
+def _clip_to_observed(native, lo, hi):
+    """按列把生成/迁移谱截断到训练观测范围 [min, max]。
+
+    对应模型假设 5：生成谱只在该列的观测区间内取值，杜绝解码器外推造成的
+    量级失控（实测未截断时个别列偏离真实中位数达数百个标准差）。
+    """
+    return np.clip(native, lo, hi)
+
+
+def _generate(model, style_list, s2i, S, Xstd, styles, mu_f, sd_f, device,
+              lo=None, hi=None, n_gen=30):
     """代表风格条件采样生成；小样本风格走高斯兜底。"""
     rng = np.random.default_rng(P.SEED)
     records, native_rows = [], []
@@ -204,13 +219,16 @@ def _generate(model, style_list, s2i, S, Xstd, styles, mu_f, sd_f, device, n_gen
             gen_std = rng.multivariate_normal(m, cov, size=n_gen)
             gmethod = "gaussian_fallback"
         native = gen_std * sd_f + mu_f
+        if lo is not None and hi is not None:
+            native = _clip_to_observed(native, lo, hi)
         for k in range(n_gen):
             records.append({"style": style, "sample_type": "generated",
                             "gen_method": gmethod, "_native": native[k]})
             native_rows.append(native[k])
         print(f"[Q3] 生成 {style}: {n_gen} 条（{gmethod}，真实样本={cnt}）")
     return records, np.array(native_rows)
-def _transfer(model, style_list, s2i, S, Xstd, Xv, styles, feat_cols, mu_f, sd_f, device):
+def _transfer(model, style_list, s2i, S, Xstd, Xv, styles, feat_cols, mu_f, sd_f,
+              device, lo=None, hi=None):
     """Pils/Lager → Tripel 隐空间平移 + 缺陷投影（式12/13）。"""
     tgt = P.TRANSFER_TARGET
     zt, _ = _style_latent_mean(model, Xstd, styles, tgt, s2i, S, device)
@@ -241,6 +259,8 @@ def _transfer(model, style_list, s2i, S, Xstd, Xv, styles, feat_cols, mu_f, sd_f
             xhat = model.decode(torch.tensor(z_moved, dtype=torch.float32, device=device),
                                 torch.tensor(oh_t, dtype=torch.float32, device=device)).cpu().numpy()
         native = xhat * sd_f + mu_f
+        if lo is not None and hi is not None:
+            native = _clip_to_observed(native, lo, hi)
         for row, si in enumerate(sidx):
             x_after_vec = native[row].copy()
             for d, pos in defect_pos.items():
