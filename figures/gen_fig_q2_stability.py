@@ -27,11 +27,11 @@ def wilson(p, n, z=1.96):
 
 lo, hi = wilson(freq, nb)
 n = len(names)
-half = (n + 1) // 2
-fig, axes = plt.subplots(1, 2, figsize=(6.8, 5.4), layout='constrained')
+per = (n + 2) // 3                              # 三列 17/17/16，压矮图高
+fig, axes = plt.subplots(1, 3, figsize=(6.9, 4.0), layout='constrained')
 set_paper_placement(fig, width_fraction=0.98)
 for col, ax in enumerate(axes):
-    idx = list(range(col * half, min((col + 1) * half, n)))
+    idx = list(range(col * per, min((col + 1) * per, n)))
     yy = np.arange(len(idx))
     for k, gi in enumerate(idx):
         ax.hlines(yy[k], lo[gi], hi[gi], color=PALETTE_LIGHT[0], lw=1.4, zorder=1)
@@ -42,12 +42,13 @@ for col, ax in enumerate(axes):
     ax.axvline(1.0, color=COLORS['ref_line'], ls=':', lw=0.9, alpha=0.5)
     ax.set_yticks(yy)
     ax.set_yticklabels([dim_zh(names[i]) if len(dim_zh(names[i])) <= 15
-                        else names[i][:14] + '…' for i in idx], fontsize=6.6)
+                        else names[i][:14] + '…' for i in idx], fontsize=7.0)
     ax.set_xlim(-0.03, 1.05)
-    ax.set_ylim(-1, len(idx))
+    ax.set_xticks([0.0, 0.5, 1.0])
+    ax.set_ylim(-0.8, len(idx) - 0.2)
     declutter_axes(ax, grid_axis='x')
-    if col == 1:
-        ax.legend([h1, h2], ['Top-1 入选频率', '跨方法 Jaccard'],
-                  loc='lower left', fontsize=7.2, framealpha=0.9)
+fig.legend([h1, h2], ['Top-1 入选频率', '跨方法 Jaccard'],
+           loc='outside lower center', ncol=2, fontsize=7.5,
+           frameon=False, handletextpad=0.4, columnspacing=1.6)
 save_fig(fig, 'figures/fig_q2_stability.png')
 print('fig_q2_stability done; n=%d nb=%d' % (len(names), nb))
