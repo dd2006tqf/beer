@@ -59,9 +59,10 @@
   \thispagestyle{plain}%
   \setcounter{page}{1}%
   \begin{center}
-    \vspace*{-0.6em}
-    {\heiti\zihao{2}\bfseries \@title\par}
-    \vspace{1.1em}
+    \vspace*{-1.6em}
+    {\heiti\zihao{-2}\bfseries
+     \parbox{\textwidth}{\centering\@title}\par}
+    \vspace{0.55em}
     {\heiti\zihao{3}\bfseries 摘\quad 要\par}
   \end{center}
 }
@@ -69,7 +70,7 @@
 \makeatother
 
 \newenvironment{cumcmabstract}
-  {\begingroup\zihao{-4}\setlength{\parindent}{2em}}
+  {\begingroup\zihao{-4}\setlength{\parindent}{2em}\linespread{1.18}\selectfont}
   {\par\endgroup\clearpage}
 
 \newcommand{\cumcmkeywords}[1]{%

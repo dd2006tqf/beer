@@ -1,52 +1,62 @@
 # -*- coding: utf-8 -*-
-"""fig_q2_top1_bar — 问题二：每维 Top-1/2/3 化合物的 bootstrap 入选频率（三点图，三列）
-横轴为 500 次 bootstrap 的入选频率 f_jp（化合物进入该维 Top-3 的比例），
-每维三行分别给出第 1、2、3 位：第 1 位几乎全为 1（47/50 恰为 1.000），
-差异体现在第 2、3 位。用点形与配色区分名次（与 fig_q2_stability 同一 PALETTE 色系），
-不再用条形长度表达近乎饱和的量。
-数据源：submission/q2_top3_compounds.csv（rank=1/2/3）。"""
+"""fig_q2_top1_bar —— 每维 Top-1/2/3 的 bootstrap 入选频率（名次 x 维度热力矩阵）
+
+行是 50 个感官维度（按第 3 位频率升序），列是第 1、2、3 位化合物；
+格内数字为 500 次 bootstrap 下的入选频率，颜色深即稳定。
+第 1、2 列几乎全为 1.000（47/50 维恰为 1.000），真正有信息的是第 3 列：
+它回答"第三名是不是凑数"。矩阵化后一眼可见右侧一列的颜色衰减。
+
+版式参考 ModelViz 09_REL_003（多层编码相关性热图）。
+数据源：submission/q2_top3_compounds.csv（rank=1/2/3）。
+"""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from _figbase import (P2, PALETTE, PALETTE_LIGHT, save_fig,
-                      set_paper_placement, declutter_axes, dim_zh)
+from matplotlib.colors import LinearSegmentedColormap
+from _figbase import save_fig, dim_zh
 from _utils.plot_utils import ROOT
 
 df = pd.read_csv(os.path.join(ROOT, 'submission', 'q2_top3_compounds.csv'))
 piv = df.pivot(index='sensory_dim', columns='rank',
                values='bootstrap_select_freq')
-piv['mean'] = piv.mean(axis=1)
-piv = piv.sort_values('mean', ascending=False)
+piv = piv.sort_values(3, ascending=False)   # 第 3 位最稳的在最上
 
-STYLE = {1: dict(marker='o', s=26, c=PALETTE[0], z=3, label='第 1 位'),
-         2: dict(marker='s', s=18, c=PALETTE[1], z=2, label='第 2 位'),
-         3: dict(marker='^', s=20, c=PALETTE_LIGHT[0], z=1, label='第 3 位')}
+plt.rcParams.update({
+    'axes.labelsize': 7.6,
+    'xtick.labelsize': 7.2,
+    'ytick.labelsize': 6.2,
+    'axes.unicode_minus': False,
+})
 
-n = len(piv); per = (n + 2) // 3                 # 三列 17/17/16，压矮图高
-n_full = int((piv[1] >= 0.9999).sum())
-fig, axes = plt.subplots(1, 3, figsize=(6.9, 4.0), layout='constrained')
-set_paper_placement(fig, width_fraction=0.98)
+vals = piv[[1, 2, 3]].values
+cmap = LinearSegmentedColormap.from_list(
+    'freq', ['#F2F5F8', '#B9CFE3', '#6C97BE', '#2E5C8A', '#173B5C'])
 
-for col, ax in enumerate(axes):
-    sub = piv.iloc[col * per:min((col + 1) * per, n)]
-    yy = np.arange(len(sub))[::-1]
-    for r in (3, 2, 1):
-        st = STYLE[r]
-        ax.scatter(sub[r].values, yy, marker=st['marker'], s=st['s'],
-                   color=st['c'], edgecolors=st.get('edgecolors', 'white'),
-                   linewidths=0.4, zorder=st['z'], label=st['label'])
-    ax.set_yticks(yy)
-    ax.set_yticklabels([dim_zh(d) for d in sub.index], fontsize=7.0)
-    ax.set_xlim(0.30, 1.04)
-    ax.set_ylim(-0.8, len(sub) - 0.2)
-    ax.set_xticks([0.4, 0.6, 0.8, 1.0])
-    ax.set_xlabel('bootstrap 入选频率')
-    declutter_axes(ax, grid_axis='x')
+fig, ax = plt.subplots(figsize=(3.1, 5.2), layout='constrained')
+im = ax.imshow(vals, cmap=cmap, vmin=0.35, vmax=1.0, aspect='auto',
+               interpolation='nearest')
 
-handles, labels = axes[0].get_legend_handles_labels()
-fig.legend(handles, labels, loc='outside lower center', ncol=3, fontsize=7.5,
-           frameon=False, handletextpad=0.4, columnspacing=1.6)
+ax.set_xticks([0, 1, 2])
+ax.set_xticklabels(['第 1 位', '第 2 位', '第 3 位'], fontsize=7.0)
+ax.set_yticks(np.arange(len(piv)))
+ax.set_yticklabels([dim_zh(d) for d in piv.index], fontsize=6.0)
+ax.tick_params(length=0)
+for s in ax.spines.values():
+    s.set_visible(False)
+
+# 只在第 3 位标数值（前两位几乎全是 1.000）
+for i in range(len(piv)):
+    v3 = piv.iloc[i][3]
+    ax.text(2, i, '%.2f' % v3, ha='center', va='center', fontsize=5.4,
+            color='white' if v3 > 0.78 else '#1F2933')
+
+cb = fig.colorbar(im, ax=ax, fraction=0.055, pad=0.03)
+cb.outline.set_visible(False)
+cb.set_label('入选频率', fontsize=7.0)
+cb.ax.tick_params(labelsize=6.4, length=2)
+cb.set_ticks([0.4, 0.6, 0.8, 1.0])
+
 save_fig(fig, 'figures/fig_q2_top1_bar.png')
-print('fig_q2_top1_bar done; n=%d first_rank_eq_1=%d' % (n, n_full))
+print('done; n=%d rank3 min=%.3f' % (len(piv), piv[3].min()))

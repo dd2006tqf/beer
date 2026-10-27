@@ -1,46 +1,87 @@
 # -*- coding: utf-8 -*-
-"""fig_q1_pred_perf — 问题一：50 个感官维交叉验证 QWK 排序（单色水平条，双列布局）
-按 QWK 降序排列全部 50 维，统一用灰蓝单色；虚线为全维均值 QWK。
-数据源：problem_1_results.json::fig_data.qwk_ranked（[name, qwk] ×50）、summary.mean_qwk_main。"""
+"""fig_q1_pred_perf —— 50 个感官维的交叉验证 QWK（排序点阵，按强弱分档着色）
+
+横向棒棒糖按 QWK 降序排列 50 维，颜色按可预测性分档（强 / 中 / 弱），
+右侧标出该维的 ±1 级准确率，使"预测准不准"与"错得多不多"在同一行可读。
+虚线为全维均值。相比等长单色条形，分档配色能一眼看出强信号维只有少数。
+
+版式参考 ModelViz 09_REL_001（棒棒糖）与 08_PRD_005（评估多面板）。
+数据源：figures/problem_1_results.json::per_dim、fig_data.qwk_ranked。
+"""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib.pyplot as plt
-from _figbase import P1, save_fig, set_paper_placement, declutter_axes, dim_zh
+from matplotlib.lines import Line2D
+from _figbase import P1, save_fig, declutter_axes, dim_zh
 
-ranked = P1['fig_data']['qwk_ranked']           # 已降序
+PD = P1['per_dim']
+ranked = P1['fig_data']['qwk_ranked']
 mean_qwk = P1['summary']['mean_qwk_main']
-names = [r[0] for r in ranked]
-vals = [r[1] for r in ranked]
-n = len(names)
 
-# 朴素配色：同一灰蓝、无点标记、无图例框，只靠条长表达差异
-BAR = '#6E7B8B'
-REF = '#333333'
+plt.rcParams.update({
+    'axes.labelsize': 8.0,
+    'xtick.labelsize': 6.8,
+    'ytick.labelsize': 6.6,
+    'legend.fontsize': 6.8,
+    'axes.edgecolor': '#6B7280',
+    'axes.labelcolor': '#1F2933',
+    'axes.unicode_minus': False,
+})
+
+STRONG, MID, WEAK = '#2E5C8A', '#7FA8CF', '#D8DEE6'
+names = [r[0] for r in ranked]
+vals = np.array([r[1] for r in ranked])
+acc = np.array([PD[n]['acc_within1_main'] for n in names])
+
+def tier(v):
+    return STRONG if v >= 0.55 else (MID if v >= 0.30 else WEAK)
+
+n = len(names)
 half = (n + 1) // 2
-fig, axes = plt.subplots(1, 2, figsize=(6.8, 5.6))
-set_paper_placement(fig, width_fraction=0.98)
+fig, axes = plt.subplots(1, 2, figsize=(5.9, 4.55),
+                         gridspec_kw={'wspace': 0.10},
+                         layout='constrained', sharex=True)
 
 for col, ax in enumerate(axes):
-    idx = range(col * half, min((col + 1) * half, n))
-    sub = list(idx)
+    lo = col * half
+    hi = min((col + 1) * half, n)
+    sub = list(range(lo, hi))
     yy = np.arange(len(sub))[::-1]
-    ax.axvline(mean_qwk, color=REF, ls='--', lw=0.9, alpha=0.75, zorder=1)
-    ax.barh(yy, [vals[gi] for gi in sub], height=0.62, color=BAR,
-            edgecolor='none', zorder=2)
+    for k, gi in enumerate(sub):
+        c = tier(vals[gi])
+        ax.hlines(yy[k], 0, vals[gi], color=c, lw=1.0, alpha=0.55, zorder=2)
+        ax.scatter(vals[gi], yy[k], s=20, color=c, edgecolor='white',
+                   linewidth=0.4, zorder=3)
+    ax.axvline(mean_qwk, color='#9CA3AF', ls=(0, (4, 2)), lw=0.9, zorder=1)
     ax.set_yticks(yy)
-    ax.set_yticklabels([(dim_zh(names[i]) if len(dim_zh(names[i])) <= 9
-                        else dim_zh(names[i])[:8] + '…') for i in sub],
-                       fontsize=7.0)
-    ax.set_xlabel('交叉验证 QWK')
-    ax.set_xlim(0, max(vals) * 1.16)
-    declutter_axes(ax, grid_axis='x')
+    labels = []
+    for gi in sub:
+        z = dim_zh(names[gi])
+        labels.append(z if len(z) <= 8 else z[:7] + '…')
+    ax.set_yticklabels(labels, fontsize=6.4)
+    ax.set_xlim(0, 0.92)
+    ax.set_ylim(-0.8, len(sub) - 0.2)
+    ax.set_xlabel('折外 QWK', fontsize=7.6)
 
-# 均值线只在左图用文字标注，避免图例框
-axes[0].text(mean_qwk + 0.012, len(range(half)) - 0.4,
-             f'全维均值 {mean_qwk:.3f}', fontsize=7, color=REF,
-             va='top', ha='left')
+# 右列再标 ±1 准确率
+ax = axes[1]
+lo = half
+sub = list(range(lo, n))
+yy = np.arange(len(sub))[::-1]
+for k, gi in enumerate(sub):
+    ax.text(0.905, yy[k], '%.0f' % (acc[gi] * 100), ha='right', va='center',
+            fontsize=6.0, color='#4B5563')
+ax.text(0.905, len(sub) + 0.15, '±1%', ha='right', va='bottom',
+        fontsize=6.4, color='#1F2933')
 
-fig.tight_layout()
+fig.legend(handles=[
+    Line2D([], [], marker='o', ls='', color=STRONG, markersize=5, label='强（QWK ≥ 0.55）'),
+    Line2D([], [], marker='o', ls='', color=MID, markersize=5, label='中（0.30–0.55）'),
+    Line2D([], [], marker='o', ls='', color=WEAK, markersize=5, label='弱（< 0.30）'),
+], loc='outside lower center', ncol=3, frameon=False,
+   handletextpad=0.4, columnspacing=1.6, borderaxespad=0.1)
+
 save_fig(fig, 'figures/fig_q1_pred_perf.png')
-print('fig_q1_pred_perf done; n=%d mean=%.4f' % (n, mean_qwk))
+strong = int((vals >= 0.55).sum()); weak = int((vals < 0.30).sum())
+print('done; n=%d strong=%d weak=%d mean=%.4f' % (n, strong, weak, mean_qwk))

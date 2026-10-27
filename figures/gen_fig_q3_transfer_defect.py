@@ -1,73 +1,97 @@
 # -*- coding: utf-8 -*-
-"""fig_q3_transfer_defect — 跨风格迁移缺陷控制（哑铃图，含无约束对照）
-Pils/Lager→Tripel 迁移 11 款，4 个缺陷化合物：
- 橙点=迁移前；蓝点=严格投影 min(源值, m_t) 后；红×=无约束纯平移对照；绿菱形=目标安全值 m_t。
-绿色水平线=严格投影（下降/持平），红色虚线=无约束对照的升高。
-严格投影后 0/44 升高；无约束纯平移 32/44 升高，DMS/4VG/壬烯醛突破 m_t。
-数据源：problem_3_results.json::fig_data.defect_dumbbell, transfer_info.unconstrained_control。"""
+"""fig_q3_transfer_defect —— 跨风格迁移的缺陷控制（三臂斜率图）
+
+每个缺陷化合物占一列，列内自上而下为三种状态：
+  迁移前 → 严格投影后 → 无约束纯平移，
+三点连成一条轨迹。蓝色段表示下降或持平，红色段表示升高；
+顶端灰线为目标安全值 m_t 的位置。右侧一行给出两组的升高计数。
+
+用斜率图而非横向哑铃，是因为四个缺陷的数值量级差异很大（DMS 1.16 vs
+4-VG −2.01），横向同轴会挤在一起；按列归一后每条轨迹的走向清晰可见。
+
+版式参考 ModelViz 09_REL_020（效应分解）与 02_CMP_003（相关堆叠）。
+数据源：figures/problem_3_results.json::fig_data.defect_dumbbell。
+"""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import P3, PALETTE, save_fig, set_paper_placement, declutter_axes
+from _figbase import P3, save_fig, declutter_axes
 
-GREEN, RED, GRAY = '#2E8B57', '#C0392B', '#8A93A0'
 dd = P3['fig_data']['defect_dumbbell']
-tinfo = P3['transfer_info']; ctrl = tinfo.get('unconstrained_control', {})
-zh = {'DMS': 'DMS（煮玉米）', 'X2.3.butanedione': '双乙酰（奶香）',
-      'X4VG': '4-VG（丁香）', 'X.E..2.nonenal': '反-2-壬烯醛（纸板）'}
+ctrl = P3['transfer_info'].get('unconstrained_control', {})
+
+zh = {'DMS': 'DMS', 'X2.3.butanedione': '双乙酰', 'X4VG': '4-VG',
+      'X.E..2.nonenal': '反-2-壬烯醛'}
+sub = {'DMS': '煮玉米', 'X2.3.butanedione': '奶香', 'X4VG': '丁香',
+       'X.E..2.nonenal': '纸板'}
 names = list(dd.keys())
-before = np.array([dd[k]['before_mean'] for k in names])
-after = np.array([dd[k]['after_mean'] for k in names])
-raw = np.array([dd[k]['raw_after_mean'] for k in names])
-mt = np.array([dd[k]['m_t'] for k in names])
 
-fig, ax = plt.subplots(figsize=(9.8, 4.0))
-set_paper_placement(fig)
-y = np.arange(len(names))[::-1]
-for i, yi in zip(range(len(names)), y):
-    k = names[i]
-    # 严格投影 before→after（下降绿、持平灰）
-    line_col = GRAY if abs(after[i] - before[i]) < 1e-6 else GREEN
-    ax.hlines(yi, min(before[i], after[i]), max(before[i], after[i]),
-              color=line_col, lw=2.4, zorder=2)
-    # 无约束升高红虚线
-    if raw[i] > before[i] + 1e-6:
-        ax.hlines(yi, before[i], raw[i], color=RED, lw=1.3,
-                  linestyle=(0, (4, 3)), alpha=0.8, zorder=1)
-    ax.scatter(before[i], yi, s=78, color=PALETTE[1], edgecolors='white',
-               linewidths=0.8, zorder=4)
-    ax.scatter(after[i], yi, s=78, color=PALETTE[0], edgecolors='white',
-               linewidths=0.8, zorder=4)
-    ax.scatter(raw[i], yi, s=86, marker='x', color=RED, lw=2.0, zorder=5)
-    ax.scatter(mt[i], yi, s=105, marker='D', facecolors='none', edgecolors=GREEN,
-               linewidths=1.7, zorder=4)
-    breach = raw[i] > mt[i]
-    nr = k and dd[k]['n_rise_unconstrained']
-    txt = f'严格Δ={dd[k]["delta_mean"]:+.2f}　无约束Δ={dd[k]["delta_raw_mean"]:+.2f}（{nr}/11 升）'
-    if breach:
-        txt += '　★ 无约束超 m_t'
-    ax.text(1.9, yi, txt, ha='left', va='center', fontsize=8.2,
-            color=RED if breach else '#333',
-            fontweight='bold' if breach else 'normal')
+plt.rcParams.update({
+    'axes.labelsize': 7.4,
+    'xtick.labelsize': 7.0,
+    'ytick.labelsize': 6.6,
+    'legend.fontsize': 6.7,
+    'axes.edgecolor': '#6B7280',
+    'axes.labelcolor': '#1F2933',
+    'axes.unicode_minus': False,
+})
 
-ax.set_yticks(y)
-ax.set_yticklabels([zh.get(k, k) for k in names], fontsize=9)
-ax.set_xlabel('标准化含量（迁移 11 款的均值）')
-n_unc = ctrl.get('n_defect_rise_unconstrained', 0); n_tot = ctrl.get('n_total', 44)
-n_c = ctrl.get('n_defect_rise_constrained', 0)
-ax.set_xlim(-2.55, 5.7)
-declutter_axes(ax, grid_axis='x')
-handles = [
-    Line2D([0], [0], marker='o', color='w', markerfacecolor=PALETTE[1], markersize=9, label='迁移前'),
-    Line2D([0], [0], marker='o', color='w', markerfacecolor=PALETTE[0], markersize=9, label='严格投影后'),
-    Line2D([0], [0], marker='x', color=RED, markersize=9, lw=2, label='无约束纯平移（对照）'),
-    Line2D([0], [0], marker='D', color='w', markerfacecolor='none', markeredgecolor=GREEN,
-           markersize=9, label='目标安全值 m_t'),
-]
-ax.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, -0.13),
-          fontsize=9, framealpha=0.95, ncol=4)
-fig.tight_layout()
+BLUE, RED, GREEN, GRAY = '#2E5C8A', '#C0392B', '#2E8B57', '#9CA3AF'
+
+fig, axes = plt.subplots(1, 4, figsize=(5.9, 2.75), sharey=False,
+                         gridspec_kw={'wspace': 0.56}, layout='constrained')
+
+STEP_Y = [3, 2, 1]          # 迁移前 / 严格投影后 / 无约束
+STEP_LAB = ['迁移前', '严格后', '无约束']
+
+for ax, k in zip(axes, names):
+    v = dd[k]
+    b, a, r, t = v['before_mean'], v['after_mean'], v['raw_after_mean'], v['m_t']
+    vals = [b, a, r]
+    # 目标安全值：横贯全列
+    ax.axhline(t, color=GREEN, lw=1.0, ls=(0, (3, 3)), zorder=1)
+    # 段 1：迁移前 → 严格投影后
+    ax.plot([0, 0], [STEP_Y[0], STEP_Y[1]],
+            color=BLUE if a <= b + 1e-6 else RED, lw=2.0, zorder=3,
+            solid_capstyle='round')
+    # 段 2：严格投影后 → 无约束
+    ax.plot([0, 0], [STEP_Y[1], STEP_Y[2]],
+            color=RED if r > a + 1e-6 else BLUE, lw=2.0, zorder=3,
+            solid_capstyle='round', ls=(0, (3, 2)) if r > a else '-')
+    for yv, val, col in zip(STEP_Y, vals, [GRAY, BLUE, RED]):
+        ax.plot(0, yv, 'o', ms=5.5, color=col, markeredgecolor='white',
+                markeredgewidth=0.6, zorder=5)
+        ax.text(0.16, yv, '%.2f' % val, fontsize=6.2, va='center', ha='left',
+                color='#374151')
+    ax.set_xlim(-0.30, 0.92)
+    ax.set_ylim(0.42, 3.72)
+    ax.set_xticks([])
+    ax.set_yticks(STEP_Y)
+    ax.set_yticklabels(STEP_LAB, fontsize=6.4)
+    ax.tick_params(axis='y', length=0, pad=2)
+    for s in ('top', 'right', 'bottom', 'left'):
+        ax.spines[s].set_visible(False)
+    ax.grid(axis='y', color='#EDEFF2', lw=0.6, zorder=0)
+    ax.set_axisbelow(True)
+    title = zh.get(k, k)
+    ax.set_title(title + '\n' + sub.get(k, ''), fontsize=7.4, pad=4,
+                 linespacing=1.3)
+    nr = v['n_rise_unconstrained']
+    ax.text(0.0, 0.40, '升高 %d/11' % nr, transform=ax.transAxes,
+            ha='center', va='top', fontsize=6.2, color=RED)
+    ax.text(0.0, -0.07, '严格 0/11', transform=ax.transAxes,
+            ha='center', va='top', fontsize=6.2, color=BLUE)
+
+fig.legend(handles=[
+    Line2D([], [], marker='o', ls='', color=GRAY, markersize=5, label='迁移前'),
+    Line2D([], [], marker='o', ls='', color=BLUE, markersize=5, label='严格投影后'),
+    Line2D([], [], marker='o', ls='', color=RED, markersize=5, label='无约束纯平移'),
+    Line2D([], [], color=GREEN, lw=1.0, ls=(0, (3, 3)), label='目标安全值 $'),
+], loc='outside lower center', ncol=4, frameon=False, handletextpad=0.4,
+   columnspacing=1.3, borderaxespad=0.1)
+
 save_fig(fig, 'figures/fig_q3_transfer_defect.png')
-print('fig_q3_transfer_defect done; unc=%d/%d' % (n_unc, n_tot))
+print('done; unc=%d/%d' % (ctrl.get('n_defect_rise_unconstrained', 0),
+                           ctrl.get('n_total', 44)))

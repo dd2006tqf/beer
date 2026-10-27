@@ -47,16 +47,16 @@ for tag, prefix, title in GROUPS:
     sub = mat[idx]
     n_row = len(idx)
 
-    fig, ax = plt.subplots(figsize=(6.6, 0.30 * n_row + 1.5))
+    fig, ax = plt.subplots(figsize=(7.0, 0.30 * n_row + 1.7))
     set_paper_placement(fig, width_fraction=0.86)
     im = ax.imshow(sub, cmap="RdBu_r", vmin=-1, vmax=1, origin="upper",
                    interpolation="nearest", aspect="auto")
 
     ax.set_xticks(np.arange(len(comps)))
     ax.set_xticklabels([c if len(c) <= 13 else c[:12] + "…" for c in comps],
-                       rotation=45, ha="right", fontsize=6.8)
+                       rotation=45, ha="right", fontsize=7.6)
     ax.set_yticks(np.arange(n_row))
-    ax.set_yticklabels([dim_zh(dims[i]) for i in idx], fontsize=7.0)
+    ax.set_yticklabels([dim_zh(dims[i]) for i in idx], fontsize=7.8)
     ax.tick_params(length=0)
     for s in ("top", "right", "left", "bottom"):
         ax.spines[s].set_visible(False)
@@ -67,13 +67,13 @@ for tag, prefix, title in GROUPS:
             v = sub[i, j]
             if abs(v) >= 0.35:
                 ax.text(j, i, "%.2f" % v, ha="center", va="center",
-                        fontsize=5.6, color="white" if abs(v) > 0.72 else "#222")
+                        fontsize=6.2, color="white" if abs(v) > 0.72 else "#222")
 
     cb = fig.colorbar(im, ax=ax, fraction=0.035, pad=0.015)
     cb.outline.set_visible(False)
-    cb.ax.tick_params(labelsize=6.5, length=2)
-    cb.set_label("Pearson 相关系数", fontsize=7.5)
-    ax.set_title(title, fontsize=9, pad=6)
+    cb.ax.tick_params(labelsize=7.2, length=2)
+    cb.set_label("Pearson 相关系数", fontsize=8.2)
+    ax.set_title(title, fontsize=9.8, pad=6)
 
     fig.tight_layout()
     save_fig(fig, "figures/fig_q2_chem_sensory_%s.png" % tag)
