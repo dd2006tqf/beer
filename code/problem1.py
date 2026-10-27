@@ -46,6 +46,52 @@ def _fit_lgb(Xtr, ytr):
     return m
 
 
+# ---------- 有序分支：分箱退化诊断 + 类加权阈值分解 ----------
+CLF_PARAMS = dict(
+    n_estimators=120, num_leaves=8, learning_rate=0.05,
+    min_child_samples=15, feature_fraction=0.6, bagging_fraction=0.8,
+    bagging_freq=1, lambda_l2=1.0, random_state=P.SEED, n_jobs=-1, verbose=-1,
+)
+DEGEN_SPAN = 0.05      # 前 5 个分位切点跨度 < 极差的 5% 判为退化
+ORD_MIN_FRAC = 0.10    # 阈值两侧任一类占比低于 10% 时不做二分类
+
+
+def binning_degenerate(ytr, span_th=DEGEN_SPAN):
+    """判断该维的分位分箱是否退化：切点挤在极窄区间内，等级在原始尺度上不可分。"""
+    y = np.asarray(ytr, dtype=float)
+    y = y[np.isfinite(y)]
+    if y.size < 20:
+        return False
+    rng = float(y.max() - y.min())
+    if rng <= 0:
+        return True
+    edges = U.Binner().fit(y).edges
+    return bool((edges[4] - edges[0]) / rng < span_th)
+
+
+def _fit_ordinal(Xtr, ytr, Xva, n_levels=P.N_LEVELS):
+    """类加权阈值分解：对每个内部阈值训练一个「y > t」二分类器，概率累加后取整。
+
+    与直接回归再分箱相比，它不依赖切点位置，因而能绕开密集分布下切点重合的问题；
+    阈值两侧样本不均衡时按类频率反比加权，避免多数类主导。
+    """
+    ytr = np.asarray(ytr, dtype=float)
+    edges = np.quantile(ytr, np.linspace(0, 1, n_levels + 1)[1:-1])
+    edges = np.maximum.accumulate(edges)
+    acc = np.zeros(len(Xva))
+    for t in edges:
+        z = (ytr > t).astype(int)
+        frac = float(z.mean())
+        if frac < ORD_MIN_FRAC or frac > 1 - ORD_MIN_FRAC:
+            acc += frac                      # 无区分度的阈值直接用先验
+            continue
+        w = np.where(z == 1, 1.0 / max(frac, 1e-6), 1.0 / max(1.0 - frac, 1e-6))
+        clf = lgb.LGBMClassifier(**CLF_PARAMS)
+        clf.fit(Xtr, z, sample_weight=w)
+        acc += clf.predict_proba(Xva)[:, 1]
+    return np.clip(np.round(acc), P.LEVEL_MIN, P.LEVEL_MAX).astype(int)
+
+
 def run(data_dir="user_data", out_dir=None):
     out_dir = out_dir or _ROOT
     U.set_all_seeds(P.SEED)
@@ -83,6 +129,11 @@ def run(data_dir="user_data", out_dir=None):
 
     Yv = Y.values.astype(float)
 
+    # 分箱退化诊断：只看标签分布形态（不涉及特征与验证折），退化维改用类加权有序回归
+    dim_degenerate = [binning_degenerate(Yv[:, j]) for j in range(J)]
+    degen_dims = [sens_cols[j] for j in range(J) if dim_degenerate[j]]
+    print(f"[Q1] 分箱退化维 {len(degen_dims)}/{J}: {degen_dims}")
+
     for fi, (tr, va) in enumerate(skf.split(Xv, strat), 1):
         print(f"[Q1] fold {fi}/{P.N_FOLDS}  train={len(tr)} val={len(va)}")
         # 折内中位插补器（仅 fit 训练折）供 ElasticNet/RF/KNN 基线
@@ -103,7 +154,11 @@ def run(data_dir="user_data", out_dir=None):
             m = _fit_lgb(Xv[tr], ytr_c)
             rc = m.predict(Xv[va])
             oof_main_cont[va, j] = rc
-            oof_main[va, j] = binner.transform_continuous(rc)
+            # 分箱退化维改用类加权有序回归（规则只看训练折标签分布，不接触验证集）
+            if dim_degenerate[j]:
+                oof_main[va, j] = _fit_ordinal(Xv[tr], ytr_c, Xv[va])
+            else:
+                oof_main[va, j] = binner.transform_continuous(rc)
             oof_main_uniform[va, j] = binner_u.transform_continuous(rc)
 
             # 基线：均值等级

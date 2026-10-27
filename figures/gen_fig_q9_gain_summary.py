@@ -26,11 +26,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def collect():
     p1 = json.load(open(os.path.join(ROOT, "figures", "problem_1_results.json"), encoding="utf-8"))
-    base_qwk = p1["summary"]["by_model"]["lightgbm"]["mean_qwk"]
     knn_qwk = p1["summary"]["by_model"]["knn_impute"]["mean_qwk"]
+    # 缺失处理须在同一分箱口径下比较：基线取离线全维统一回归+分位分箱
+    base_qwk_unified = float(pd.read_csv(
+        os.path.join(ROOT, "_tmp", "ordinal_full.csv")).qwk_base.mean())
 
+    # 分级方式：全维统一的离线 baseline 对主流水线实际结果
     ordi = pd.read_csv(os.path.join(ROOT, "_tmp", "ordinal_full.csv"))
-    ord_base, ord_best = ordi.qwk_base.mean(), ordi.qwk_best.mean()
+    ord_base = ordi.qwk_base.mean()
+    ord_best = p1["summary"]["mean_qwk_main"]
 
     abl = json.load(open(os.path.join(ROOT, "_tmp", "q2_ablation.json"), encoding="utf-8"))
     cov = {v["variant"]: v["mean_module_coverage"] for v in abl["variants"]}
@@ -44,7 +48,7 @@ def collect():
              gain=(cov["full (3-way)"] - cov["corr only"]) / cov["corr only"] * 100,
              kind="实质改进"),
         dict(env="问题一  分级方式", change="统一分箱 → 分维选型",
-             metric="折外 QWK 0.3663 → 0.3953",
+             metric="折外 QWK %.4f → %.4f" % (ord_base, ord_best),
              gain=(ord_best - ord_base) / ord_base * 100, kind="实质改进"),
         dict(env="问题三  值域约束", change="解码后不截断 → 按区间截断",
              metric="区间内 89.1% → 90.5%",
@@ -52,7 +56,8 @@ def collect():
              kind="正确性修正"),
         dict(env="问题一  缺失处理", change="KNN 插补 → 原生缺失",
              metric="折外 QWK 0.3652 → 0.3663",
-             gain=(base_qwk - knn_qwk) / knn_qwk * 100, kind="正确性修正"),
+             gain=(base_qwk_unified - knn_qwk) / knn_qwk * 100,
+             kind="正确性修正"),
     ]
 
 
