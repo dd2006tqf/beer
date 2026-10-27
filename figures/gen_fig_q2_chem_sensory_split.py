@@ -40,41 +40,34 @@ def pick(prefix):
     return [i for i, d in enumerate(dims) if d.startswith(prefix)]
 
 
-for tag, prefix, title in GROUPS:
-    idx = pick(prefix)
-    # 行内按“该行最大绝对相关”降序，主带集中在顶部，便于读数
-    idx = sorted(idx, key=lambda i: -np.nanmax(np.abs(mat[i])))
-    sub = mat[idx]
-    n_row = len(idx)
+# 双栏版式：50 行拆成左右各 25 行，单色标，行高翻倍以保证可读
+order = sorted(range(len(dims)), key=lambda i: -np.nanmax(np.abs(mat[i])))
+halves = [order[:25], order[25:]]
 
-    fig, ax = plt.subplots(figsize=(7.0, 0.30 * n_row + 1.7))
-    set_paper_placement(fig, width_fraction=0.86)
+fig, axes = plt.subplots(1, 2, figsize=(7.6, 3.35), layout='constrained',
+                         gridspec_kw={'wspace': 0.30})
+short = []
+for c in comps:
+    c2 = c.replace('_', ' ')
+    short.append(c2 if len(c2) <= 12 else c2[:11] + "…")
+
+im = None
+for ax, idx in zip(axes, halves):
+    sub = mat[idx]
     im = ax.imshow(sub, cmap="RdBu_r", vmin=-1, vmax=1, origin="upper",
                    interpolation="nearest", aspect="auto")
-
     ax.set_xticks(np.arange(len(comps)))
-    ax.set_xticklabels([c if len(c) <= 13 else c[:12] + "…" for c in comps],
-                       rotation=45, ha="right", fontsize=7.6)
-    ax.set_yticks(np.arange(n_row))
-    ax.set_yticklabels([dim_zh(dims[i]) for i in idx], fontsize=7.8)
-    ax.tick_params(length=0)
-    for s in ("top", "right", "left", "bottom"):
-        ax.spines[s].set_visible(False)
+    ax.set_xticklabels(short, rotation=90, ha="center", fontsize=4.9)
+    ax.set_yticks(np.arange(len(idx)))
+    ax.set_yticklabels([dim_zh(dims[i]) for i in idx], fontsize=5.4)
+    ax.tick_params(length=0, pad=1.2)
+    for sp in ("top", "right", "left", "bottom"):
+        ax.spines[sp].set_visible(False)
 
-    # 只在 |r|>=0.35 的格内标注数值，避免小字糊成一片
-    for i in range(n_row):
-        for j in range(len(comps)):
-            v = sub[i, j]
-            if abs(v) >= 0.35:
-                ax.text(j, i, "%.2f" % v, ha="center", va="center",
-                        fontsize=6.2, color="white" if abs(v) > 0.72 else "#222")
+cb = fig.colorbar(im, ax=axes, fraction=0.016, pad=0.010)
+cb.outline.set_visible(False)
+cb.ax.tick_params(labelsize=6.2, length=2)
+cb.set_label("相关系数", fontsize=7.0)
 
-    cb = fig.colorbar(im, ax=ax, fraction=0.035, pad=0.015)
-    cb.outline.set_visible(False)
-    cb.ax.tick_params(labelsize=7.2, length=2)
-    cb.set_label("Pearson 相关系数", fontsize=8.2)
-    ax.set_title(title, fontsize=9.8, pad=6)
-
-    fig.tight_layout()
-    save_fig(fig, "figures/fig_q2_chem_sensory_%s.png" % tag)
-    print("fig_q2_chem_sensory_%s rows=%d" % (tag, n_row))
+save_fig(fig, "figures/fig_q2_chem_sensory_all.png")
+print("fig_q2_chem_sensory_all rows=%d x2" % len(halves[0]))

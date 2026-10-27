@@ -34,25 +34,27 @@ vals = piv[[1, 2, 3]].values
 cmap = LinearSegmentedColormap.from_list(
     'freq', ['#F2F5F8', '#B9CFE3', '#6C97BE', '#2E5C8A', '#173B5C'])
 
-fig, ax = plt.subplots(figsize=(3.1, 5.2), layout='constrained')
-im = ax.imshow(vals, cmap=cmap, vmin=0.35, vmax=1.0, aspect='auto',
+fig, ax = plt.subplots(figsize=(7.4, 2.35), layout='constrained')
+vals_t = vals.T                      # 3 行（名次） × 50 列（维度）
+im = ax.imshow(vals_t, cmap=cmap, vmin=0.35, vmax=1.0, aspect='auto',
                interpolation='nearest')
 
-ax.set_xticks([0, 1, 2])
-ax.set_xticklabels(['第 1 位', '第 2 位', '第 3 位'], fontsize=7.0)
-ax.set_yticks(np.arange(len(piv)))
-ax.set_yticklabels([dim_zh(d) for d in piv.index], fontsize=6.0)
+ax.set_yticks([0, 1, 2])
+ax.set_yticklabels(['第 1 位', '第 2 位', '第 3 位'], fontsize=7.2)
+ax.set_xticks(np.arange(len(piv)))
+ax.set_xticklabels([dim_zh(d) for d in piv.index], fontsize=5.6,
+                   rotation=90, ha='center')
 ax.tick_params(length=0)
-for s in ax.spines.values():
-    s.set_visible(False)
+for s_ in ax.spines.values():
+    s_.set_visible(False)
 
-# 只在第 3 位标数值（前两位几乎全是 1.000）
-for i in range(len(piv)):
-    v3 = piv.iloc[i][3]
-    ax.text(2, i, '%.2f' % v3, ha='center', va='center', fontsize=5.4,
+# 第 1、2 位几乎饱和，只标第 3 位的具体频率
+for j in range(len(piv)):
+    v3 = piv.iloc[j][3]
+    ax.text(j, 2, '%.2f' % v3, ha='center', va='center', fontsize=5.0,
             color='white' if v3 > 0.78 else '#1F2933')
 
-cb = fig.colorbar(im, ax=ax, fraction=0.055, pad=0.03)
+cb = fig.colorbar(im, ax=ax, fraction=0.020, pad=0.012)
 cb.outline.set_visible(False)
 cb.set_label('入选频率', fontsize=7.0)
 cb.ax.tick_params(labelsize=6.4, length=2)

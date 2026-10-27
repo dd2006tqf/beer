@@ -183,6 +183,9 @@ def run(data_dir="user_data", out_dir=None):
     _full_retrain_and_submit(data_dir, out_dir, df1, Xv, Yv, feat_cols, sens_cols,
                              meta, results)
     build_figdata(results, Xv, oof_true_lvl, oof_main, oof_main_cont, Yv, sens_cols, feat_cols)
+    # 导出折外预测，供配对 bootstrap 显著性检验与后续集成实验复用（不进 JSON）
+    _dump_oof(out_dir, sens_cols, styles, oof_true_lvl, oof_main, oof_knn, oof_rf,
+              oof_enet, oof_mean, oof_main_cont)
     _validate(out_dir, sens_cols, results)
     # 保存全量模型供 Q2 复用（可复现，不进 JSON）
     import joblib
@@ -196,6 +199,23 @@ def _spearman(cont_true, pred):
     """Spearman 秩相关；一侧退化为常数时相关系数定义为 0（无单调关系）。"""
     rho = spearmanr(np.asarray(cont_true, float), np.asarray(pred, float)).correlation
     return float(rho) if np.isfinite(rho) else 0.0
+
+
+
+def _dump_oof(out_dir, sens_cols, styles, true_lvl, main, knn, rf, enet, mean_b, main_cont):
+    """把 5 折折外预测落盘，供显著性检验 / 集成实验复用（不改变主结果）。"""
+    import pandas as pd
+    base = {"beer_row": np.arange(true_lvl.shape[0]), "style": styles}
+    frames = [pd.DataFrame(base)]
+    frames.append(pd.DataFrame(true_lvl, columns=[f"true__{c}" for c in sens_cols]))
+    for tag, arr in (("main", main), ("knn", knn), ("rf", rf), ("enet", enet),
+                     ("mean", mean_b)):
+        frames.append(pd.DataFrame(arr, columns=[f"{tag}__{c}" for c in sens_cols]))
+    frames.append(pd.DataFrame(main_cont, columns=[f"maincont__{c}" for c in sens_cols]))
+    oof = pd.concat(frames, axis=1)
+    path = os.path.join(out_dir, "submission", "q1_oof_predictions.csv")
+    oof.to_csv(path, index=False, encoding="utf-8-sig")
+    print(f"[Q1] OOF 落盘 {path} shape={oof.shape}")
 
 
 def _acc_within1(pred_lvl, true_lvl):
