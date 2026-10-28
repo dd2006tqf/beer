@@ -1,64 +1,107 @@
 # -*- coding: utf-8 -*-
-"""fig_q2_top1_bar —— 每维 Top-1/2/3 的 bootstrap 入选频率（名次 x 维度热力矩阵）
+"""fig_q2_top1_bar -- Top-1/2/3 入选频率：饱和与衰减
 
-行是 50 个感官维度（按第 3 位频率升序），列是第 1、2、3 位化合物；
-格内数字为 500 次 bootstrap 下的入选频率，颜色深即稳定。
-第 1、2 列几乎全为 1.000（47/50 维恰为 1.000），真正有信息的是第 3 列：
-它回答"第三名是不是凑数"。矩阵化后一眼可见右侧一列的颜色衰减。
+Academic Figure Skill Asset Confirmation (verified against assets/figures/)
+(a) strip plot over 3 ranks        -> assets/figures/GroupedViolin -> param inherit
+(b) lollipop of weakest rank-3     -> assets/figures/BarCategorical -> param inherit
 
-版式参考 ModelViz 09_REL_003（多层编码相关性热图）。
-数据源：submission/q2_top3_compounds.csv（rank=1/2/3）。
+原版是 3x50 的热力矩阵，前两列几乎全为 1.000，整图呈一片同色，读者读不出信息。
+这里改成两个互补视图：
+(a) 三个名次上全部 50 维的实际取值，直接看出 rank1/2 饱和、rank3 才分化；
+(b) 把 rank3 最低的 14 维单独列出并写明化合物，回答"第三名是不是凑数"。
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import pandas as pd
 import numpy as np
+import pandas as pd
+import matplotlib as mpl
+mpl.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
-from _figbase import save_fig, dim_zh
-from _utils.plot_utils import ROOT
+from _figbase import ROOT, save_fig, dim_zh
 
-df = pd.read_csv(os.path.join(ROOT, 'submission', 'q2_top3_compounds.csv'))
-piv = df.pivot(index='sensory_dim', columns='rank',
-               values='bootstrap_select_freq')
-piv = piv.sort_values(3, ascending=False)   # 第 3 位最稳的在最上
-
-plt.rcParams.update({
-    'axes.labelsize': 7.6,
-    'xtick.labelsize': 7.2,
-    'ytick.labelsize': 6.2,
-    'axes.unicode_minus': False,
+mpl.rcParams.update({
+    "font.family": "sans-serif",
+    "font.sans-serif": ["SimHei", "Arial", "DejaVu Sans"],
+    "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8,
+    "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7,
+    "axes.spines.top": False, "axes.spines.right": False,
+    "axes.linewidth": 0.6, "legend.frameon": False,
+    "axes.unicode_minus": False, "pdf.fonttype": 42, "ps.fonttype": 42,
 })
+CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
+GREY = "#999999"
 
-vals = piv[[1, 2, 3]].values
-cmap = LinearSegmentedColormap.from_list(
-    'freq', ['#F2F5F8', '#B9CFE3', '#6C97BE', '#2E5C8A', '#173B5C'])
+df = pd.read_csv(os.path.join(ROOT, "submission", "q2_top3_compounds.csv"))
+piv = df.pivot(index="sensory_dim", columns="rank", values="bootstrap_select_freq")
+comp = df.pivot(index="sensory_dim", columns="rank", values="compound")
+piv = piv.loc[piv[3].sort_values().index]
 
-fig, ax = plt.subplots(figsize=(7.4, 2.35), layout='constrained')
-vals_t = vals.T                      # 3 行（名次） × 50 列（维度）
-im = ax.imshow(vals_t, cmap=cmap, vmin=0.35, vmax=1.0, aspect='auto',
-               interpolation='nearest')
+fig = plt.figure(figsize=(7.0, 3.1))
+gs = fig.add_gridspec(1, 2, width_ratios=[0.58, 1.0], wspace=0.28,
+                      left=0.075, right=0.985, top=0.90, bottom=0.145)
 
-ax.set_yticks([0, 1, 2])
-ax.set_yticklabels(['第 1 位', '第 2 位', '第 3 位'], fontsize=7.2)
-ax.set_xticks(np.arange(len(piv)))
-ax.set_xticklabels([dim_zh(d) for d in piv.index], fontsize=5.6,
-                   rotation=90, ha='center')
-ax.tick_params(length=0)
-for s_ in ax.spines.values():
-    s_.set_visible(False)
+# ---------------- (a) strip plot ----------------
+ax = fig.add_subplot(gs[0, 0])
+rng = np.random.default_rng(3)
+cols = [CATEGORICAL[0], CATEGORICAL[0], CATEGORICAL[1]]
+for i, r in enumerate([1, 2, 3]):
+    v = piv[r].values
+    x = i + rng.normal(0, 0.052, size=v.size)
+    ax.scatter(x, v, s=9, color=cols[i], alpha=0.55, edgecolor="none", zorder=3)
+    ax.plot([i - 0.24, i + 0.24], [np.median(v)] * 2, color="#222222", lw=1.0, zorder=5)
+    ax.text(i, 1.055, "%.3f" % v.mean(), ha="center", va="bottom", fontsize=6.6,
+            color="#222222")
+    ax.text(i, 0.335, "n=%d" % v.size, ha="center", va="bottom", fontsize=6.0, color=GREY)
+ax.set_xticks([0, 1, 2])
+ax.set_xticklabels(["第 1 位", "第 2 位", "第 3 位"])
+ax.set_xlim(-0.55, 2.55)
+ax.set_ylim(0.32, 1.09)
+ax.set_ylabel("bootstrap 入选频率（500 次重采样）")
+ax.grid(axis="y", color="#EFEFEF", lw=0.4, zorder=0)
+ax.set_axisbelow(True)
+ax.annotate("前两位饱和\n（均值 0.991 / 0.979）", xy=(0.5, 0.86), xytext=(0.35, 0.60),
+            fontsize=6.3, color="#555555",
+            arrowprops=dict(arrowstyle="-", lw=0.5, color="#CCCCCC"))
+ax.annotate("第三名才分化\n最低 0.376", xy=(2.0, 0.39), xytext=(1.42, 0.42),
+            fontsize=6.3, color=CATEGORICAL[1],
+            arrowprops=dict(arrowstyle="-", lw=0.5, color="#E0AFAF"))
+ax.set_title("(a) 三个名次的频率分布", loc="left", fontsize=8, fontweight="bold", pad=5)
 
-# 第 1、2 位几乎饱和，只标第 3 位的具体频率
-for j in range(len(piv)):
-    v3 = piv.iloc[j][3]
-    ax.text(j, 2, '%.2f' % v3, ha='center', va='center', fontsize=5.0,
-            color='white' if v3 > 0.78 else '#1F2933')
+# ---------------- (b) weakest rank-3 lollipop ----------------
+axB = fig.add_subplot(gs[0, 1])
+K = 14
+sub = piv[[3]].head(K).iloc[::-1]
+names = []
+for d in sub.index:
+    nm = comp.loc[d, 3]
+    nm = nm.replace("_", " ")
+    names.append("%s ← %s" % (dim_zh(d), nm if len(nm) <= 15 else nm[:14] + "…"))
+y = np.arange(K)
+vals = sub[3].values
+# 参考：全维 rank3 均值
+mu = piv[3].mean()
+axB.axvline(mu, color=GREY, lw=0.8, ls=(0, (4, 3)), zorder=2)
+colors = [CATEGORICAL[1] if v < 0.7 else (CATEGORICAL[3] if v < 0.9 else CATEGORICAL[0])
+          for v in vals]
+for yi, v, c in zip(y, vals, colors):
+    axB.plot([0.30, v], [yi, yi], color=c, lw=1.4, alpha=0.55, zorder=3,
+             solid_capstyle="round")
+    axB.scatter([v], [yi], s=26, color=c, edgecolor="white", linewidth=0.7, zorder=4)
+    axB.text(v + 0.012, yi, "%.3f" % v, va="center", ha="left", fontsize=6.1, color="#333333")
+axB.set_yticks(y)
+axB.set_yticklabels(names, fontsize=6.4)
+axB.tick_params(axis="y", length=0, pad=3)
+axB.set_xlim(0.30, 1.06)
+axB.set_ylim(-0.7, K - 0.3)
+axB.set_xlabel("第 3 位化合物的入选频率")
+axB.grid(axis="x", color="#EFEFEF", lw=0.4, zorder=0)
+axB.set_axisbelow(True)
+axB.text(mu - 0.012, K - 0.55, "全维均值 %.3f" % mu, ha="right", va="center",
+         fontsize=6.1, color=GREY)
+axB.set_title("(b) 最不稳定的 %d 维及其第三名化合物" % K, loc="left",
+              fontsize=8, fontweight="bold", pad=5)
 
-cb = fig.colorbar(im, ax=ax, fraction=0.020, pad=0.012)
-cb.outline.set_visible(False)
-cb.set_label('入选频率', fontsize=7.0)
-cb.ax.tick_params(labelsize=6.4, length=2)
-cb.set_ticks([0.4, 0.6, 0.8, 1.0])
-
-save_fig(fig, 'figures/fig_q2_top1_bar.png')
-print('done; n=%d rank3 min=%.3f' % (len(piv), piv[3].min()))
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_top1_bar.png"), dpi=400,
+            bbox_inches="tight", facecolor="white")
+plt.close(fig)
+print("saved; rank3 min=%.3f mean=%.3f" % (piv[3].min(), mu))

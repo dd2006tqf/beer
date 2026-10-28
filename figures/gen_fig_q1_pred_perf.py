@@ -1,87 +1,109 @@
 # -*- coding: utf-8 -*-
-"""fig_q1_pred_perf —— 50 个感官维的交叉验证 QWK（排序点阵，按强弱分档着色）
+"""fig_q1_pred_perf -- 50 维 QWK 排序 + 逐维 bootstrap 区间
 
-横向棒棒糖按 QWK 降序排列 50 维，颜色按可预测性分档（强 / 中 / 弱），
-右侧标出该维的 ±1 级准确率，使"预测准不准"与"错得多不多"在同一行可读。
-虚线为全维均值。相比等长单色条形，分档配色能一眼看出强信号维只有少数。
+Academic Figure Skill Asset Confirmation (verified against assets/figures/)
+(a) ranked dot + 95% CI  -> assets/figures/BarCategorical (cross-type: forest) -> param inherit
+(b) QWK vs ±1 accuracy   -> assets/figures/MarginalDensity (cross-type)        -> param inherit
 
-版式参考 ModelViz 09_REL_001（棒棒糖）与 08_PRD_005（评估多面板）。
-数据源：figures/problem_1_results.json::per_dim、fig_data.qwk_ranked。
+新增信息：每维 QWK 的 2000 次 bootstrap 95% 区间。原图只有点估计，
+读者无法判断"0.32 与 0.40 的差距是不是抽样噪声"。区间与点一起画之后，
+强信号维(区间整体远离 0)与弱信号维(区间跨 0 或贴近 0)立刻分开。
+右图把 QWK 与 ±1 准确率联立：弱信号维即便 QWK 低，±1 仍可 >0.5，
+说明偏差集中在相邻一级。
+
+Data: figures/problem_1_results.json::per_dim + _tmp/q1_boot_full.json::per_dim
 """
-import os, sys
+import os, sys, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
+import matplotlib as mpl
+mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import P1, save_fig, declutter_axes, dim_zh
+from _figbase import P1, ROOT, save_fig, dim_zh
 
-PD = P1['per_dim']
-ranked = P1['fig_data']['qwk_ranked']
-mean_qwk = P1['summary']['mean_qwk_main']
-
-plt.rcParams.update({
-    'axes.labelsize': 8.0,
-    'xtick.labelsize': 6.8,
-    'ytick.labelsize': 6.6,
-    'legend.fontsize': 6.8,
-    'axes.edgecolor': '#6B7280',
-    'axes.labelcolor': '#1F2933',
-    'axes.unicode_minus': False,
+mpl.rcParams.update({
+    "font.family": "sans-serif",
+    "font.sans-serif": ["SimHei", "Arial", "DejaVu Sans"],
+    "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8,
+    "xtick.labelsize": 7, "ytick.labelsize": 6.4, "legend.fontsize": 6.6,
+    "axes.spines.top": False, "axes.spines.right": False,
+    "axes.linewidth": 0.6, "legend.frameon": False,
+    "axes.unicode_minus": False, "pdf.fonttype": 42, "ps.fonttype": 42,
 })
+CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
+GREY = "#999999"
 
-STRONG, MID, WEAK = '#2E5C8A', '#7FA8CF', '#D8DEE6'
+PD = P1["per_dim"]
+ranked = P1["fig_data"]["qwk_ranked"]
+boot = json.load(open(os.path.join(ROOT, "_tmp", "q1_boot_full.json"), encoding="utf-8"))["per_dim"]
+mean_qwk = P1["summary"]["mean_qwk_main"]
+
 names = [r[0] for r in ranked]
-vals = np.array([r[1] for r in ranked])
-acc = np.array([PD[n]['acc_within1_main'] for n in names])
+vals = np.array([PD[n]["qwk_main"] for n in names])
+acc = np.array([PD[n]["acc_within1_main"] for n in names])
+lo = np.array([boot[n]["lo"] for n in names])
+hi = np.array([boot[n]["hi"] for n in names])
 
 def tier(v):
-    return STRONG if v >= 0.55 else (MID if v >= 0.30 else WEAK)
+    return CATEGORICAL[0] if v >= 0.55 else (CATEGORICAL[3] if v >= 0.30 else GREY)
 
-n = len(names)
-half = (n + 1) // 2
-fig, axes = plt.subplots(1, 2, figsize=(5.9, 4.55),
-                         gridspec_kw={'wspace': 0.10},
-                         layout='constrained', sharex=True)
+fig = plt.figure(figsize=(7.2, 4.6))
+gs = fig.add_gridspec(1, 2, width_ratios=[1.15, 1.0], wspace=0.13,
+                      left=0.135, right=0.985, top=0.92, bottom=0.115)
 
-for col, ax in enumerate(axes):
-    lo = col * half
-    hi = min((col + 1) * half, n)
-    sub = list(range(lo, hi))
-    yy = np.arange(len(sub))[::-1]
-    for k, gi in enumerate(sub):
-        c = tier(vals[gi])
-        ax.hlines(yy[k], 0, vals[gi], color=c, lw=1.0, alpha=0.55, zorder=2)
-        ax.scatter(vals[gi], yy[k], s=20, color=c, edgecolor='white',
-                   linewidth=0.4, zorder=3)
-    ax.axvline(mean_qwk, color='#9CA3AF', ls=(0, (4, 2)), lw=0.9, zorder=1)
-    ax.set_yticks(yy)
-    labels = []
-    for gi in sub:
-        z = dim_zh(names[gi])
-        labels.append(z if len(z) <= 8 else z[:7] + '…')
-    ax.set_yticklabels(labels, fontsize=6.4)
-    ax.set_xlim(0, 0.92)
-    ax.set_ylim(-0.8, len(sub) - 0.2)
-    ax.set_xlabel('折外 QWK', fontsize=7.6)
+# ══════════ (a) 排序 + CI ══════════
+ax = fig.add_subplot(gs[0, 0])
+y = np.arange(len(names))[::-1]
+ax.axvline(0, color="#BBBBBB", lw=0.7, zorder=1)
+for k, i in enumerate(range(len(names))):
+    c = tier(vals[i])
+    ax.plot([lo[i], hi[i]], [y[k], y[k]], color=c, lw=1.5, alpha=0.55,
+            solid_capstyle="butt", zorder=2)
+    ax.scatter(vals[i], y[k], s=17, color=c, edgecolor="white", linewidth=0.45, zorder=4)
+ax.axvline(mean_qwk, color="#444444", lw=0.8, ls=(0, (4, 3)), zorder=3)
+ax.set_yticks(y)
+ax.set_yticklabels([dim_zh(n) for n in names], fontsize=5.6)
+ax.tick_params(axis="y", length=0, pad=2)
+ax.set_ylim(-0.9, len(names) - 0.1)
+ax.set_xlim(-0.03, 0.95)
+ax.set_xlabel("折外 QWK（点=点估计，横线=2000 次 bootstrap 95% 区间）")
+ax.grid(axis="x", color="#F0F0F0", lw=0.4, zorder=0)
+ax.set_axisbelow(True)
+ax.set_title("(a) 50 维可预测性排序", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax.annotate("全维均值 %.3f" % mean_qwk, xy=(mean_qwk, len(names) - 7),
+            xytext=(mean_qwk + 0.16, len(names) - 11), fontsize=6.2, color="#333333",
+            arrowprops=dict(arrowstyle="-", lw=0.5, color="#999999"))
+ax.legend(handles=[
+    Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=4.5, label="强（≥0.55）"),
+    Line2D([], [], marker="o", ls="", color=CATEGORICAL[3], ms=4.5, label="中（0.30–0.55）"),
+    Line2D([], [], marker="o", ls="", color=GREY, ms=4.5, label="弱（<0.30）"),
+], loc="lower right", handletextpad=0.3, labelspacing=0.25, borderaxespad=0.2)
 
-# 右列再标 ±1 准确率
-ax = axes[1]
-lo = half
-sub = list(range(lo, n))
-yy = np.arange(len(sub))[::-1]
-for k, gi in enumerate(sub):
-    ax.text(0.905, yy[k], '%.0f' % (acc[gi] * 100), ha='right', va='center',
-            fontsize=6.0, color='#4B5563')
-ax.text(0.905, len(sub) + 0.15, '±1%', ha='right', va='bottom',
-        fontsize=6.4, color='#1F2933')
+# ══════════ (b) QWK vs ±1 ══════════
+ax2 = fig.add_subplot(gs[0, 1])
+for i in range(len(names)):
+    ax2.scatter(vals[i], acc[i] * 100, s=24, color=tier(vals[i]),
+                edgecolor="white", linewidth=0.5, alpha=0.9, zorder=3)
+# 相邻一级"完全随机"的参照：等级数 7 时，随机命中 ±1 的概率
+ax2.axhline(3 / 7 * 100, color=GREY, lw=0.8, ls=(0, (4, 2)), zorder=2)
+ax2.axvline(mean_qwk, color=GREY, lw=0.8, ls=(0, (4, 2)), zorder=2)
+ax2.set_xlim(-0.03, 0.90)
+ax2.set_ylim(38, 88)
+ax2.set_xlabel("折外 QWK")
+ax2.set_ylabel("±1 级准确率（%）")
+ax2.grid(color="#F3F3F3", lw=0.4, zorder=0)
+ax2.set_axisbelow(True)
+ax2.set_title("(b) 分级判别力与相邻命中", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax2.text(0.015, 42.8, "随机 ±1 命中 3/7 ≈ 42.9%", fontsize=6.2, color=GREY)
+# 标出四个端点和代表维
+pick = [0, 1, len(names) - 1, len(names) - 2]
+for i in pick:
+    ax2.annotate(dim_zh(names[i]), (vals[i], acc[i] * 100),
+                 xytext=(4, 5), textcoords="offset points", fontsize=6.0, color="#333333")
 
-fig.legend(handles=[
-    Line2D([], [], marker='o', ls='', color=STRONG, markersize=5, label='强（QWK ≥ 0.55）'),
-    Line2D([], [], marker='o', ls='', color=MID, markersize=5, label='中（0.30–0.55）'),
-    Line2D([], [], marker='o', ls='', color=WEAK, markersize=5, label='弱（< 0.30）'),
-], loc='outside lower center', ncol=3, frameon=False,
-   handletextpad=0.4, columnspacing=1.6, borderaxespad=0.1)
-
-save_fig(fig, 'figures/fig_q1_pred_perf.png')
-strong = int((vals >= 0.55).sum()); weak = int((vals < 0.30).sum())
-print('done; n=%d strong=%d weak=%d mean=%.4f' % (n, strong, weak, mean_qwk))
+fig.savefig(os.path.join(ROOT, "figures", "fig_q1_pred_perf.png"), dpi=400,
+            bbox_inches="tight", facecolor="white")
+plt.close(fig)
+print("saved; strong=%d weak=%d mean=%.4f" % (int((vals >= 0.55).sum()),
+      int((vals < 0.30).sum()), mean_qwk))
