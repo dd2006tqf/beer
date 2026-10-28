@@ -1,0 +1,315 @@
+% ---- 表 A.3 阈值超限列清单 ----
+\begin{longtable}{@{}p{0.36\textwidth}p{0.16\textwidth}r r@{}}
+\caption{43 个阈值超限列的清单与超阈比例}\\
+\toprule
+\textbf{字段（1.csv 列名）} & \textbf{来源类别} & \textbf{阈值（1.csv 尺度）} & \textbf{超阈比例} \\
+\endfirsthead
+\caption*{43 个阈值超限列的清单与超阈比例（续）}\\
+\toprule
+\textbf{字段} & \textbf{来源类别} & \textbf{阈值} & \textbf{超阈比例} \\
+\endhead
+\bottomrule
+\endlastfoot
+protein.\allowbreak{}g.\allowbreak{}L.\allowbreak{} & --- & 0.010 & 99.6\% \\
+linalool & --- & 0.027 & 98.4\% \\
+ethanol.\allowbreak{}.\allowbreak{}v.\allowbreak{}v.\allowbreak{} & --- & 0.245 & 97.6\% \\
+citronellol & --- & 0.025 & 92.4\% \\
+H2S & --- & 0.544 & 92.0\% \\
+ammonia.\allowbreak{}mg.\allowbreak{}L.\allowbreak{} & --- & 0.415 & 87.6\% \\
+bitterness & --- & 0.699 & 86.4\% \\
+isopentyl\_acetate & --- & -0.219 & 84.4\% \\
+geraniol & --- & 0.032 & 76.0\% \\
+DMS & --- & 1.237 & 67.2\% \\
+ethyl\_acetate & --- & 1.380 & 65.6\% \\
+acetic\_acid.\allowbreak{}g.\allowbreak{}L.\allowbreak{} & --- & -0.853 & 61.6\% \\
+isoamyl\_alcohol & --- & 1.602 & 51.6\% \\
+ethyl\_hexanoate & --- & -0.638 & 51.6\% \\
+iron & --- & -1.000 & 47.6\% \\
+X2.\allowbreak{}3.\allowbreak{}butanedione & --- & 0.299 & 46.5\% \\
+ethyl\_octanoate & --- & -0.155 & 26.4\% \\
+DES & --- & 0.079 & 18.4\% \\
+GFS & --- & 0.462 & 18.0\% \\
+lactic\_acid.\allowbreak{}mg.\allowbreak{}L.\allowbreak{} & --- & 2.620 & 17.2\% \\
+X1.\allowbreak{}alpha.\allowbreak{}terpineol & --- & 1.500 & 10.4\% \\
+ethyl\_2.\allowbreak{}methyl\_butyrate & --- & -1.569 & 6.8\% \\
+X4VG & --- & -0.685 & 6.4\% \\
+E.\allowbreak{}caryophyllene & --- & 0.280 & 5.6\% \\
+ethyl.\allowbreak{}butyrate & --- & 0.450 & 3.2\% \\
+glycerol & --- & 0.647 & 2.8\% \\
+phenethyl\_alcohol & --- & 1.544 & 2.4\% \\
+alpha.\allowbreak{}humulene & --- & 0.625 & 2.0\% \\
+ethyl\_isovalerate & --- & -1.000 & 0.8\% \\
+isobutanol & --- & 1.903 & 0.0\% \\
+acetaldehyde & --- & 1.699 & 0.0\% \\
+furfural & --- & 60.000 & 0.0\% \\
+ethyl\_decanoate & --- & 0.015 & 0.0\% \\
+ethyl.\allowbreak{}isobutyrate & --- & 2.600 & 0.0\% \\
+ethyl.\allowbreak{}nicotinate & --- & 6.000 & 0.0\% \\
+ethyl\_propionate & --- & 1.000 & 0.0\% \\
+isobutyl\_acetate & --- & 0.000 & 0.0\% \\
+octyl\_acetate & --- & -0.301 & 0.0\% \\
+phenethyl\_acetate & --- & 0.246 & 0.0\% \\
+methylpyrazine & --- & 1.000 & 0.0\% \\
+CS2 & --- & 1.699 & 0.0\% \\
+SO2.\allowbreak{}mg.\allowbreak{}L.\allowbreak{} & --- & 1.186 & 0.0\% \\
+Z.\allowbreak{}nerolidol & --- & 25.000 & 0.0\% \\
+\end{longtable}
+
+\noindent\footnotesize 注：阈值已按 5.3 节核实的尺度换算到 1.csv 取值空间（常用对数列取 $\log_{10}$）；超阈比例为该列取值不低于阈值的样本占比，与 9.3 节特征增广实验同一取数口径。数据源 \texttt{figures/derived/q1\_threshold\_cols.json}。
+
+% ---- 表 A.4 模块 PC1 ----
+\begin{table}[htbp]\centering\small
+\begin{threeparttable}
+\caption{8 个共表达模块的第一主成分（成员 $\ge 5$）}
+\begin{tabularx}{\textwidth}{@{}l r Y r@{}}
+\toprule
+\textbf{模块} & \textbf{成员数} & \textbf{代表成员（按度排序前 3）} & \textbf{PC1 解释率} \\
+15 & 28 & ethyl.\allowbreak{}phenylacetate、prenyl.\allowbreak{}isobutyrate、ethyl.\allowbreak{}5.\allowbreak{}methylhexanoate & 0.333 $\pm$ 0.014 \\
+19 & 28 & nerol.\allowbreak{}oxide、alpha.\allowbreak{}calacorene、caryophylla.\allowbreak{}4.\allowbreak{}12.\allowbreak{}.\allowbreak{}8.\allowbreak{}13.\allowbreak{}.\allowbreak{}dien.\allowbreak{}5.\allowbreak{}alpha.\allowbreak{}ol & 0.303 $\pm$ 0.016 \\
+49 & 23 & X3.\allowbreak{}methyl.\allowbreak{}2.\allowbreak{}hexanol、X3.\allowbreak{}furanmethanol、n.\allowbreak{}nonanol & 0.285 $\pm$ 0.024 \\
+27 & 20 & X2.\allowbreak{}3.\allowbreak{}butanedione、X2.\allowbreak{}methyl.\allowbreak{}1.\allowbreak{}butanol、X1.\allowbreak{}propanol & 0.716 $\pm$ 0.160 \\
+35 & 19 & ethyl.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}linalool、isoborneol、terpinen.\allowbreak{}4.\allowbreak{}ol & 0.472 $\pm$ 0.025 \\
+5 & 18 & trans.\allowbreak{}dihydro.\allowbreak{}alpha.\allowbreak{}terpinyl.\allowbreak{}acetate、isopentyl.\allowbreak{}hexanoate、X1.\allowbreak{}2.\allowbreak{}dihydro.\allowbreak{}8.\allowbreak{}hydroxy.\allowbreak{}.\allowbreak{}2E.\allowbreak{}.\allowbreak{}linalool & 0.537 $\pm$ 0.011 \\
+0 & 12 & ethyl\_acetate、ethyl\_hexanoate、isopentyl\_acetate & 0.678 $\pm$ 0.011 \\
+20 & 11 & X2Z.\allowbreak{}6E.\allowbreak{}farnesol、n.\allowbreak{}decanol、E.\allowbreak{}nerolidol & 0.343 $\pm$ 0.018 \\
+\bottomrule
+\end{tabularx}
+\tabnote[figures/derived/q1\_pc1\_modules.json]{PC1 解释率在每个训练折内单独拟合 PCA、取五折均值$\pm$标准差，与 9.3 节模块 PC1 增广实验同一防泄漏口径。模块编号为共表达网络的社区 id。}
+\end{threeparttable}\end{table}
+
+% ---- 表 A.5 模块成员 ----
+\begin{longtable}{@{}l r p{0.74\textwidth}@{}}
+\caption{55 个 Louvain 社区的成员构成（$\rho=0.5$，211 节点）}\\
+\toprule
+\textbf{模块} & \textbf{成员数} & \textbf{成员（按度降序）} \\
+\endfirsthead
+\caption*{55 个 Louvain 社区的成员构成（续）}\\
+\toprule
+\textbf{模块} & \textbf{成员数} & \textbf{成员} \\
+\endhead
+\bottomrule
+\endlastfoot
+M01 & 28 & ethyl.\allowbreak{}phenylacetate、prenyl.\allowbreak{}isobutyrate、ethyl.\allowbreak{}5.\allowbreak{}methylhexanoate、ethyl.\allowbreak{}benzoate、neryl.\allowbreak{}formate、isomaltol、nonan.\allowbreak{}2.\allowbreak{}ol、ethyl.\allowbreak{}furoate、perillyl.\allowbreak{}acetate、X2.\allowbreak{}acetylfuran、germacrene.\allowbreak{}D、X4.\allowbreak{}ethyl.\allowbreak{}guaiacol、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}alpha.\allowbreak{}ionone、ethyl\_isovalerate、X5.\allowbreak{}methylfurfural、X2.\allowbreak{}acetylpyrrole、isoamyl.\allowbreak{}lactate、X4.\allowbreak{}ethyl.\allowbreak{}phenol、ethyl\_2.\allowbreak{}methyl\_butyrate、methylpyrazine、X2.\allowbreak{}6.\allowbreak{}dimethyl.\allowbreak{}pyrazine、ethyl.\allowbreak{}hex.\allowbreak{}.\allowbreak{}3E.\allowbreak{}.\allowbreak{}enoate、ethyl.\allowbreak{}hydrocinnamate、furfural、ethyl.\allowbreak{}tiglate、ethyl.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}cinnamate、octyl\_acetate、X4.\allowbreak{}methoxysalicylaldehyde \\
+M02 & 28 & nerol.\allowbreak{}oxide、alpha.\allowbreak{}calacorene、caryophylla.\allowbreak{}4.\allowbreak{}12.\allowbreak{}.\allowbreak{}8.\allowbreak{}13.\allowbreak{}.\allowbreak{}dien.\allowbreak{}5.\allowbreak{}alpha.\allowbreak{}ol、alpha.\allowbreak{}muurolol、alloaromadendrene.\allowbreak{}epoxide、X1.\allowbreak{}10.\allowbreak{}di.\allowbreak{}epi.\allowbreak{}cubenol、X1.\allowbreak{}octen.\allowbreak{}3.\allowbreak{}ol、ethyl.\allowbreak{}hex.\allowbreak{}.\allowbreak{}2E.\allowbreak{}.\allowbreak{}enoate、X2.\allowbreak{}undecanol、neryl.\allowbreak{}propanoate、humulene.\allowbreak{}epoxide.\allowbreak{}II、methyl.\allowbreak{}geranate、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}beta.\allowbreak{}ionone、tau.\allowbreak{}muurolol、caryophyllene.\allowbreak{}oxide、caryophyllene.\allowbreak{}alcohol、selin.\allowbreak{}11.\allowbreak{}en.\allowbreak{}4.\allowbreak{}alpha.\allowbreak{}ol、y.\allowbreak{}methyl.\allowbreak{}1.\allowbreak{}octanol、ambroxide、cis.\allowbreak{}dihydro.\allowbreak{}beta.\allowbreak{}terpineol、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}ortho.\allowbreak{}methoxy.\allowbreak{}cinnamaldehyde、isopentyl.\allowbreak{}butanoate、terpinen.\allowbreak{}4.\allowbreak{}ol.\allowbreak{}acetate、neryl.\allowbreak{}isobutanoate、neryl.\allowbreak{}isovalerate、geosmin、spathulenol、benzyl.\allowbreak{}benzoate \\
+M03 & 23 & X3.\allowbreak{}methyl.\allowbreak{}2.\allowbreak{}hexanol、X3.\allowbreak{}furanmethanol、n.\allowbreak{}nonanol、ortho.\allowbreak{}cresol、X4.\allowbreak{}methyl.\allowbreak{}1.\allowbreak{}pentanol、n.\allowbreak{}octanol、n.\allowbreak{}heptanol、n.\allowbreak{}dodecanol、alpha.\allowbreak{}terpinyl.\allowbreak{}isobutanoate、n.\allowbreak{}tetradecanol、manool、X2.\allowbreak{}ethyl.\allowbreak{}1.\allowbreak{}hexanol、x.\allowbreak{}methyl.\allowbreak{}1.\allowbreak{}octanol、X9.\allowbreak{}epi.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}caryophyllene、isopropyl.\allowbreak{}tetradecanoate、isopropyl.\allowbreak{}hexadecanoate、ethyl.\allowbreak{}isobutyrate、dimethoxy.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}citral、methyl.\allowbreak{}hexadecanoate、butyl.\allowbreak{}acetate、X2.\allowbreak{}furanmethanol、car.\allowbreak{}3.\allowbreak{}en.\allowbreak{}2.\allowbreak{}one、manool.\allowbreak{}oxide \\
+M04 & 20 & X2.\allowbreak{}3.\allowbreak{}butanedione、X2.\allowbreak{}methyl.\allowbreak{}1.\allowbreak{}butanol、X1.\allowbreak{}propanol、n.\allowbreak{}pentanol、isopentyl.\allowbreak{}formate、X3.\allowbreak{}methyl.\allowbreak{}2.\allowbreak{}butenal、ethyl.\allowbreak{}pentanoate、diethyl.\allowbreak{}succinate、X.\allowbreak{}E.\allowbreak{}E.\allowbreak{}.\allowbreak{}2.\allowbreak{}4.\allowbreak{}decadienal、propyl.\allowbreak{}acetate、gamma.\allowbreak{}nonalactone、benzaldehyde、ethyl.\allowbreak{}nicotinate、X14.\allowbreak{}hydroxy.\allowbreak{}9.\allowbreak{}epi.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}caryophyllene、X3.\allowbreak{}methylbutanal、amyl.\allowbreak{}acetate、benzyl.\allowbreak{}alcohol、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}beta.\allowbreak{}damascenone、alpha.\allowbreak{}humulene、gamma.\allowbreak{}eudesmol \\
+M05 & 19 & ethyl.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}linalool、isoborneol、terpinen.\allowbreak{}4.\allowbreak{}ol、beta.\allowbreak{}phellandrene、terpinolene、linalool、X2.\allowbreak{}methyl.\allowbreak{}benzofuran、X1.\allowbreak{}alpha.\allowbreak{}terpineol、E.\allowbreak{}ocimenone、alpha.\allowbreak{}phellandrene、limonene、cumin.\allowbreak{}aldehyde、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}beta.\allowbreak{}ocimene、camphor、citronellol、phenylacetaldehyde、nerol、hydroxy.\allowbreak{}methyl.\allowbreak{}furfural、geraniol \\
+M06 & 18 & trans.\allowbreak{}dihydro.\allowbreak{}alpha.\allowbreak{}terpinyl.\allowbreak{}acetate、isopentyl.\allowbreak{}hexanoate、X1.\allowbreak{}2.\allowbreak{}dihydro.\allowbreak{}8.\allowbreak{}hydroxy.\allowbreak{}.\allowbreak{}2E.\allowbreak{}.\allowbreak{}linalool、pentyl.\allowbreak{}octanoate、isobutyl.\allowbreak{}hexanoate、X.\allowbreak{}Z.\allowbreak{}.\allowbreak{}beta.\allowbreak{}farnesene、X2.\allowbreak{}methylbutyl.\allowbreak{}octanoate、ethyl.\allowbreak{}tetradecanoate、ethyl.\allowbreak{}pentadecanoate、X2.\allowbreak{}butyloctanoate、ethyl.\allowbreak{}.\allowbreak{}9.\allowbreak{}.\allowbreak{}decenoate、X2.\allowbreak{}phenyl.\allowbreak{}ethyl.\allowbreak{}butyrate、ethyl.\allowbreak{}hexadecanoate、ethyl\_decanoate、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}2.\allowbreak{}nonenal、ethyl\_octanoate、Z.\allowbreak{}Z.\allowbreak{}geranyl.\allowbreak{}linalool、ethyl.\allowbreak{}octadecanoate \\
+M07 & 12 & ethyl\_acetate、ethyl\_hexanoate、isopentyl\_acetate、isobutyl\_acetate、isoamyl\_alcohol、phenethyl\_acetate、E.\allowbreak{}cinnamaldehyde、acetaldehyde、isobutanol、n.\allowbreak{}hexanol、ethyl.\allowbreak{}butyrate、heptyl.\allowbreak{}acetate \\
+M08 & 11 & X2Z.\allowbreak{}6E.\allowbreak{}farnesol、n.\allowbreak{}decanol、E.\allowbreak{}nerolidol、X2.\allowbreak{}3.\allowbreak{}dihydro.\allowbreak{}farnesol、dihydroisocaryophyllene.\allowbreak{}epoxide、X2E.\allowbreak{}6Z.\allowbreak{}farnesal、X2.\allowbreak{}pentyl.\allowbreak{}furan、beta.\allowbreak{}cyclohomocitral、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}beta.\allowbreak{}farnesene、X2Z.\allowbreak{}6E.\allowbreak{}farnesal、X3.\allowbreak{}methylthio.\allowbreak{}propanol \\
+M09 & 3 & MeSH、DES、H2S \\
+M10 & 3 & butylated.\allowbreak{}hydroxytoluene、E.\allowbreak{}methyl.\allowbreak{}isoeugenol、X.\allowbreak{}Z.\allowbreak{}.\allowbreak{}dihydro.\allowbreak{}apofarnesal \\
+M11 & 2 & neo.\allowbreak{}allo.\allowbreak{}ocimene、X13.\allowbreak{}epi.\allowbreak{}manool.\allowbreak{}oxide \\
+M12 & 1 & CS2 \\
+M13 & 1 & DMS \\
+M14 & 1 & ethyl\_propionate \\
+M15 & 1 & phenethyl\_alcohol \\
+M16 & 1 & X4VG \\
+M17 & 1 & propylene.\allowbreak{}glycol \\
+M18 & 1 & X2.\allowbreak{}methyltetrahydrofuran.\allowbreak{}3.\allowbreak{}one \\
+M19 & 1 & ethyl.\allowbreak{}lactate \\
+M20 & 1 & X3Z.\allowbreak{}hexenol \\
+M21 & 1 & styrene \\
+M22 & 1 & X6.\allowbreak{}methyl.\allowbreak{}5.\allowbreak{}hepten.\allowbreak{}2.\allowbreak{}one \\
+M23 & 1 & dehydroxy.\allowbreak{}cis.\allowbreak{}linalool.\allowbreak{}oxide \\
+M24 & 1 & hexyl.\allowbreak{}acetate \\
+M25 & 1 & eucalyptol \\
+M26 & 1 & cis.\allowbreak{}linalool.\allowbreak{}oxide \\
+M27 & 1 & meta.\allowbreak{}cymenene \\
+M28 & 1 & n.\allowbreak{}nonanal \\
+M29 & 1 & trans.\allowbreak{}dihydro.\allowbreak{}beta.\allowbreak{}terpineol \\
+M30 & 1 & cis.\allowbreak{}beta.\allowbreak{}terpineol \\
+M31 & 1 & vinyl.\allowbreak{}caprylate \\
+M32 & 1 & X2.\allowbreak{}undecanone \\
+M33 & 1 & delta.\allowbreak{}terpinyl.\allowbreak{}acetate \\
+M34 & 1 & eugenol \\
+M35 & 1 & methyl.\allowbreak{}para.\allowbreak{}anisate \\
+M36 & 1 & vanillin \\
+M37 & 1 & dodecanal \\
+M38 & 1 & X4.\allowbreak{}8.\allowbreak{}alpha.\allowbreak{}epoxy.\allowbreak{}caryophyllane \\
+M39 & 1 & E.\allowbreak{}caryophyllene \\
+M40 & 1 & beta.\allowbreak{}humulene \\
+M41 & 1 & linalool.\allowbreak{}isovalerate \\
+M42 & 1 & valencene \\
+M43 & 1 & X.\allowbreak{}E.\allowbreak{}.\allowbreak{}dihydro.\allowbreak{}apofarnesal \\
+M44 & 1 & Z.\allowbreak{}nerolidol \\
+M45 & 1 & isopropyl.\allowbreak{}laurate \\
+M46 & 1 & tau.\allowbreak{}cadinol \\
+M47 & 1 & alpha.\allowbreak{}eudesmol \\
+M48 & 1 & foeniculin \\
+M49 & 1 & cadalene \\
+M50 & 1 & caryophyllene.\allowbreak{}acetate \\
+M51 & 1 & X14.\allowbreak{}hydroxy.\allowbreak{}alpha.\allowbreak{}humulene \\
+M52 & 1 & X2Z.\allowbreak{}6Z.\allowbreak{}farnesol \\
+M53 & 1 & X2E.\allowbreak{}6E.\allowbreak{}methyl.\allowbreak{}farnesoate \\
+M54 & 1 & X2.\allowbreak{}ethylhexylsalicylate \\
+M55 & 1 & X2.\allowbreak{}ethyl.\allowbreak{}3.\allowbreak{}methylpyrazine \\
+\end{longtable}
+
+\noindent\footnotesize 注：M01--M55 按成员数降序重新编号，其中 M01--M08 即表 A.4 的 8 个 PC1 模块。另有 44 个度为 0 的孤立节点未归入任何社区：CS2、DMS、ethyl\_propionate、phenethyl\_alcohol、X4VG、propylene.\allowbreak{}glycol、X2.\allowbreak{}methyltetrahydrofuran.\allowbreak{}3.\allowbreak{}one、ethyl.\allowbreak{}lactate、X3Z.\allowbreak{}hexenol、styrene、X6.\allowbreak{}methyl.\allowbreak{}5.\allowbreak{}hepten.\allowbreak{}2.\allowbreak{}one、dehydroxy.\allowbreak{}cis.\allowbreak{}linalool.\allowbreak{}oxide、hexyl.\allowbreak{}acetate、eucalyptol、cis.\allowbreak{}linalool.\allowbreak{}oxide、meta.\allowbreak{}cymenene、n.\allowbreak{}nonanal、trans.\allowbreak{}dihydro.\allowbreak{}beta.\allowbreak{}terpineol、cis.\allowbreak{}beta.\allowbreak{}terpineol、vinyl.\allowbreak{}caprylate、X2.\allowbreak{}undecanone、delta.\allowbreak{}terpinyl.\allowbreak{}acetate、eugenol、methyl.\allowbreak{}para.\allowbreak{}anisate、vanillin、dodecanal、X4.\allowbreak{}8.\allowbreak{}alpha.\allowbreak{}epoxy.\allowbreak{}caryophyllane、E.\allowbreak{}caryophyllene、beta.\allowbreak{}humulene、linalool.\allowbreak{}isovalerate、valencene、X.\allowbreak{}E.\allowbreak{}.\allowbreak{}dihydro.\allowbreak{}apofarnesal、Z.\allowbreak{}nerolidol、isopropyl.\allowbreak{}laurate、tau.\allowbreak{}cadinol、alpha.\allowbreak{}eudesmol、foeniculin、cadalene、caryophyllene.\allowbreak{}acetate、X14.\allowbreak{}hydroxy.\allowbreak{}alpha.\allowbreak{}humulene、X2Z.\allowbreak{}6Z.\allowbreak{}farnesol、X2E.\allowbreak{}6E.\allowbreak{}methyl.\allowbreak{}farnesoate、X2.\allowbreak{}ethylhexylsalicylate、X2.\allowbreak{}ethyl.\allowbreak{}3.\allowbreak{}methylpyrazine。
+
+% ---- 表 A.6 150 条全量分级 ----
+\begin{longtable}{@{}p{0.22\textwidth} r p{0.24\textwidth} r r r r c@{}}
+\caption{全部 50 维 $\times$ 3 个候选的证据分级（101 A / 42 B / 7 C）}\\
+\toprule
+\textbf{感官维} & \textbf{名次} & \textbf{化合物} & \textbf{频率} & \textbf{条件增量} & \textbf{模块增量} & \textbf{正折数} & \textbf{级} \\
+\endfirsthead
+\caption*{全部 50 维 $\times$ 3 个候选的证据分级（续）}\\
+\toprule
+\textbf{感官维} & \textbf{名次} & \textbf{化合物} & \textbf{频率} & \textbf{条件增量} & \textbf{模块增量} & \textbf{正折数} & \textbf{级} \\
+\endhead
+\bottomrule
+\endlastfoot
+A\_malt\_all & 1 & acetaldehyde & 1.000 & 0.0056 & 0.0022 & 5 & B \\
+A\_malt\_all & 2 & octyl\_acetate & 1.000 & 0.0060 & 0.0460 & 5 & A \\
+A\_malt\_all & 3 & MeSH & 1.000 & 0.0017 & 0.0001 & 5 & B \\
+A\_malt\_grain & 1 & Z.\allowbreak{}nerolidol & 1.000 & 0.0138 & --- & 5 & B \\
+A\_malt\_grain & 2 & terpinen.\allowbreak{}4.\allowbreak{}ol & 1.000 & 0.0206 & 0.0316 & 5 & B \\
+A\_malt\_grain & 3 & phenethyl\_alcohol & 0.680 & 0.0046 & --- & 5 & C \\
+A\_malt\_bread & 1 & acetaldehyde & 1.000 & 0.0090 & 0.0045 & 5 & A \\
+A\_malt\_bread & 2 & octyl\_acetate & 1.000 & 0.0082 & 0.0621 & 5 & A \\
+A\_malt\_bread & 3 & ethyl.\allowbreak{}hexadecanoate & 0.488 & 0.0158 & 0.0275 & 5 & B \\
+A\_malt\_cara & 1 & octyl\_acetate & 1.000 & 0.0063 & 0.0525 & 5 & A \\
+A\_malt\_cara & 2 & acetaldehyde & 1.000 & 0.0002 & 0.0054 & 5 & B \\
+A\_malt\_cara & 3 & MeSH & 0.966 & 0.0004 & 0.0004 & 5 & B \\
+A\_malt\_burn & 1 & isobutanol & 1.000 & 0.0005 & 0.0020 & 5 & B \\
+A\_malt\_burn & 2 & MeSH & 0.900 & 0.0033 & 0.0002 & 5 & A \\
+A\_malt\_burn & 3 & ethyl\_propionate & 0.920 & 0.0003 & --- & 5 & B \\
+A\_hops\_all & 1 & ethyl\_octanoate & 1.000 & 0.0463 & 0.0118 & 5 & A \\
+A\_hops\_all & 2 & DMS & 1.000 & 0.0267 & --- & 5 & A \\
+A\_hops\_all & 3 & linalool & 1.000 & 0.0029 & 0.0103 & 5 & A \\
+A\_hops\_citrus & 1 & citronellol & 1.000 & 0.0068 & 0.0192 & 5 & A \\
+A\_hops\_citrus & 2 & ethyl\_decanoate & 1.000 & 0.0011 & 0.0313 & 5 & B \\
+A\_hops\_citrus & 3 & E.\allowbreak{}caryophyllene & 0.972 & 0.0055 & --- & 5 & A \\
+A\_hops\_tropical & 1 & DMS & 1.000 & 0.0217 & --- & 5 & A \\
+A\_hops\_tropical & 2 & isopentyl.\allowbreak{}butanoate & 1.000 & 0.1005 & 0.0826 & 5 & A \\
+A\_hops\_tropical & 3 & geraniol & 0.944 & 0.0011 & 0.0160 & 5 & B \\
+A\_hops\_noble & 1 & ethyl\_octanoate & 1.000 & 0.0856 & 0.0254 & 5 & A \\
+A\_hops\_noble & 2 & DMS & 1.000 & 0.0043 & --- & 5 & A \\
+A\_hops\_noble & 3 & ethyl\_hexanoate & 1.000 & 0.0022 & 0.0098 & 5 & B \\
+A\_hops\_woody & 1 & alloaromadendrene.\allowbreak{}epoxide & 1.000 & 0.0582 & 0.1027 & 5 & A \\
+A\_hops\_woody & 2 & ethyl\_2.\allowbreak{}methyl\_butyrate & 1.000 & 0.0078 & 0.0251 & 5 & A \\
+A\_hops\_woody & 3 & isobutanol & 0.970 & 0.0156 & 0.0032 & 5 & A \\
+A\_esters\_all & 1 & n.\allowbreak{}hexanol & 1.000 & 0.0784 & 0.0690 & 5 & A \\
+A\_esters\_all & 2 & acetaldehyde & 0.982 & 0.0105 & 0.1429 & 5 & A \\
+A\_esters\_all & 3 & phenethyl\_alcohol & 0.968 & 0.0101 & --- & 5 & A \\
+A\_esters\_ethac & 1 & ethyl\_acetate & 1.000 & 0.0235 & 0.0215 & 5 & A \\
+A\_esters\_ethac & 2 & phenethyl\_alcohol & 1.000 & 0.0114 & --- & 5 & A \\
+A\_esters\_ethac & 3 & X2.\allowbreak{}methyl.\allowbreak{}1.\allowbreak{}butanol & 0.990 & 0.0110 & 0.0321 & 5 & A \\
+A\_esters\_isoaa & 1 & isopentyl\_acetate & 1.000 & 0.0426 & 0.0791 & 5 & A \\
+A\_esters\_isoaa & 2 & n.\allowbreak{}hexanol & 1.000 & 0.0640 & 0.0579 & 5 & A \\
+A\_esters\_isoaa & 3 & benzaldehyde & 1.000 & 0.0319 & 0.0157 & 5 & A \\
+A\_esters\_flower & 1 & ethyl.\allowbreak{}lactate & 0.996 & 0.0357 & --- & 5 & B \\
+A\_esters\_flower & 2 & geraniol & 0.998 & 0.0026 & 0.0559 & 5 & C \\
+A\_esters\_flower & 3 & isobutyl\_acetate & 0.984 & 0.0021 & 0.0140 & 5 & C \\
+A\_esters\_fruity & 1 & beta.\allowbreak{}phellandrene & 1.000 & 0.0723 & 0.0135 & 5 & A \\
+A\_esters\_fruity & 2 & ethyl\_isovalerate & 1.000 & 0.0005 & 0.0466 & 5 & B \\
+A\_esters\_fruity & 3 & MeSH & 0.934 & 0.0058 & 0.0016 & 5 & A \\
+F\_malt\_all & 1 & acetaldehyde & 1.000 & 0.0132 & 0.0025 & 5 & A \\
+F\_malt\_all & 2 & MeSH & 1.000 & 0.0001 & 0.0003 & 5 & B \\
+F\_malt\_all & 3 & ethyl\_decanoate & 1.000 & 0.0007 & 0.0046 & 5 & B \\
+F\_malt\_grain & 1 & acetaldehyde & 1.000 & 0.0088 & 0.0219 & 5 & B \\
+F\_malt\_grain & 2 & octyl\_acetate & 0.866 & 0.0060 & 0.0273 & 5 & B \\
+F\_malt\_grain & 3 & n.\allowbreak{}heptanol & 0.682 & 0.0242 & 0.0099 & 5 & C \\
+F\_malt\_bread & 1 & MeSH & 1.000 & 0.0073 & 0.0005 & 5 & A \\
+F\_malt\_bread & 2 & acetaldehyde & 1.000 & 0.0026 & 0.0107 & 5 & A \\
+F\_malt\_bread & 3 & X2.\allowbreak{}acetylpyrrole & 1.000 & 0.0278 & 0.0380 & 5 & A \\
+F\_malt\_cara & 1 & acetaldehyde & 1.000 & 0.0100 & 0.0064 & 5 & A \\
+F\_malt\_cara & 2 & DES & 1.000 & 0.0031 & 0.0009 & 5 & B \\
+F\_malt\_cara & 3 & octyl\_acetate & 1.000 & 0.0056 & 0.0520 & 5 & B \\
+F\_malt\_burn & 1 & MeSH & 1.000 & 0.0003 & 0.0013 & 5 & B \\
+F\_malt\_burn & 2 & acetaldehyde & 1.000 & 0.0015 & 0.0040 & 5 & A \\
+F\_malt\_burn & 3 & ethyl\_decanoate & 1.000 & 0.0006 & 0.0095 & 5 & B \\
+F\_hops\_all & 1 & ethyl\_octanoate & 1.000 & 0.0539 & 0.0069 & 5 & A \\
+F\_hops\_all & 2 & DMS & 1.000 & 0.0076 & --- & 5 & B \\
+F\_hops\_all & 3 & ethyl\_hexanoate & 0.870 & 0.0019 & 0.0081 & 5 & B \\
+F\_hops\_citrus & 1 & citronellol & 1.000 & 0.0061 & 0.0182 & 5 & A \\
+F\_hops\_citrus & 2 & E.\allowbreak{}caryophyllene & 0.994 & 0.0043 & --- & 5 & A \\
+F\_hops\_citrus & 3 & DMS & 0.554 & 0.0027 & --- & 5 & B \\
+F\_hops\_tropical & 1 & DMS & 1.000 & 0.0097 & --- & 5 & A \\
+F\_hops\_tropical & 2 & nerol.\allowbreak{}oxide & 0.990 & 0.0245 & 0.0794 & 5 & A \\
+F\_hops\_tropical & 3 & germacrene.\allowbreak{}D & 0.980 & 0.0267 & 0.0295 & 5 & A \\
+F\_hops\_noble & 1 & ethyl\_octanoate & 1.000 & 0.0717 & 0.0179 & 5 & A \\
+F\_hops\_noble & 2 & ethyl\_hexanoate & 1.000 & 0.0025 & 0.0097 & 5 & A \\
+F\_hops\_noble & 3 & DMS & 1.000 & 0.0040 & --- & 5 & A \\
+F\_hops\_woody & 1 & isobutanol & 1.000 & 0.0766 & 0.0120 & 5 & A \\
+F\_hops\_woody & 2 & X.\allowbreak{}E.\allowbreak{}.\allowbreak{}2.\allowbreak{}nonenal & 0.964 & 0.0423 & 0.0112 & 5 & A \\
+F\_hops\_woody & 3 & citronellol & 0.908 & 0.0021 & 0.0067 & 5 & B \\
+F\_esters\_all & 1 & ethyl\_acetate & 1.000 & 0.0367 & 0.0625 & 5 & A \\
+F\_esters\_all & 2 & phenethyl\_alcohol & 0.998 & 0.0103 & --- & 5 & A \\
+F\_esters\_all & 3 & acetaldehyde & 0.962 & 0.0136 & 0.0945 & 5 & A \\
+F\_esters\_ethac & 1 & ethyl\_acetate & 1.000 & 0.0540 & 0.0378 & 5 & A \\
+F\_esters\_ethac & 2 & acetaldehyde & 1.000 & 0.0199 & 0.0743 & 5 & A \\
+F\_esters\_ethac & 3 & Z.\allowbreak{}Z.\allowbreak{}geranyl.\allowbreak{}linalool & 0.508 & 0.0229 & 0.0145 & 5 & B \\
+F\_esters\_isoaa & 1 & isopentyl\_acetate & 0.740 & 0.0162 & 0.0408 & 5 & B \\
+F\_esters\_isoaa & 2 & phenethyl\_alcohol & 1.000 & 0.0128 & --- & 5 & A \\
+F\_esters\_isoaa & 3 & neryl.\allowbreak{}propanoate & 0.976 & 0.0121 & 0.0380 & 5 & A \\
+F\_esters\_flower & 1 & delta.\allowbreak{}terpinyl.\allowbreak{}acetate & 1.000 & 0.0245 & --- & 5 & B \\
+F\_esters\_flower & 2 & ethyl\_2.\allowbreak{}methyl\_butyrate & 0.932 & 0.0067 & 0.0357 & 5 & C \\
+F\_esters\_flower & 3 & eucalyptol & 0.670 & 0.0134 & --- & 5 & C \\
+F\_esters\_fruity & 1 & MeSH & 1.000 & 0.0170 & 0.0036 & 5 & A \\
+F\_esters\_fruity & 2 & octyl\_acetate & 0.916 & 0.0054 & 0.0445 & 5 & A \\
+F\_esters\_fruity & 3 & phenethyl\_alcohol & 0.660 & 0.0197 & --- & 5 & B \\
+acidity & 1 & ethyl\_isovalerate & 1.000 & 0.0147 & 0.0381 & 5 & A \\
+acidity & 2 & isopentyl\_acetate & 1.000 & 0.0015 & 0.0024 & 5 & A \\
+acidity & 3 & geraniol & 1.000 & 0.0026 & 0.0086 & 5 & A \\
+bitternes & 1 & ethyl\_octanoate & 1.000 & 0.0764 & 0.0218 & 5 & A \\
+bitternes & 2 & MeSH & 1.000 & 0.0003 & 0.0000 & 5 & B \\
+bitternes & 3 & DMS & 1.000 & 0.0029 & --- & 5 & A \\
+sweetness & 1 & ethyl\_decanoate & 1.000 & 0.0207 & 0.0276 & 5 & A \\
+sweetness & 2 & octyl\_acetate & 1.000 & 0.0002 & 0.0169 & 5 & B \\
+sweetness & 3 & alpha.\allowbreak{}humulene & 1.000 & 0.0026 & 0.0083 & 5 & A \\
+X4vg & 1 & X4VG & 1.000 & 0.2155 & --- & 5 & A \\
+X4vg & 2 & delta.\allowbreak{}terpinyl.\allowbreak{}acetate & 1.000 & 0.1268 & --- & 5 & A \\
+X4vg & 3 & ethyl\_isovalerate & 1.000 & 0.0022 & 0.0419 & 5 & A \\
+diacetyl & 1 & eugenol & 1.000 & 0.1161 & --- & 5 & A \\
+diacetyl & 2 & ethyl\_octanoate & 1.000 & 0.0173 & 0.0784 & 5 & A \\
+diacetyl & 3 & X1.\allowbreak{}alpha.\allowbreak{}terpineol & 1.000 & 0.0029 & 0.0217 & 5 & A \\
+dms & 1 & isomaltol & 1.000 & 0.0135 & 0.0175 & 5 & A \\
+dms & 2 & phenethyl\_alcohol & 1.000 & 0.0035 & --- & 5 & A \\
+dms & 3 & X3.\allowbreak{}methylbutanal & 0.406 & 0.0098 & 0.0447 & 5 & B \\
+metallic & 1 & ethyl\_isovalerate & 1.000 & 0.0181 & 0.0688 & 5 & A \\
+metallic & 2 & alpha.\allowbreak{}calacorene & 1.000 & 0.0506 & 0.0183 & 5 & A \\
+metallic & 3 & isopentyl\_acetate & 0.898 & 0.0047 & 0.0080 & 5 & A \\
+stale\_hops & 1 & alloaromadendrene.\allowbreak{}epoxide & 1.000 & 0.0666 & 0.0448 & 5 & A \\
+stale\_hops & 2 & ethyl\_2.\allowbreak{}methyl\_butyrate & 1.000 & 0.0015 & 0.0193 & 5 & B \\
+stale\_hops & 3 & linalool & 1.000 & 0.0048 & 0.0113 & 5 & B \\
+t2n & 1 & geraniol & 1.000 & 0.0045 & 0.0410 & 5 & A \\
+t2n & 2 & phenethyl\_alcohol & 1.000 & 0.0062 & --- & 5 & A \\
+t2n & 3 & H2S & 0.912 & 0.0094 & 0.0029 & 5 & A \\
+orange & 1 & ethyl.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}linalool & 1.000 & 0.1290 & 0.1214 & 5 & A \\
+orange & 2 & DMS & 0.896 & 0.0110 & --- & 5 & A \\
+orange & 3 & acetaldehyde & 0.786 & 0.0000 & 0.0008 & 5 & C \\
+coriander & 1 & ethyl.\allowbreak{}.\allowbreak{}E.\allowbreak{}.\allowbreak{}linalool & 0.856 & 0.0813 & 0.1290 & 5 & A \\
+coriander & 2 & acetaldehyde & 0.986 & 0.0034 & 0.0016 & 5 & A \\
+coriander & 3 & X4VG & 0.774 & 0.0029 & --- & 5 & B \\
+clove & 1 & X2.\allowbreak{}3.\allowbreak{}butanedione & 1.000 & 0.0108 & 0.0028 & 5 & A \\
+clove & 2 & X4VG & 0.962 & 0.0132 & --- & 5 & A \\
+clove & 3 & eucalyptol & 0.642 & 0.0366 & --- & 5 & B \\
+lactic & 1 & isopentyl\_acetate & 1.000 & 0.0106 & 0.0008 & 5 & A \\
+lactic & 2 & ethyl\_isovalerate & 1.000 & 0.0002 & 0.0592 & 5 & B \\
+lactic & 3 & Z.\allowbreak{}nerolidol & 1.000 & 0.0002 & --- & 5 & B \\
+acetic & 1 & ethyl\_isovalerate & 1.000 & 0.0357 & 0.0150 & 5 & A \\
+acetic & 2 & isopentyl\_acetate & 1.000 & 0.0013 & 0.0023 & 5 & A \\
+acetic & 3 & Z.\allowbreak{}nerolidol & 1.000 & 0.0002 & --- & 5 & B \\
+barnyard & 1 & alloaromadendrene.\allowbreak{}epoxide & 1.000 & 0.0832 & 0.0390 & 5 & A \\
+barnyard & 2 & ethyl\_2.\allowbreak{}methyl\_butyrate & 1.000 & 0.0000 & 0.0186 & 5 & B \\
+barnyard & 3 & acetaldehyde & 1.000 & 0.0068 & 0.0240 & 5 & A \\
+alcohol & 1 & ethyl\_octanoate & 1.000 & 0.0345 & 0.0107 & 5 & A \\
+alcohol & 2 & acetaldehyde & 1.000 & 0.0075 & 0.0209 & 5 & A \\
+alcohol & 3 & MeSH & 1.000 & 0.0004 & 0.0003 & 5 & B \\
+aftertaste & 1 & ethyl\_octanoate & 1.000 & 0.0411 & 0.0164 & 5 & A \\
+aftertaste & 2 & ethyl\_isovalerate & 1.000 & 0.0242 & 0.0205 & 5 & A \\
+aftertaste & 3 & acetaldehyde & 1.000 & 0.0084 & 0.0180 & 5 & A \\
+body & 1 & isobutanol & 1.000 & 0.0103 & 0.0134 & 5 & A \\
+body & 2 & ethyl\_octanoate & 1.000 & 0.0049 & 0.0039 & 5 & A \\
+body & 3 & MeSH & 1.000 & 0.0057 & 0.0000 & 5 & A \\
+co2 & 1 & ethyl\_octanoate & 1.000 & 0.0750 & 0.0161 & 5 & A \\
+co2 & 2 & ethyl\_hexanoate & 1.000 & 0.0143 & 0.0245 & 5 & A \\
+co2 & 3 & DMS & 1.000 & 0.0027 & --- & 5 & A \\
+overall & 1 & ethyl\_acetate & 1.000 & 0.0186 & 0.0067 & 5 & A \\
+overall & 2 & DMS & 1.000 & 0.0074 & --- & 5 & A \\
+overall & 3 & cis.\allowbreak{}linalool.\allowbreak{}oxide & 0.998 & 0.0207 & --- & 5 & A \\
+\end{longtable}
+
+\noindent\footnotesize 注：频率为 500 次按风格分层 bootstrap 的入选频率；条件增量与模块增量均已除以标签方差归一化；正折数为 5 折中条件增量为正的折数；模块增量为 --- 表示该化合物所在社区只有它自己，模块增量无法定义。分级按正文的四条件判定，A = 全满足、B = 满足三条、C = 其余。

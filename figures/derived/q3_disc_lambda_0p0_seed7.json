@@ -1,0 +1,46 @@
+{
+ "lam": 0.0,
+ "epochs": 600,
+ "seed": 7,
+ "latent": {
+  "centroid_dist": 0.5335,
+  "perm_p": 1.0,
+  "lin_acc": 0.052,
+  "chance": 0.0455
+ },
+ "gen": {
+  "Tripel": {
+   "ks_mean": 0.3518,
+   "energy_median": 0.3481
+  },
+  "Kriek": {
+   "ks_mean": 0.3957,
+   "energy_median": 0.4343
+  },
+  "Lambic": {
+   "ks_mean": 0.3773,
+   "energy_median": 0.4088
+  }
+ },
+ "ks_mean_3style": 0.3749,
+ "top3_acc": {
+  "Tripel": 1.0,
+  "Kriek": 1.0,
+  "Lambic": 1.0
+ },
+ "profile": {
+  "Tripel": {
+   "mae": 0.3766,
+   "spearman": 0.6904
+  },
+  "Kriek": {
+   "mae": 0.4833,
+   "spearman": 0.9542
+  },
+  "Lambic": {
+   "mae": 0.4813,
+   "spearman": 0.7226
+  }
+ },
+ "recon_mse": 0.26687
+}

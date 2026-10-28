@@ -68,6 +68,12 @@ _tmp/*.env
 # ===== 内部工具状态（Trae / MH agent 缓存 / 会话 / 数据库）=====
 .mh/
 
+# ===== 误展开的编译输出目录（PowerShell 变量未展开时生成）=====
+paper/$out/
+
+# ===== 应用预览缓存（Codex 渲染 PDF 的临时页面图）=====
+.preview/
+
 # ===== 系统 =====
 .DS_Store
 Thumbs.db

@@ -1,0 +1,93 @@
+{
+ "n_modules": 8,
+ "modules": [
+  {
+   "comm": 15,
+   "n_members": 28,
+   "pc1_var_ratio_mean": 0.3331,
+   "pc1_var_ratio_std": 0.0136,
+   "representatives": [
+    "ethyl.phenylacetate",
+    "prenyl.isobutyrate",
+    "ethyl.5.methylhexanoate"
+   ]
+  },
+  {
+   "comm": 19,
+   "n_members": 28,
+   "pc1_var_ratio_mean": 0.3035,
+   "pc1_var_ratio_std": 0.0159,
+   "representatives": [
+    "nerol.oxide",
+    "alpha.calacorene",
+    "caryophylla.4.12..8.13..dien.5.alpha.ol"
+   ]
+  },
+  {
+   "comm": 49,
+   "n_members": 23,
+   "pc1_var_ratio_mean": 0.2853,
+   "pc1_var_ratio_std": 0.0239,
+   "representatives": [
+    "X3.methyl.2.hexanol",
+    "X3.furanmethanol",
+    "n.nonanol"
+   ]
+  },
+  {
+   "comm": 27,
+   "n_members": 20,
+   "pc1_var_ratio_mean": 0.7163,
+   "pc1_var_ratio_std": 0.1595,
+   "representatives": [
+    "X2.3.butanedione",
+    "X2.methyl.1.butanol",
+    "X1.propanol"
+   ]
+  },
+  {
+   "comm": 35,
+   "n_members": 19,
+   "pc1_var_ratio_mean": 0.4721,
+   "pc1_var_ratio_std": 0.0247,
+   "representatives": [
+    "ethyl..E..linalool",
+    "isoborneol",
+    "terpinen.4.ol"
+   ]
+  },
+  {
+   "comm": 5,
+   "n_members": 18,
+   "pc1_var_ratio_mean": 0.5375,
+   "pc1_var_ratio_std": 0.0115,
+   "representatives": [
+    "trans.dihydro.alpha.terpinyl.acetate",
+    "isopentyl.hexanoate",
+    "X1.2.dihydro.8.hydroxy..2E..linalool"
+   ]
+  },
+  {
+   "comm": 0,
+   "n_members": 12,
+   "pc1_var_ratio_mean": 0.6781,
+   "pc1_var_ratio_std": 0.0105,
+   "representatives": [
+    "ethyl_acetate",
+    "ethyl_hexanoate",
+    "isopentyl_acetate"
+   ]
+  },
+  {
+   "comm": 20,
+   "n_members": 11,
+   "pc1_var_ratio_mean": 0.3425,
+   "pc1_var_ratio_std": 0.0175,
+   "representatives": [
+    "X2Z.6E.farnesol",
+    "n.decanol",
+    "E.nerolidol"
+   ]
+  }
+ ]
+}

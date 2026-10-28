@@ -1,0 +1,146 @@
+{
+ "source": "Pils/Lager",
+ "target": "Tripel",
+ "n_src": 11,
+ "n_tgt": 28,
+ "n_transfer": 11,
+ "direction_cosine": 0.3388,
+ "sign_agreement_all_cols": 0.9221,
+ "key_compounds": [
+  {
+   "compound": "kcalperc",
+   "mu_src": 1.5998,
+   "mu_tgt": 1.8185,
+   "mu_gen": 1.8224,
+   "delta_true": 0.2186,
+   "delta_gen": 0.2226,
+   "z_true": 7.6,
+   "z_gen": 7.739,
+   "sign_match": true
+  },
+  {
+   "compound": "ethanol..v.v.",
+   "mu_src": 0.7119,
+   "mu_tgt": 0.9427,
+   "mu_gen": 0.9396,
+   "delta_true": 0.2308,
+   "delta_gen": 0.2277,
+   "z_true": 7.335,
+   "z_gen": 7.236,
+   "sign_match": true
+  },
+  {
+   "compound": "isopentyl.hexanoate",
+   "mu_src": 1.0435,
+   "mu_tgt": 5.2798,
+   "mu_gen": 5.5566,
+   "delta_true": 4.2362,
+   "delta_gen": 4.5131,
+   "z_true": 6.181,
+   "z_gen": 6.585,
+   "sign_match": true
+  },
+  {
+   "compound": "ethyl_acetate",
+   "mu_src": 1.0244,
+   "mu_tgt": 1.5916,
+   "mu_gen": 1.6039,
+   "delta_true": 0.5672,
+   "delta_gen": 0.5794,
+   "z_true": 5.178,
+   "z_gen": 5.291,
+   "sign_match": true
+  },
+  {
+   "compound": "isobutyl_acetate",
+   "mu_src": -1.7297,
+   "mu_tgt": -0.9606,
+   "mu_gen": -0.9101,
+   "delta_true": 0.7691,
+   "delta_gen": 0.8195,
+   "z_true": 3.632,
+   "z_gen": 3.871,
+   "sign_match": true
+  },
+  {
+   "compound": "germacrene.D",
+   "mu_src": -0.381,
+   "mu_tgt": 4.1285,
+   "mu_gen": 4.1323,
+   "delta_true": 4.5095,
+   "delta_gen": 4.5133,
+   "z_true": 3.548,
+   "z_gen": 3.551,
+   "sign_match": true
+  },
+  {
+   "compound": "acetaldehyde",
+   "mu_src": 0.3132,
+   "mu_tgt": 0.7946,
+   "mu_gen": 0.8407,
+   "delta_true": 0.4814,
+   "delta_gen": 0.5276,
+   "z_true": 3.25,
+   "z_gen": 3.562,
+   "sign_match": true
+  },
+  {
+   "compound": "glycerol",
+   "mu_src": 0.2083,
+   "mu_tgt": 0.4833,
+   "mu_gen": 0.482,
+   "delta_true": 0.275,
+   "delta_gen": 0.2736,
+   "z_true": 3.011,
+   "z_gen": 2.996,
+   "sign_match": true
+  },
+  {
+   "compound": "ethyl.tiglate",
+   "mu_src": 4.0773,
+   "mu_tgt": 5.238,
+   "mu_gen": 5.1522,
+   "delta_true": 1.1607,
+   "delta_gen": 1.0749,
+   "z_true": 2.995,
+   "z_gen": 2.773,
+   "sign_match": true
+  },
+  {
+   "compound": "isoamyl_alcohol",
+   "mu_src": 1.4335,
+   "mu_tgt": 1.7244,
+   "mu_gen": 1.7158,
+   "delta_true": 0.2909,
+   "delta_gen": 0.2823,
+   "z_true": 2.811,
+   "z_gen": 2.727,
+   "sign_match": true
+  },
+  {
+   "compound": "ethyl_hexanoate",
+   "mu_src": -0.9064,
+   "mu_tgt": -0.4633,
+   "mu_gen": -0.4321,
+   "delta_true": 0.4431,
+   "delta_gen": 0.4743,
+   "z_true": 2.543,
+   "z_gen": 2.723,
+   "sign_match": true
+  },
+  {
+   "compound": "ethyl_octanoate",
+   "mu_src": -0.7002,
+   "mu_tgt": -0.1787,
+   "mu_gen": -0.1586,
+   "delta_true": 0.5215,
+   "delta_gen": 0.5417,
+   "z_true": 2.479,
+   "z_gen": 2.575,
+   "sign_match": true
+  }
+ ],
+ "key_sign_agree": 12,
+ "ols_consistency_max_abs": 81.005081,
+ "note": "Δ_true 为目标风格真实均值与源风格真实均值之差；Δ_gen 为 11 条迁移谱均值与源风格均值之差；z = Δ/σ_train（σ 用目标风格真实谱的列标准差）。方向一致率与余弦相似度衡量生成迁移是否沿目标风格的真实方向移动。"
+}

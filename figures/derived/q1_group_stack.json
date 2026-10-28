@@ -1,0 +1,436 @@
+{
+ "per_dim": {
+  "A_malt_all": {
+   "qwk": 0.5957,
+   "spearman": 0.651,
+   "mae": 1.272,
+   "exact": 0.224,
+   "pm1": 0.636,
+   "group": "A"
+  },
+  "A_malt_grain": {
+   "qwk": 0.1177,
+   "spearman": 0.1476,
+   "mae": 1.796,
+   "exact": 0.164,
+   "pm1": 0.464,
+   "group": "A"
+  },
+  "A_malt_bread": {
+   "qwk": 0.242,
+   "spearman": 0.3095,
+   "mae": 1.744,
+   "exact": 0.168,
+   "pm1": 0.468,
+   "group": "A"
+  },
+  "A_malt_cara": {
+   "qwk": 0.5143,
+   "spearman": 0.609,
+   "mae": 1.348,
+   "exact": 0.212,
+   "pm1": 0.636,
+   "group": "A"
+  },
+  "A_malt_burn": {
+   "qwk": 0.1243,
+   "spearman": 0.1651,
+   "mae": 1.912,
+   "exact": 0.196,
+   "pm1": 0.496,
+   "group": "A"
+  },
+  "A_hops_all": {
+   "qwk": 0.5717,
+   "spearman": 0.592,
+   "mae": 1.252,
+   "exact": 0.272,
+   "pm1": 0.676,
+   "group": "A"
+  },
+  "A_hops_citrus": {
+   "qwk": 0.2434,
+   "spearman": 0.3261,
+   "mae": 1.696,
+   "exact": 0.188,
+   "pm1": 0.528,
+   "group": "A"
+  },
+  "A_hops_tropical": {
+   "qwk": 0.1717,
+   "spearman": 0.1738,
+   "mae": 1.852,
+   "exact": 0.18,
+   "pm1": 0.476,
+   "group": "A"
+  },
+  "A_hops_noble": {
+   "qwk": 0.5511,
+   "spearman": 0.5843,
+   "mae": 1.228,
+   "exact": 0.308,
+   "pm1": 0.672,
+   "group": "A"
+  },
+  "A_hops_woody": {
+   "qwk": 0.1818,
+   "spearman": 0.2091,
+   "mae": 1.748,
+   "exact": 0.184,
+   "pm1": 0.46,
+   "group": "A"
+  },
+  "A_esters_all": {
+   "qwk": 0.4228,
+   "spearman": 0.4535,
+   "mae": 1.504,
+   "exact": 0.18,
+   "pm1": 0.552,
+   "group": "A"
+  },
+  "A_esters_ethac": {
+   "qwk": 0.2907,
+   "spearman": 0.3519,
+   "mae": 1.568,
+   "exact": 0.208,
+   "pm1": 0.544,
+   "group": "A"
+  },
+  "A_esters_isoaa": {
+   "qwk": 0.2735,
+   "spearman": 0.3444,
+   "mae": 1.648,
+   "exact": 0.128,
+   "pm1": 0.5,
+   "group": "A"
+  },
+  "A_esters_flower": {
+   "qwk": 0.1394,
+   "spearman": 0.1646,
+   "mae": 1.756,
+   "exact": 0.188,
+   "pm1": 0.488,
+   "group": "A"
+  },
+  "A_esters_fruity": {
+   "qwk": 0.1389,
+   "spearman": 0.159,
+   "mae": 1.768,
+   "exact": 0.208,
+   "pm1": 0.524,
+   "group": "A"
+  },
+  "F_malt_all": {
+   "qwk": 0.6274,
+   "spearman": 0.6587,
+   "mae": 1.208,
+   "exact": 0.28,
+   "pm1": 0.644,
+   "group": "F"
+  },
+  "F_malt_grain": {
+   "qwk": 0.1715,
+   "spearman": 0.1961,
+   "mae": 1.792,
+   "exact": 0.144,
+   "pm1": 0.46,
+   "group": "F"
+  },
+  "F_malt_bread": {
+   "qwk": 0.4794,
+   "spearman": 0.5517,
+   "mae": 1.424,
+   "exact": 0.204,
+   "pm1": 0.568,
+   "group": "F"
+  },
+  "F_malt_cara": {
+   "qwk": 0.441,
+   "spearman": 0.5046,
+   "mae": 1.44,
+   "exact": 0.236,
+   "pm1": 0.596,
+   "group": "F"
+  },
+  "F_malt_burn": {
+   "qwk": 0.4435,
+   "spearman": 0.4874,
+   "mae": 1.504,
+   "exact": 0.216,
+   "pm1": 0.6,
+   "group": "F"
+  },
+  "F_hops_all": {
+   "qwk": 0.6745,
+   "spearman": 0.6843,
+   "mae": 1.104,
+   "exact": 0.296,
+   "pm1": 0.744,
+   "group": "F"
+  },
+  "F_hops_citrus": {
+   "qwk": 0.1935,
+   "spearman": 0.2739,
+   "mae": 1.696,
+   "exact": 0.2,
+   "pm1": 0.496,
+   "group": "F"
+  },
+  "F_hops_tropical": {
+   "qwk": 0.2091,
+   "spearman": 0.2715,
+   "mae": 1.808,
+   "exact": 0.192,
+   "pm1": 0.472,
+   "group": "F"
+  },
+  "F_hops_noble": {
+   "qwk": 0.6006,
+   "spearman": 0.6215,
+   "mae": 1.232,
+   "exact": 0.264,
+   "pm1": 0.668,
+   "group": "F"
+  },
+  "F_hops_woody": {
+   "qwk": 0.3546,
+   "spearman": 0.4319,
+   "mae": 1.58,
+   "exact": 0.204,
+   "pm1": 0.552,
+   "group": "F"
+  },
+  "F_esters_all": {
+   "qwk": 0.5328,
+   "spearman": 0.5484,
+   "mae": 1.328,
+   "exact": 0.236,
+   "pm1": 0.624,
+   "group": "F"
+  },
+  "F_esters_ethac": {
+   "qwk": 0.481,
+   "spearman": 0.518,
+   "mae": 1.388,
+   "exact": 0.236,
+   "pm1": 0.608,
+   "group": "F"
+  },
+  "F_esters_isoaa": {
+   "qwk": 0.3367,
+   "spearman": 0.352,
+   "mae": 1.628,
+   "exact": 0.176,
+   "pm1": 0.508,
+   "group": "F"
+  },
+  "F_esters_flower": {
+   "qwk": 0.1435,
+   "spearman": 0.1783,
+   "mae": 1.796,
+   "exact": 0.18,
+   "pm1": 0.46,
+   "group": "F"
+  },
+  "F_esters_fruity": {
+   "qwk": 0.2236,
+   "spearman": 0.2745,
+   "mae": 1.78,
+   "exact": 0.148,
+   "pm1": 0.5,
+   "group": "F"
+  },
+  "acidity": {
+   "qwk": 0.4305,
+   "spearman": 0.4698,
+   "mae": 1.412,
+   "exact": 0.304,
+   "pm1": 0.584,
+   "group": "X"
+  },
+  "bitternes": {
+   "qwk": 0.7874,
+   "spearman": 0.8018,
+   "mae": 0.848,
+   "exact": 0.428,
+   "pm1": 0.812,
+   "group": "X"
+  },
+  "sweetness": {
+   "qwk": 0.5418,
+   "spearman": 0.5625,
+   "mae": 1.296,
+   "exact": 0.28,
+   "pm1": 0.624,
+   "group": "X"
+  },
+  "X4vg": {
+   "qwk": 0.4549,
+   "spearman": 0.5047,
+   "mae": 1.516,
+   "exact": 0.244,
+   "pm1": 0.568,
+   "group": "X"
+  },
+  "diacetyl": {
+   "qwk": 0.2759,
+   "spearman": 0.2996,
+   "mae": 1.648,
+   "exact": 0.204,
+   "pm1": 0.516,
+   "group": "X"
+  },
+  "dms": {
+   "qwk": 0.2973,
+   "spearman": 0.3236,
+   "mae": 1.62,
+   "exact": 0.196,
+   "pm1": 0.536,
+   "group": "X"
+  },
+  "metallic": {
+   "qwk": 0.2424,
+   "spearman": 0.295,
+   "mae": 1.668,
+   "exact": 0.172,
+   "pm1": 0.496,
+   "group": "X"
+  },
+  "stale_hops": {
+   "qwk": 0.1703,
+   "spearman": 0.2618,
+   "mae": 1.74,
+   "exact": 0.184,
+   "pm1": 0.524,
+   "group": "X"
+  },
+  "t2n": {
+   "qwk": 0.1884,
+   "spearman": 0.1994,
+   "mae": 1.716,
+   "exact": 0.132,
+   "pm1": 0.528,
+   "group": "X"
+  },
+  "orange": {
+   "qwk": 0.3282,
+   "spearman": 0.2541,
+   "mae": 1.472,
+   "exact": 0.2,
+   "pm1": 0.572,
+   "group": "X"
+  },
+  "coriander": {
+   "qwk": 0.2259,
+   "spearman": 0.1269,
+   "mae": 1.636,
+   "exact": 0.14,
+   "pm1": 0.5,
+   "group": "X"
+  },
+  "clove": {
+   "qwk": 0.2852,
+   "spearman": 0.2483,
+   "mae": 1.524,
+   "exact": 0.192,
+   "pm1": 0.564,
+   "group": "X"
+  },
+  "lactic": {
+   "qwk": 0.6205,
+   "spearman": 0.4641,
+   "mae": 1.168,
+   "exact": 0.284,
+   "pm1": 0.684,
+   "group": "X"
+  },
+  "acetic": {
+   "qwk": 0.3469,
+   "spearman": 0.3964,
+   "mae": 1.452,
+   "exact": 0.26,
+   "pm1": 0.576,
+   "group": "X"
+  },
+  "barnyard": {
+   "qwk": 0.1574,
+   "spearman": 0.2765,
+   "mae": 1.76,
+   "exact": 0.192,
+   "pm1": 0.524,
+   "group": "X"
+  },
+  "alcohol": {
+   "qwk": 0.8347,
+   "spearman": 0.8441,
+   "mae": 0.796,
+   "exact": 0.408,
+   "pm1": 0.82,
+   "group": "X"
+  },
+  "aftertaste": {
+   "qwk": 0.6293,
+   "spearman": 0.6403,
+   "mae": 1.208,
+   "exact": 0.3,
+   "pm1": 0.648,
+   "group": "X"
+  },
+  "body": {
+   "qwk": 0.7115,
+   "spearman": 0.7326,
+   "mae": 1.024,
+   "exact": 0.32,
+   "pm1": 0.784,
+   "group": "X"
+  },
+  "co2": {
+   "qwk": 0.5484,
+   "spearman": 0.5842,
+   "mae": 1.336,
+   "exact": 0.212,
+   "pm1": 0.636,
+   "group": "X"
+  },
+  "overall": {
+   "qwk": 0.2287,
+   "spearman": 0.2644,
+   "mae": 1.676,
+   "exact": 0.192,
+   "pm1": 0.488,
+   "group": "X"
+  }
+ },
+ "overall": {
+  "qwk": 0.3759,
+  "spearman": 0.4069,
+  "mae": 1.5063,
+  "exact": 0.2213,
+  "pm1": 0.5721
+ },
+ "by_group": {
+  "A": {
+   "qwk": 0.3053,
+   "spearman": 0.3494,
+   "mae": 1.6061,
+   "exact": 0.2005,
+   "pm1": 0.5413
+  },
+  "F": {
+   "qwk": 0.3942,
+   "spearman": 0.4369,
+   "mae": 1.5139,
+   "exact": 0.2141,
+   "pm1": 0.5667
+  },
+  "X": {
+   "qwk": 0.4153,
+   "spearman": 0.4275,
+   "mae": 1.4258,
+   "exact": 0.2422,
+   "pm1": 0.5992
+  }
+ },
+ "n_folds": 5,
+ "seed": 42
+}

@@ -1,0 +1,114 @@
+{
+ "q2_residual_corr": {
+  "n_pairs": 2200,
+  "median_abs_full": 0.1131,
+  "median_abs_resid": 0.0648,
+  "corr_full_vs_resid": 0.6493,
+  "sign_agreement": 0.7077,
+  "n_abs_full_ge_0.3": 251,
+  "n_abs_resid_ge_0.3": 36,
+  "top_pairs": [
+   {
+    "compound": "Ethanol",
+    "sensory": "alcohol",
+    "r_full": 0.8171,
+    "r_resid": 0.5126
+   },
+   {
+    "compound": "Caloric value",
+    "sensory": "alcohol",
+    "r_full": 0.7297,
+    "r_resid": 0.393
+   },
+   {
+    "compound": "Ethanol",
+    "sensory": "body",
+    "r_full": 0.7191,
+    "r_resid": 0.3329
+   },
+   {
+    "compound": "Caloric value",
+    "sensory": "body",
+    "r_full": 0.6874,
+    "r_resid": 0.4147
+   },
+   {
+    "compound": "Iso-alpha acids",
+    "sensory": "bitternes",
+    "r_full": 0.6822,
+    "r_resid": 0.3907
+   },
+   {
+    "compound": "Glycerol",
+    "sensory": "alcohol",
+    "r_full": 0.6249,
+    "r_resid": 0.2748
+   },
+   {
+    "compound": "Ethyl octanoate",
+    "sensory": "alcohol",
+    "r_full": 0.6194,
+    "r_resid": 0.409
+   },
+   {
+    "compound": "Ethyl hexanoate",
+    "sensory": "alcohol",
+    "r_full": 0.6188,
+    "r_resid": 0.3222
+   },
+   {
+    "compound": "Acetaldehyde",
+    "sensory": "alcohol",
+    "r_full": 0.6034,
+    "r_resid": 0.2997
+   },
+   {
+    "compound": "Ethyl octanoate",
+    "sensory": "bitternes",
+    "r_full": 0.5927,
+    "r_resid": 0.4655
+   }
+  ]
+ },
+ "q3_energy_profile": {
+  "per_style": [
+   {
+    "style": "Tripel",
+    "n_real": 28,
+    "n_gen": 30,
+    "n_cols": 230,
+    "energy_median": 0.337,
+    "energy_mean": 0.4193,
+    "profile_mae": 0.4559,
+    "profile_spearman": 0.6435,
+    "n_dims": 50
+   },
+   {
+    "style": "Kriek",
+    "n_real": 10,
+    "n_gen": 30,
+    "n_cols": 226,
+    "energy_median": 0.4361,
+    "energy_mean": 0.6138,
+    "profile_mae": 0.5787,
+    "profile_spearman": 0.93,
+    "n_dims": 50
+   },
+   {
+    "style": "Lambic",
+    "n_real": 11,
+    "n_gen": 30,
+    "n_cols": 226,
+    "energy_median": 0.4469,
+    "energy_mean": 0.7088,
+    "profile_mae": 0.4459,
+    "profile_spearman": 0.7632,
+    "n_dims": 50
+   }
+  ],
+  "mean_energy_median": 0.4067,
+  "mean_profile_mae": 0.4935,
+  "mean_profile_spearman": 0.7789,
+  "note": "能量距离为逐列一维口径（按真实谱均值方差标准化，剔除方差<1e-3的近常数列），报中位为主；画像 MAE 为 50 维 0-6 等级的均值绝对差。"
+ }
+}

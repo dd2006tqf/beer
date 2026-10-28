@@ -95,6 +95,88 @@ def load_cross_corr(data_dir):
     return C, comp_rows, sens_cols6
 
 
+def align_sensory_cols(sens6):
+    """把 6.csv 的感官列名映射到 4.csv 的 50 个短名。
+
+    6.csv 用英文全名（Malt aroma - overall / Carbonation / ...），4.csv 用
+    A_/F_ 前缀短名。前 46 列顺序一致，但 **第 47-50 位不同**：
+        6.csv: 46 Carbonation, 47 Aftertaste, 48 Body, 49 Overall
+        4.csv: 46 aftertaste,  47 body,       48 co2,   49 overall
+    因此必须先按名映射，不能按位置对齐。返回 4.csv 列名列表（与 6.csv 同序）。
+    """
+    NAME_MAP = [
+        ("Malt aroma - overall", "A_malt_all"),
+        ("Malt aroma - grain", "A_malt_grain"),
+        ("Malt aroma - bread", "A_malt_bread"),
+        ("Malt aroma - caramel", "A_malt_cara"),
+        ("Malt aroma - smoked", "A_malt_burn"),
+        ("Hops aroma - overall", "A_hops_all"),
+        ("Hops aroma - citrus", "A_hops_citrus"),
+        ("Hops aroma - tropical fruit", "A_hops_tropical"),
+        ("Hops aroma - grassy", "A_hops_noble"),
+        ("Hops aroma - woody", "A_hops_woody"),
+        ("Esters aroma - overall", "A_esters_all"),
+        ("Esters aroma - nail polish", "A_esters_ethac"),
+        ("Esters aroma - banana", "A_esters_isoaa"),
+        ("Esters aroma - floral", "A_esters_flower"),
+        ("Esters aroma - fruity", "A_esters_fruity"),
+        ("Malt taste - overall", "F_malt_all"),
+        ("Malt taste - grain", "F_malt_grain"),
+        ("Malt taste - bread", "F_malt_bread"),
+        ("Malt taste - caramel", "F_malt_cara"),
+        ("Malt taste - smoked", "F_malt_burn"),
+        ("Hops taste - overall", "F_hops_all"),
+        ("Hops taste - citrus", "F_hops_citrus"),
+        ("Hops taste - tropical fruit", "F_hops_tropical"),
+        ("Hops taste - grassy", "F_hops_noble"),
+        ("Hops taste - woody", "F_hops_woody"),
+        ("Esters taste - overall", "F_esters_all"),
+        ("Esters taste - nail polish", "F_esters_ethac"),
+        ("Esters taste - banana", "F_esters_isoaa"),
+        ("Esters taste - floral", "F_esters_flower"),
+        ("Esters taste - fruity", "F_esters_fruity"),
+        ("Acidity", "acidity"),
+        ("Bitterness", "bitternes"),
+        ("Sweetness", "sweetness"),
+        ("4-vinyl guaiacol", "X4vg"),
+        ("Diacetyl", "diacetyl"),
+        ("Dimethyl sulfide", "dms"),
+        ("Metallic", "metallic"),
+        ("Stale hops", "stale_hops"),
+        ("Trans-2-nonenal", "t2n"),
+        ("Orange", "orange"),
+        ("Coriander", "coriander"),
+        ("Clove", "clove"),
+        ("Lactic acid", "lactic"),
+        ("Acetic acid", "acetic"),
+        ("Barnyard", "barnyard"),
+        ("Alcohol", "alcohol"),
+        ("Carbonation", "co2"),
+        ("Aftertaste", "aftertaste"),
+        ("Body", "body"),
+        ("Overall appreciation", "overall"),
+    ]
+    m = {}
+    for full, short in NAME_MAP:
+        m[full.lower()] = short
+    out = []
+    for raw in sens6:
+        key = " ".join(str(raw).replace("\r", " ").replace("\n", " ").split()).lower()
+        key = key.replace("(trained panel)", "").strip()
+        hit = m.get(key)
+        if hit is None:
+            for full, short in NAME_MAP:
+                if full.lower().split(" - ")[0] == key.split(" - ")[0] and \
+                        full.lower().split(" - ")[-1].startswith(key.split(" - ")[-1]):
+                    hit = short
+                    break
+        if hit is None:
+            raise KeyError("无法映射 6.csv 感官列: %r" % raw)
+        out.append(hit)
+    assert len(set(out)) == len(out), "6.csv 感官列映射出现重复"
+    return out
+
+
 def load_gbm_reference(data_dir):
     """8.xlsx：GBM importance MDI（参考重要性，仅 Q2 旁证，不进 Q1 训练）。显式 sheet_name。"""
     pth = os.path.join(data_dir, "8.xlsx")

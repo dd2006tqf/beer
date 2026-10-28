@@ -1,0 +1,185 @@
+{
+ "seeds": [
+  42,
+  7,
+  2024,
+  1234,
+  99
+ ],
+ "per_style": {
+  "Tripel": {
+   "ks_mean": {
+    "mean": 0.3435,
+    "std": 0.0119,
+    "min": 0.3273,
+    "max": 0.3562
+   },
+   "energy_median": {
+    "mean": 0.3286,
+    "std": 0.0159,
+    "min": 0.3054,
+    "max": 0.3405
+   }
+  },
+  "Kriek": {
+   "ks_mean": {
+    "mean": 0.3944,
+    "std": 0.0137,
+    "min": 0.3748,
+    "max": 0.4079
+   },
+   "energy_median": {
+    "mean": 0.4327,
+    "std": 0.0154,
+    "min": 0.4074,
+    "max": 0.4478
+   }
+  },
+  "Lambic": {
+   "ks_mean": {
+    "mean": 0.3926,
+    "std": 0.0154,
+    "min": 0.375,
+    "max": 0.41
+   },
+   "energy_median": {
+    "mean": 0.4368,
+    "std": 0.0219,
+    "min": 0.418,
+    "max": 0.4654
+   }
+  }
+ },
+ "top3_acc": {
+  "Tripel": {
+   "mean": 1.0,
+   "std": 0.0,
+   "min": 1.0,
+   "max": 1.0
+  },
+  "Kriek": {
+   "mean": 1.0,
+   "std": 0.0,
+   "min": 1.0,
+   "max": 1.0
+  },
+  "Lambic": {
+   "mean": 1.0,
+   "std": 0.0,
+   "min": 1.0,
+   "max": 1.0
+  }
+ },
+ "raw_runs": [
+  {
+   "seed": 42,
+   "per_style": {
+    "Tripel": {
+     "ks_mean": 0.35033740509930983,
+     "energy_median": 0.3401242285889155
+    },
+    "Kriek": {
+     "ks_mean": 0.40694702123273546,
+     "energy_median": 0.44776150844460527
+    },
+    "Lambic": {
+     "ks_mean": 0.41003104639468274,
+     "energy_median": 0.4553194199878294
+    }
+   },
+   "top3_acc": {
+    "Tripel": 1.0,
+    "Kriek": 1.0,
+    "Lambic": 1.0
+   }
+  },
+  {
+   "seed": 7,
+   "per_style": {
+    "Tripel": {
+     "ks_mean": 0.348439303201208,
+     "energy_median": 0.3404981758429566
+    },
+    "Kriek": {
+     "ks_mean": 0.3931354359925789,
+     "energy_median": 0.4303347381144151
+    },
+    "Lambic": {
+     "ks_mean": 0.3750054659145568,
+     "energy_median": 0.4180276001259757
+    }
+   },
+   "top3_acc": {
+    "Tripel": 1.0,
+    "Kriek": 1.0,
+    "Lambic": 1.0
+   }
+  },
+  {
+   "seed": 2024,
+   "per_style": {
+    "Tripel": {
+     "ks_mean": 0.3273474144902717,
+     "energy_median": 0.30541538735252827
+    },
+    "Kriek": {
+     "ks_mean": 0.38925994640280354,
+     "energy_median": 0.4380938635648692
+    },
+    "Lambic": {
+     "ks_mean": 0.38033145305872584,
+     "energy_median": 0.42116730489553117
+    }
+   },
+   "top3_acc": {
+    "Tripel": 1.0,
+    "Kriek": 1.0,
+    "Lambic": 1.0
+   }
+  },
+  {
+   "seed": 1234,
+   "per_style": {
+    "Tripel": {
+     "ks_mean": 0.3561758347472634,
+     "energy_median": 0.338392662478994
+    },
+    "Kriek": {
+     "ks_mean": 0.4079365079365079,
+     "energy_median": 0.4398026977018653
+    },
+    "Lambic": {
+     "ks_mean": 0.4062267698631335,
+     "energy_median": 0.46542752776679047
+    }
+   },
+   "top3_acc": {
+    "Tripel": 1.0,
+    "Kriek": 1.0,
+    "Lambic": 1.0
+   }
+  },
+  {
+   "seed": 99,
+   "per_style": {
+    "Tripel": {
+     "ks_mean": 0.3349694397313444,
+     "energy_median": 0.3187248710627286
+    },
+    "Kriek": {
+     "ks_mean": 0.3747680890538034,
+     "energy_median": 0.407388094975795
+    },
+    "Lambic": {
+     "ks_mean": 0.39127202763566404,
+     "energy_median": 0.4238656752811116
+    }
+   },
+   "top3_acc": {
+    "Tripel": 1.0,
+    "Kriek": 1.0,
+    "Lambic": 1.0
+   }
+  }
+ ]
+}

@@ -1,0 +1,392 @@
+{
+ "n_cols": 43,
+ "cols": [
+  {
+   "field": "protein.g.L.",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 1.023933,
+   "threshold_1csv": 0.010272,
+   "over_frac": 0.996,
+   "n_valid": 250
+  },
+  {
+   "field": "linalool",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.027285,
+   "threshold_1csv": 0.027285,
+   "over_frac": 0.984,
+   "n_valid": 250
+  },
+  {
+   "field": "ethanol..v.v.",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 1.757256,
+   "threshold_1csv": 0.244835,
+   "over_frac": 0.976,
+   "n_valid": 250
+  },
+  {
+   "field": "citronellol",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.0245,
+   "threshold_1csv": 0.0245,
+   "over_frac": 0.924,
+   "n_valid": 250
+  },
+  {
+   "field": "H2S",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 3.5,
+   "threshold_1csv": 0.544068,
+   "over_frac": 0.92,
+   "n_valid": 250
+  },
+  {
+   "field": "ammonia.mg.L.",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 2.6,
+   "threshold_1csv": 0.414973,
+   "over_frac": 0.876,
+   "n_valid": 250
+  },
+  {
+   "field": "bitterness",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 5.0,
+   "threshold_1csv": 0.69897,
+   "over_frac": 0.864,
+   "n_valid": 250
+  },
+  {
+   "field": "isopentyl_acetate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.603333,
+   "threshold_1csv": -0.219443,
+   "over_frac": 0.844,
+   "n_valid": 250
+  },
+  {
+   "field": "geraniol",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.0315,
+   "threshold_1csv": 0.0315,
+   "over_frac": 0.76,
+   "n_valid": 250
+  },
+  {
+   "field": "DMS",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 17.25,
+   "threshold_1csv": 1.236789,
+   "over_frac": 0.672,
+   "n_valid": 250
+  },
+  {
+   "field": "ethyl_acetate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 24.0,
+   "threshold_1csv": 1.380211,
+   "over_frac": 0.656,
+   "n_valid": 250
+  },
+  {
+   "field": "acetic_acid.g.L.",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.14025,
+   "threshold_1csv": -0.853097,
+   "over_frac": 0.616,
+   "n_valid": 250
+  },
+  {
+   "field": "isoamyl_alcohol",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 40.015,
+   "threshold_1csv": 1.602223,
+   "over_frac": 0.516,
+   "n_valid": 250
+  },
+  {
+   "field": "ethyl_hexanoate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.23,
+   "threshold_1csv": -0.638272,
+   "over_frac": 0.516,
+   "n_valid": 250
+  },
+  {
+   "field": "iron",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.1,
+   "threshold_1csv": -1.0,
+   "over_frac": 0.476,
+   "n_valid": 250
+  },
+  {
+   "field": "X2.3.butanedione",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.29925,
+   "threshold_1csv": 0.29925,
+   "over_frac": 0.4647,
+   "n_valid": 241
+  },
+  {
+   "field": "ethyl_octanoate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.7,
+   "threshold_1csv": -0.154902,
+   "over_frac": 0.264,
+   "n_valid": 250
+  },
+  {
+   "field": "DES",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 1.2,
+   "threshold_1csv": 0.079181,
+   "over_frac": 0.184,
+   "n_valid": 250
+  },
+  {
+   "field": "GFS",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 2.9,
+   "threshold_1csv": 0.462398,
+   "over_frac": 0.18,
+   "n_valid": 250
+  },
+  {
+   "field": "lactic_acid.mg.L.",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 416.666667,
+   "threshold_1csv": 2.619789,
+   "over_frac": 0.172,
+   "n_valid": 250
+  },
+  {
+   "field": "X1.alpha.terpineol",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 1.5,
+   "threshold_1csv": 1.5,
+   "over_frac": 0.104,
+   "n_valid": 250
+  },
+  {
+   "field": "ethyl_2.methyl_butyrate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.027,
+   "threshold_1csv": -1.568636,
+   "over_frac": 0.068,
+   "n_valid": 250
+  },
+  {
+   "field": "X4VG",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.206333,
+   "threshold_1csv": -0.685431,
+   "over_frac": 0.064,
+   "n_valid": 250
+  },
+  {
+   "field": "E.caryophyllene",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.28,
+   "threshold_1csv": 0.28,
+   "over_frac": 0.056,
+   "n_valid": 250
+  },
+  {
+   "field": "ethyl.butyrate",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.45,
+   "threshold_1csv": 0.45,
+   "over_frac": 0.032,
+   "n_valid": 250
+  },
+  {
+   "field": "glycerol",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 4.433333,
+   "threshold_1csv": 0.64673,
+   "over_frac": 0.028,
+   "n_valid": 250
+  },
+  {
+   "field": "phenethyl_alcohol",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 35.01,
+   "threshold_1csv": 1.544192,
+   "over_frac": 0.024,
+   "n_valid": 250
+  },
+  {
+   "field": "alpha.humulene",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 0.625,
+   "threshold_1csv": 0.625,
+   "over_frac": 0.02,
+   "n_valid": 250
+  },
+  {
+   "field": "ethyl_isovalerate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.1,
+   "threshold_1csv": -1.0,
+   "over_frac": 0.008,
+   "n_valid": 250
+  },
+  {
+   "field": "isobutanol",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 80.0,
+   "threshold_1csv": 1.90309,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "acetaldehyde",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 50.0,
+   "threshold_1csv": 1.69897,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "furfural",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 60.0,
+   "threshold_1csv": 60.0,
+   "over_frac": 0.0,
+   "n_valid": 249
+  },
+  {
+   "field": "ethyl_decanoate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 1.035,
+   "threshold_1csv": 0.01494,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "ethyl.isobutyrate",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 2.6,
+   "threshold_1csv": 2.6,
+   "over_frac": 0.0,
+   "n_valid": 249
+  },
+  {
+   "field": "ethyl.nicotinate",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 6.0,
+   "threshold_1csv": 6.0,
+   "over_frac": 0.0,
+   "n_valid": 248
+  },
+  {
+   "field": "ethyl_propionate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 10.0,
+   "threshold_1csv": 1.0,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "isobutyl_acetate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 1.0,
+   "threshold_1csv": 0.0,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "octyl_acetate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 0.5,
+   "threshold_1csv": -0.30103,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "phenethyl_acetate",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 1.763333,
+   "threshold_1csv": 0.246334,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "methylpyrazine",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 1.0,
+   "threshold_1csv": 1.0,
+   "over_frac": 0.0,
+   "n_valid": 238
+  },
+  {
+   "field": "CS2",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 50.0,
+   "threshold_1csv": 1.69897,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "SO2.mg.L.",
+   "source": "",
+   "scale": "log10",
+   "threshold_raw": 15.333333,
+   "threshold_1csv": 1.185637,
+   "over_frac": 0.0,
+   "n_valid": 250
+  },
+  {
+   "field": "Z.nerolidol",
+   "source": "",
+   "scale": "raw",
+   "threshold_raw": 25.0,
+   "threshold_1csv": 25.0,
+   "over_frac": 0.0,
+   "n_valid": 250
+  }
+ ]
+}

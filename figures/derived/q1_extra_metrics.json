@@ -1,0 +1,53 @@
+{
+ "n_dims": 50,
+ "models": {
+  "主模型": {
+   "mae": 1.502,
+   "rmse": 1.9256,
+   "exact": 0.2214,
+   "r2_level": 0.0615,
+   "pearson_vs_cont": 0.4638,
+   "pearson_vs_level": 0.4193
+  },
+  "KNN 插补": {
+   "mae": 1.5638,
+   "rmse": 2.0113,
+   "exact": 0.2237,
+   "r2_level": -0.0347,
+   "pearson_vs_cont": 0.4063,
+   "pearson_vs_level": 0.3962
+  },
+  "随机森林": {
+   "mae": 1.5485,
+   "rmse": 1.9603,
+   "exact": 0.21,
+   "r2_level": 0.0188,
+   "pearson_vs_cont": 0.4314,
+   "pearson_vs_level": 0.4067
+  },
+  "ElasticNet": {
+   "mae": 1.7203,
+   "rmse": 2.1734,
+   "exact": 0.1952,
+   "r2_level": -0.1935,
+   "pearson_vs_cont": 0.306,
+   "pearson_vs_level": 0.3016
+  },
+  "逐维均值": {
+   "mae": 1.8693,
+   "rmse": 2.243,
+   "exact": 0.146,
+   "r2_level": -0.2629,
+   "pearson_vs_cont": -0.0075,
+   "pearson_vs_level": 0.0136
+  }
+ },
+ "qwk_recheck": {
+  "主模型": 0.383,
+  "KNN 插补": 0.3652,
+  "随机森林": 0.328,
+  "ElasticNet": 0.2762,
+  "逐维均值": 0.0015
+ },
+ "note": "等级口径 MAE/RMSE/严格一致率按 0-6 整数计算，50 维宏平均；pearson_vs_cont 为与 4.csv 标准化连续值的相关（表 5 采用），pearson_vs_level 为与 0-6 等级的相关。"
+}

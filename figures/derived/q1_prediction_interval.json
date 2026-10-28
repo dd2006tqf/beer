@@ -1,0 +1,450 @@
+{
+ "target_coverage": 0.9,
+ "quantile_regression": {
+  "overall_coverage": 0.753,
+  "overall_width": 1.0248,
+  "by_group": {
+   "A": {
+    "n": 15,
+    "coverage_mean": 0.7456,
+    "width_mean": 1.0767
+   },
+   "F": {
+    "n": 15,
+    "coverage_mean": 0.7504,
+    "width_mean": 1.059
+   },
+   "X": {
+    "n": 20,
+    "coverage_mean": 0.7606,
+    "width_mean": 0.9603
+   }
+  },
+  "by_dim": {
+   "A_malt_all": {
+    "coverage": 0.788,
+    "width": 1.543
+   },
+   "A_malt_grain": {
+    "coverage": 0.748,
+    "width": 0.9396
+   },
+   "A_malt_bread": {
+    "coverage": 0.736,
+    "width": 1.002
+   },
+   "A_malt_cara": {
+    "coverage": 0.756,
+    "width": 1.1803
+   },
+   "A_malt_burn": {
+    "coverage": 0.76,
+    "width": 0.9417
+   },
+   "A_hops_all": {
+    "coverage": 0.736,
+    "width": 1.3128
+   },
+   "A_hops_citrus": {
+    "coverage": 0.728,
+    "width": 0.8938
+   },
+   "A_hops_tropical": {
+    "coverage": 0.768,
+    "width": 0.9869
+   },
+   "A_hops_noble": {
+    "coverage": 0.736,
+    "width": 1.1491
+   },
+   "A_hops_woody": {
+    "coverage": 0.78,
+    "width": 0.7233
+   },
+   "A_esters_all": {
+    "coverage": 0.748,
+    "width": 1.3287
+   },
+   "A_esters_ethac": {
+    "coverage": 0.736,
+    "width": 1.1058
+   },
+   "A_esters_isoaa": {
+    "coverage": 0.752,
+    "width": 1.1686
+   },
+   "A_esters_flower": {
+    "coverage": 0.704,
+    "width": 0.8691
+   },
+   "A_esters_fruity": {
+    "coverage": 0.708,
+    "width": 1.0061
+   },
+   "F_malt_all": {
+    "coverage": 0.764,
+    "width": 1.4231
+   },
+   "F_malt_grain": {
+    "coverage": 0.772,
+    "width": 1.0296
+   },
+   "F_malt_bread": {
+    "coverage": 0.732,
+    "width": 1.0423
+   },
+   "F_malt_cara": {
+    "coverage": 0.744,
+    "width": 1.1698
+   },
+   "F_malt_burn": {
+    "coverage": 0.72,
+    "width": 0.9614
+   },
+   "F_hops_all": {
+    "coverage": 0.732,
+    "width": 1.3605
+   },
+   "F_hops_citrus": {
+    "coverage": 0.768,
+    "width": 0.9141
+   },
+   "F_hops_tropical": {
+    "coverage": 0.764,
+    "width": 0.8308
+   },
+   "F_hops_noble": {
+    "coverage": 0.744,
+    "width": 1.2007
+   },
+   "F_hops_woody": {
+    "coverage": 0.772,
+    "width": 0.8268
+   },
+   "F_esters_all": {
+    "coverage": 0.716,
+    "width": 1.1393
+   },
+   "F_esters_ethac": {
+    "coverage": 0.752,
+    "width": 1.03
+   },
+   "F_esters_isoaa": {
+    "coverage": 0.752,
+    "width": 1.1618
+   },
+   "F_esters_flower": {
+    "coverage": 0.764,
+    "width": 0.8053
+   },
+   "F_esters_fruity": {
+    "coverage": 0.76,
+    "width": 0.9889
+   },
+   "acidity": {
+    "coverage": 0.772,
+    "width": 0.9791
+   },
+   "bitternes": {
+    "coverage": 0.772,
+    "width": 1.2758
+   },
+   "sweetness": {
+    "coverage": 0.752,
+    "width": 1.3079
+   },
+   "X4vg": {
+    "coverage": 0.776,
+    "width": 1.0337
+   },
+   "diacetyl": {
+    "coverage": 0.74,
+    "width": 1.0494
+   },
+   "dms": {
+    "coverage": 0.728,
+    "width": 1.0222
+   },
+   "metallic": {
+    "coverage": 0.736,
+    "width": 1.0138
+   },
+   "stale_hops": {
+    "coverage": 0.744,
+    "width": 0.8277
+   },
+   "t2n": {
+    "coverage": 0.716,
+    "width": 0.8644
+   },
+   "orange": {
+    "coverage": 0.752,
+    "width": 0.8013
+   },
+   "coriander": {
+    "coverage": 0.772,
+    "width": 0.5814
+   },
+   "clove": {
+    "coverage": 0.796,
+    "width": 0.6614
+   },
+   "lactic": {
+    "coverage": 0.836,
+    "width": 0.6584
+   },
+   "acetic": {
+    "coverage": 0.828,
+    "width": 0.5729
+   },
+   "barnyard": {
+    "coverage": 0.752,
+    "width": 0.8307
+   },
+   "alcohol": {
+    "coverage": 0.744,
+    "width": 1.1729
+   },
+   "aftertaste": {
+    "coverage": 0.748,
+    "width": 1.1174
+   },
+   "body": {
+    "coverage": 0.748,
+    "width": 1.088
+   },
+   "co2": {
+    "coverage": 0.74,
+    "width": 1.17
+   },
+   "overall": {
+    "coverage": 0.76,
+    "width": 1.177
+   }
+  }
+ },
+ "conformal": {
+  "overall_coverage": 0.9021,
+  "overall_width": 1.5549,
+  "by_group": {
+   "A": {
+    "n": 15,
+    "coverage_mean": 0.9019,
+    "width_mean": 1.6169
+   },
+   "F": {
+    "n": 15,
+    "coverage_mean": 0.8992,
+    "width_mean": 1.5479
+   },
+   "X": {
+    "n": 20,
+    "coverage_mean": 0.9044,
+    "width_mean": 1.5135
+   }
+  },
+  "by_dim": {
+   "A_malt_all": {
+    "coverage": 0.908,
+    "width": 1.8908
+   },
+   "A_malt_grain": {
+    "coverage": 0.916,
+    "width": 1.5079
+   },
+   "A_malt_bread": {
+    "coverage": 0.92,
+    "width": 1.4766
+   },
+   "A_malt_cara": {
+    "coverage": 0.868,
+    "width": 1.5797
+   },
+   "A_malt_burn": {
+    "coverage": 0.896,
+    "width": 1.6462
+   },
+   "A_hops_all": {
+    "coverage": 0.92,
+    "width": 2.0602
+   },
+   "A_hops_citrus": {
+    "coverage": 0.912,
+    "width": 1.6521
+   },
+   "A_hops_tropical": {
+    "coverage": 0.916,
+    "width": 1.7537
+   },
+   "A_hops_noble": {
+    "coverage": 0.916,
+    "width": 1.7136
+   },
+   "A_hops_woody": {
+    "coverage": 0.836,
+    "width": 0.9983
+   },
+   "A_esters_all": {
+    "coverage": 0.88,
+    "width": 1.6817
+   },
+   "A_esters_ethac": {
+    "coverage": 0.936,
+    "width": 1.7057
+   },
+   "A_esters_isoaa": {
+    "coverage": 0.9,
+    "width": 1.5364
+   },
+   "A_esters_flower": {
+    "coverage": 0.904,
+    "width": 1.485
+   },
+   "A_esters_fruity": {
+    "coverage": 0.9,
+    "width": 1.5663
+   },
+   "F_malt_all": {
+    "coverage": 0.9,
+    "width": 1.7344
+   },
+   "F_malt_grain": {
+    "coverage": 0.88,
+    "width": 1.5636
+   },
+   "F_malt_bread": {
+    "coverage": 0.916,
+    "width": 1.4064
+   },
+   "F_malt_cara": {
+    "coverage": 0.892,
+    "width": 1.5679
+   },
+   "F_malt_burn": {
+    "coverage": 0.896,
+    "width": 1.8026
+   },
+   "F_hops_all": {
+    "coverage": 0.92,
+    "width": 1.7612
+   },
+   "F_hops_citrus": {
+    "coverage": 0.92,
+    "width": 1.5308
+   },
+   "F_hops_tropical": {
+    "coverage": 0.932,
+    "width": 1.6327
+   },
+   "F_hops_noble": {
+    "coverage": 0.916,
+    "width": 1.7714
+   },
+   "F_hops_woody": {
+    "coverage": 0.904,
+    "width": 1.4024
+   },
+   "F_esters_all": {
+    "coverage": 0.876,
+    "width": 1.4757
+   },
+   "F_esters_ethac": {
+    "coverage": 0.892,
+    "width": 1.4828
+   },
+   "F_esters_isoaa": {
+    "coverage": 0.872,
+    "width": 1.4742
+   },
+   "F_esters_flower": {
+    "coverage": 0.896,
+    "width": 1.2726
+   },
+   "F_esters_fruity": {
+    "coverage": 0.876,
+    "width": 1.3405
+   },
+   "acidity": {
+    "coverage": 0.888,
+    "width": 1.5172
+   },
+   "bitternes": {
+    "coverage": 0.904,
+    "width": 1.4813
+   },
+   "sweetness": {
+    "coverage": 0.912,
+    "width": 1.8145
+   },
+   "X4vg": {
+    "coverage": 0.892,
+    "width": 2.0085
+   },
+   "diacetyl": {
+    "coverage": 0.88,
+    "width": 1.5031
+   },
+   "dms": {
+    "coverage": 0.908,
+    "width": 1.5629
+   },
+   "metallic": {
+    "coverage": 0.924,
+    "width": 1.7338
+   },
+   "stale_hops": {
+    "coverage": 0.92,
+    "width": 1.3295
+   },
+   "t2n": {
+    "coverage": 0.908,
+    "width": 1.2896
+   },
+   "orange": {
+    "coverage": 0.896,
+    "width": 1.7538
+   },
+   "coriander": {
+    "coverage": 0.904,
+    "width": 1.3202
+   },
+   "clove": {
+    "coverage": 0.884,
+    "width": 1.1577
+   },
+   "lactic": {
+    "coverage": 0.9,
+    "width": 1.4144
+   },
+   "acetic": {
+    "coverage": 0.896,
+    "width": 1.2445
+   },
+   "barnyard": {
+    "coverage": 0.928,
+    "width": 1.2893
+   },
+   "alcohol": {
+    "coverage": 0.892,
+    "width": 1.3478
+   },
+   "aftertaste": {
+    "coverage": 0.908,
+    "width": 1.6217
+   },
+   "body": {
+    "coverage": 0.908,
+    "width": 1.3099
+   },
+   "co2": {
+    "coverage": 0.916,
+    "width": 1.7704
+   },
+   "overall": {
+    "coverage": 0.92,
+    "width": 1.8001
+   }
+  }
+ },
+ "note": "标签为标准化连续值。分位数回归用 LightGBM objective=quantile(alpha=0.05/0.95)；共形口径在每个训练折内再切 30% 作校准集，取绝对残差的 ceil((n+1)(1-alpha)) 分位作为半宽。覆盖率在验证折上统计。"
+}

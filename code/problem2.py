@@ -108,6 +108,7 @@ def run(data_dir="user_data", out_dir=None):
     C6, comp_rows6, sens6 = U.load_cross_corr(data_dir)
     Xv = X.values.astype(float)
     Yv = Y.values.astype(float)
+    styles = meta[P.STYLE_COL].values      # 分层 bootstrap 需要
     J = len(sens_cols)
 
     # ---- 候选集 C（211 项）：理化 16 列 + 汇总 4 列一律排除 ----
@@ -132,7 +133,7 @@ def run(data_dir="user_data", out_dir=None):
 
     # 5) 融合 + 模块代表 + 去冗余 → Top-3；稳定性（全部只在 C 内取）
     results = _fuse_and_stability(sens_cols, feat_cols, shap_imp, corr_evid, rf_imp,
-                                  abs_shap_list, comm_arr, c_mask, R)
+                                  abs_shap_list, comm_arr, c_mask, R, styles)
 
     # 6) 来源一致性（8.xlsx）
     src_map, cat_map = _load_source_maps(data_dir, feat_cols, sens_cols)
@@ -178,21 +179,40 @@ def _shap_evidence(sens_cols, feat_cols, Xv):
 
 
 def _corr_evidence(C6, comp_rows6, comp_names, feat_cols, sens_cols):
-    """6.csv 交叉相关 → 231 位置 × 50 感官的 |corr| 证据（未覆盖化合物记 0）。"""
+    """6.csv 交叉相关 → 231 位置 × 50 感官的 |corr| 证据（未覆盖化合物记 0）。
+
+    两个都必须按名映射，不能按位置：
+      - 化合物行：6.csv 用英文全名，2.csv 用原始列名。
+      - 感官列：6.csv 前 46 列顺序与 4.csv 一致，但第 47-50 位不同
+        （6.csv: Carbonation/Aftertaste/Body/Overall；
+          4.csv: aftertaste/body/co2/overall），按位置对齐会把
+        aftertaste、body、co2 三列的证据错位。
+    """
     J, Pn = len(sens_cols), len(feat_cols)
     evid = np.zeros((J, Pn))
     name2pos = {name: i for i, name in enumerate(comp_names)}
     Cv = C6.values.astype(float)
+
+    # 感官列按名映射：C6 的第 k 列 → 4.csv 的某个短名
+    col_targets = U.align_sensory_cols(list(C6.columns))
+    sens_pos = {s: j for j, s in enumerate(sens_cols)}
+    col_to_j = []
+    for short in col_targets:
+        if short not in sens_pos:
+            raise KeyError(f"6.csv 感官列映射到未定义的维度: {short}")
+        col_to_j.append(sens_pos[short])
+
     n_mapped = 0
     for ri, r in enumerate(comp_rows6):
         pos = name2pos.get(r, None)
         if pos is None:
             continue
         n_mapped += 1
-        for j in range(J):
-            v = Cv[ri, j]
+        for k, j in enumerate(col_to_j):
+            v = Cv[ri, k]
             evid[j, pos] = abs(v) if np.isfinite(v) else 0.0
-    print(f"[Q2] 6.csv 交叉相关映射化合物 {n_mapped}/{len(comp_rows6)} → 231 位置")
+    print(f"[Q2] 6.csv 交叉相关映射化合物 {n_mapped}/{len(comp_rows6)} → 231 位置；"
+          f"感官列按名映射 {len(set(col_to_j))}/50")
     return evid
 
 
@@ -270,7 +290,7 @@ def _select_topk(phi_masked, R, comm_arr, k=P.TOPN, rho_redun=REDUN_RHO):
                 break
     return chosen
 def _fuse_and_stability(sens_cols, feat_cols, shap_imp, corr_evid, rf_imp,
-                        abs_shap_list, comm_arr, c_mask, R):
+                        abs_shap_list, comm_arr, c_mask, R, styles):
     """多证据融合 + 去冗余 Top-3 + bootstrap 入选频率 + 跨方法 Jaccard（全部只在 C 内取）。"""
     J, Pn = len(sens_cols), len(feat_cols)
     a, b, g = P.FUSE_ALPHA, P.FUSE_BETA, P.FUSE_GAMMA
@@ -288,21 +308,33 @@ def _fuse_and_stability(sens_cols, feat_cols, shap_imp, corr_evid, rf_imp,
         phi_all[j] = phi
         # 去冗余 Top-3（phi 先掩码到 C）
         top3_idx[j] = _select_topk(_mask_c(phi, c_mask), R, comm_arr)
-    # bootstrap 入选频率：有放回重采样样本 → 重算 SHAP → 同一融合+去冗余流程（只在 C 内）
-    np.random.seed(P.SEED)
+    # bootstrap 入选频率：**按风格分层**有放回重采样 → 重算 SHAP → 同一融合+去冗余流程（只在 C 内）。
+    # 分层可避免小样本风格在重采样中整体缺席，使频率反映"同风格内"的稳定性。
+    rng_bt = np.random.default_rng(P.SEED)
     N = abs_shap_list[0].shape[0]
+    style_arr = np.asarray(styles)
+    strata = [np.where(style_arr == s)[0] for s in pd.unique(style_arr)]
     freq = np.zeros((J, Pn))
     B = P.N_BOOTSTRAP
+    conv_trace = {}          # 200/300/500 收敛检查
     for bi in range(B):
-        idx = np.random.choice(N, size=N, replace=True)
+        parts = [rng_bt.choice(idx, size=len(idx), replace=True) for idx in strata if len(idx)]
+        idx = np.concatenate(parts)
         for j in range(J):
             shap_b = _norm(abs_shap_list[j][idx].mean(axis=0))
             base_b = a * shap_b + b * corr_n_all[j]
             phi_b = base_b + g * _module_rep(base_b, comm_arr)
             for p in _select_topk(_mask_c(phi_b, c_mask), R, comm_arr):
                 freq[j, p] += 1
-        if (bi + 1) % 100 == 0:
-            print(f"[Q2] bootstrap {bi+1}/{B}")
+        if (bi + 1) in (200, 300, 500):
+            snap = freq / (bi + 1)
+            top1 = [int(np.argmax(snap[j])) for j in range(J)]
+            conv_trace[str(bi + 1)] = {
+                "mean_top1_freq": round(float(np.mean([snap[j, top1[j]] for j in range(J)])), 4),
+                "n_top1_changed_vs_final": None,   # 稍后填
+                "top1": top1,
+            }
+            print(f"[Q2] bootstrap {bi+1}/{B}  mean_top1={conv_trace[str(bi+1)]['mean_top1_freq']:.4f}")
     freq /= B
     # 跨方法 Jaccard（SHAP / 6.csv相关 / RF；各方法 Top-3 只在 C 内取）
     jac_dim = {}
@@ -325,6 +357,14 @@ def _fuse_and_stability(sens_cols, feat_cols, shap_imp, corr_evid, rf_imp,
             "module": [int(comm_arr[p]) for p in t3],
             "jaccard_cross_method": jac_dim[col],
         }
+    # 收敛检查：200/300 次的 Top-1 与最终（500 次）Top-1 差异维数
+    final_top1 = [int(np.argmax(freq[j])) for j in range(J)]
+    for k in conv_trace:
+        prev = conv_trace[k]["top1"]
+        conv_trace[k]["n_top1_changed_vs_final"] = int(sum(1 for a_, b_ in zip(prev, final_top1) if a_ != b_))
+        conv_trace[k].pop("top1", None)
+    print("[Q2] 收敛检查:", {k: (v["mean_top1_freq"], v["n_top1_changed_vs_final"]) for k, v in conv_trace.items()})
+
     mean_top1_freq = float(np.mean([per_dim[c]["select_freq"][0] for c in sens_cols]))
     mean_jac = float(np.mean(list(jac_dim.values())))
     n_high_stable = int(sum(1 for c in sens_cols if per_dim[c]["select_freq"][0] >= 0.7))
@@ -342,7 +382,9 @@ def _fuse_and_stability(sens_cols, feat_cols, shap_imp, corr_evid, rf_imp,
                     "mean_cross_method_jaccard": round(mean_jac, 4),
                     "n_high_stable_dims": n_high_stable,
                     "redun_rho": REDUN_RHO,
-                    "fuse_weights": {"alpha": a, "beta": b, "gamma": g}},
+                    "fuse_weights": {"alpha": a, "beta": b, "gamma": g},
+                    "bootstrap_stratified_by_style": True,
+                    "bootstrap_convergence": conv_trace},
         "per_dim": per_dim, "sensory_cols": sens_cols,
     }
 def _load_source_maps(data_dir, feat_cols, sens_cols):

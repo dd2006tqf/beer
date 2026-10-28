@@ -1,0 +1,35 @@
+{
+ "level_basis": {
+  "主模型": {
+   "n_positive": 29,
+   "n": 50,
+   "mean_r2_level": 0.0615
+  },
+  "KNN 插补": {
+   "n_positive": 24,
+   "n": 50,
+   "mean_r2_level": -0.0347
+  },
+  "随机森林": {
+   "n_positive": 26,
+   "n": 50,
+   "mean_r2_level": 0.0188
+  },
+  "ElasticNet": {
+   "n_positive": 13,
+   "n": 50,
+   "mean_r2_level": -0.1935
+  },
+  "逐维均值": {
+   "n_positive": 0,
+   "n": 50,
+   "mean_r2_level": -0.2629
+  }
+ },
+ "main_continuous": {
+  "n_positive": 46,
+  "n": 50,
+  "mean_r2": 0.232
+ },
+ "note": "level_basis 为 0-6 等级预测对 0-6 等级标签的 R²（五模型同口径、可横向比较）；main_continuous 为主模型连续预测对 4.csv 标准化连续标签的 R²，与 problem_1_results.json 的 r2_main 一致，仅用于说明主模型在连续口径下 46/50 维为正。"
+}

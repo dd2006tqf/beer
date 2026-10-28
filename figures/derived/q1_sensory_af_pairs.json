@@ -1,0 +1,86 @@
+{
+ "n_A_dims": 15,
+ "n_matched_pairs": 15,
+ "median_r": 0.692,
+ "mean_r": 0.6966,
+ "min_r": 0.46,
+ "max_r": 0.836,
+ "n_ge_0.6": 12,
+ "pairs_sorted": [
+  {
+   "a": "A_esters_all",
+   "f": "F_esters_all",
+   "r": 0.836
+  },
+  {
+   "a": "A_hops_all",
+   "f": "F_hops_all",
+   "r": 0.828
+  },
+  {
+   "a": "A_malt_all",
+   "f": "F_malt_all",
+   "r": 0.825
+  },
+  {
+   "a": "A_hops_noble",
+   "f": "F_hops_noble",
+   "r": 0.816
+  },
+  {
+   "a": "A_esters_isoaa",
+   "f": "F_esters_isoaa",
+   "r": 0.751
+  },
+  {
+   "a": "A_malt_cara",
+   "f": "F_malt_cara",
+   "r": 0.733
+  },
+  {
+   "a": "A_esters_ethac",
+   "f": "F_esters_ethac",
+   "r": 0.721
+  },
+  {
+   "a": "A_hops_citrus",
+   "f": "F_hops_citrus",
+   "r": 0.692
+  },
+  {
+   "a": "A_malt_bread",
+   "f": "F_malt_bread",
+   "r": 0.677
+  },
+  {
+   "a": "A_hops_tropical",
+   "f": "F_hops_tropical",
+   "r": 0.676
+  },
+  {
+   "a": "A_esters_flower",
+   "f": "F_esters_flower",
+   "r": 0.674
+  },
+  {
+   "a": "A_esters_fruity",
+   "f": "F_esters_fruity",
+   "r": 0.62
+  },
+  {
+   "a": "A_malt_grain",
+   "f": "F_malt_grain",
+   "r": 0.597
+  },
+  {
+   "a": "A_malt_burn",
+   "f": "F_malt_burn",
+   "r": 0.543
+  },
+  {
+   "a": "A_hops_woody",
+   "f": "F_hops_woody",
+   "r": 0.46
+  }
+ ]
+}

@@ -334,5 +334,56 @@
   ],
   "data": null,
   "note": null
+ },
+ "fig_q1_interval": {
+  "caption": "90% 预测区间的两种口径：覆盖率与宽度",
+  "script": [
+   "gen_fig_q1_interval.py"
+  ],
+  "data": [
+   "figures/derived/q1_prediction_interval.json"
+  ],
+  "note": "分位数回归欠覆盖 75.3%，split-conformal 回到 90.2%，宽度 1.025→1.555"
+ },
+ "fig_q3_transfer_dir": {
+  "caption": "迁移方向：目标风格的真实位移与生成位移对照",
+  "script": [
+   "gen_fig_q3_transfer_dir.py"
+  ],
+  "data": [
+   "figures/derived/q3_transfer_direction.json"
+  ],
+  "note": "12 个关键化合物符号全一致，全 231 列符号一致率 92.2%、余弦 0.34"
+ },
+ "fig_q1_sensory_matrix": {
+  "caption": "50 个感官目标的相关矩阵（按香气 / 风味 / 口感扩展分组，仅显示上三角）",
+  "script": [
+   "gen_fig_q1_sensory_matrix.py"
+  ],
+  "data": [
+   "user_data/5.csv",
+   "figures/derived/q1_sensory_matrix_stats.json"
+  ],
+  "note": "同名 A/F 跨通道配对中位 r=0.692，远高于全体非对角中位 0.127"
+ },
+ "fig_q1_interval_bydim": {
+  "caption": "逐维 90% 预测区间：覆盖率与宽度（按香气 / 风味 / 口感分组）",
+  "script": [
+   "gen_fig_q1_interval_bydim.py"
+  ],
+  "data": [
+   "figures/derived/q1_prediction_interval.json"
+  ],
+  "note": "共形覆盖率 0.836-0.936；分位数回归全部 0.704-0.836，无一维达标"
+ },
+ "fig_q3_disc_tradeoff": {
+  "caption": "判别辅助损失的权衡：隐空间风格可分性与生成谱保真",
+  "script": [
+   "gen_fig_q3_disc_tradeoff.py"
+  ],
+  "data": [
+   "figures/derived/q3_disc_lambda_*.json"
+  ],
+  "note": "λ 0→0.5：隐空间分类 3.2%→100%，KS 0.373→0.468；λ=0.02 为折中档"
  }
 }

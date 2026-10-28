@@ -1,0 +1,44 @@
+{
+ "n_dims": 50,
+ "min": -0.5021,
+ "max": 0.9658,
+ "median_abs": 0.1266,
+ "AA": {
+  "n": 105,
+  "median_abs": 0.1238,
+  "mean_abs": 0.1802,
+  "max_abs": 0.7827
+ },
+ "FF": {
+  "n": 105,
+  "median_abs": 0.1524,
+  "mean_abs": 0.2019,
+  "max_abs": 0.8418
+ },
+ "XX": {
+  "n": 190,
+  "median_abs": 0.1156,
+  "mean_abs": 0.1554,
+  "max_abs": 0.9658
+ },
+ "AF": {
+  "n": 225,
+  "median_abs": 0.1514,
+  "mean_abs": 0.2034,
+  "max_abs": 0.8357
+ },
+ "AX": {
+  "n": 300,
+  "median_abs": 0.1176,
+  "mean_abs": 0.1457,
+  "max_abs": 0.6904
+ },
+ "FX": {
+  "n": 300,
+  "median_abs": 0.1258,
+  "mean_abs": 0.1633,
+  "max_abs": 0.7963
+ },
+ "n_abs_ge_0.6": 36,
+ "n_abs_ge_0.5": 64
+}
