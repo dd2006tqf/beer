@@ -37,7 +37,7 @@ g = df.groupby("style").agg(med=("qwk", "median"), mean=("qwk", "mean"),
 
 fig = plt.figure(figsize=(7.0, 3.4))
 gs = fig.add_gridspec(1, 2, width_ratios=[1.35, 1.0], wspace=0.22,
-                      left=0.115, right=0.985, top=0.90, bottom=0.145)
+                      left=0.115, right=0.985, top=0.90, bottom=0.185)
 
 # ══════════ (a) 分风格条带 ══════════
 ax = fig.add_subplot(gs[0, 0])
@@ -55,7 +55,7 @@ ax.set_ylim(-0.95, 0.72)
 ax.set_ylabel("风格内 50 维 QWK")
 ax.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
-ax.set_title("(a) 逐风格内部重算（每风格 n≥8 样本）", loc="left",
+ax.set_title("逐风格内部重算（每风格 n≥8 样本）", loc="left",
              fontsize=8, fontweight="bold", pad=4)
 ax.text(0.015, 0.055, "横线=风格内中位数", transform=ax.transAxes, fontsize=6.2, color="#333333")
 
@@ -91,7 +91,12 @@ ax2.set_ylabel("QWK 中位数")
 ax2.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
 ax2.legend(loc="upper right", handletextpad=0.35, borderaxespad=0.3)
-ax2.set_title("(b) 跨风格成分的贡献", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax2.set_title("跨风格成分的贡献", loc="left", fontsize=8, fontweight="bold", pad=4)
+
+for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
+             fontsize=8.5, fontweight='bold', color='#222222')
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_bystyle.png"), dpi=400,
             bbox_inches="tight", facecolor="white")

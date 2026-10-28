@@ -55,7 +55,7 @@ order = np.argsort(ks)[::-1]
 
 fig = plt.figure(figsize=(7.0, 3.2))
 gs = fig.add_gridspec(1, 2, width_ratios=[1.55, 1.0], wspace=0.20,
-                      left=0.065, right=0.985, top=0.90, bottom=0.155)
+                      left=0.065, right=0.985, top=0.90, bottom=0.190)
 
 # ══════════ (a) sorted lollipop ══════════
 ax = fig.add_subplot(gs[0, 0])
@@ -82,7 +82,7 @@ ax.annotate("其余 %d 列 KS < 0.2" % int((ks < 0.2).sum()),
             xy=(len(x) * 0.86, 0.10), xytext=(len(x) * 0.60, 0.30), fontsize=6.3,
             color="#555555",
             arrowprops=dict(arrowstyle="->", lw=0.6, color="#BBBBBB"))
-ax.set_title("(a) 偏离集中在少数列，而非系统性偏移", loc="left", fontsize=8,
+ax.set_title("偏离集中在少数列，而非系统性偏移", loc="left", fontsize=8,
              fontweight="bold", pad=4)
 
 # ══════════ (b) KS vs 未检出率 ══════════
@@ -104,13 +104,18 @@ ax2.set_xlabel("该列在本风格真实谱中的未检出比例")
 ax2.set_ylabel("KS 距离")
 ax2.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
-ax2.set_title("(b) 高 KS 列对应稀疏检出列", loc="left", fontsize=8,
+ax2.set_title("高 KS 列对应稀疏检出列", loc="left", fontsize=8,
               fontweight="bold", pad=4)
 r = np.corrcoef(undet, ks)[0, 1]
 ax2.text(0.03, 0.93, "Pearson r = %.2f" % r, fontsize=6.6, color="#333333",
          transform=ax2.transAxes)
 ax2.text(0.03, 0.86, "红点=分箱中位", fontsize=6.2, color=CATEGORICAL[1],
          transform=ax2.transAxes)
+
+for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
+             fontsize=8.5, fontweight='bold', color='#222222')
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_ksprofile.png"), dpi=400,
             bbox_inches="tight", facecolor="white")

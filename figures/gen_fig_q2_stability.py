@@ -112,7 +112,7 @@ axR.set_xlabel("密度", fontsize=6.6, labelpad=1)
 axR.spines["left"].set_visible(False)
 axR.spines["bottom"].set_visible(False)
 
-fig.text(0.055, 0.955, "(a)", fontsize=8, fontweight="bold", ha="left", va="top")
+
 
 # ---------------- panel (b): ECDF vs random null ----------------
 axB = fig.add_axes([0.735, 0.155, 0.245, 0.60])
@@ -147,7 +147,12 @@ axB.annotate("均值 %.3f\n= 零分布 %.1f 倍" % (jac.mean(), jac.mean() / flo
              xy=(jac.mean(), 0.05), xytext=(0.30, 0.10), fontsize=6.2,
              color=CATEGORICAL[1],
              arrowprops=dict(arrowstyle="-", lw=0.5, color="#E0AFAF"))
-axB.set_title("(b) 实测 vs 随机零分布", loc="left", fontsize=8, fontweight="bold", pad=4)
+axB.set_title("实测 vs 随机零分布", loc="left", fontsize=8, fontweight="bold", pad=4)
+
+for ax_, tag in ((axJ, "(a)"), (axB, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.020, tag, ha="center", va="bottom",
+             fontsize=8.5, fontweight="bold", color="#222222")
 
 save_fig(fig, "figures/fig_q2_stability.png")
 print("full=%d jac_mean=%.4f null_mean=%.4f ratio=%.1f"

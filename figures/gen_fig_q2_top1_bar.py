@@ -36,9 +36,9 @@ piv = df.pivot(index="sensory_dim", columns="rank", values="bootstrap_select_fre
 comp = df.pivot(index="sensory_dim", columns="rank", values="compound")
 piv = piv.loc[piv[3].sort_values().index]
 
-fig = plt.figure(figsize=(7.0, 3.1))
-gs = fig.add_gridspec(1, 2, width_ratios=[0.58, 1.0], wspace=0.28,
-                      left=0.075, right=0.985, top=0.90, bottom=0.145)
+fig = plt.figure(figsize=(7.4, 3.35))
+gs = fig.add_gridspec(1, 2, width_ratios=[0.52, 1.0], wspace=0.78,
+                      left=0.070, right=0.975, top=0.870, bottom=0.190)
 
 # ---------------- (a) strip plot ----------------
 ax = fig.add_subplot(gs[0, 0])
@@ -65,7 +65,7 @@ ax.annotate("前两位饱和\n（均值 0.991 / 0.979）", xy=(0.5, 0.86), xytex
 ax.annotate("第三名才分化\n最低 0.376", xy=(2.0, 0.39), xytext=(1.42, 0.42),
             fontsize=6.3, color=CATEGORICAL[1],
             arrowprops=dict(arrowstyle="-", lw=0.5, color="#E0AFAF"))
-ax.set_title("(a) 三个名次的频率分布", loc="left", fontsize=8, fontweight="bold", pad=5)
+
 
 # ---------------- (b) weakest rank-3 lollipop ----------------
 axB = fig.add_subplot(gs[0, 1])
@@ -98,8 +98,13 @@ axB.grid(axis="x", color="#EFEFEF", lw=0.4, zorder=0)
 axB.set_axisbelow(True)
 axB.text(mu - 0.012, K - 0.55, "全维均值 %.3f" % mu, ha="right", va="center",
          fontsize=6.1, color=GREY)
-axB.set_title("(b) 最不稳定的 %d 维及其第三名化合物" % K, loc="left",
-              fontsize=8, fontweight="bold", pad=5)
+
+
+# 子图编号置于各自下方（面板底部居中）
+for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
+             fontsize=8.5, fontweight="bold", color="#222222")
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_top1_bar.png"), dpi=400,
             bbox_inches="tight", facecolor="white")

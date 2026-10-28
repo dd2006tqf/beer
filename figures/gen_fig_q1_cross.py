@@ -50,7 +50,7 @@ vcol = [VCOL.get(v, "#DDDDDD") for v in vd]
 
 fig = plt.figure(figsize=(7.0, 3.35))
 gs = fig.add_gridspec(1, 2, width_ratios=[1.25, 1.0], wspace=0.24,
-                      left=0.075, right=0.985, top=0.90, bottom=0.155)
+                      left=0.075, right=0.985, top=0.90, bottom=0.190)
 
 # ══════════ (a) quadrant ══════════
 ax = fig.add_subplot(gs[0, 0])
@@ -70,7 +70,7 @@ ax.set_axisbelow(True)
 ax.text(0.02, 0.715, "可预测性低 · 归因稳", fontsize=6.0, color="#888888")
 ax.text(0.62, 0.715, "可预测性高 · 归因稳", fontsize=6.0, color="#888888")
 ax.text(0.02, 1.005, "可预测性低 · 归因也稳", fontsize=6.0, color="#888888")
-ax.set_title("(a) 两问结论是否同一现象", loc="left", fontsize=8,
+ax.set_title("两问结论是否同一现象", loc="left", fontsize=8,
              fontweight="bold", pad=4)
 for i in range(len(dims)):
     if qwk[i] < 0.22 and f1[i] < 0.95:
@@ -109,8 +109,13 @@ ax2.set_ylim(0.32, 1.06)
 ax2.set_ylabel("第 3 位化合物的入选频率")
 ax2.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
-ax2.set_title("(b) 第三名的稳定性随可预测性上升", loc="left", fontsize=8,
+ax2.set_title("第三名的稳定性随可预测性上升", loc="left", fontsize=8,
               fontweight="bold", pad=4)
+
+for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
+             fontsize=8.5, fontweight='bold', color='#222222')
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_cross.png"), dpi=400,
             bbox_inches="tight", facecolor="white")

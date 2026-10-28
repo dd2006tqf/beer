@@ -107,7 +107,7 @@ for sp in ax1.spines.values():
     sp.set_visible(False)
 ax1.set_xlim(-0.10, 1.10); ax1.set_ylim(-0.10, 1.10)
 ax1.set_aspect("equal")
-ax1.set_title("(a) 最大连通分量：%d 节点 / %d 条边 / 模块外推后布局"
+ax1.set_title("最大连通分量：%d 节点 / %d 条边 / 模块外推后布局"
               % (len(main), H.number_of_edges()), loc="left", fontsize=8,
               fontweight="bold", pad=4)
 
@@ -145,7 +145,7 @@ ax2.annotate("阈值 ρ = 0.5\n左侧即孤立（%d 个）" % net["n_isolated"],
              arrowprops=dict(arrowstyle="->", lw=0.6, color="#888888"))
 ax2.text(0.555, ax2.get_ylim()[1] * 0.30, "孤立者最大 |r|\n中位 0.444", fontsize=6.2,
          color=CATEGORICAL[1], va="center", ha="left")
-ax2.set_title("(b) 为什么有 %d 个孤立节点" % net["n_isolated"], loc="left",
+ax2.set_title("为什么有 %d 个孤立节点" % net["n_isolated"], loc="left",
               fontsize=8, fontweight="bold", pad=4)
 
 # 阈值灵敏度小表
@@ -158,6 +158,11 @@ for k in ["0.40", "0.45", "0.50", "0.55", "0.60"]:
 ax2.text(0.985, 0.965, "\n".join(lines), transform=ax2.transAxes, ha="right", va="top",
          fontsize=5.7, color="#444444",
          bbox=dict(boxstyle="round,pad=0.35", fc="white", ec="#DDDDDD", lw=0.5))
+
+for ax_, tag in ((ax1, '(a)'), (ax2, '(b)')):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.020, tag, ha='center', va='bottom',
+             fontsize=8.5, fontweight='bold', color='#222222')
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_modules.png"), dpi=400,
             bbox_inches="tight", facecolor="white")

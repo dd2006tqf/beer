@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-"""fig_q1_sig -- 主模型相对三类基线的配对 bootstrap 显著性（森林图 + 分布）
+"""fig_q1_sig -- 逐维配对胜负：均值赢了，但赢在哪几维
 
 Academic Figure Skill Asset Confirmation (verified against assets/figures/)
-(a) forest plot  -> assets/figures/BarComparison (cross-type: Forest)  -> param inherit
-(b) bootstrapped delta distribution -> assets/figures/RidgePlot      -> param inherit
-Design intent: panel (a) answers "how large and how certain is the gain",
-panel (b) answers "where does the 2000x resampling mass sit relative to zero".
-Data: _tmp/q1_boot_full.json (2000 paired resamples, same rows for main/baseline).
+(a) per-dimension delta strip + win/loss tally -> assets/figures/GroupedViolin -> param inherit
+(b) delta sorted curve with cumulative win share   -> assets/figures/LineTrend   -> param inherit
+
+为什么不用森林图：表 7 已经给出三类基线的 Δ 与 95% CI，森林图只是把同一组数字
+重画一遍，属于重复可视化。这里改问一个表里没有的问题——50 个维度里主模型究竟
+赢了几维、输的那几维亏多少、增益是否只由少数维度撑起。
+(a) 把 150 个配对差值按基线分组铺开，并标出胜/负维数；
+(b) 把差值降序累加，斜率的陡缓直接显示"增益集中在少数维"还是"普遍小胜"。
+数据：_tmp/q1_perdim_delta.json（由 submission/q1_oof_predictions.csv 逐维重算）。
 """
 import os, sys, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -14,113 +18,93 @@ import numpy as np
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
-from _figbase import ROOT  # injects project root into sys.path
+from matplotlib.lines import Line2D
+from _figbase import ROOT, save_fig
 
-# ---- Academic Figure Skill typography baseline (CJK-adapted: SimHei first) ----
 mpl.rcParams.update({
     "font.family": "sans-serif",
     "font.sans-serif": ["SimHei", "Arial", "DejaVu Sans"],
-    "font.size": 8,
-    "axes.titlesize": 8,
-    "axes.labelsize": 8,
-    "xtick.labelsize": 7,
-    "ytick.labelsize": 7,
-    "legend.fontsize": 7,
-    "figure.titlesize": 9,
-    "axes.spines.top": False,
-    "axes.spines.right": False,
-    "axes.linewidth": 0.6,
-    "xtick.direction": "out",
-    "ytick.direction": "out",
-    "xtick.major.width": 0.6,
-    "ytick.major.width": 0.6,
-    "legend.frameon": False,
-    "axes.unicode_minus": False,
-    "pdf.fonttype": 42,
-    "ps.fonttype": 42,
+    "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8,
+    "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7,
+    "axes.spines.top": False, "axes.spines.right": False,
+    "axes.linewidth": 0.6, "legend.frameon": False,
+    "axes.unicode_minus": False, "pdf.fonttype": 42, "ps.fonttype": 42,
 })
-
-# ---- Academic Figure Skill palette (verbatim values) ----
 CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
-BLACK = "#222222"
 
-res = json.load(open(os.path.join(ROOT, "_tmp", "q1_boot_full.json"), encoding="utf-8"))
+d = json.load(open(os.path.join(ROOT, "_tmp", "q1_perdim_delta.json"), encoding="utf-8"))
 ORDER = ["knn", "rf", "enet"]
-LABEL = {"knn": "KNN 插补后建模", "rf": "随机森林（中位插补）", "enet": "ElasticNet（中位插补）"}
 
-fig = plt.figure(figsize=(6.4, 2.75))
-gs = fig.add_gridspec(1, 2, width_ratios=[1.55, 1.0], wspace=0.10,
-                      left=0.155, right=0.985, top=0.90, bottom=0.17)
-axA = fig.add_subplot(gs[0, 0])
-axB = fig.add_subplot(gs[0, 1], sharey=axA)
+fig = plt.figure(figsize=(7.0, 3.15))
+gs = fig.add_gridspec(1, 2, width_ratios=[1.05, 1.22], wspace=0.26,
+                      left=0.085, right=0.985, top=0.895, bottom=0.190)
 
-ys = np.arange(len(ORDER))[::-1]
-xmax = 0.155
+# ══════════ (a) 逐维差值 strip ══════════
+ax = fig.add_subplot(gs[0, 0])
+rng = np.random.default_rng(5)
+for i, k in enumerate(ORDER):
+    r = d["models"][k]
+    v = np.array(r["delta"], dtype=float)
+    x = i + rng.normal(0, 0.055, v.size)
+    pos = v > 0
+    ax.scatter(x[pos], v[pos], s=11, color=CATEGORICAL[0], alpha=0.62,
+               edgecolor="none", zorder=3)
+    ax.scatter(x[~pos], v[~pos], s=16, marker="v", color=CATEGORICAL[1],
+               alpha=0.85, edgecolor="white", linewidth=0.35, zorder=4)
+    ax.plot([i - 0.26, i + 0.26], [np.median(v)] * 2, color="#222222", lw=1.2, zorder=5)
+    ax.text(i, 0.395, "%d 胜 / %d 负" % (r["win"], r["loss"]), ha="center",
+            va="bottom", fontsize=6.6, color="#222222")
+ax.axhline(0, color="#555555", lw=0.8, ls=(0, (4, 3)), zorder=2)
+ax.set_xticks(range(3))
+ax.set_xticklabels([d["models"][k]["name"] for k in ORDER], fontsize=7)
+ax.set_xlim(-0.55, 2.55)
+ax.set_ylim(-0.09, 0.42)
+ax.set_ylabel("逐维 Δ QWK（主模型 - 基线）")
+ax.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
+ax.set_axisbelow(True)
+ax.set_title("50 维逐维胜负", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax.legend(handles=[
+    Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=4.5, label="主模型更优"),
+    Line2D([], [], marker="v", ls="", markerfacecolor=CATEGORICAL[1],
+           markeredgecolor="white", ms=5, label="基线更优"),
+    Line2D([], [], color="#222222", lw=1.2, label="中位差值"),
+], loc="lower right", handletextpad=0.35, labelspacing=0.25, borderaxespad=0.25)
 
-# ---------------- panel (a): forest plot ----------------
-axA.axvspan(-0.004, 0, color=GREY, alpha=0.10, lw=0, zorder=0)
-axA.axvline(0, color="#555555", lw=0.8, ls=(0, (4, 3)), zorder=2)
-for y, key in zip(ys, ORDER):
-    r = res["deltas"][key]
-    lo, hi, d, pi = r["lo"], r["hi"], r["delta"], r["pi"]
-    c = CATEGORICAL[0]
-    axA.plot([lo, hi], [y, y], color=c, lw=2.0, solid_capstyle="butt", zorder=3, alpha=0.95)
-    for x in (lo, hi):
-        axA.plot([x, x], [y - 0.11, y + 0.11], color=c, lw=1.0, zorder=3)
-    axA.scatter([d], [y], s=34, marker="D", facecolor="white", edgecolor=c,
-                linewidth=1.2, zorder=5)
-    axA.annotate("%.4f" % d, (d, y), xytext=(0, 8), textcoords="offset points",
-                 ha="center", va="bottom", fontsize=6.6, color=BLACK)
-    # right-hand numeric column
-    axA.text(xmax * 1.02, y + 0.13, "Δ = %+.4f" % d, fontsize=6.6, color=BLACK,
-             va="center", ha="left")
-    axA.text(xmax * 1.02, y - 0.17, "[%.4f, %.4f]   π = %.3f" % (lo, hi, pi),
-             fontsize=6.2, color=GREY, va="center", ha="left")
+# ══════════ (b) 降序累计 ══════════
+ax2 = fig.add_subplot(gs[0, 1])
+styles = ["-", "--", ":"]
+for i, k in enumerate(ORDER):
+    r = d["models"][k]
+    v = np.sort(np.array(r["delta"], dtype=float))[::-1]
+    ax2.plot(np.arange(1, v.size + 1), v, color=CATEGORICAL[i], lw=1.5,
+             ls=styles[i], label=r["name"], zorder=3)
+    ax2.scatter([r["win"]], [v[r["win"] - 1]], s=22, color=CATEGORICAL[i],
+                edgecolor="white", linewidth=0.6, zorder=5)
+ax2.axhline(0, color="#555555", lw=0.8, ls=(0, (4, 3)), zorder=2)
+ax2.set_xlim(0, 51)
+ax2.set_ylim(-0.09, 0.40)
+ax2.set_xlabel("按 Δ 降序排列的维度")
+ax2.set_ylabel("Δ QWK")
+ax2.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
+ax2.set_axisbelow(True)
+ax2.set_title("增益是否集中在少数维", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax2.legend(loc="lower left", handletextpad=0.5, labelspacing=0.25, borderaxespad=0.3)
+# 标出与 KNN 的交叉点
+r = d["models"]["knn"]
+v = np.sort(np.array(r["delta"], dtype=float))[::-1]
+ax2.annotate("KNN 基线在第 %d 维后转为负" % r["win"], xy=(r["win"], 0),
+             xytext=(r["win"] + 5, -0.065), fontsize=6.2, color=CATEGORICAL[0],
+             arrowprops=dict(arrowstyle="-", lw=0.5, color="#A9C4DC"))
+ax2.text(0.985, 0.955, "圆点 = 胜/负分界", transform=ax2.transAxes, ha="right",
+         va="top", fontsize=6.1, color=GREY)
 
-axA.set_yticks(ys)
-axA.set_yticklabels([LABEL[k] for k in ORDER], fontsize=7.2)
-axA.tick_params(axis="y", length=0, pad=4)
-axA.set_ylim(-0.62, len(ORDER) - 0.38)
-axA.set_xlim(-0.004, xmax * 2.18)
-axA.set_xlabel("50 维平均 QWK 差值 Δ（主模型 - 基线）")
-axA.xaxis.set_major_locator(MultipleLocator(0.05))
-axA.grid(axis="x", color="#E6E6E6", lw=0.4, zorder=0)
-axA.set_axisbelow(True)
-axA.set_title("(a) 点估计与 95% 置信区间", loc="left", fontsize=8, fontweight="bold", pad=5)
-
-# ---------------- panel (b): bootstrap distributions ----------------
-for y, key in zip(ys, ORDER):
-    v = np.array(res["deltas"][key]["values"])
-    v = v[np.isfinite(v)]
-    c = CATEGORICAL[0]
-    # horizontal half-violin from kernel density
-    from scipy.stats import gaussian_kde
-    kde = gaussian_kde(v, bw_method=0.28)
-    gx = np.linspace(v.min(), v.max(), 220)
-    gy = kde(gx)
-    gy = gy / gy.max() * 0.34
-    axB.fill_between(gx, y - gy, y, color=c, alpha=0.30, lw=0, zorder=3)
-    axB.plot(gx, y - gy, color=c, lw=0.8, zorder=4)
-    med = np.median(v)
-    axB.plot([med, med], [y - 0.34, y], color=CATEGORICAL[1], lw=0.9, zorder=5)
-
-axB.axvline(0, color="#555555", lw=0.8, ls=(0, (4, 3)), zorder=2)
-axB.set_xlim(-0.01, 0.145)
-axB.set_xlabel("bootstrap 重采样下的 Δ")
-axB.tick_params(axis="y", left=False, labelleft=False)
-axB.grid(axis="x", color="#E6E6E6", lw=0.4, zorder=0)
-axB.set_axisbelow(True)
-axB.set_title("(b) 2000 次配对重采样分布", loc="left", fontsize=8, fontweight="bold", pad=5)
-axB.text(0.004, ys[-1] - 0.30, "Δ = 0", fontsize=6.2, color="#555555", ha="left", va="top")
-axB.annotate("三组分布全部落在 0 右侧\n（π = 1.000）", xy=(0.10, ys[0] + 0.03),
-             fontsize=6.4, color=CATEGORICAL[1], ha="center", va="bottom")
+for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha="center", va="bottom",
+             fontsize=8.5, fontweight="bold", color="#222222")
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_sig.png"), dpi=400,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
-print("saved fig_q1_sig")
-for k in ORDER:
-    r = res["deltas"][k]
-    print("%-8s d=%+.4f [%.4f, %.4f] pi=%.3f" % (k, r["delta"], r["lo"], r["hi"], r["pi"]))
+print("saved; win:", {k: d["models"][k]["win"] for k in ORDER})

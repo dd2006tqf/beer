@@ -37,7 +37,7 @@ GREY = "#999999"
 ev = json.load(open(os.path.join(ROOT, "_tmp", "q2_evidence.json"), encoding="utf-8"))
 abc = json.load(open(os.path.join(ROOT, "_tmp", "q2_abc.json"), encoding="utf-8"))
 GRADE = {(r["dim"], r["rank"]): r["grade"] for r in abc}
-GCOL = {"A": CATEGORICAL[2], "B": CATEGORICAL[3], "C": GREY}
+GCOL = {"A": CATEGORICAL[0], "B": CATEGORICAL[3], "C": GREY}
 
 rows = []
 for dim, recs in ev.items():
@@ -49,8 +49,8 @@ for dim, recs in ev.items():
                          grade=GRADE.get((dim, r["rank"]), "C")))
 
 fig = plt.figure(figsize=(7.0, 3.55))
-gs = fig.add_gridspec(1, 2, width_ratios=[1.30, 1.0], wspace=0.30,
-                      left=0.145, right=0.985, top=0.90, bottom=0.155)
+gs = fig.add_gridspec(1, 2, width_ratios=[1.30, 1.0], wspace=0.42,
+                      left=0.115, right=0.985, top=0.90, bottom=0.155)
 
 # ══════════ (a) dumbbell ══════════
 ax = fig.add_subplot(gs[0, 0])
@@ -64,7 +64,7 @@ for dim in dim_order:
     for r in recs:
         ypos.append(y); labels.append(r); y += 1.0
     ylab_dim.append((y - len(recs) / 2.0 - 0.5, dim))
-    y += 0.55   # separator between dimensions
+    y += 0.95   # separator between dimensions
 
 for yi, r in zip(ypos, labels):
     c = GCOL[r["grade"]]
@@ -82,24 +82,21 @@ for yi, r in zip(ypos, labels):
                    linewidth=0.6, zorder=5)
         ax.scatter([mod], [yi], s=26, marker="s", color=CATEGORICAL[3],
                    edgecolor="white", linewidth=0.6, zorder=5)
-    ax.text(-1.6, yi, r["comp"].replace("_", " "), ha="right", va="center",
-            fontsize=6.0, color="#333333")
-    ax.text(-1.6, yi - 0.42, "第 %d 位" % r["rank"], ha="right", va="center",
-            fontsize=5.4, color=GREY)
+    ax.text(-0.45, yi, "%d·%s" % (r["rank"], r["comp"].replace("_", " ")),
+            ha="right", va="center", fontsize=5.9, color="#333333")
 
 for yy, dim in ylab_dim:
-    ax.text(-1.6, yy + 0.62, dim_zh(dim), ha="right", va="center", fontsize=6.6,
+    ax.text(-8.6, yy + 0.28, dim_zh(dim), ha="left", va="center", fontsize=6.9,
             fontweight="bold", color="#111111")
 
 ax.set_yticks([])
 ax.set_ylim(-1.0, max(ypos) + 0.9)
-ax.set_xlim(-0.5, 15.0)
+ax.set_xlim(-8.4, 15.0)
 ax.set_xlabel("置换后 50 维平均预测变化（%）")
 ax.grid(axis="x", color="#EFEFEF", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
 ax.spines["left"].set_visible(False)
-ax.set_title("(a) 条件增量与模块增量成对对照", loc="left", fontsize=8,
-             fontweight="bold", pad=5)
+
 from matplotlib.lines import Line2D
 ax.legend(handles=[
     Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=5, label="条件增量"),
@@ -131,13 +128,17 @@ axB.text(0.97, 0.94, "模块整体贡献", transform=axB.transAxes, fontsize=6.4
          color=CATEGORICAL[3], va="top", ha="right")
 axB.text(0.97, 0.06, "可替代", transform=axB.transAxes, fontsize=6.4,
          color=GREY, va="bottom", ha="right")
-axB.set_title("(b) 独立驱动 vs 模块内替代", loc="left", fontsize=8,
-              fontweight="bold", pad=5)
+
 axB.legend(handles=[Line2D([], [], marker="o", ls="", color=GCOL[g], ms=5,
                            label="%s 级（%d 个）" % (g, sum(1 for r in rows if r["grade"] == g)))
                     for g in ("A", "B", "C")],
            loc="lower left", handletextpad=0.35, labelspacing=0.25,
            borderaxespad=0.25)
+
+for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
+             fontsize=8.5, fontweight="bold", color="#222222")
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_evidence.png"), dpi=400,
             bbox_inches="tight", facecolor="white")
