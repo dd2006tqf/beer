@@ -86,12 +86,12 @@ for yi, r in zip(ypos, labels):
             ha="right", va="center", fontsize=5.9, color="#333333")
 
 for yy, dim in ylab_dim:
-    ax.text(-8.6, yy + 0.28, dim_zh(dim), ha="left", va="center", fontsize=6.9,
+    ax.text(-9.2, yy + 0.28, dim_zh(dim), ha="left", va="center", fontsize=6.9,
             fontweight="bold", color="#111111")
 
 ax.set_yticks([])
 ax.set_ylim(-1.0, max(ypos) + 0.9)
-ax.set_xlim(-8.4, 15.0)
+ax.set_xlim(-9.0, 15.0)
 ax.set_xlabel("置换后 50 维平均预测变化（%）")
 ax.grid(axis="x", color="#EFEFEF", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
