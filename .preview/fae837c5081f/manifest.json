@@ -1,0 +1,57 @@
+{
+  "schema_version": "1",
+  "source_path": "E:\\华数数据\\workspaces\\b6875cacdc9d\\paper\\main.pdf",
+  "source_filename": "main.pdf",
+  "source_hash": "fae837c5081f",
+  "source_size_bytes": 5446891,
+  "kind": "pdf",
+  "rendered_at_utc": "2026-10-27T17:45:05+00:00",
+  "output_dir": "E:\\华数数据\\workspaces\\b6875cacdc9d\\.preview\\fae837c5081f",
+  "page_count": 65,
+  "rendered_page_count": 3,
+  "collage_count": 0,
+  "extracted_text_chars": 4591,
+  "text_relpath": "text.md",
+  "thumbnail_relpath": null,
+  "pages": [
+    {
+      "page": 1,
+      "relpath": "pages\\p001.png",
+      "size_bytes": 455331,
+      "width": 1241,
+      "height": 1754
+    },
+    {
+      "page": 16,
+      "relpath": "pages\\p016.png",
+      "size_bytes": 474539,
+      "width": 1241,
+      "height": 1754
+    },
+    {
+      "page": 26,
+      "relpath": "pages\\p026.png",
+      "size_bytes": 387596,
+      "width": 1241,
+      "height": 1754
+    }
+  ],
+  "collages": [],
+  "warnings": [
+    "Pillow unavailable for thumbnail",
+    "Pillow unavailable: No module named 'PIL'"
+  ],
+  "options": {
+    "max_pages": 12,
+    "collage": true,
+    "page_range": "1,16,26",
+    "thumbnail": true,
+    "text_only": false,
+    "jpeg_quality": 85,
+    "out_max_dim": 2048
+  },
+  "summary": {
+    "total_pages": 65,
+    "rendered_pages": 3
+  }
+}
