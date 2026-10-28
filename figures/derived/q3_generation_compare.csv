@@ -1,0 +1,13 @@
+style,method,ks,novelty_med,corr_mae,in_range
+Tripel,bootstrap,0.1298,0.0,0.1434,0.9981
+Tripel,gaussian,0.3235,17.818,0.2693,0.8172
+Kriek,bootstrap,0.0761,0.0,0.0925,0.9982
+Kriek,gaussian,0.3069,18.592,0.3349,0.7924
+Lambic,bootstrap,0.0884,0.0,0.0971,0.9991
+Lambic,gaussian,0.3062,18.017,0.3234,0.8048
+Tripel,CVAE-raw,0.3522,40.195,0.2327,0.9453
+Kriek,CVAE-raw,0.4037,353.896,0.2892,0.8651
+Lambic,CVAE-raw,0.4117,656.729,0.302,0.8615
+Tripel,CVAE-clipped,0.3511,40.195,0.2327,0.96
+Kriek,CVAE-clipped,0.4037,353.896,0.2892,0.8775
+Lambic,CVAE-clipped,0.4098,656.729,0.302,0.8764

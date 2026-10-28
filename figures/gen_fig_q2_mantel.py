@@ -35,8 +35,8 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-rows = json.load(open(os.path.join(ROOT, "_tmp", "q2_mantel.json"), encoding="utf-8"))
-meta = json.load(open(os.path.join(ROOT, "_tmp", "_modmeta.json"), encoding="utf-8"))
+rows = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_mantel.json"), encoding="utf-8"))
+meta = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_module_meta.json"), encoding="utf-8"))
 big = [int(c) for c in meta["big"]]
 GROUPS = ["A_", "F_", "X"]
 GLAB = ["香气 A_", "风味 F_", "口感/缺陷"]
@@ -92,7 +92,7 @@ y = pd.read_csv(os.path.join(ROOT, "user_data", "4.csv"))
 sens = [c for c in y.columns if c not in ("beer", "beer_id", "tasting_category_fine")]
 gidx = [j for j, s in enumerate(sens)
         if ("A_" if s.startswith("A_") else ("F_" if s.startswith("F_") else "X")) == best["group"]]
-mp = [int(v) for v in np.load(os.path.join(ROOT, "_tmp", "_modpos.npy"), allow_pickle=True)[mi]]
+mp = [int(v) for v in np.load(os.path.join(ROOT, "figures", "derived", "q2_module_positions.npy"), allow_pickle=True)[mi]]
 Dm = squareform(pdist(np.nan_to_num(Xv[:, mp])))
 Ds = squareform(pdist(np.nan_to_num(y[sens].apply(pd.to_numeric, errors="coerce").values[:, gidx])))
 

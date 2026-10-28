@@ -31,7 +31,7 @@ mpl.rcParams.update({
 })
 CATEGORICAL = ["#2166AC", "#B2182C", "#1B7837", "#F1A340", "#762A83", "#666666"]
 
-d = json.load(open(os.path.join(ROOT, "_tmp", "q1_shap_beeswarm.json"), encoding="utf-8"))
+d = json.load(open(os.path.join(ROOT, "figures", "derived", "q1_shap_beeswarm.json"), encoding="utf-8"))
 PANELS = [("alcohol", "酒精", "(a)"), ("A_malt_all", "香气·麦芽", "(b)"),
           ("F_esters_all", "风味·酯", "(c)"), ("dms", "DMS", "(d)")]
 cmap = LinearSegmentedColormap.from_list("v", ["#2166AC", "#B7C9DC", "#E8E8E8", "#E7A6A0", "#B2182C"])

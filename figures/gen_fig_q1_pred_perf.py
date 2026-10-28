@@ -36,7 +36,7 @@ GREY = "#999999"
 
 PD = P1["per_dim"]
 ranked = P1["fig_data"]["qwk_ranked"]
-boot = json.load(open(os.path.join(ROOT, "_tmp", "q1_boot_full.json"), encoding="utf-8"))["per_dim"]
+boot = json.load(open(os.path.join(ROOT, "figures", "derived", "q1_boot_full.json"), encoding="utf-8"))["per_dim"]
 mean_qwk = P1["summary"]["mean_qwk_main"]
 
 names = [r[0] for r in ranked]

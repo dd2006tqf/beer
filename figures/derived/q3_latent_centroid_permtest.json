@@ -1,0 +1,20 @@
+[
+ {
+  "pair": "Tripel-Kriek",
+  "d": 0.783,
+  "null_med": 1.142,
+  "p": 0.915
+ },
+ {
+  "pair": "Tripel-Lambic",
+  "d": 0.521,
+  "null_med": 1.037,
+  "p": 0.989
+ },
+ {
+  "pair": "Kriek-Lambic",
+  "d": 0.637,
+  "null_med": 1.306,
+  "p": 0.997
+ }
+]

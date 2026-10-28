@@ -34,8 +34,8 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-ev = json.load(open(os.path.join(ROOT, "_tmp", "q2_evidence.json"), encoding="utf-8"))
-abc = json.load(open(os.path.join(ROOT, "_tmp", "q2_abc.json"), encoding="utf-8"))
+ev = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_evidence_permutation.json"), encoding="utf-8"))
+abc = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_abc_grades.json"), encoding="utf-8"))
 GRADE = {(r["dim"], r["rank"]): r["grade"] for r in abc}
 GCOL = {"A": CATEGORICAL[0], "B": CATEGORICAL[3], "C": GREY}
 

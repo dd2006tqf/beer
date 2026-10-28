@@ -1,0 +1,81 @@
+{
+ "variants": [
+  {
+   "variant": "SHAP only",
+   "mean_module_coverage": 2.6,
+   "mean_jaccard": 0.186,
+   "n_distinct_top1": 34
+  },
+  {
+   "variant": "corr only",
+   "mean_module_coverage": 2.3,
+   "mean_jaccard": 0.186,
+   "n_distinct_top1": 20
+  },
+  {
+   "variant": "SHAP + corr",
+   "mean_module_coverage": 2.56,
+   "mean_jaccard": 0.186,
+   "n_distinct_top1": 23
+  },
+  {
+   "variant": "full (3-way)",
+   "mean_module_coverage": 2.92,
+   "mean_jaccard": 0.186,
+   "n_distinct_top1": 23
+  }
+ ],
+ "compound_counts": {
+  "acetaldehyde": 16,
+  "MeSH": 12,
+  "ethyl_octanoate": 10,
+  "DMS": 10,
+  "phenethyl_alcohol": 8,
+  "octyl_acetate": 7,
+  "ethyl_isovalerate": 7,
+  "isopentyl_acetate": 6,
+  "isobutanol": 4,
+  "ethyl_decanoate": 4,
+  "geraniol": 4,
+  "ethyl_hexanoate": 4,
+  "ethyl_2.methyl_butyrate": 4,
+  "ethyl_acetate": 4,
+  "Z.nerolidol": 3,
+  "citronellol": 3,
+  "alloaromadendrene.epoxide": 3,
+  "X4VG": 3,
+  "linalool": 2,
+  "E.caryophyllene": 2,
+  "n.hexanol": 2,
+  "delta.terpinyl.acetate": 2,
+  "eucalyptol": 2,
+  "ethyl..E..linalool": 2,
+  "terpinen.4.ol": 1,
+  "ethyl.hexadecanoate": 1,
+  "ethyl_propionate": 1,
+  "isopentyl.butanoate": 1,
+  "X2.methyl.1.butanol": 1,
+  "benzaldehyde": 1,
+  "ethyl.lactate": 1,
+  "isobutyl_acetate": 1,
+  "beta.phellandrene": 1,
+  "n.heptanol": 1,
+  "X2.acetylpyrrole": 1,
+  "DES": 1,
+  "nerol.oxide": 1,
+  "germacrene.D": 1,
+  "X.E..2.nonenal": 1,
+  "Z.Z.geranyl.linalool": 1,
+  "neryl.propanoate": 1,
+  "alpha.humulene": 1,
+  "eugenol": 1,
+  "X1.alpha.terpineol": 1,
+  "isomaltol": 1,
+  "X3.methylbutanal": 1,
+  "alpha.calacorene": 1,
+  "H2S": 1,
+  "X2.3.butanedione": 1,
+  "cis.linalool.oxide": 1
+ },
+ "n_distinct_compounds": 50
+}

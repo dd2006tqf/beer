@@ -1,0 +1,13 @@
+{
+ "_tmp/q1_ordinal_final.json": "figures/derived/q1_ordinal_counterfactual.json",
+ "_tmp/q1_perdim_delta.json": "figures/derived/q1_perdim_delta.json",
+ "_tmp/q2_rho_sweep.json": "figures/derived/q2_rho_sweep.json",
+ "_tmp/q2_iso_diag.json": "figures/derived/q2_isolated_diag.json",
+ "_tmp/q2_mantel.json": "figures/derived/q2_mantel.json",
+ "_tmp/q2_upset.json": "figures/derived/q2_method_agreement.json",
+ "_tmp/q2_ablation.json": "figures/derived/q2_module_coverage_ablation.json",
+ "_tmp/q3_ks_unified.json": "figures/derived/q3_ks_per_style.json",
+ "_tmp/q3_latent_snr.json": "figures/derived/q3_latent_centroid_permtest.json",
+ "_tmp/q2_abc.json": "figures/derived/q2_abc_grades.json",
+ "_tmp/q2_evidence.json": "figures/derived/q2_evidence_permutation.json"
+}

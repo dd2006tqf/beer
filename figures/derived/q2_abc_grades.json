@@ -1,0 +1,164 @@
+[
+ {
+  "dim": "alcohol",
+  "rank": 1,
+  "compound": "ethyl_octanoate",
+  "freq": 1.0,
+  "cond": 0.07536,
+  "mod": 0.05902,
+  "grade": "A"
+ },
+ {
+  "dim": "alcohol",
+  "rank": 2,
+  "compound": "acetaldehyde",
+  "freq": 1.0,
+  "cond": 0.03442,
+  "mod": 0.07914,
+  "grade": "B"
+ },
+ {
+  "dim": "alcohol",
+  "rank": 3,
+  "compound": "MeSH",
+  "freq": 1.0,
+  "cond": 0.0082,
+  "mod": 0.00697,
+  "grade": "C"
+ },
+ {
+  "dim": "bitternes",
+  "rank": 1,
+  "compound": "ethyl_octanoate",
+  "freq": 1.0,
+  "cond": 0.13876,
+  "mod": 0.0795,
+  "grade": "A"
+ },
+ {
+  "dim": "bitternes",
+  "rank": 2,
+  "compound": "MeSH",
+  "freq": 1.0,
+  "cond": 0.00636,
+  "mod": 0.00302,
+  "grade": "C"
+ },
+ {
+  "dim": "bitternes",
+  "rank": 3,
+  "compound": "DMS",
+  "freq": 1.0,
+  "cond": 0.02553,
+  "mod": null,
+  "grade": "B"
+ },
+ {
+  "dim": "A_malt_all",
+  "rank": 1,
+  "compound": "acetaldehyde",
+  "freq": 1.0,
+  "cond": 0.02702,
+  "mod": 0.0225,
+  "grade": "A"
+ },
+ {
+  "dim": "A_malt_all",
+  "rank": 2,
+  "compound": "octyl_acetate",
+  "freq": 1.0,
+  "cond": 0.03376,
+  "mod": 0.12086,
+  "grade": "A"
+ },
+ {
+  "dim": "A_malt_all",
+  "rank": 3,
+  "compound": "MeSH",
+  "freq": 1.0,
+  "cond": 0.01466,
+  "mod": 0.00401,
+  "grade": "C"
+ },
+ {
+  "dim": "A_hops_all",
+  "rank": 1,
+  "compound": "ethyl_octanoate",
+  "freq": 1.0,
+  "cond": 0.0911,
+  "mod": 0.05057,
+  "grade": "A"
+ },
+ {
+  "dim": "A_hops_all",
+  "rank": 2,
+  "compound": "DMS",
+  "freq": 1.0,
+  "cond": 0.07047,
+  "mod": null,
+  "grade": "A"
+ },
+ {
+  "dim": "A_hops_all",
+  "rank": 3,
+  "compound": "linalool",
+  "freq": 1.0,
+  "cond": 0.01803,
+  "mod": 0.05042,
+  "grade": "B"
+ },
+ {
+  "dim": "F_esters_all",
+  "rank": 1,
+  "compound": "ethyl_acetate",
+  "freq": 1.0,
+  "cond": 0.06915,
+  "mod": 0.11135,
+  "grade": "A"
+ },
+ {
+  "dim": "F_esters_all",
+  "rank": 2,
+  "compound": "phenethyl_alcohol",
+  "freq": 0.992,
+  "cond": 0.03891,
+  "mod": null,
+  "grade": "A"
+ },
+ {
+  "dim": "F_esters_all",
+  "rank": 3,
+  "compound": "acetaldehyde",
+  "freq": 0.904,
+  "cond": 0.03942,
+  "mod": 0.13375,
+  "grade": "B"
+ },
+ {
+  "dim": "dms",
+  "rank": 1,
+  "compound": "isomaltol",
+  "freq": 1.0,
+  "cond": 0.03933,
+  "mod": 0.05068,
+  "grade": "A"
+ },
+ {
+  "dim": "dms",
+  "rank": 2,
+  "compound": "phenethyl_alcohol",
+  "freq": 0.998,
+  "cond": 0.0191,
+  "mod": null,
+  "grade": "B"
+ },
+ {
+  "dim": "dms",
+  "rank": 3,
+  "compound": "X3.methylbutanal",
+  "freq": 0.376,
+  "cond": 0.03177,
+  "mod": 0.0821,
+  "grade": "B"
+ }
+]

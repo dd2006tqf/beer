@@ -32,7 +32,7 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-rows = json.load(open(os.path.join(ROOT, "_tmp", "q2_rho_sweep.json"), encoding="utf-8"))
+rows = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_rho_sweep.json"), encoding="utf-8"))
 rho = np.array([r["rho"] for r in rows])
 edges = np.array([r["edges"] for r in rows])
 iso = np.array([r["iso"] for r in rows])

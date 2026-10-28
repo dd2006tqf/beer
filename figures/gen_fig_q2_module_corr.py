@@ -39,7 +39,7 @@ import utils as U, params as P
 df1, X, feat, _ = U.load_chem(os.path.join(ROOT, "user_data"))
 raw = pd.read_csv(os.path.join(ROOT, "user_data", "2.csv"))
 R = raw.iloc[:, 1:].apply(pd.to_numeric, errors="coerce").values.astype(float)
-net = json.load(open(os.path.join(ROOT, "_tmp", "q2_full_network.json"), encoding="utf-8"))
+net = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_full_network.json"), encoding="utf-8"))
 comm = {n["name"]: n["comm"] for n in net["nodes"]}
 
 c_idx = [i for i, f in enumerate(feat) if f not in P.PHYSICOCHEM_COLS and f not in P.AGG_COLS]

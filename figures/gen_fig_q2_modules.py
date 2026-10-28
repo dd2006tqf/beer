@@ -33,8 +33,8 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-net = json.load(open(os.path.join(ROOT, "_tmp", "q2_full_network.json"), encoding="utf-8"))
-diag = json.load(open(os.path.join(ROOT, "_tmp", "q2_iso_diag.json"), encoding="utf-8"))
+net = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_full_network.json"), encoding="utf-8"))
+diag = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_isolated_diag.json"), encoding="utf-8"))
 nodes, edges = net["nodes"], net["edges"]
 comm_sizes = collections.Counter(n["comm"] for n in nodes)
 

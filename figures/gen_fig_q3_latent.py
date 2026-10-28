@@ -37,10 +37,10 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182C", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-pack = np.load(os.path.join(ROOT, "_tmp", "q3_latent_pack.npz"), allow_pickle=True)
+pack = np.load(os.path.join(ROOT, "figures", "derived", "q3_latent_pack.npz"), allow_pickle=True)
 Zr, Zg = pack["Zr"], pack["Zg"]
 rs = pack["real_style"].astype(str); gsty = pack["gen_style"].astype(str)
-snr = json.load(open(os.path.join(ROOT, "_tmp", "q3_latent_snr.json"), encoding="utf-8"))
+snr = json.load(open(os.path.join(ROOT, "figures", "derived", "q3_latent_centroid_permtest.json"), encoding="utf-8"))
 
 STY = ["Tripel", "Kriek", "Lambic"]
 cols = {s: CATEGORICAL[i] for i, s in enumerate(STY)}

@@ -31,7 +31,7 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182C", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-d = json.load(open(os.path.join(ROOT, "_tmp", "q2_upset.json"), encoding="utf-8"))
+d = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_method_agreement.json"), encoding="utf-8"))
 sens = d["sens"]
 M = d["methods"]
 TAGS = ["shap", "corr", "rf"]

@@ -4,7 +4,7 @@
 
 **论文题目**：面向啤酒酿造化合物的感官分级预测、关键化合物归因与风格条件生成
 
-本仓库包含：论文（Word 定稿 + Markdown 源 + LaTeX 版及其 PDF）、建模源码、图表、竞赛提交结果。
+本仓库包含：LaTeX 论文及其 PDF、建模源码、图表与图表数据源、竞赛提交结果。
 
 ---
 
@@ -12,6 +12,36 @@
 
 | 位置 | 角色 | 说明 |
 |---|---|---|
+| `paper/main.tex` | **正式稿源文件** | 全部内容以它为准；图表、正文、附录都在这里 |
+| `paper/main.pdf` | **正式交付稿** | 由 `main.tex` 两遍 `xelatex` 编译得到 |
+| `figures/derived/*.json` | 图的数据源 | 新增图的中间结果已入库，重画图只需跑 `figures/gen_fig_*.py` |
+| `paper/main.md` / `main.docx` | **已废弃（历史副本）** | 停在 2026-10-27，与 `main.tex` 脱节，勿再据其修改 |
+
+**只维护 `paper/main.tex`。** 改完必须两遍 `xelatex` 重新编译 `main.pdf`（见「快速开始」）。
+
+## 重画图与缺失依赖
+
+33 张图的「脚本 → 数据源」映射见 `figures/FIGURE_SOURCES.json`。绝大多数图只需：
+
+```bash
+python figures/gen_fig_<name>.py
+```
+
+数据都在仓内（`figures/derived/`、`figures/*.json`、`submission/`、`user_data/`）。
+
+两处例外需要先补外部依赖：
+
+| 图 | 缺什么 | 怎么补 |
+|---|---|---|
+| `fig_prep_kaggle.png` | `_tmp/kaggle/extracted/beer_data_set.csv`（Kaggle 原始集，因体积与许可未入库） | 从 Kaggle `stephenpolozoff/top-beer-information` 下载后解压到该路径 |
+| `fig_q2_shap_ale.png` | `_tmp/checkpoints/q1_models.pkl`（7.4 MB 模型检查点，已忽略） | 运行 `python code/problem1.py user_data` 重建 |
+
+`fig_roadmap.png` 与 `fig_arch_q3.png` 没有 Python 脚本，由同名 HTML 手工导出；PNG 已入库，不影响编译。
+
+排版基线取自 `templates/cumcm-latex-template/`（CUMCM 2026 官方 LaTeX 模板，作者见该目录 README），
+`paper/cumcm2026.sty` 与该模板保持一致。
+
+---|---|---|
 | `paper/main.md` | **正式稿源文件** | 全部内容以它为准，`_tmp/md2docx.py` 由它生成 Word |
 | `paper/main.docx` | **正式交付稿** | 由 `main.md` 自动排版，官方格式（封面表、目录、正文页码从 1） |
 | `提交包/AMCB2600304.docx` / `.pdf` | **提交包** | 最终提交用 |

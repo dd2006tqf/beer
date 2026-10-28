@@ -24,7 +24,7 @@ for d in dims:
         freq[c] += 1
 comps = [c for c, _ in freq.most_common()]           # 全部并集
 
-# 构造 φ 矩阵（dim × compound），未命中处置 NaN（draw_vector_heatmap 用 mask 留白）
+# 构造 φ 矩阵（dim × compound），未命中处置 NaN（imshow 自动留白）
 cidx = {c: j for j, c in enumerate(comps)}
 mat = np.full((len(dims), len(comps)), np.nan)
 for i, d in enumerate(dims):
@@ -36,7 +36,7 @@ w = max(6.2, 0.34 * len(comps) + 1.8)
 fig, ax = plt.subplots(figsize=(min(w, 9.0), 4.8))
 set_paper_placement(fig, width_fraction=0.98)
 draw_vector_heatmap(
-    ax, mat, mask=mask,
+    ax, mat,
     xlabels=[c if len(c) <= 13 else c[:12] + '…' for c in comps],
     ylabels=[dim_zh(d) for d in dims],
     annot='auto', fmt='.2f', cmap='YlOrRd', cbar=True, cbar_label='融合入选权重 φ')

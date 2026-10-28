@@ -31,7 +31,7 @@ mpl.rcParams.update({
 CATEGORICAL = ["#2166AC", "#B2182C", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
-df = pd.read_csv(os.path.join(ROOT, "_tmp", "q1_by_style.csv"))
+df = pd.read_csv(os.path.join(ROOT, "figures", "derived", "q1_by_style.csv"))
 g = df.groupby("style").agg(med=("qwk", "median"), mean=("qwk", "mean"),
                             n=("qwk", "size")).sort_values("med", ascending=True)
 

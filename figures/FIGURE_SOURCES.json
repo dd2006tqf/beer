@@ -1,43 +1,338 @@
 {
- "fig_eda_style_pca": [
-  "supp_eda.json::style_counts",
-  "supp_eda.json::pca_chem"
- ],
- "fig_q1_missing_pattern": [
-  "supp_eda.json::missing"
- ],
- "fig_q1_pred_perf": [
-  "problem_1_results.json::fig_data.qwk_ranked",
-  "problem_1_results.json::summary.mean_qwk_main"
- ],
- "fig_q1_calibration": [
-  "problem_1_results.json::calibration"
- ],
- "fig_q2_coexpr_network": [
-  "problem_2_results.json::fig_data.network_nodes",
-  "problem_2_results.json::fig_data.network_edges",
-  "problem_2_results.json::graph"
- ],
- "fig_q2_top3_heatmap": [
-  "problem_2_results.json::per_dim",
-  "problem_1_results.json::fig_data.qwk_ranked"
- ],
- "fig_q2_stability": [
-  "problem_2_results.json::fig_data.top1_freq_ranked",
-  "problem_2_results.json::summary.n_bootstrap"
- ],
- "fig_q2_chem_sensory_corr": [
-  "supp_eda.json::chem_sensory_corr"
- ],
- "fig_q3_style_radar": [
-  "problem_3_results.json::fig_data.radar"
- ],
- "fig_q3_realvsgen": [
-  "problem_3_results.json::fig_data.pca",
-  "problem_3_results.json::summary.ks_distance_by_style"
- ],
- "fig_q3_transfer_defect": [
-  "problem_3_results.json::fig_data.defect_dumbbell",
-  "problem_3_results.json::transfer_info"
- ]
+ "fig_roadmap": {
+  "caption": "整体技术路线图",
+  "script": null,
+  "data": null,
+  "note": "无 Python 脚本，由同名 HTML 手工导出；PNG 已入库，不影响论文编译"
+ },
+ "fig_eda_style_pca": {
+  "caption": "风格样本量与化学谱主成分分离",
+  "script": [
+   "gen_fig_eda_style_pca.py"
+  ],
+  "data": [
+   "figures/supp_eda.json"
+  ],
+  "note": null
+ },
+ "fig_prep_logbase_b": {
+  "caption": "校准浓度与 1.csv 取值的对应关系及 70 个可校准列的中位残差",
+  "script": [
+   "gen_fig_prep_logbase.py"
+  ],
+  "data": [
+   "figures/supp_preprocess.json"
+  ],
+  "note": null
+ },
+ "fig_q1_missing_pattern": {
+  "caption": "含缺失样本的缺失位置矩阵与列缺失率",
+  "script": [
+   "gen_fig_q1_missing_pattern.py"
+  ],
+  "data": [
+   "figures/supp_eda.json"
+  ],
+  "note": null
+ },
+ "fig_prep_kaggle": {
+  "caption": "Kaggle 公开啤酒集与本文的风格规格宏观对照",
+  "script": [
+   "gen_fig_prep_kaggle.py"
+  ],
+  "data": [
+   "_tmp/kaggle/extracted/beer_data_set.csv",
+   "figures/supp_kaggle.json",
+   "user_data/1.csv"
+  ],
+  "note": "Kaggle 原始 CSV 未入库（体积/许可），需按 README 自行下载；图已入库，不影响论文编译"
+ },
+ "fig_q1_sig": {
+  "caption": "主模型与三类基线的逐维配对胜负",
+  "script": [
+   "gen_fig_q1_sig.py"
+  ],
+  "data": [
+   "figures/derived/q1_perdim_delta.json"
+  ],
+  "note": null
+ },
+ "fig_q1_bystyle": {
+  "caption": "分风格重算：总体 QWK 中有多少来自跨风格差异",
+  "script": [
+   "gen_fig_q1_bystyle.py"
+  ],
+  "data": [
+   "figures/derived/q1_by_style.csv"
+  ],
+  "note": null
+ },
+ "fig_q1_pred_perf": {
+  "caption": "各感官维度交叉验证 QWK 排序",
+  "script": [
+   "gen_fig_q1_pred_perf.py",
+   "gen_fig_q1_pred_perf_v2.py"
+  ],
+  "data": [
+   "figures/derived/q1_boot_full.json",
+   "figures/problem_1_results.json"
+  ],
+  "note": null
+ },
+ "fig_q1_r2_by_group": {
+  "caption": "分组的 $R^2$ 与 $\\pm$1 级准确率",
+  "script": [
+   "gen_fig_q1_r2_by_group.py"
+  ],
+  "data": [
+   "figures/problem_1_results.json"
+  ],
+  "note": null
+ },
+ "fig_q1_calibration": {
+  "caption": "代表维度预测校准与等级混淆",
+  "script": [
+   "gen_fig_q1_calibration.py"
+  ],
+  "data": [
+   "figures/problem_1_results.json"
+  ],
+  "note": null
+ },
+ "fig_q2_modules": {
+  "caption": "共表达网络的模块结构与孤立节点成因",
+  "script": [
+   "gen_fig_q2_modules.py"
+  ],
+  "data": [
+   "figures/derived/q2_full_network.json",
+   "figures/derived/q2_isolated_diag.json"
+  ],
+  "note": null
+ },
+ "fig_q2_mantel": {
+  "caption": "化学模块与感官组的 Mantel 关联",
+  "script": [
+   "gen_fig_q2_mantel.py"
+  ],
+  "data": [
+   "figures/derived/q2_mantel.json",
+   "figures/derived/q2_module_meta.json",
+   "figures/derived/q2_module_positions.npy",
+   "user_data/4.csv"
+  ],
+  "note": null
+ },
+ "fig_q2_module_corr": {
+  "caption": "按模块重排的相关矩阵与块内/块间强度对比",
+  "script": [
+   "gen_fig_q2_module_corr.py"
+  ],
+  "data": [
+   "figures/derived/q2_full_network.json",
+   "user_data/2.csv"
+  ],
+  "note": null
+ },
+ "fig_q2_chem_sensory_all": {
+  "caption": "代表性化合物与 50 个感官维的交叉相关",
+  "script": [
+   "gen_fig_q2_chem_sensory_split.py"
+  ],
+  "data": [
+   "figures/supp_eda.json"
+  ],
+  "note": null
+ },
+ "fig_q2_rho_sweep": {
+  "caption": "建图阈值 ρ 的灵敏度：边数、孤立节点与模块度的取舍",
+  "script": [
+   "gen_fig_q2_rho_sweep.py"
+  ],
+  "data": [
+   "figures/derived/q2_rho_sweep.json"
+  ],
+  "note": null
+ },
+ "fig_q2_stability": {
+  "caption": "单方法稳定性饱和与跨方法一致性分散",
+  "script": [
+   "gen_fig_q2_stability.py"
+  ],
+  "data": [
+   "figures/problem_2_results.json"
+  ],
+  "note": null
+ },
+ "fig_q2_upset": {
+  "caption": "三方法 Top-3 的一致结构（UpSet）",
+  "script": [
+   "gen_fig_q2_upset.py"
+  ],
+  "data": [
+   "figures/derived/q2_method_agreement.json"
+  ],
+  "note": null
+ },
+ "fig_q2_top1_bar": {
+  "caption": "三个名次的 bootstrap 入选频率与其分化",
+  "script": [
+   "gen_fig_q2_top1_bar.py"
+  ],
+  "data": [
+   "submission/q2_top3_compounds.csv"
+  ],
+  "note": null
+ },
+ "fig_q1_cross": {
+  "caption": "两问结论的联合验证：可预测性与归因稳定性",
+  "script": [
+   "gen_fig_q1_cross.py"
+  ],
+  "data": [
+   "figures/problem_1_results.json",
+   "figures/problem_2_results.json",
+   "submission/q2_top3_compounds.csv"
+  ],
+  "note": null
+ },
+ "fig_q2_top3_heatmap": {
+  "caption": "感官维与关键化合物的融合重要度热力",
+  "script": [
+   "gen_fig_q2_top3_heatmap.py"
+  ],
+  "data": [
+   "figures/problem_1_results.json",
+   "figures/problem_2_results.json"
+  ],
+  "note": null
+ },
+ "fig_q2_concentration": {
+  "caption": "Top-3 归因的席位集中度与来源构成",
+  "script": [
+   "gen_fig_q2_concentration.py"
+  ],
+  "data": [
+   "figures/problem_2_results.json"
+  ],
+  "note": null
+ },
+ "fig_q2_evidence": {
+  "caption": "条件增量与模块增量：独立驱动或模块内替代",
+  "script": [
+   "gen_fig_q2_evidence.py"
+  ],
+  "data": [
+   "figures/derived/q2_abc_grades.json",
+   "figures/derived/q2_evidence_permutation.json"
+  ],
+  "note": null
+ },
+ "fig_q2_roles": {
+  "caption": "化合物角色：跨维枢纽与单维专精",
+  "script": [
+   "gen_fig_q2_roles.py"
+  ],
+  "data": [
+   "submission/q2_top3_compounds.csv"
+  ],
+  "note": null
+ },
+ "fig_q2_shap_ale": {
+  "caption": "关键化合物的局部非线性响应（SHAP 与 ALE）",
+  "script": [
+   "gen_fig_q2_shap_ale.py"
+  ],
+  "data": [
+   "_tmp/checkpoints/q1_models.pkl",
+   "user_data/1.csv",
+   "figures/problem_2_results.json"
+  ],
+  "note": "q1_models.pkl 未入库，运行 code/problem1.py 可重建"
+ },
+ "fig_q1_shap_beeswarm": {
+  "caption": "四个代表维度的 SHAP 蜂群：方向与量级",
+  "script": [
+   "gen_fig_q1_shap_beeswarm.py"
+  ],
+  "data": [
+   "figures/derived/q1_shap_beeswarm.json"
+  ],
+  "note": null
+ },
+ "fig_q2_sankey": {
+  "caption": "感官类别到 Top-3 化合物来源的桑基图",
+  "script": [
+   "gen_fig_q2_sankey.py"
+  ],
+  "data": [
+   "figures/problem_2_results.json"
+  ],
+  "note": null
+ },
+ "fig_arch_q3": {
+  "caption": "问题三风格条件生成（CVAE）架构",
+  "script": null,
+  "data": null,
+  "note": "无 Python 脚本，由同名 HTML 手工导出；PNG 已入库，不影响论文编译"
+ },
+ "fig_q3_ksprofile": {
+  "caption": "生成谱逐列 KS 距离：偏离集中在少数稀疏列",
+  "script": [
+   "gen_fig_q3_ksprofile.py"
+  ],
+  "data": [
+   "submission/q3_generated_profiles.csv",
+   "user_data/1.csv"
+  ],
+  "note": null
+ },
+ "fig_q3_ridge": {
+  "caption": "分风格生成谱山脊图与代表化合物 KS",
+  "script": [
+   "gen_fig_q3_ridge.py"
+  ],
+  "data": [
+   "submission/q3_generated_profiles.csv",
+   "user_data/1.csv"
+  ],
+  "note": null
+ },
+ "fig_q3_realvsgen": {
+  "caption": "真实谱与生成谱的主成分重叠",
+  "script": [
+   "gen_fig_q3_realvsgen.py"
+  ],
+  "data": [
+   "figures/problem_3_results.json"
+  ],
+  "note": null
+ },
+ "fig_q3_latent": {
+  "caption": "隐空间：质心位置与置换检验",
+  "script": [
+   "gen_fig_q3_latent.py"
+  ],
+  "data": [
+   "figures/derived/q3_latent_centroid_permtest.json",
+   "figures/derived/q3_latent_pack.npz"
+  ],
+  "note": null
+ },
+ "fig_q3_profile_heat": {
+  "caption": "三代表风格生成谱的 50 维感官画像",
+  "script": [
+   "gen_fig_q3_profile_heat.py"
+  ],
+  "data": null,
+  "note": null
+ },
+ "fig_q3_transfer_heat": {
+  "caption": "迁移对各化合物的影响方向与幅度",
+  "script": [
+   "gen_fig_q3_transfer_heat.py"
+  ],
+  "data": null,
+  "note": null
+ }
 }
