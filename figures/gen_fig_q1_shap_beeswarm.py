@@ -74,7 +74,7 @@ cb.ax.tick_params(labelsize=6.2, length=2)
 cb.outline.set_visible(False)
 fig.text(0.9215, 0.715, "特征取值", rotation=0, fontsize=6.4, ha="center", va="bottom")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q1_shap_beeswarm.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q1_shap_beeswarm.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; dims:", [p[0] for p in PANELS])

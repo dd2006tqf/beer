@@ -52,7 +52,7 @@ def setup_style():
         "ytick.labelsize": 8,
         "legend.fontsize": 8,
         "figure.dpi": 110,
-        "savefig.dpi": 350,
+        "savefig.dpi": 525,
         "figure.facecolor": COLORS["bg"],
         "axes.facecolor": COLORS["bg"],
         "savefig.facecolor": COLORS["bg"],
@@ -79,7 +79,7 @@ def setup_style():
     })
 
 
-def save_fig(fig, path, dpi=350):
+def save_fig(fig, path, dpi=525):
     """保存为 PNG（Word 模式唯一格式），自动建目录，350 DPI。"""
     p = path if os.path.isabs(path) else os.path.join(ROOT, path)
     d = os.path.dirname(p)

@@ -1,87 +1,109 @@
 # -*- coding: utf-8 -*-
-"""fig_q1_interval —— 预测区间：覆盖率与宽度对照
+"""fig_q1_interval —— 90% 预测区间：两种口径的配对对比（PairedBoxScatter 模板）
 
-对应 6.4 节新增的预测区间段。左侧对比两种口径（分位数回归 vs split-conformal）
-的实测覆盖率与目标 90%；右侧给出 conformal 口径下香气/风味/口感三组的覆盖率分布。
-核心信息：直接分位数回归系统性欠覆盖（75.3%），共形校准把覆盖率拉回 90.2%，
-代价是区间宽度从 1.02 增到 1.55。
+改用 academic-figure-skill 的 PairedBoxScatter 思路：同一感官维在两种口径下是一对，
+用「半箱线 + 配对散点 + 配对连线」直接显示 50 个维度整体上移/下移，
+取代原来的柱状图。
 
-数据源：figures/derived/q1_prediction_interval.json。
+(a) 逐维覆盖率：50 个配对点，90% 名义水平用水平虚线；
+(b) 逐维区间宽度：同一配对结构，显示共形校准的宽度代价。
+Data: figures/derived/q1_prediction_interval.json
 """
+import json
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
+import matplotlib as mpl
+mpl.use("Agg")
 import matplotlib.pyplot as plt
-from _figbase import PALETTE, save_fig
-
-import json
-from _figbase import ROOT
+from matplotlib.patches import Rectangle
+from _figbase import ROOT, save_fig
 
 d = json.load(open(os.path.join(ROOT, "figures", "derived", "q1_prediction_interval.json"),
                    encoding="utf-8"))
-q, c = d["quantile_regression"], d["conformal"]
+q = d["quantile_regression"]["by_dim"]
+c = d["conformal"]["by_dim"]
+sens = list(c.keys())
 target = d["target_coverage"]
 
-plt.rcParams.update({
-    "axes.labelsize": 7.8,
+C_Q = "#8FA8C0"   # 分位数回归（冷灰蓝）
+C_C = "#C0392B"   # 共形校准（暗红）
+LINE = "#2E5C8A"
+
+mpl.rcParams.update({
+    "font.size": 7.2,
+    "axes.labelsize": 7.4,
     "xtick.labelsize": 7.0,
-    "ytick.labelsize": 7.0,
-    "legend.fontsize": 6.8,
-    "axes.edgecolor": "#6B7280",
+    "ytick.labelsize": 6.8,
+    "legend.fontsize": 6.6,
+    "axes.edgecolor": "#4D4D4D",
+    "axes.linewidth": 0.7,
     "axes.unicode_minus": False,
 })
 
-fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.85),
-                         gridspec_kw={"width_ratios": [1.0, 1.35], "wspace": 0.30},
-                         layout="constrained")
+def half_box(ax, x, vals, color, side, width=0.30):
+    """半箱线：side=-1 画左半、+1 画右半。"""
+    v = np.asarray(vals, float)
+    q1, med, q3 = np.percentile(v, [25, 50, 75])
+    lo, hi = v.min(), v.max()
+    cx = x + side * width / 2
+    ax.add_patch(Rectangle((min(cx, cx - side * width), q1), width, q3 - q1,
+                           facecolor=color, edgecolor="none", alpha=0.30, zorder=2))
+    ax.plot([x, x + side * width], [med, med], color=color, lw=1.5, zorder=4)
+    ax.plot([x, x + side * width], [q3, q3], color=color, lw=0.9, zorder=4)
+    ax.plot([x, x + side * width], [q1, q1], color=color, lw=0.9, zorder=4)
+    ax.plot([x, x], [lo, hi], color=color, lw=0.7, zorder=3)
 
-# ---- (a) 两口径的覆盖率 / 宽度 ----
-ax = axes[0]
-names = ["分位数回归", "共形校准"]
-covs = [q["overall_coverage"], c["overall_coverage"]]
-wids = [q["overall_width"], c["overall_width"]]
-x = np.arange(2)
-bars = ax.bar(x, covs, width=0.52,
-              color=[PALETTE[2], PALETTE[0]], edgecolor="white", linewidth=0.8, zorder=3)
-ax.axhline(target, color=PALETTE[1], lw=1.3, ls="--", zorder=4)
-ax.text(1.46, target + 0.012, "目标 90%", color=PALETTE[1], fontsize=6.6, ha="right")
-for xi, (cv, wd) in enumerate(zip(covs, wids)):
-    ax.text(xi, cv + 0.015, "%.1f%%" % (cv * 100), ha="center", fontsize=7.4, fontweight="bold")
-    ax.text(xi, 0.045, "宽度 %.2f" % wd, ha="center", fontsize=6.8, color="white",
-            fontweight="bold")
-ax.set_xticks(x)
-ax.set_xticklabels(names)
-ax.set_ylim(0, 1.0)
-ax.set_ylabel("实测覆盖率")
-ax.set_title("(a) 区间口径对照", fontsize=8.4, loc="left", pad=4)
+def paired_panel(ax, key, ylabel, ref=None, ref_label=None):
+    vq = np.array([q[s][key] for s in sens])
+    vc = np.array([c[s][key] for s in sens])
+    xs = [0, 1]
+    # 配对连线
+    for a, b in zip(vq, vc):
+        ax.plot(xs, [a, b], color=LINE, lw=0.5, alpha=0.20, zorder=1)
+    # 半箱线
+    half_box(ax, 0, vq, C_Q, -1)
+    half_box(ax, 1, vc, C_C, +1)
+    # 散点（固定偏移，不抖动）
+    rng = np.random.default_rng(42)
+    ax.scatter(np.full(len(vq), 0.0) - 0.14, vq, s=9, color=C_Q, alpha=0.85,
+               edgecolor="white", linewidth=0.3, zorder=5)
+    ax.scatter(np.full(len(vc), 1.0) + 0.14, vc, s=9, color=C_C, alpha=0.85,
+               edgecolor="white", linewidth=0.3, zorder=5)
+    # 中位数标注
+    for x, v, col in ((0, vq, C_Q), (1, vc, C_C)):
+        med = float(np.median(v))
+        ax.annotate("%.3f" % med, (x, med), xytext=(0, -11 if x == 0 else -11),
+                    textcoords="offset points", ha="center", fontsize=6.4,
+                    color=col, fontweight="bold")
+    if ref is not None:
+        ax.axhline(ref, color="#444444", lw=0.9, ls=(0, (4, 3)), zorder=2)
+        ax.text(1.46, ref, ref_label, fontsize=6.2, color="#444444",
+                va="bottom", ha="right")
+    ax.set_xticks(xs)
+    ax.set_xticklabels(["分位数回归", "共形校准"])
+    ax.set_xlim(-0.55, 1.55)
+    ax.set_ylabel(ylabel)
+    ax.grid(axis="y", color="#EEEEEE", lw=0.4, zorder=0)
+    ax.set_axisbelow(True)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
 
-# ---- (b) conformal 分组覆盖率 ----
-ax = axes[1]
-g = c["by_group"]
-labels = {"A": "香气\nA_ (15)", "F": "风味\nF_ (15)", "X": "口感/缺陷\nX (20)"}
-keys = ["A", "F", "X"]
-data = [[g[k]["coverage_mean"]] for k in keys]
-pos = np.arange(3)
-vals = [g[k]["coverage_mean"] for k in keys]
-wds = [g[k]["width_mean"] for k in keys]
-ax.bar(pos, vals, width=0.46, color=PALETTE[0], edgecolor="white", linewidth=0.8, zorder=3)
-ax.axhline(target, color=PALETTE[1], lw=1.3, ls="--", zorder=4)
-ax.axhline(c["overall_coverage"], color="#888888", lw=0.9, ls=":", zorder=4)
-for xi, (v, w) in enumerate(zip(vals, wds)):
-    ax.text(xi, v + 0.012, "%.1f%%" % (v * 100), ha="center", fontsize=7.2, fontweight="bold")
-    ax.text(xi, 0.045, "宽 %.2f" % w, ha="center", fontsize=6.6, color="white")
-ax.set_xticks(pos)
-ax.set_xticklabels([labels[k] for k in keys])
-ax.set_ylim(0, 1.0)
-ax.set_ylabel("分组覆盖率")
-ax.set_title("(b) 共形口径的分组覆盖", fontsize=8.4, loc="left", pad=4)
+fig, axes = plt.subplots(1, 2, figsize=(6.6, 3.0), layout="constrained",
+                         gridspec_kw={"wspace": 0.26})
 
-for a in axes:
-    a.grid(axis="y", color="#DFE3E8", lw=0.5, zorder=0)
-    a.set_axisbelow(True)
-    for s in ("top", "right"):
-        a.spines[s].set_visible(False)
+paired_panel(axes[0], "coverage", "实测覆盖率", ref=target, ref_label="名义 90%")
+axes[0].set_ylim(0.60, 1.0)
+axes[0].set_title("(a) 逐维覆盖率", loc="left", fontsize=8.2, pad=4)
+
+paired_panel(axes[1], "width", "区间宽度（标准化单位）")
+axes[1].set_title("(b) 逐维区间宽度", loc="left", fontsize=8.2, pad=4)
 
 save_fig(fig, "figures/fig_q1_interval.png")
+
+n_up = int(np.sum([c[s]["coverage"] > q[s]["coverage"] for s in sens]))
+print("coverage median q=%.4f c=%.4f, %d/%d dims improved"
+      % (np.median([q[s]["coverage"] for s in sens]),
+         np.median([c[s]["coverage"] for s in sens]), n_up, len(sens)))

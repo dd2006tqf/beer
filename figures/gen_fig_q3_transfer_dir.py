@@ -92,7 +92,7 @@ for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.030, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q3_transfer_dir.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q3_transfer_dir.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; cos=%.3f sign=%.3f key=%d/%d" % (d["direction_cosine"],

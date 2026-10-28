@@ -63,7 +63,7 @@ ax.set_ylim(-0.09, 0.42)
 ax.set_ylabel("逐维 Δ QWK（主模型 - 基线）")
 ax.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
-ax.set_title("50 维逐维胜负", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax.set_title(" ", loc="left", fontsize=8, fontweight="bold", pad=4)
 ax.legend(handles=[
     Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=4.5, label="主模型更优"),
     Line2D([], [], marker="v", ls="", markerfacecolor=CATEGORICAL[1],
@@ -88,7 +88,7 @@ ax2.set_xlabel("按 Δ 降序排列的维度")
 ax2.set_ylabel("Δ QWK")
 ax2.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
-ax2.set_title("增益是否集中在少数维", loc="left", fontsize=8, fontweight="bold", pad=4)
+ax2.set_title(" ", loc="left", fontsize=8, fontweight="bold", pad=4)
 ax2.legend(loc="lower left", handletextpad=0.5, labelspacing=0.25, borderaxespad=0.3)
 # 标出与 KNN 的交叉点
 r = d["models"]["knn"]
@@ -104,7 +104,7 @@ for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q1_sig.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q1_sig.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; win:", {k: d["models"][k]["win"] for k in ORDER})

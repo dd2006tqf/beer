@@ -67,7 +67,7 @@ for ax, (name, col, ks) in zip(axes, rows):
     ax.text(r2.mean(), len(ks) - 0.45, '均值 %.3f' % r2.mean(),
             color='#C0392B', fontsize=6.0, ha='left', va='bottom')
 
-fig.text(0.5, 0.005, '点大小 = ±1 级准确率（0.40–0.85）；红虚线 = 组内平均 R²',
+fig.text(0.5, -0.030, '点大小 = ±1 级准确率（0.40–0.85）；红虚线 = 组内平均 R²',
          ha='center', fontsize=6.4, color='#6B7280')
 
 save_fig(fig, 'figures/fig_q1_r2_by_group.png')

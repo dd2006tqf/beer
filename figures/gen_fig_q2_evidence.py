@@ -140,7 +140,7 @@ for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q2_evidence.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_evidence.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 nA = sum(1 for r in rows if r["grade"] == "A")

@@ -2,7 +2,7 @@
 """fig_q3_gen_compare — 三种生成方式的四维对照（新增）
 
 小多图：分布保真（KS）、新颖性、相关结构差异、观测区间内比例。
-数据源：_tmp/gen_eval_compare.csv（本轮复算）。
+数据源：figures/derived/q3_generation_compare.csv（权威副本）。
 """
 import os
 import sys
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from _figbase import save_fig, set_paper_placement, declutter_axes
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-df = pd.read_csv(os.path.join(ROOT, "_tmp", "gen_eval_compare.csv"))
+df = pd.read_csv(os.path.join(ROOT, "figures", "derived", "q3_generation_compare.csv"))
 
 sel = ["bootstrap", "gaussian", "CVAE-raw", "CVAE-clipped"]
 zh = {"bootstrap": "风格内重采样", "gaussian": "风格内高斯",

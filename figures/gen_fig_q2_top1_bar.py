@@ -59,12 +59,7 @@ ax.set_ylim(0.32, 1.09)
 ax.set_ylabel("bootstrap 入选频率（500 次重采样）")
 ax.grid(axis="y", color="#EFEFEF", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
-ax.annotate("前两位饱和\n（均值 0.991 / 0.979）", xy=(0.5, 0.86), xytext=(0.35, 0.60),
-            fontsize=6.3, color="#555555",
-            arrowprops=dict(arrowstyle="-", lw=0.5, color="#CCCCCC"))
-ax.annotate("第三名才分化\n最低 0.376", xy=(2.0, 0.39), xytext=(1.42, 0.42),
-            fontsize=6.3, color=CATEGORICAL[1],
-            arrowprops=dict(arrowstyle="-", lw=0.5, color="#E0AFAF"))
+# 两处 annotate 标注与引线已移除（改由图题与正文承担说明）
 
 
 # ---------------- (b) weakest rank-3 lollipop ----------------
@@ -106,7 +101,7 @@ for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q2_top1_bar.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_top1_bar.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; rank3 min=%.3f mean=%.3f" % (piv[3].min(), mu))

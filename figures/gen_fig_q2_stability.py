@@ -1,159 +1,139 @@
 # -*- coding: utf-8 -*-
-"""fig_q2_stability -- 单方法稳定性饱和 vs 跨方法一致性分散
+"""fig_q2_stability —— 单方法稳定性 vs 跨方法一致性（分组小提琴模板）
 
-Academic Figure Skill Asset Confirmation (verified against assets/figures/)
-(a) joint scatter + marginal density -> assets/figures/MarginalDensity -> param inherit
-(b) empirical vs random-null ECDF   -> assets/figures/LineTrend (cross-type) -> param inherit
+改用 academic-figure-skill 的 Violin/GroupedViolin 思路：
+(a) 单方法稳定性：50 维的 Top-1 bootstrap 入选频率，按香气/风味/口感三组做
+    小提琴 + 抖动散点，直接显示"饱和"（绝大多数压在 1.000）；
+(b) 跨方法一致性：三对方法（SHAP-相关、SHAP-RF、相关-RF）的逐维 Jaccard 分布，
+    小提琴 + 散点，并叠加随机基线 0.0086 作参照；
+(c) 以 50 维散点显示两口径的正交性（原 (a) 的核心结论保留为小面板）。
 
-Design: the two stability criteria are NOT interchangeable, and plotting them
-separately with two histograms hid that. Here each point is one sensory
-dimension in the (bootstrap Top-1 frequency, cross-method Jaccard) plane.
-The vertical pile at x = 1.0 is the saturation of the bootstrap criterion;
-the spread along y is where cross-method agreement actually differs.
-Panel (b) puts the observed Jaccard against the null of two independent
-random 3-subsets of the 211 candidates, on a log axis so the 21.7x ratio is visible.
+Data: figures/problem_2_results.json + figures/derived/q2_method_agreement.json
 """
-import os, sys, json
+import itertools
+import json
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.colors import to_rgb
-from _figbase import P2, save_fig, dim_zh
-from _figbase import ROOT
+from scipy.stats import gaussian_kde
+from _figbase import P2, ROOT, save_fig
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
     "font.sans-serif": ["SimHei", "Arial", "DejaVu Sans"],
-    "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8,
-    "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7,
+    "font.size": 7.6, "axes.labelsize": 7.4, "axes.titlesize": 8.0,
+    "xtick.labelsize": 7.0, "ytick.labelsize": 7.0, "legend.fontsize": 6.6,
     "axes.spines.top": False, "axes.spines.right": False,
-    "axes.linewidth": 0.6, "legend.frameon": False,
-    "axes.unicode_minus": False, "pdf.fonttype": 42, "ps.fonttype": 42,
+    "axes.linewidth": 0.7, "legend.frameon": False,
+    "axes.unicode_minus": False,
 })
-CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
-GREY = "#999999"
+
+BLUE, RED, GREEN, ORANGE = "#2E5C8A", "#B03A2E", "#3E8E5A", "#D4A017"
+GREY = "#8C8C8C"
 
 rk = P2["fig_data"]["top1_freq_ranked"]
-base = P2.get("random_jaccard_baseline", {})
 dims = [r[0] for r in rk]
-freq = np.array([r[1] for r in rk], dtype=float)
-jac = np.array([r[2] for r in rk], dtype=float)
-base_mean = float(base.get("mean", 0.008585))
-nb = int(P2["summary"]["n_bootstrap"])
+freq = np.array([r[1] for r in rk], float)
+jac = np.array([r[2] for r in rk], float)
+base = P2.get("random_jaccard_baseline", {})
+base_mean = float(base.get("mean", 0.0086))
+
+agree = json.load(open(os.path.join(ROOT, "figures", "derived", "q2_method_agreement.json"),
+                       encoding="utf-8"))
+M = agree["methods"]
+PAIRS = [("shap", "corr", "SHAP–相关"), ("shap", "rf", "SHAP–RF"), ("corr", "rf", "相关–RF")]
+pair_jac = {}
+for a, b, name in PAIRS:
+    v = []
+    for i in range(len(M["shap"])):
+        A, B = set(M[a][i]), set(M[b][i])
+        v.append(len(A & B) / max(1, len(A | B)))
+    pair_jac[name] = np.array(v, float)
 
 def grp(d):
-    return 0 if d.startswith("A_") else (1 if d.startswith("F_") else 2)
-g = np.array([grp(d) for d in dims])
-GNAME = ["香气 A_", "风味 F_", "口感/缺陷/总体"]
-GCOL = [CATEGORICAL[0], CATEGORICAL[1], CATEGORICAL[3]]
+    return "香气 A_" if d.startswith("A_") else ("风味 F_" if d.startswith("F_") else "口感/缺陷")
 
-fig = plt.figure(figsize=(7.0, 3.0))
-gs = fig.add_gridspec(2, 2, width_ratios=[2.35, 1.0], height_ratios=[1.0, 2.2],
-                      left=0.075, right=0.985, top=0.90, bottom=0.155,
-                      wspace=0.06, hspace=0.045)
-axJ = fig.add_subplot(gs[1, 0])
-axT = fig.add_subplot(gs[0, 0], sharex=axJ)
-axR = fig.add_subplot(gs[1, 1], sharey=axJ)
-axE = fig.add_subplot(gs[:, 1])
-axE.remove()
-axE = fig.add_subplot(gs[1, 1])
-axR.remove()
+G = [grp(d) for d in dims]
+GNAME = ["香气 A_", "风味 F_", "口感/缺陷"]
+GCOL = [BLUE, RED, ORANGE]
 
-# ---------------- joint panel ----------------
-xg = np.linspace(0.30, 0.70, 240)
-for k in range(3):
-    m = g == k
-    axJ.scatter(freq[m], jac[m], s=26, facecolor=GCOL[k], edgecolor="white",
-                linewidth=0.7, alpha=0.92, zorder=3, label=GNAME[k])
-axJ.axhline(base_mean, color=GREY, lw=0.8, ls=(0, (4, 3)), zorder=2)
-axJ.axvline(1.0, color="#BBBBBB", lw=0.6, zorder=1)
-axJ.set_xlim(0.92, 1.016)
-axJ.set_ylim(-0.02, 0.72)
-axJ.set_xlabel("Top-1 bootstrap 入选频率（%d 次重采样）" % nb)
-axJ.set_ylabel("跨方法 Jaccard 系数")
-axJ.grid(color="#EFEFEF", lw=0.4, zorder=0)
-axJ.set_axisbelow(True)
-n_full = int((freq >= 0.9999).sum())
-axJ.annotate("%d/%d 维饱和于 1.000\n（单方法内部极稳）" % (n_full, len(freq)),
-             xy=(1.0, 0.66), xytext=(0.955, 0.60), fontsize=6.6, color="#555555",
-             ha="center", va="top",
-             arrowprops=dict(arrowstyle="-", lw=0.6, color="#BBBBBB"))
-axJ.annotate("随机基线 %.4f" % base_mean, xy=(0.985, base_mean), xytext=(0.985, 0.085),
-             fontsize=6.4, color=GREY, ha="center",
-             arrowprops=dict(arrowstyle="-", lw=0.5, color="#CCCCCC"))
-leg = axJ.legend(loc="upper left", bbox_to_anchor=(0.005, 1.0), handletextpad=0.3,
-                 labelspacing=0.25, borderaxespad=0.1, markerscale=0.9)
+def violin_plus_scatter(ax, data, positions, colors, labels, jitter=0.075):
+    for pos, vals, col in zip(positions, data, colors):
+        vals = np.asarray(vals, float)
+        if vals.size > 2 and vals.std() > 1e-9:
+            kde = gaussian_kde(vals, bw_method=0.4)
+            span = max(vals.max() - vals.min(), 1e-3) * 1.2
+            ys = np.linspace(vals.min() - 0.05 * span, vals.max() + 0.05 * span, 160)
+            w = kde(ys)
+            w = w / w.max() * 0.34
+            ax.fill_betweenx(ys, pos - w, pos + w, color=col, alpha=0.22, lw=0, zorder=2)
+            ax.plot(pos - w, ys, color=col, lw=0.7, alpha=0.8, zorder=3)
+            ax.plot(pos + w, ys, color=col, lw=0.7, alpha=0.8, zorder=3)
+        rng = np.random.default_rng(7)
+        xs = pos + rng.uniform(-jitter, jitter, vals.size)
+        ax.scatter(xs, vals, s=8, color=col, alpha=0.75, edgecolor="white",
+                   linewidth=0.25, zorder=5)
+        ax.plot([pos - 0.20, pos + 0.20], [np.median(vals)] * 2, color="#222222",
+                lw=1.3, zorder=6)
+        ax.annotate("%.3f" % np.median(vals), (pos, np.median(vals)), xytext=(0, 5),
+                    textcoords="offset points", ha="center", fontsize=6.0,
+                    color="#222222", zorder=7)
+    ax.set_xticks(positions)
+    ax.set_xticklabels(labels)
+    ax.grid(axis="y", color="#F0F0F0", lw=0.4, zorder=0)
+    ax.set_axisbelow(True)
 
-# ---------------- top marginal (bootstrap frequency) ----------------
-counts, edges = np.histogram(freq, bins=np.arange(0.92, 1.02, 0.008))
-axT.bar(edges[:-1] + 0.004, counts, width=0.0068, color=CATEGORICAL[0], alpha=0.55,
-        edgecolor="none", zorder=2)
-axT.set_ylabel("维度数", fontsize=6.6, labelpad=2)
-axT.tick_params(axis="x", labelbottom=False)
-axT.set_yticks([0, n_full])
-axT.tick_params(axis="y", labelsize=6.2)
-axT.spines["bottom"].set_visible(False)
+fig = plt.figure(figsize=(7.0, 2.9))
+gs = fig.add_gridspec(1, 3, width_ratios=[1.0, 1.25, 1.15], wspace=0.34,
+                      left=0.062, right=0.985, top=0.88, bottom=0.20)
 
-# ---------------- right marginal (Jaccard) ----------------
-from scipy.stats import gaussian_kde
-yy = np.linspace(-0.02, 0.72, 220)
-kde = gaussian_kde(jac, bw_method=0.35)
-axR = fig.add_subplot(gs[1, 1], sharey=axJ)
-axR.fill_betweenx(yy, 0, kde(yy), color=CATEGORICAL[1], alpha=0.35, lw=0)
-axR.plot(kde(yy), yy, color=CATEGORICAL[1], lw=0.8)
-axR.axhline(jac.mean(), color=CATEGORICAL[1], lw=0.8, ls=(0, (4, 3)))
-axR.set_xlim(0, kde(yy).max() * 1.15)
-axR.tick_params(axis="y", labelleft=False, length=0)
-axR.tick_params(axis="x", labelsize=6.2)
-axR.set_xticks([])
-axR.set_xlabel("密度", fontsize=6.6, labelpad=1)
-axR.spines["left"].set_visible(False)
-axR.spines["bottom"].set_visible(False)
+# ---------- (a) 单方法稳定性：按感官组 ----------
+ax1 = fig.add_subplot(gs[0, 0])
+data1 = [freq[np.array(G) == g] for g in GNAME]
+violin_plus_scatter(ax1, data1, [0, 1, 2], GCOL, ["香气", "风味", "口感"])
+ax1.set_ylim(0.93, 1.02)
+ax1.set_ylabel("Top-1 入选频率")
+ax1.axhline(1.0, color=GREY, lw=0.7, ls=(0, (4, 3)), zorder=1)
+ax1.set_title("(a) 单方法稳定性", loc="left", fontsize=8.2, pad=4)
 
+# ---------- (b) 跨方法一致性：三对方法 ----------
+ax2 = fig.add_subplot(gs[0, 1])
+data2 = [pair_jac[n] for _, _, n in PAIRS]
+violin_plus_scatter(ax2, data2, [0, 1, 2], [BLUE, GREEN, RED],
+                    ["SHAP–\n相关", "SHAP–\nRF", "相关–\nRF"])
+ax2.set_ylabel("逐维 Jaccard")
+ax2.set_ylim(-0.03, 0.80)
+ax2.axhline(base_mean, color=GREY, lw=0.7, ls=(0, (4, 3)), zorder=1)
+ax2.annotate("随机基线 %.4f" % base_mean, (2.35, base_mean), xytext=(0, 4),
+             textcoords="offset points", ha="right", fontsize=6.0, color=GREY)
+ax2.set_title("(b) 跨方法一致性", loc="left", fontsize=8.2, pad=4)
 
-
-# ---------------- panel (b): ECDF vs random null ----------------
-axB = fig.add_axes([0.735, 0.155, 0.245, 0.60])
-rng = np.random.default_rng(42)
-N, k = 211, 3
-null = np.empty(20000)
-for i in range(null.size):
-    a = rng.choice(N, k, replace=False)
-    b = rng.choice(N, k, replace=False)
-    null[i] = len(np.intersect1d(a, b)) / len(np.union1d(a, b))
-
-def ecdf(v):
-    v = np.sort(np.asarray(v, dtype=float))
-    return v, np.arange(1, v.size + 1) / v.size
-
-xj, yj = ecdf(jac)
-xn, yn = ecdf(null)
-axB.plot(xn, yn, color=GREY, lw=1.0, ls=(0, (4, 2)), zorder=3)
-axB.plot(xj, yj, color=CATEGORICAL[1], lw=1.3, zorder=4)
-axB.axvline(jac.mean(), color=CATEGORICAL[1], lw=0.7, ls=(0, (4, 3)), zorder=2)
-axB.set_xlim(0, 0.72)
-axB.set_ylim(0, 1.02)
-axB.set_xlabel("Jaccard 系数", fontsize=7.2)
-axB.set_ylabel("累积比例", fontsize=7.2)
-axB.tick_params(labelsize=6.4)
-axB.grid(color="#EFEFEF", lw=0.4, zorder=0)
-axB.set_axisbelow(True)
-axB.text(0.035, 0.90, "随机零分布\n（两独立 3 子集）", fontsize=6.2, color="#666666",
-         va="top", ha="left")
-axB.text(0.30, 0.42, "实测分布", fontsize=6.6, color=CATEGORICAL[1], va="center")
-axB.annotate("均值 %.3f\n= 零分布 %.1f 倍" % (jac.mean(), jac.mean() / float(null.mean())),
-             xy=(jac.mean(), 0.05), xytext=(0.30, 0.10), fontsize=6.2,
-             color=CATEGORICAL[1],
-             arrowprops=dict(arrowstyle="-", lw=0.5, color="#E0AFAF"))
-axB.set_title("实测 vs 随机零分布", loc="left", fontsize=8, fontweight="bold", pad=4)
-
-for ax_, tag in ((axJ, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.020, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+# ---------- (c) 两口径正交 ----------
+ax3 = fig.add_subplot(gs[0, 2])
+for g, col in zip(GNAME, GCOL):
+    m = np.array(G) == g
+    ax3.scatter(freq[m], jac[m], s=16, facecolor=col, edgecolor="white",
+                linewidth=0.5, alpha=0.9, zorder=4, label=g)
+ax3.axhline(jac.mean(), color=RED, lw=0.8, ls=(0, (4, 3)), zorder=2)
+ax3.axvline(1.0, color="#CCCCCC", lw=0.6, zorder=1)
+ax3.set_xlim(0.93, 1.012)
+ax3.set_ylim(-0.03, 0.76)
+ax3.set_xlabel("Top-1 入选频率")
+ax3.set_ylabel("跨方法 Jaccard")
+ax3.grid(color="#F0F0F0", lw=0.4, zorder=0)
+ax3.set_axisbelow(True)
+ax3.set_title("(c) 两口径正交", loc="left", fontsize=8.2, pad=4)
+ax3.legend(loc="upper left", handletextpad=0.3, labelspacing=0.2,
+           borderaxespad=0.2, markerscale=1.1)
 
 save_fig(fig, "figures/fig_q2_stability.png")
-print("full=%d jac_mean=%.4f null_mean=%.4f ratio=%.1f"
-      % (n_full, jac.mean(), null.mean(), jac.mean() / null.mean()))
+
+n_full = int((freq >= 0.9999).sum())
+print("saturated %d/%d; jaccard mean %.4f; pairs:" % (n_full, len(freq), jac.mean()))
+for n, v in pair_jac.items():
+    print("  %-10s median %.3f mean %.3f" % (n, np.median(v), v.mean()))

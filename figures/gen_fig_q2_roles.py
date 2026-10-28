@@ -95,7 +95,7 @@ for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q2_roles.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_roles.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; compounds=%d hub=%d single=%d" % (len(g), int(hub.sum()), int((g.n_dim == 1).sum())))

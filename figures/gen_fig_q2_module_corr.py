@@ -120,7 +120,7 @@ for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.026, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q2_module_corr.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_module_corr.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; within med=%.3f between med=%.3f ratio=%.2f"

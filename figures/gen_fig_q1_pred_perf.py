@@ -107,7 +107,7 @@ for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
              fontsize=8.5, fontweight='bold', color='#222222')
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q1_pred_perf.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q1_pred_perf.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; strong=%d weak=%d mean=%.4f" % (int((vals >= 0.55).sum()),

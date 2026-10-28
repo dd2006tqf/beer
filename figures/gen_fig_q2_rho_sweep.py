@@ -29,6 +29,7 @@ mpl.rcParams.update({
     "axes.linewidth": 0.6, "legend.frameon": False,
     "axes.unicode_minus": False, "pdf.fonttype": 42, "ps.fonttype": 42,
 })
+AXIS_BLACK = "#222222"   # 纵轴刻度与标题统一用黑色，曲线仍保留彩色
 CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]
 GREY = "#999999"
 
@@ -51,8 +52,9 @@ ax2 = fig.add_subplot(gs[0, 1])
 ax1.plot(rho, edges, "-o", color=CATEGORICAL[0], ms=4.5, lw=1.6, zorder=3,
          label="边数")
 ax1.set_xlabel("建图阈值 ρ")
-ax1.set_ylabel("边数", color=CATEGORICAL[0])
-ax1.tick_params(axis="y", colors=CATEGORICAL[0])
+ax1.set_ylabel("边数", color=AXIS_BLACK)
+ax1.tick_params(axis="y", colors=AXIS_BLACK)
+ax1.spines["left"].set_color(AXIS_BLACK)
 ax1.set_ylim(0, edges.max() * 1.12)
 ax1.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax1.set_axisbelow(True)
@@ -60,11 +62,12 @@ ax1.set_axisbelow(True)
 ax1b = ax1.twinx()
 ax1b.plot(rho, largest, "--s", color=CATEGORICAL[3], ms=4, lw=1.4, zorder=3,
           label="最大连通分量")
-ax1b.set_ylabel("最大连通分量节点数", color=CATEGORICAL[3])
-ax1b.tick_params(axis="y", colors=CATEGORICAL[3])
+ax1b.set_ylabel("最大连通分量节点数", color=AXIS_BLACK)
+ax1b.tick_params(axis="y", colors=AXIS_BLACK)
 ax1b.set_ylim(0, 235)
 ax1b.spines["right"].set_visible(True)
-ax1b.spines["right"].set_color(CATEGORICAL[3])
+ax1b.spines["right"].set_color(AXIS_BLACK)
+ax1b.spines["left"].set_color(AXIS_BLACK)
 ax1b.spines["top"].set_visible(False)
 
 for ax in (ax1, ax1b):
@@ -81,8 +84,9 @@ ax2.bar(rho, iso, width=0.028, color=CATEGORICAL[1], alpha=0.30,
 ax2.plot(rho, iso, "-o", color=CATEGORICAL[1], ms=4, lw=1.4, zorder=3,
          label="孤立化合物数")
 ax2.set_xlabel("建图阈值 ρ")
-ax2.set_ylabel("孤立节点数", color=CATEGORICAL[1])
-ax2.tick_params(axis="y", colors=CATEGORICAL[1])
+ax2.set_ylabel("孤立节点数", color=AXIS_BLACK)
+ax2.tick_params(axis="y", colors=AXIS_BLACK)
+ax2.spines["left"].set_color(AXIS_BLACK)
 ax2.set_ylim(0, iso.max() * 1.20)
 ax2.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
@@ -90,11 +94,12 @@ ax2.set_axisbelow(True)
 ax2b = ax2.twinx()
 ax2b.plot(rho, mod, "--^", color=CATEGORICAL[2], ms=4.5, lw=1.5, zorder=4,
           label="模块度 Q")
-ax2b.set_ylabel("模块度 $Q_{mod}$", color=CATEGORICAL[2])
-ax2b.tick_params(axis="y", colors=CATEGORICAL[2])
+ax2b.set_ylabel("模块度 $Q_{mod}$", color=AXIS_BLACK)
+ax2b.tick_params(axis="y", colors=AXIS_BLACK)
 ax2b.set_ylim(0.35, 0.78)
 ax2b.spines["right"].set_visible(True)
-ax2b.spines["right"].set_color(CATEGORICAL[2])
+ax2b.spines["right"].set_color(AXIS_BLACK)
+ax2b.spines["left"].set_color(AXIS_BLACK)
 ax2b.spines["top"].set_visible(False)
 
 for ax in (ax2, ax2b):
@@ -111,7 +116,7 @@ for ax, tag in ((ax1, "(a)"), (ax2, "(b)")):
     fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
              fontsize=8.5, fontweight="bold", color="#222222")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q2_rho_sweep.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_rho_sweep.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; rho=0.5 -> edges=%d iso=%d Q=%.4f largest=%d"

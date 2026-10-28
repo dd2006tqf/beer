@@ -136,7 +136,7 @@ for ax_, tag in ((axT, "(a)"), (axB, "(b)")):
 axM.text(-0.62, 2.35, "上三行示意：哪种方法参与重合", fontsize=5.8, color=GREY,
          ha="left", va="top")
 
-fig.savefig(os.path.join(ROOT, "figures", "fig_q2_upset.png"), dpi=400,
+fig.savefig(os.path.join(ROOT, "figures", "fig_q2_upset.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print("saved; all3=%d exactly2=%d only-pair=%d none=%d" % tuple(BARV))
