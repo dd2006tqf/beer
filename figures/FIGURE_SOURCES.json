@@ -270,27 +270,10 @@
   ],
   "note": null
  },
- "fig_arch_q3": {
-  "caption": "问题三风格条件生成（CVAE）架构",
-  "script": null,
-  "data": null,
-  "note": "无 Python 脚本，由同名 HTML 手工导出；PNG 已入库，不影响论文编译"
- },
  "fig_q3_ksprofile": {
   "caption": "生成谱逐列 KS 距离：偏离集中在少数稀疏列",
   "script": [
    "gen_fig_q3_ksprofile.py"
-  ],
-  "data": [
-   "submission/q3_generated_profiles.csv",
-   "user_data/1.csv"
-  ],
-  "note": null
- },
- "fig_q3_ridge": {
-  "caption": "分风格生成谱山脊图与代表化合物 KS",
-  "script": [
-   "gen_fig_q3_ridge.py"
   ],
   "data": [
    "submission/q3_generated_profiles.csv",
@@ -305,17 +288,6 @@
   ],
   "data": [
    "figures/problem_3_results.json"
-  ],
-  "note": null
- },
- "fig_q3_latent": {
-  "caption": "隐空间：质心位置与置换检验",
-  "script": [
-   "gen_fig_q3_latent.py"
-  ],
-  "data": [
-   "figures/derived/q3_latent_centroid_permtest.json",
-   "figures/derived/q3_latent_pack.npz"
   ],
   "note": null
  },
@@ -385,5 +357,17 @@
    "figures/derived/q3_disc_lambda_*.json"
   ],
   "note": "λ 0→0.5：隐空间分类 3.2%→100%，KS 0.373→0.468；λ=0.02 为折中档"
+ },
+ "fig_q3_ridge_latent": {
+  "caption": "代表化合物的分布形状与隐空间位置",
+  "script": [
+   "gen_fig_q3_ridge_latent.py"
+  ],
+  "data": [
+   "user_data/1.csv",
+   "submission/q3_generated_profiles.csv",
+   "figures/derived/q3_latent_pack.npz"
+  ],
+  "note": "左为山脊图（原 fig_q3_ridge 左子图），右为隐空间 PCA（原 fig_q3_latent 左子图）"
  }
 }

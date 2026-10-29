@@ -21,7 +21,7 @@
 
 ## 重画图与缺失依赖
 
-38 张图的「脚本 → 数据源」映射见 `figures/FIGURE_SOURCES.json`。绝大多数图只需：
+正文 29 张图的「脚本 → 数据源」映射见 `figures/FIGURE_SOURCES.json`（另含几条未入正文的备用图条目）。绝大多数图只需：
 
 ```bash
 python figures/gen_fig_<name>.py
@@ -36,7 +36,9 @@ python figures/gen_fig_<name>.py
 | `fig_prep_kaggle.png` | `_tmp/kaggle/extracted/beer_data_set.csv`（Kaggle 原始集，因体积与许可未入库） | 从 Kaggle `stephenpolozoff/top-beer-information` 下载后解压到该路径 |
 | `fig_q2_shap_ale.png` | `_tmp/checkpoints/q1_models.pkl`（7.4 MB 模型检查点，已忽略） | 运行 `python code/problem1.py user_data` 重建 |
 
-`fig_roadmap.png` 与 `fig_arch_q3.png` 没有 Python 脚本，由同名 HTML 手工导出；PNG 已入库，不影响编译。
+`fig_roadmap.png` 没有 Python 脚本，由同名 HTML 手工导出；PNG 已入库，不影响编译。问题三的 CVAE 架构图已从正文移除，改用 8.1/8.2 节的推导公式。
+
+`figures/gen_fig_q3_ks_ridge.py` 与 `fig_q3_ks_ridge.png` 是一次版式尝试的中间产物，正文未引用，可安全忽略。
 
 排版基线取自上游模板仓库 [yifengchen07/cumcm-latex-template](https://github.com/yifengchen07/cumcm-latex-template.git)（CUMCM 2026 官方 LaTeX 模板），`paper/cumcm2026.sty` 与该模板保持一致。
 
@@ -105,7 +107,8 @@ python figures/gen_fig_<name>.py
 ├── submission/                # 📊 竞赛提交结果（3 个 CSV）
 ├── user_data/                 # 📥 原始数据（只读，不入库）
 ├── .claude/skills/            # 🤖 项目级 Agent Skill（见下节）
-│   └── modelviz-skill/        #   ModelViz：科研绘图模板库（89 个模板）
+│   ├── modelviz-skill/        #   ModelViz：科研绘图模板库（89 个模板）
+│   └── lieflat-less-ai-tone/  #   Less AI Tone：成稿去 AI 味检测与改写
 └── 提交包/                     # 📦 最终提交打包
 ```
 
@@ -174,7 +177,7 @@ python code\analysis\q2_residual_and_q3_energy.py   # 7.1 残差相关 + 能量�
 python code\analysis\q2_module_members_table.py     # 附录表 A.5（55 个社区成员）
 python code\analysis\q2_appendix_grade_table.py     # 附录表 A.6（150 条分级）
 python code\analysis\q3_multiseed.py                # 5 seed 稳定性
-python code\analysis\q3_transfer_direction.py       # 图 37 迁移方向数据
+python code\analysis\q3_transfer_direction.py       # 图 28 迁移方向数据
 python code\analysis\q1_group_stack.py             # 9.3 分组共享多输出（方案 A，负结果）
 python code\analysis\q1_group_stack_boot.py         # 其配对 bootstrap
 python code\analysis\q3_disc_cvae.py --lam 0.1      # 9.3 判别辅助损失（λ 可调）
@@ -217,6 +220,20 @@ python -m venv --system-site-packages .venv
 - 模板库体积 145MB（其中模板示例数据 108MB、预览图 39MB），**随仓库提交**；`.venv/` 与
   `workspace/`、`outputs/` 的运行产物不入库。
 
+### 6️⃣ 用 Less AI Tone 检查成稿（可选）
+
+`.claude/skills/lieflat-less-ai-tone/` 是从 [larashero3-dotcom/lieflat-less-ai-tone](https://github.com/larashero3-dotcom/lieflat-less-ai-tone)
+迁入的项目级 Skill：先跑脚本检测和语义判读，交付带例句与改法的改前报告，用户确认后再最小改动并复测。
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+python .claude\skills\lieflat-less-ai-tone\scripts\detect.py paper\main.md --max-hits 5
+```
+
+- `SKILL.md` 规定先检测、等用户回复、再改写，不要跳过改前报告直接润色。
+- 检测只覆盖成稿；论文结构、图表和 `main.tex` 的编译流程不受影响。
+- 运行 Python 时建议设置 `PYTHONIOENCODING=utf-8`，避免 Windows 默认 GBK 控制台把中文报告显示成乱码。
+
 ---
 
 ## 🛠️ 技术栈
@@ -229,6 +246,7 @@ python -m venv --system-site-packages .venv
 | 建模 | Python（LightGBM / scikit-learn / PyTorch） |
 | 图表 | matplotlib / seaborn（350 DPI PNG） |
 | 绘图模板 | ModelViz Skill（`.claude/skills/modelviz-skill`，89 个科研模板） |
+| 成稿润色 | Less AI Tone Skill（`.claude/skills/lieflat-less-ai-tone`，检测 → 确认 → 改写 → 复测） |
 
 ---
 

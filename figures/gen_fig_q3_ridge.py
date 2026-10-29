@@ -42,11 +42,10 @@ STYLES = ["Tripel", "Kriek", "Lambic"]
 COMPS = [("ethanol..v.v.", "乙醇"), ("DMS", "DMS"), ("ethyl_octanoate", "辛酸乙酯"),
          ("alpha.humulene", "α-葎草烯")]
 
-fig = plt.figure(figsize=(7.0, 3.45))
-gs = fig.add_gridspec(1, 2, width_ratios=[1.18, 1.0], wspace=0.30,
-                      left=0.135, right=0.975, top=0.885, bottom=0.185)
-ax = fig.add_subplot(gs[0, 0])
-axB = fig.add_subplot(gs[0, 1])
+fig = plt.figure(figsize=(4.1, 3.45))
+ax = fig.add_axes([0.335, 0.155, 0.645, 0.815])
+
+
 
 # ---------- (a) ridgeline ----------
 rows = []
@@ -83,47 +82,7 @@ from matplotlib.patches import Patch
 ax.legend(handles=[Patch(facecolor=GREY, alpha=0.35, label="真实谱"),
                    Patch(facecolor=CATEGORICAL[0], alpha=0.45, label="生成谱")],
           loc="upper right", handlelength=0.9, borderaxespad=0.3)
-
-# ---------- (b) KS / W1 ----------
-ks_rows, w1_rows = [], []
-for col, lab in COMPS:
-    kk, ww = [], []
-    for st in STYLES:
-        a = pd.to_numeric(real[real["tasting_category_fine"] == st][col], errors="coerce").dropna().values
-        b = pd.to_numeric(gen[(gen["style"] == st) & (gen["sample_type"] == "generated")][col],
-                          errors="coerce").dropna().values
-        kk.append(ks_2samp(a, b).statistic if (a.size > 4 and b.size > 4) else np.nan)
-        ww.append(wasserstein_distance(a, b) if (a.size > 4 and b.size > 4) else np.nan)
-    ks_rows.append(np.nanmean(kk)); w1_rows.append(np.nanmean(ww))
-allk = []
-for col in feat:
-    for st in STYLES:
-        a = pd.to_numeric(real[real["tasting_category_fine"] == st][col], errors="coerce").dropna().values
-        b = pd.to_numeric(gen[(gen["style"] == st) & (gen["sample_type"] == "generated")][col],
-                          errors="coerce").dropna().values
-        if a.size > 4 and b.size > 4:
-            allk.append(ks_2samp(a, b).statistic)
-mean_all = float(np.mean(allk))
-
-y = np.arange(len(COMPS))[::-1]
-axB.barh(y, ks_rows, height=0.52, color=CATEGORICAL[0], alpha=0.85,
-         edgecolor="white", linewidth=0.5, zorder=3)
-axB.axvline(mean_all, color=CATEGORICAL[1], lw=1.0, ls=(0, (4, 3)), zorder=4)
-for yi, v in zip(y, ks_rows):
-    axB.text(v + 0.008, yi, "%.3f" % v, va="center", fontsize=6.2, color="#333333")
-axB.set_yticks(y)
-axB.set_yticklabels([lab for _, lab in COMPS], fontsize=7)
-axB.tick_params(axis="y", length=0, pad=3)
-axB.set_xlim(0, max(max(ks_rows), mean_all) * 1.30)
-axB.set_xlabel("三个风格平均的 KS 距离")
-axB.grid(axis="x", color="#F3F3F3", lw=0.4, zorder=0)
-axB.set_axisbelow(True)
-axB.text(mean_all + 0.004, -0.55, "全表 231 列均值 %.3f" % mean_all, fontsize=6.2,
-         color=CATEGORICAL[1], va="bottom")
-
-tag_panels([ax, axB])
-
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_ridge.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
-print("saved; mean_all=%.4f  compks=%s" % (mean_all, np.round(ks_rows, 3)))
+print("saved ridgeline; n_rows=%d" % nrow)

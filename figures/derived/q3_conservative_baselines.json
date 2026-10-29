@@ -1,0 +1,26 @@
+{
+ "copula": {
+  "ks": 0.4175,
+  "w1": 0.312,
+  "energy": 0.5173,
+  "profile_mae": 0.7301,
+  "profile_spearman": 0.4699,
+  "in_range": 1.0
+ },
+ "gaussian_shrink": {
+  "ks": 0.451,
+  "w1": 0.7949,
+  "energy": 0.7375,
+  "profile_mae": 1.0174,
+  "profile_spearman": 0.3837,
+  "in_range": 1.0
+ },
+ "local_convex": {
+  "ks": 0.4671,
+  "w1": 0.409,
+  "energy": 0.5736,
+  "profile_mae": 0.8126,
+  "profile_spearman": 0.4094,
+  "in_range": 1.0
+ }
+}

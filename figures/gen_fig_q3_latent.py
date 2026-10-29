@@ -53,10 +53,9 @@ Pg = (Zg - mu) @ Vt[:2].T
 cent = {s: Zr[rs == s].mean(0) for s in STY}
 
 fig = plt.figure(figsize=(7.0, 3.35))
-grid = fig.add_gridspec(1, 2, width_ratios=[1.35, 1.0], wspace=0.26,
-                        left=0.072, right=0.975, top=0.885, bottom=0.19)
-ax = fig.add_subplot(grid[0, 0])
-axB = fig.add_subplot(grid[0, 1])
+fig = plt.figure(figsize=(4.3, 3.6))
+ax = fig.add_axes([0.155, 0.145, 0.825, 0.845])
+
 
 for s in STY:
     m = rs == s
@@ -83,31 +82,7 @@ handles.append(Line2D([], [], marker="*", ls="", markerfacecolor=GREY,
                       markeredgecolor="white", ms=8, label="生成样本"))
 ax.legend(handles=handles, loc="upper right", ncol=2, handletextpad=0.3,
           columnspacing=0.8, labelspacing=0.22, borderaxespad=0.2)
-
-# ---------- (b) 质心分离 vs 置换零分布 ----------
-axB.axhline(0, color="#CCCCCC", lw=0.7, zorder=1)
-xs = np.arange(len(snr))
-for i, r in enumerate(snr):
-    d, nmed, p = r["d"], r["null_med"], r["p"]
-    axB.plot([i, i], [nmed, d], color=GREY, lw=0.8, ls=(0, (2, 2)), zorder=2)
-    axB.scatter(i - 0.10, nmed, s=34, marker="s", color=GREY, alpha=0.85,
-                edgecolor="white", linewidth=0.5, zorder=4)
-    axB.scatter(i + 0.10, d, s=34, color=CATEGORICAL[0], edgecolor="white",
-                linewidth=0.5, zorder=4)
-axB.set_xticks(xs)
-axB.set_xticklabels([r["pair"].replace("-", "\n") for r in snr], fontsize=6.2)
-axB.set_ylabel("两风格质心的隐空间距离")
-axB.set_ylim(0, 1.75)
-axB.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
-axB.set_axisbelow(True)
-axB.legend(handles=[
-    Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=5, label="实测"),
-    Line2D([], [], marker="s", ls="", color=GREY, ms=5, label="标签打乱后中位"),
-], loc="upper left", handletextpad=0.3, labelspacing=0.22, borderaxespad=0.3)
-
-tag_panels([ax, axB])
-
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_latent.png"), dpi=600,
             bbox_inches="tight", facecolor="white")
 plt.close(fig)
-print("saved; PC1=%.1f%% PC2=%.1f%%" % (100 * ratio[0], 100 * ratio[1]))
+print("saved PCA; PC1=%.1f%% PC2=%.1f%%" % (100 * ratio[0], 100 * ratio[1]))

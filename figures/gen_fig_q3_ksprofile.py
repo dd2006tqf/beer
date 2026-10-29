@@ -73,10 +73,6 @@ ax.set_axisbelow(True)
 ax.text(len(x) * 0.985, ks.mean() + 0.025, "均值 %.3f" % ks.mean(), ha="right",
         fontsize=6.4, color="#333333")
 n_hi = int(hi.sum())
-ax.annotate("%d 列 KS ≥ 0.5\n（占 %.1f%%）" % (n_hi, 100 * n_hi / len(x)),
-            xy=(n_hi * 0.5, 0.93), xytext=(len(x) * 0.34, 0.80), fontsize=6.5,
-            color=CATEGORICAL[1],
-            arrowprops=dict(arrowstyle="->", lw=0.6, color="#D9A0A0"))
 ax.annotate("其余 %d 列 KS < 0.2" % int((ks < 0.2).sum()),
             xy=(len(x) * 0.86, 0.10), xytext=(len(x) * 0.60, 0.30), fontsize=6.3,
             color="#555555",
