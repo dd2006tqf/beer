@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
-from _figbase import P2, save_fig, dim_zh
+from _figbase import P2, save_fig, dim_zh, tag_panels
 from _utils.plot_utils import ROOT
 
 sys.path.insert(0, os.path.join(ROOT, 'code'))
@@ -74,7 +74,7 @@ def ale_curve(contrib, xv, n_bins=12):
     cum = np.concatenate([[0.0], np.cumsum(np.diff(effects))])
     return np.array(centers), cum
 
-for ax, (dim, comp, title) in zip(axes, PANELS):
+for k, (ax, (dim, comp, title)) in enumerate(zip(axes, PANELS)):
     if dim not in models or comp not in feat:
         ax.text(0.5, 0.5, 'n/a', ha='center', transform=ax.transAxes)
         continue
@@ -98,7 +98,7 @@ for ax, (dim, comp, title) in zip(axes, PANELS):
     ax.set_xlabel(comp.replace('..', '').replace('_', ' '), fontsize=6.6)
     if ax is axes[0]:
         ax.set_ylabel('该化合物的 SHAP 贡献')
-    ax.set_title(title, fontsize=7.0, pad=4)
+    ax.set_title('({}) {}'.format(chr(ord('a') + k), title), fontsize=7.0, pad=4)
     for s in ('top', 'right'):
         ax.spines[s].set_visible(False)
     ax.tick_params(length=2)
@@ -109,6 +109,7 @@ handles = [plt.Line2D([], [], marker='o', ls='', color='#2E5C8A', markersize=4,
 fig.legend(handles=handles, loc='outside lower center', ncol=2, frameon=False,
            handletextpad=0.4, columnspacing=1.6, borderaxespad=0.1)
 
+# tags already embedded in each panel title
 save_fig(fig, 'figures/fig_q2_shap_ale.png')
 print('done; panels=%d' % len(PANELS))
 for dim, comp, _ in PANELS:

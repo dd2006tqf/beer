@@ -20,7 +20,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -87,10 +87,7 @@ axB.text(0.04, 0.885, "全列符号一致率 %.1f%%" % (100 * d["sign_agreement_
 axB.text(0.04, 0.815, "余弦相似度 %.2f" % d["direction_cosine"],
          transform=axB.transAxes, fontsize=6.4, va="top", color=GREY)
 
-for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.030, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, axB])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_transfer_dir.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

@@ -7,7 +7,7 @@ import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib.pyplot as plt
-from _figbase import P1, PALETTE, COLORS, save_fig, set_paper_placement, declutter_axes, panel
+from _figbase import P1, PALETTE, COLORS, save_fig, set_paper_placement, declutter_axes, panel, tag_panels
 from _utils.plot_utils import draw_vector_heatmap
 
 cal = P1['calibration']
@@ -48,5 +48,7 @@ ax.set_xlabel('预测等级')
 ax.set_ylabel('真实等级')
 
 fig.tight_layout()
+tag_panels([axes[0]], tags=['(a)'])
+tag_panels([axes[1]], tags=['(b)'])
 save_fig(fig, 'figures/fig_q1_calibration.png')
 print('fig_q1_calibration done; dim=%s r=%.3f' % (dim, r))

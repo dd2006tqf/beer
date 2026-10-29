@@ -18,7 +18,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from scipy.stats import gaussian_kde
-from _figbase import save_fig, declutter_axes
+from _figbase import save_fig, declutter_axes, tag_panels
 from _utils.plot_utils import ROOT
 
 k = pd.read_csv(os.path.join(ROOT, '_tmp/kaggle/extracted/beer_data_set.csv'))
@@ -79,5 +79,6 @@ ax2.set_xlim(0, 13.5)
 ax2.set_ylim(-0.7, len(items) - 0.3)
 declutter_axes(ax2, 'x')
 
+tag_panels([ax1, ax2])
 save_fig(fig, 'figures/fig_prep_kaggle.png')
 print('done; rho=%.2f p95=%d/16' % (res['abv_spearman'], n95))

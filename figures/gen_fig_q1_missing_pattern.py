@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib.patches import Patch, Rectangle
 from matplotlib.lines import Line2D
-from _figbase import SUPP, PALETTE, COLORS, save_fig, declutter_axes
+from _figbase import SUPP, PALETTE, COLORS, save_fig, declutter_axes, tag_panels
 
 mi = SUPP['missing']
 na_cols = list(mi['na_cols'])
@@ -99,5 +99,6 @@ ax3.spines['top'].set_color(PALETTE[0])
 for s in ('right', 'left', 'bottom'):
     ax3.spines[s].set_visible(False)
 
+tag_panels([ax1, ax2])
 save_fig(fig, 'figures/fig_q1_missing_pattern.png')
 print('done; rows=%d cols=%d top3=%.1f%%' % (n_show, n_col, cum[-3]))

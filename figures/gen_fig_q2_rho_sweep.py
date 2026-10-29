@@ -18,7 +18,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -97,10 +97,7 @@ k = int(np.argmin(np.abs(rho - CHOSEN)))
 ax2.legend(loc="upper left", handletextpad=0.4, borderaxespad=0.3)
 ax2b.legend(loc="lower right", handletextpad=0.4, borderaxespad=0.3)
 
-for ax, tag in ((ax1, "(a)"), (ax2, "(b)")):
-    bb = ax.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax1, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_rho_sweep.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

@@ -19,7 +19,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 d = json.load(open(os.path.join(ROOT, "figures", "derived", "q1_prediction_interval.json"),
                    encoding="utf-8"))
@@ -72,12 +72,6 @@ def paired_panel(ax, key, ylabel, ref=None, ref_label=None):
                edgecolor="white", linewidth=0.3, zorder=5)
     ax.scatter(np.full(len(vc), 1.0) + 0.14, vc, s=9, color=C_C, alpha=0.85,
                edgecolor="white", linewidth=0.3, zorder=5)
-    # 中位数标注
-    for x, v, col in ((0, vq, C_Q), (1, vc, C_C)):
-        med = float(np.median(v))
-        ax.annotate("%.3f" % med, (x, med), xytext=(0, -11 if x == 0 else -11),
-                    textcoords="offset points", ha="center", fontsize=6.4,
-                    color=col, fontweight="bold")
     if ref is not None:
         ax.axhline(ref, color="#444444", lw=0.9, ls=(0, (4, 3)), zorder=2)
         ax.text(1.46, ref, ref_label, fontsize=6.2, color="#444444",
@@ -99,12 +93,7 @@ axes[0].set_ylim(0.60, 1.0)
 
 paired_panel(axes[1], "width", "区间宽度（标准化单位）")
 
-# 子图编号与标题置于各自下方（面板底部居中，位于刻度标签之下）
-for ax_, tag in ((axes[0], "(a) 逐维覆盖率"),
-                 (axes[1], "(b) 逐维区间宽度")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, -0.06, tag, ha="center", va="bottom",
-             fontsize=8.2, color="#222222")
+tag_panels(axes)
 
 save_fig(fig, "figures/fig_q1_interval.png")
 

@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
-from _figbase import load, PALETTE, save_fig, declutter_axes, dim_zh
+from _figbase import load, PALETTE, save_fig, declutter_axes, dim_zh, tag_panels
 
 P2 = load('problem_2_results.json')
 PD = P2['per_dim']
@@ -112,5 +112,6 @@ ax2.legend(loc='lower right', frameon=False, handlelength=1.2,
            borderaxespad=0.2, labelspacing=0.3)
 declutter_axes(ax2, 'x')
 
+tag_panels([ax1, ax2])
 save_fig(fig, 'figures/fig_q2_concentration.png')
 print('top4 share %.1f%% | distinct %d | yeast %.0f%%' % (cum[3], len(items), a[0]))

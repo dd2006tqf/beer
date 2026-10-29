@@ -19,7 +19,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.stats import gaussian_kde, ks_2samp, wasserstein_distance
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -121,10 +121,7 @@ axB.set_axisbelow(True)
 axB.text(mean_all + 0.004, -0.55, "全表 231 列均值 %.3f" % mean_all, fontsize=6.2,
          color=CATEGORICAL[1], va="bottom")
 
-for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.026, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, axB])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_ridge.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

@@ -19,7 +19,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -53,8 +53,6 @@ for i, k in enumerate(ORDER):
     ax.scatter(x[~pos], v[~pos], s=16, marker="v", color=CATEGORICAL[1],
                alpha=0.85, edgecolor="white", linewidth=0.35, zorder=4)
     ax.plot([i - 0.26, i + 0.26], [np.median(v)] * 2, color="#222222", lw=1.2, zorder=5)
-    ax.text(i, 0.395, "%d 胜 / %d 负" % (r["win"], r["loss"]), ha="center",
-            va="bottom", fontsize=6.6, color="#222222")
 ax.axhline(0, color="#555555", lw=0.8, ls=(0, (4, 3)), zorder=2)
 ax.set_xticks(range(3))
 ax.set_xticklabels([d["models"][k]["name"] for k in ORDER], fontsize=7)
@@ -81,13 +79,7 @@ ax2.set_ylim(-0.09, 0.40)
 ax2.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
 ax2.set_title(" ", loc="left", fontsize=8, fontweight="bold", pad=4)
-ax2.text(0.985, 0.955, "圆点 = 胜/负分界", transform=ax2.transAxes, ha="right",
-         va="top", fontsize=6.1, color=GREY)
-
-for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_sig.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

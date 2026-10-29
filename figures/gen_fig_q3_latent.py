@@ -23,7 +23,7 @@ mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
 from matplotlib.lines import Line2D
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -105,10 +105,7 @@ axB.legend(handles=[
     Line2D([], [], marker="s", ls="", color=GREY, ms=5, label="标签打乱后中位"),
 ], loc="upper left", handletextpad=0.3, labelspacing=0.22, borderaxespad=0.3)
 
-for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.026, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, axB])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_latent.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

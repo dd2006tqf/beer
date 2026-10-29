@@ -17,7 +17,7 @@ import pandas as pd
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
-from _figbase import ROOT, save_fig, dim_zh
+from _figbase import ROOT, save_fig, dim_zh, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -57,7 +57,6 @@ ax.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
 ax.set_title(" ", loc="left",
              fontsize=8, fontweight="bold", pad=4)
-ax.text(0.015, 0.055, "横线=风格内中位数", transform=ax.transAxes, fontsize=6.2, color="#333333")
 
 # ══════════ (b) 总体 vs 风格内 ══════════
 ax2 = fig.add_subplot(gs[0, 1])
@@ -93,10 +92,7 @@ ax2.set_axisbelow(True)
 ax2.legend(loc="upper right", handletextpad=0.35, borderaxespad=0.3)
 ax2.set_title(" ", loc="left", fontsize=8, fontweight="bold", pad=4)
 
-for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
-             fontsize=8.5, fontweight='bold', color='#222222')
+tag_panels([ax, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_bystyle.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

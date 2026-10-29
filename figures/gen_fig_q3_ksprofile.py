@@ -18,7 +18,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.stats import ks_2samp
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -108,10 +108,7 @@ ax2.text(0.03, 0.93, "Pearson r = %.2f" % r, fontsize=6.6, color="#333333",
 ax2.text(0.03, 0.86, "红点=分箱中位", fontsize=6.2, color=CATEGORICAL[1],
          transform=ax2.transAxes)
 
-for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
-             fontsize=8.5, fontweight='bold', color='#222222')
+tag_panels([ax, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q3_ksprofile.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

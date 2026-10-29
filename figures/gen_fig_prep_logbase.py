@@ -17,7 +17,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter, NullFormatter
 from matplotlib.lines import Line2D
-from _figbase import load, PALETTE, save_fig, declutter_axes
+from _figbase import load, PALETTE, save_fig, declutter_axes, tag_panels
 
 PP = load('supp_preprocess.json')
 LB = PP['log_base_audit']
@@ -113,16 +113,18 @@ ax2.legend(loc='upper center', bbox_to_anchor=(0.5, -0.155), ncol=3,
            handletextpad=0.45)
 frame(ax2, 'x')
 
+tag_panels([ax1, ax2])
 save_fig(fig, 'figures/fig_prep_logbase_a.png')
 
 
 # ═══════════════════════════════════════════════════════════════
 # 图 B：校准散点 | 70 列中位残差
 # ═══════════════════════════════════════════════════════════════
-fig, (ax3, ax4) = plt.subplots(1, 2, figsize=(5.9, 3.05),
-                               gridspec_kw={'width_ratios': [1.0, 1.0],
-                                            'wspace': 0.30},
-                               layout='constrained')
+fig = plt.figure(figsize=(6.4, 3.05))
+# 显式固定两块绘图区：等宽等高，右图图例下移到绘图区之外，不压 y=x 参考线
+_W, _H = 0.335, 0.700
+ax3 = fig.add_axes([0.085, 0.235, _W, _H])
+ax4 = fig.add_axes([0.585, 0.235, _W, _H])
 
 scat = LB['scatter']
 demo = [('DMS', BLUE, 'o'), ('acetaldehyde', ORANGE, 's'),
@@ -144,7 +146,6 @@ ax3.text(hi - 0.10, hi - 0.22, D + 'y=x' + D, ha='right', va='top',
          fontsize=7.6, color='#4B5563', rotation=41)
 ax3.legend(loc='upper left', frameon=False, ncol=2, handletextpad=0.25,
            columnspacing=0.7, borderaxespad=0.12)
-ax3.set_aspect('equal', adjustable='box')
 frame(ax3, 'both')
 
 pc = LB['per_col']
@@ -174,8 +175,10 @@ ax4.xaxis.set_minor_formatter(NullFormatter())
 ax4.yaxis.set_minor_formatter(NullFormatter())
 ax4.set_xlabel('与 ' + D + r'\log_{10}(c)' + D + ' 的中位残差')
 ax4.set_ylabel('与原值 ' + D + 'c' + D + ' 的中位残差')
-ax4.legend(loc='center', frameon=False, handletextpad=0.3, borderaxespad=0.1)
+ax4.legend(loc='upper center', bbox_to_anchor=(0.5, -0.145), ncol=2,
+           frameon=False, handletextpad=0.3, columnspacing=1.1,
+           borderaxespad=0.0)
 frame(ax4, 'both')
-
+tag_panels([ax3, ax4])
 save_fig(fig, 'figures/fig_prep_logbase_b.png')
 print('log10=%d raw=%d' % (len(lx), len(rx)))

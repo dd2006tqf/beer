@@ -19,7 +19,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import P1, P2, ROOT, save_fig, dim_zh
+from _figbase import P1, P2, ROOT, save_fig, dim_zh, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -108,10 +108,7 @@ ax2.set_axisbelow(True)
 ax2.set_title("第三名的稳定性随可预测性上升", loc="left", fontsize=8,
               fontweight="bold", pad=4)
 
-for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
-             fontsize=8.5, fontweight='bold', color='#222222')
+tag_panels([ax, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_cross.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

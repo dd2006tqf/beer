@@ -12,7 +12,7 @@ import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib.pyplot as plt
-from _figbase import P1, PALETTE, save_fig, dim_zh
+from _figbase import P1, PALETTE, save_fig, dim_zh, tag_panels
 
 PD = P1['per_dim']
 plt.rcParams.update({
@@ -64,11 +64,10 @@ for ax, (name, col, ks) in zip(axes, rows):
     ax.tick_params(axis='x', length=2)
     ax.grid(axis='x', color='#EDEFF2', lw=0.55, zorder=0)
     ax.set_axisbelow(True)
-    ax.text(r2.mean(), len(ks) - 0.45, '均值 %.3f' % r2.mean(),
-            color='#C0392B', fontsize=6.0, ha='left', va='bottom')
+    pass
 
-fig.text(0.5, -0.030, '点大小 = ±1 级准确率（0.40–0.85）；红虚线 = 组内平均 R²',
-         ha='center', fontsize=6.4, color='#6B7280')
-
+tag_panels([axes[0]], tags=['(a)'])
+tag_panels([axes[1]], tags=['(b)'])
+tag_panels([axes[2]], tags=['(c)'])
 save_fig(fig, 'figures/fig_q1_r2_by_group.png')
 print('done; groups=%s' % [(r[0], len(r[2]), round(float(np.mean([PD[k]['r2_main'] for k in r[2]])), 3)) for r in rows])

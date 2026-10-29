@@ -17,7 +17,7 @@ import numpy as np
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -128,10 +128,7 @@ axB.text(3.28, len(vals) - n0 / 2 - 0.5, "%d 维\n无交集" % n0, ha="right", v
 axB.text(0.02, 0.02, "浅色 = 次高的一对重合", transform=axB.transAxes, fontsize=6.2,
          color=GREY)
 
-for ax_, tag in ((axT, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([axT, axB])
 
 axM.text(-0.62, 2.35, "上三行示意：哪种方法参与重合", fontsize=5.8, color=GREY,
          ha="left", va="top")

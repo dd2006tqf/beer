@@ -32,6 +32,21 @@ def panel(ax, tag):
     ax.set_title(tag, fontsize=11, fontweight='bold', loc='left', pad=3)
 
 
+def tag_panels(axes, tags=None, x=-0.105, y=1.015):
+    """在每张子图左上角外侧加 (a)(b)(c)(d) 编号，供正文“图 X(a)”式引用。
+
+    位置与字号对齐正文图 23（SHAP 蜂群）：右对齐贴在坐标区左上角外侧，
+    10 pt 加粗黑字，不压住子图内的数据与图例。
+    """
+    axes = np.atleast_1d(np.asarray(axes, dtype=object)).ravel()
+    if tags is None:
+        tags = ['(%s)' % chr(ord('a') + i) for i in range(len(axes))]
+    for ax, t in zip(axes, tags):
+        ax.text(x, y, t, transform=ax.transAxes, ha='right', va='bottom',
+                fontsize=10, fontweight='bold', color='#222222', zorder=10)
+    return axes
+
+
 # 感官维中文短名映射（50 维：香=A_、味=F_ 前缀 + 基词；另有口感/缺陷维）
 _BASE_ZH = {
     'malt_all': '麦芽', 'malt_grain': '谷物', 'malt_bread': '面包', 'malt_cara': '焦糖',

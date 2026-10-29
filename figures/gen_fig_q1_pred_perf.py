@@ -20,7 +20,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from _figbase import P1, ROOT, save_fig, dim_zh
+from _figbase import P1, ROOT, save_fig, dim_zh, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -70,7 +70,6 @@ ax.set_xlim(-0.03, 0.95)
 ax.set_xlabel("折外 QWK（点=点估计，横线=2000 次 bootstrap 95% 区间）")
 ax.grid(axis="x", color="#F0F0F0", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
-ax.set_title("50 维可预测性排序", loc="left", fontsize=8, fontweight="bold", pad=4)
 ax.annotate("全维均值 %.3f" % mean_qwk, xy=(mean_qwk, len(names) - 7),
             xytext=(mean_qwk + 0.16, len(names) - 11), fontsize=6.2, color="#333333",
             arrowprops=dict(arrowstyle="-", lw=0.5, color="#999999"))
@@ -94,17 +93,13 @@ ax2.set_xlabel("折外 QWK")
 ax2.set_ylabel("±1 级准确率（%）")
 ax2.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
-ax2.set_title("分级判别力与相邻命中", loc="left", fontsize=8, fontweight="bold", pad=4)
 # 标出右上两个端点（未重叠，保留）；左下与点重叠的弱信号维标签已省略
 pick = [0, 1]
 for i in pick:
     ax2.annotate(dim_zh(names[i]), (vals[i], acc[i] * 100),
                  xytext=(4, 5), textcoords="offset points", fontsize=6.0, color="#333333")
 
-for ax_, tag in ((ax, "(a)"), (ax2, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.022, tag, ha='center', va='bottom',
-             fontsize=8.5, fontweight='bold', color='#222222')
+tag_panels([ax, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q1_pred_perf.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

@@ -18,7 +18,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
-from _figbase import ROOT, save_fig, dim_zh
+from _figbase import ROOT, save_fig, dim_zh, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -100,10 +100,7 @@ axB.text(mu - 0.012, K - 0.55, "全维均值 %.3f" % mu, ha="right", va="center"
 
 
 # 子图编号置于各自下方（面板底部居中）
-for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, axB])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_top1_bar.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

@@ -19,7 +19,7 @@ mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 from matplotlib.lines import Line2D
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -145,10 +145,7 @@ ax2.text(0.985, 0.965, "\n".join(lines), transform=ax2.transAxes, ha="right", va
          fontsize=5.7, color="#444444",
          bbox=dict(boxstyle="round,pad=0.35", fc="white", ec="#DDDDDD", lw=0.5))
 
-for ax_, tag in ((ax1, '(a)'), (ax2, '(b)')):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, -0.020, tag, ha='center', va='bottom',
-             fontsize=8.5, fontweight='bold', color='#222222')
+tag_panels([ax1, ax2])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_modules.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

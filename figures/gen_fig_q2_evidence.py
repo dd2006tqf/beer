@@ -20,7 +20,7 @@ import numpy as np
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
-from _figbase import ROOT, save_fig, dim_zh
+from _figbase import ROOT, save_fig, dim_zh, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -114,10 +114,7 @@ axB.set_ylabel("条件增量（%）")
 axB.grid(color="#F3F3F3", lw=0.4, zorder=0)
 axB.set_axisbelow(True)
 
-for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.028, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, axB])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_evidence.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

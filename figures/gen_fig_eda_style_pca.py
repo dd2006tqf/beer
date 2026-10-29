@@ -7,7 +7,7 @@ import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import matplotlib.pyplot as plt
-from _figbase import SUPP, PALETTE, PALETTE_LIGHT, COLORS, save_fig, set_paper_placement, panel, declutter_axes
+from _figbase import SUPP, PALETTE, PALETTE_LIGHT, COLORS, save_fig, set_paper_placement, panel, declutter_axes, tag_panels
 
 sc = SUPP['style_counts']                       # [[name, n], ...] 已降序
 _abbr = {'Flanders old brown': 'Fl.o.brn', 'West Flanders ale': 'W.Fl.ale',
@@ -56,5 +56,6 @@ ax.legend(loc='upper right', fontsize=7, framealpha=0.85, handletextpad=0.3)
 declutter_axes(ax)
 
 fig.tight_layout()
+tag_panels(axes)
 save_fig(fig, 'figures/fig_eda_style_pca.png')
 print('fig_eda_style_pca done')

@@ -21,7 +21,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.stats import gaussian_kde
-from _figbase import P2, ROOT, save_fig
+from _figbase import P2, ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -80,17 +80,14 @@ def violin_plus_scatter(ax, data, positions, colors, labels, jitter=0.075):
                    linewidth=0.25, zorder=5)
         ax.plot([pos - 0.20, pos + 0.20], [np.median(vals)] * 2, color="#222222",
                 lw=1.3, zorder=6)
-        ax.annotate("%.3f" % np.median(vals), (pos, np.median(vals)), xytext=(0, 5),
-                    textcoords="offset points", ha="center", fontsize=6.0,
-                    color="#222222", zorder=7)
     ax.set_xticks(positions)
     ax.set_xticklabels(labels)
     ax.grid(axis="y", color="#F0F0F0", lw=0.4, zorder=0)
     ax.set_axisbelow(True)
 
-fig = plt.figure(figsize=(7.0, 2.9))
-gs = fig.add_gridspec(1, 3, width_ratios=[1.0, 1.25, 1.15], wspace=0.34,
-                      left=0.062, right=0.985, top=0.95, bottom=0.26)
+fig = plt.figure(figsize=(6.6, 2.75))
+gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 1.18], wspace=0.30,
+                      left=0.075, right=0.985, top=0.95, bottom=0.245)
 
 # ---------- (a) 单方法稳定性：按感官组 ----------
 ax1 = fig.add_subplot(gs[0, 0])
@@ -107,28 +104,7 @@ violin_plus_scatter(ax2, data2, [0, 1, 2], [BLUE, GREEN, RED],
 ax2.set_ylim(-0.03, 0.80)
 ax2.axhline(base_mean, color=GREY, lw=0.7, ls=(0, (4, 3)), zorder=1)
 
-# ---------- (c) 两口径正交 ----------
-ax3 = fig.add_subplot(gs[0, 2])
-for g, col in zip(GNAME, GCOL):
-    m = np.array(G) == g
-    ax3.scatter(freq[m], jac[m], s=16, facecolor=col, edgecolor="white",
-                linewidth=0.5, alpha=0.9, zorder=4, label=g)
-ax3.axhline(jac.mean(), color=RED, lw=0.8, ls=(0, (4, 3)), zorder=2)
-ax3.axvline(1.0, color="#CCCCCC", lw=0.6, zorder=1)
-ax3.set_xlim(0.93, 1.012)
-ax3.set_ylim(-0.03, 0.76)
-ax3.grid(color="#F0F0F0", lw=0.4, zorder=0)
-ax3.set_axisbelow(True)
-ax3.legend(loc="upper left", handletextpad=0.3, labelspacing=0.2,
-           borderaxespad=0.2, markerscale=1.1)
-
-# 子图编号与标题置于各自下方（面板底部居中）
-for ax_, tag in ((ax1, "(a) 单方法稳定性"),
-                 (ax2, "(b) 跨方法一致性"),
-                 (ax3, "(c) 两口径正交")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.05, tag, ha="center", va="bottom",
-             fontsize=8.2, color="#222222")
+tag_panels([ax1, ax2])
 
 save_fig(fig, "figures/fig_q2_stability.png")
 

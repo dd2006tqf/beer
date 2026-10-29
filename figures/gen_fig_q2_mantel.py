@@ -21,7 +21,7 @@ mpl.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from scipy.spatial.distance import pdist, squareform
-from _figbase import ROOT, save_fig
+from _figbase import ROOT, save_fig, tag_panels
 
 mpl.rcParams.update({
     "font.family": "sans-serif",
@@ -141,10 +141,7 @@ axB.legend(handles=[Line2D([], [], marker="o", ls="", color=cols[s], ms=4.5, lab
            loc="center right", fontsize=5.8, handletextpad=0.3,
            labelspacing=0.22, borderaxespad=0.1)
 
-for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
-    bb = ax_.get_position()
-    fig.text((bb.x0 + bb.x1) / 2, 0.026, tag, ha="center", va="bottom",
-             fontsize=8.5, fontweight="bold", color="#222222")
+tag_panels([ax, axB])
 
 fig.savefig(os.path.join(ROOT, "figures", "fig_q2_mantel.png"), dpi=600,
             bbox_inches="tight", facecolor="white")

@@ -17,7 +17,7 @@ import numpy as np
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
-from _figbase import ROOT, PALETTE, save_fig
+from _figbase import ROOT, PALETTE, save_fig, tag_panels
 
 recs = []
 for f in glob.glob(os.path.join(ROOT, "figures", "derived", "q3_disc_lambda_*_seed42.json")):
@@ -38,41 +38,64 @@ acc = np.array([d["latent"]["lin_acc"] for d in recs])
 ks = np.array([d["ks_mean_3style"] for d in recs])
 recon = np.array([d["recon_mse"] for d in recs])
 
-plt.rcParams.update({"axes.unicode_minus": False, "font.size": 7.2})
-fig, ax = plt.subplots(figsize=(5.6, 2.9), layout="constrained")
+BLACK = "#000000"
+plt.rcParams.update({"axes.unicode_minus": False, "font.size": 7.2,
+                     "axes.labelcolor": BLACK, "xtick.color": BLACK,
+                     "ytick.color": BLACK, "text.color": BLACK,
+                     "axes.edgecolor": BLACK, "mathtext.fontset": "dejavusans",
+                     "font.sans-serif": ["SimHei", "Arial", "DejaVu Sans"]})
+
+# 左右并排的两张权衡曲线：左面板看隐空间是否被修好，右面板看保真付出的代价；
+# 两图共用 x 轴（λ 的五个取值），并在 λ=0.02 处同时画推荐折中档的竖线。
+fig, (axA, axB) = plt.subplots(1, 2, figsize=(6.9, 2.85),
+                               gridspec_kw={"width_ratios": [1.0, 1.0],
+                                            "wspace": 0.30},
+                               layout="constrained")
 
 x = np.arange(len(lams))
-ax.bar(x, acc, width=0.52, color=PALETTE_LIGHT[0] if False else "#A9C3DD",
-       edgecolor="white", label="隐空间风格分类准确率", zorder=2)
-ax.axhline(1 / 22, color="#888888", ls=":", lw=1.0, zorder=3)
-ax.text(len(lams) - 0.45, 1 / 22 + 0.03, "随机基线 1/22", fontsize=6.0, ha="right", color="#666666")
-for xi, a in zip(x, acc):
-    ax.text(xi, a + 0.02, "%.0f%%" % (a * 100), ha="center", fontsize=6.6)
+labels = ["0\n(现状)"] + ["%.2f" % v for v in lams[1:]]
+ACC_C, KS_C = "#3B6EA5", "#B45309"
 
-ax.set_xticks(x)
-ax.set_xticklabels(["0\n(现状)"] + ["%.2f" % v for v in lams[1:]])
-ax.set_xlabel("判别辅助损失权重 λ")
-ax.set_ylabel("隐空间风格分类准确率")
-ax.set_ylim(0, 1.18)
+# ---- (a) 隐空间风格可分性 ----
+axA.plot(x, acc, "-o", color=ACC_C, lw=1.7, ms=5.2, mfc="white", mew=1.1, zorder=4)
+axA.fill_between(x, 0, acc, color=ACC_C, alpha=0.13, zorder=2)
+axA.axhline(1 / 22, color=BLACK, lw=0.7, ls=(0, (4, 2)), zorder=3)
+axA.text(len(x) - 0.55, 1 / 22 + 0.035, "随机基线 1/22", fontsize=6.0,
+         ha="right", color=BLACK)
+axA.set_xticks(x)
+axA.set_xticklabels(labels)
+axA.set_xlabel("判别辅助损失权重 $\\lambda$")
+axA.set_ylabel("隐空间风格分类准确率")
+axA.set_ylim(0, 1.14)
+axA.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
+axA.set_yticklabels(["0", "25%", "50%", "75%", "100%"])
+axA.grid(axis="y", color="#E9ECEF", lw=0.5, zorder=0)
+axA.set_axisbelow(True)
+for sp in ("top", "right"):
+    axA.spines[sp].set_visible(False)
 
-ax2 = ax.twinx()
-ax2.plot(x, ks, "o-", color=PALETTE[2], lw=1.6, ms=4.6, label="生成谱 KS（越低越好）", zorder=4)
-for xi, v in zip(x, ks):
-    ax2.annotate("%.3f" % v, (xi, v), textcoords="offset points", xytext=(0, -12),
-                 ha="center", fontsize=6.2, color=PALETTE[2])
-ax2.set_ylabel("生成谱 KS 均值", color=PALETTE[2])
-ax2.tick_params(axis="y", colors=PALETTE[2])
-ax2.set_ylim(0.34, 0.50)
+# ---- (b) 生成谱保真代价 ----
+axB.plot(x, ks, "-s", color=KS_C, lw=1.7, ms=4.8, mfc="white", mew=1.1, zorder=4)
+axB.fill_between(x, ks.min() - 0.02, ks, color=KS_C, alpha=0.12, zorder=2)
+axB.set_xticks(x)
+axB.set_xticklabels(labels)
+axB.set_xlabel("判别辅助损失权重 $\\lambda$")
+axB.set_ylabel("生成谱逐列 KS 均值（越低越保真）")
+axB.set_ylim(ks.min() - 0.02, ks.max() + 0.03)
+axB.grid(axis="y", color="#E9ECEF", lw=0.5, zorder=0)
+axB.set_axisbelow(True)
+for sp in ("top", "right"):
+    axB.spines[sp].set_visible(False)
 
-ax.grid(axis="y", color="#E6E9ED", lw=0.5, zorder=0)
-ax.set_axisbelow(True)
-for sp in ("top",):
-    ax.spines[sp].set_visible(False)
-    ax2.spines[sp].set_visible(False)
+# 推荐折中档 λ=0.02 在两张图上同时标出（虚线 + 底部注记）
+j = int(np.argmin(np.abs(lams - 0.02)))
+for a in (axA, axB):
+    a.axvline(j, color="#6B7280", lw=0.8, ls=(0, (3, 3)), zorder=1)
+axA.annotate("推荐折中档\n$\\lambda$=0.02", xy=(j, acc[j]),
+             xytext=(j + 0.55, 0.44), fontsize=6.2, color=BLACK,
+             arrowprops=dict(arrowstyle="-", lw=0.6, color="#6B7280"))
 
-h1, l1 = ax.get_legend_handles_labels()
-h2, l2 = ax2.get_legend_handles_labels()
-ax.legend(h1 + h2, l1 + l2, loc="upper left", fontsize=6.4, frameon=False)
+tag_panels([axA, axB])
 
 save_fig(fig, "figures/fig_q3_disc_tradeoff.png")
 print("lams", list(lams))

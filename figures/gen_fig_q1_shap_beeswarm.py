@@ -61,7 +61,7 @@ for ax, (dim, lab, tag) in zip(axes, PANELS):
     ax.grid(axis="x", color="#F3F3F3", lw=0.4, zorder=0)
     ax.set_axisbelow(True)
     ax.tick_params(axis="x", labelsize=7.2)
-    ax.text(0.02, 1.02, tag, transform=ax.transAxes, ha="left", va="bottom",
+    ax.text(-0.14, 1.02, tag, transform=ax.transAxes, ha="right", va="bottom",
             fontsize=10, fontweight="bold", color="#222222")
 
 # 颜色条：特征取值高低（挂到整组子图，matplotlib 自动留空间）
