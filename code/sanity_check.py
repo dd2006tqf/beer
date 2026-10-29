@@ -66,7 +66,7 @@ for w in warnings[:8]:
 for s in suspicious[:8]:
     print(s)
 if not errors and not warnings and not suspicious:
-    print("✅ 所有数值通过 sanity check")
+    print("[OK] 所有数值通过 sanity check")
 elif errors:
     print(f"\n{len(errors)} 错误 / {len(warnings)} 警告 — 必须修错误")
     sys.exit(1)

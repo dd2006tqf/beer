@@ -78,7 +78,7 @@ def main(data_dir="user_data"):
         mdi = pd.read_excel(x8, sheet_name="GBM importance MDI")
         print(f"[8.xlsx] Sensory thresholds={thr.shape}  GBM importance MDI={mdi.shape}")
 
-    print("\n[data_check] 全部核对通过 ✅")
+    print("\n[data_check] 全部核对通过 [OK]")
 
 
 if __name__ == "__main__":

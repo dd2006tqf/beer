@@ -91,9 +91,9 @@ def main():
     audit_q1(); audit_q2(); audit_q3(); audit_baselines()
     print("=" * 50)
     if fails:
-        print(f"❌ 约束审计失败：{fails}")
+        print(f"[FAIL] 约束审计失败：{fails}")
         sys.exit(1)
-    print("✅ 全部硬约束通过")
+    print("[OK] 全部硬约束通过")
 
 
 if __name__ == "__main__":
