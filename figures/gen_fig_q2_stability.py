@@ -90,28 +90,22 @@ def violin_plus_scatter(ax, data, positions, colors, labels, jitter=0.075):
 
 fig = plt.figure(figsize=(7.0, 2.9))
 gs = fig.add_gridspec(1, 3, width_ratios=[1.0, 1.25, 1.15], wspace=0.34,
-                      left=0.062, right=0.985, top=0.88, bottom=0.20)
+                      left=0.062, right=0.985, top=0.95, bottom=0.26)
 
 # ---------- (a) 单方法稳定性：按感官组 ----------
 ax1 = fig.add_subplot(gs[0, 0])
 data1 = [freq[np.array(G) == g] for g in GNAME]
 violin_plus_scatter(ax1, data1, [0, 1, 2], GCOL, ["香气", "风味", "口感"])
 ax1.set_ylim(0.93, 1.02)
-ax1.set_ylabel("Top-1 入选频率")
 ax1.axhline(1.0, color=GREY, lw=0.7, ls=(0, (4, 3)), zorder=1)
-ax1.set_title("(a) 单方法稳定性", loc="left", fontsize=8.2, pad=4)
 
 # ---------- (b) 跨方法一致性：三对方法 ----------
 ax2 = fig.add_subplot(gs[0, 1])
 data2 = [pair_jac[n] for _, _, n in PAIRS]
 violin_plus_scatter(ax2, data2, [0, 1, 2], [BLUE, GREEN, RED],
                     ["SHAP–\n相关", "SHAP–\nRF", "相关–\nRF"])
-ax2.set_ylabel("逐维 Jaccard")
 ax2.set_ylim(-0.03, 0.80)
 ax2.axhline(base_mean, color=GREY, lw=0.7, ls=(0, (4, 3)), zorder=1)
-ax2.annotate("随机基线 %.4f" % base_mean, (2.35, base_mean), xytext=(0, 4),
-             textcoords="offset points", ha="right", fontsize=6.0, color=GREY)
-ax2.set_title("(b) 跨方法一致性", loc="left", fontsize=8.2, pad=4)
 
 # ---------- (c) 两口径正交 ----------
 ax3 = fig.add_subplot(gs[0, 2])
@@ -123,13 +117,18 @@ ax3.axhline(jac.mean(), color=RED, lw=0.8, ls=(0, (4, 3)), zorder=2)
 ax3.axvline(1.0, color="#CCCCCC", lw=0.6, zorder=1)
 ax3.set_xlim(0.93, 1.012)
 ax3.set_ylim(-0.03, 0.76)
-ax3.set_xlabel("Top-1 入选频率")
-ax3.set_ylabel("跨方法 Jaccard")
 ax3.grid(color="#F0F0F0", lw=0.4, zorder=0)
 ax3.set_axisbelow(True)
-ax3.set_title("(c) 两口径正交", loc="left", fontsize=8.2, pad=4)
 ax3.legend(loc="upper left", handletextpad=0.3, labelspacing=0.2,
            borderaxespad=0.2, markerscale=1.1)
+
+# 子图编号与标题置于各自下方（面板底部居中）
+for ax_, tag in ((ax1, "(a) 单方法稳定性"),
+                 (ax2, "(b) 跨方法一致性"),
+                 (ax3, "(c) 两口径正交")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, 0.05, tag, ha="center", va="bottom",
+             fontsize=8.2, color="#222222")
 
 save_fig(fig, "figures/fig_q2_stability.png")
 

@@ -17,6 +17,7 @@ import pandas as pd
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
+import seaborn as sns
 from _figbase import ROOT, save_fig, dim_zh
 
 mpl.rcParams.update({
@@ -42,12 +43,15 @@ gs = fig.add_gridspec(1, 2, width_ratios=[0.52, 1.0], wspace=0.78,
 
 # ---------------- (a) strip plot ----------------
 ax = fig.add_subplot(gs[0, 0])
-rng = np.random.default_rng(3)
-cols = [CATEGORICAL[0], CATEGORICAL[0], CATEGORICAL[1]]
+long = piv.reset_index().melt(id_vars="sensory_dim", var_name="rank", value_name="freq")
+long["x"] = long["rank"].map({1: 0, 2: 1, 3: 2})
+swarm_pal = {0: CATEGORICAL[0], 1: CATEGORICAL[0], 2: CATEGORICAL[1]}
+sns.swarmplot(data=long, x="x", y="freq", ax=ax, size=2.6,
+              palette=swarm_pal, hue="x", legend=False,
+              linewidth=0.2, edgecolor="white", alpha=0.85, zorder=3)
+ax.set_xlabel("")
 for i, r in enumerate([1, 2, 3]):
     v = piv[r].values
-    x = i + rng.normal(0, 0.052, size=v.size)
-    ax.scatter(x, v, s=9, color=cols[i], alpha=0.55, edgecolor="none", zorder=3)
     ax.plot([i - 0.24, i + 0.24], [np.median(v)] * 2, color="#222222", lw=1.0, zorder=5)
     ax.text(i, 1.055, "%.3f" % v.mean(), ha="center", va="bottom", fontsize=6.6,
             color="#222222")

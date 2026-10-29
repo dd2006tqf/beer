@@ -2,9 +2,9 @@
   "base_name": "AMCB2600304",
   "paper_docx": "AMCB2600304.docx",
   "paper_pdf": "AMCB2600304.pdf",
-  "paper_pages": 77,
+  "paper_pages": 68,
   "paper_docx_bytes": 6654588,
-  "paper_pdf_bytes": 7946434,
+  "paper_pdf_bytes": 12749333,
   "paper_note": "含官方封面表（队伍编号 MCB2600304/赛道 A）；前置（封面/摘要/目录）不编号，正文从1开始、页脚居中阿拉伯数字；参考文献18条，正文引用以原生上标[1][2]形式标注",
   "paper": "AMCB2600304.docx",
   "attachment": "AMCB2600304附件.zip",
@@ -41,8 +41,8 @@
     }
   },
   "todo": [
-    "论文 PDF 与 docx 均为最新版（77页，引用上标、正文页码从1）可直接上传；承诺书需本人手写签名，软件不代签"
+    "目录字号已调到小四（12pt、单倍行距），仍单页；这是能单页容纳的最大字号"
   ],
   "promise_templates": [],
-  "generated_at": "2026-10-26T21:30:00"
+  "generated_at": "2026-10-29T11:26:39"
 }

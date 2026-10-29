@@ -53,9 +53,6 @@ ax1.plot(x, cum, color=BLUE, lw=1.4, zorder=3)
 ax1.fill_between(x, 0, cum, color=BLUE, alpha=0.10, zorder=2)
 ax1.axvline(4, color=ORANGE, lw=0.9, ls=(0, (4, 2)), zorder=4)
 ax1.plot([4], [cum[3]], 'o', color=ORANGE, ms=4, zorder=5)
-ax1.annotate('前 4 个化合物\n占 %.0f%% 席位' % cum[3], xy=(4, cum[3]),
-             xytext=(11, 34), fontsize=6.4, color='#374151',
-             arrowprops=dict(arrowstyle='-', color='#9CA3AF', lw=0.7))
 ax1.axhline(80, color='#D1D5DB', lw=0.7, ls=':', zorder=1)
 ax1.text(len(x) - 1, 82, '80%', fontsize=6.0, color='#6B7280', ha='right')
 ax1.set_xlim(0.5, len(x) + 0.5)

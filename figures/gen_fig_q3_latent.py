@@ -94,7 +94,6 @@ for i, r in enumerate(snr):
                 edgecolor="white", linewidth=0.5, zorder=4)
     axB.scatter(i + 0.10, d, s=34, color=CATEGORICAL[0], edgecolor="white",
                 linewidth=0.5, zorder=4)
-    axB.text(i, d + 0.06, "p=%.2f" % p, ha="center", fontsize=6.2, color=CATEGORICAL[1])
 axB.set_xticks(xs)
 axB.set_xticklabels([r["pair"].replace("-", "\n") for r in snr], fontsize=6.2)
 axB.set_ylabel("两风格质心的隐空间距离")

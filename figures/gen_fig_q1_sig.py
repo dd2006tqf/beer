@@ -64,12 +64,6 @@ ax.set_ylabel("逐维 Δ QWK（主模型 - 基线）")
 ax.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
 ax.set_title(" ", loc="left", fontsize=8, fontweight="bold", pad=4)
-ax.legend(handles=[
-    Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=4.5, label="主模型更优"),
-    Line2D([], [], marker="v", ls="", markerfacecolor=CATEGORICAL[1],
-           markeredgecolor="white", ms=5, label="基线更优"),
-    Line2D([], [], color="#222222", lw=1.2, label="中位差值"),
-], loc="lower right", handletextpad=0.35, labelspacing=0.25, borderaxespad=0.25)
 
 # ══════════ (b) 降序累计 ══════════
 ax2 = fig.add_subplot(gs[0, 1])
@@ -78,24 +72,15 @@ for i, k in enumerate(ORDER):
     r = d["models"][k]
     v = np.sort(np.array(r["delta"], dtype=float))[::-1]
     ax2.plot(np.arange(1, v.size + 1), v, color=CATEGORICAL[i], lw=1.5,
-             ls=styles[i], label=r["name"], zorder=3)
+             ls=styles[i], zorder=3)
     ax2.scatter([r["win"]], [v[r["win"] - 1]], s=22, color=CATEGORICAL[i],
                 edgecolor="white", linewidth=0.6, zorder=5)
 ax2.axhline(0, color="#555555", lw=0.8, ls=(0, (4, 3)), zorder=2)
 ax2.set_xlim(0, 51)
 ax2.set_ylim(-0.09, 0.40)
-ax2.set_xlabel("按 Δ 降序排列的维度")
-ax2.set_ylabel("Δ QWK")
 ax2.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
 ax2.set_title(" ", loc="left", fontsize=8, fontweight="bold", pad=4)
-ax2.legend(loc="lower left", handletextpad=0.5, labelspacing=0.25, borderaxespad=0.3)
-# 标出与 KNN 的交叉点
-r = d["models"]["knn"]
-v = np.sort(np.array(r["delta"], dtype=float))[::-1]
-ax2.annotate("KNN 基线在第 %d 维后转为负" % r["win"], xy=(r["win"], 0),
-             xytext=(r["win"] + 5, -0.065), fontsize=6.2, color=CATEGORICAL[0],
-             arrowprops=dict(arrowstyle="-", lw=0.5, color="#A9C4DC"))
 ax2.text(0.985, 0.955, "圆点 = 胜/负分界", transform=ax2.transAxes, ha="right",
          va="top", fontsize=6.1, color=GREY)
 

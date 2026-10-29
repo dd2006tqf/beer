@@ -57,8 +57,8 @@ ax1.set_xlabel('ABV（% vol）')
 ax1.set_ylabel('密度')
 ax1.set_xlim(0, 12)
 ax1.set_ylim(bottom=0)
-ax1.legend(loc='upper right', frameon=False, handlelength=1.4,
-           borderaxespad=0.2, labelspacing=0.3)
+ax1.legend(loc='lower right', bbox_to_anchor=(1.0, 1.02), frameon=False,
+           handlelength=1.4, borderaxespad=0.0, labelspacing=0.3)
 declutter_axes(ax1, 'both')
 
 # ── 右：16 风格区间 ────────────────────────────────────────
@@ -78,19 +78,6 @@ n95 = sum(m['abv_hit_p95'] for m in mapping.values())
 ax2.set_xlim(0, 13.5)
 ax2.set_ylim(-0.7, len(items) - 0.3)
 declutter_axes(ax2, 'x')
-
-handles = [
-    Line2D([0], [0], color=BLUE, lw=5.5, alpha=0.25, label='P5–P95'),
-    Line2D([0], [0], color=BLUE, lw=3.4, alpha=0.45, label='IQR'),
-    Line2D([0], [0], marker='|', color='#16324C', ls='none', ms=8, mew=1.3, label='中位'),
-    Line2D([0], [0], marker='o', ls='', color='w', markerfacecolor=BLUE,
-           markersize=5.5, label='本文（在 IQR）'),
-    Line2D([0], [0], marker='o', ls='', color='w', markerfacecolor=ORANGE,
-           markersize=5.5, label='本文（超区间）'),
-]
-ax2.legend(handles=handles, loc='lower right', frameon=False, ncol=2,
-           handletextpad=0.35, columnspacing=0.9, borderaxespad=0.2,
-           labelspacing=0.3)
 
 save_fig(fig, 'figures/fig_prep_kaggle.png')
 print('done; rho=%.2f p95=%d/16' % (res['abv_spearman'], n95))

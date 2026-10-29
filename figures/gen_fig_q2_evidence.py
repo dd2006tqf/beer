@@ -73,7 +73,6 @@ for yi, r in zip(ypos, labels):
         ax.scatter([cond], [yi], s=30, marker="o", facecolor="white", edgecolor=c,
                    linewidth=1.1, zorder=4)
         ax.plot([cond - 1.1, cond], [yi, yi], color=c, lw=1.0, zorder=3)
-        ax.text(cond + 1.4, yi, "单点模块", fontsize=5.6, color=GREY, va="center")
     else:
         mod = r["mod"] * 100
         ax.plot([min(cond, mod), max(cond, mod)], [yi, yi], color=c, lw=1.1,
@@ -97,14 +96,6 @@ ax.grid(axis="x", color="#EFEFEF", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
 ax.spines["left"].set_visible(False)
 
-from matplotlib.lines import Line2D
-ax.legend(handles=[
-    Line2D([], [], marker="o", ls="", color=CATEGORICAL[0], ms=5, label="条件增量"),
-    Line2D([], [], marker="s", ls="", color=CATEGORICAL[3], ms=5, label="模块增量"),
-    Line2D([], [], marker="o", ls="", markerfacecolor="white", markeredgecolor=GREY,
-           ms=5, label="模块不可定义"),
-], loc="lower right", handletextpad=0.35, labelspacing=0.25, borderaxespad=0.2)
-
 # ══════════ (b) module-share scatter ══════════
 axB = fig.add_subplot(gs[0, 1])
 for r in rows:
@@ -122,18 +113,6 @@ axB.set_xlabel("模块分担比例 = 模块增量 / (条件 + 模块)")
 axB.set_ylabel("条件增量（%）")
 axB.grid(color="#F3F3F3", lw=0.4, zorder=0)
 axB.set_axisbelow(True)
-axB.text(0.03, 0.94, "独立驱动", transform=axB.transAxes, fontsize=6.4,
-         color=CATEGORICAL[0], va="top")
-axB.text(0.97, 0.94, "模块整体贡献", transform=axB.transAxes, fontsize=6.4,
-         color=CATEGORICAL[3], va="top", ha="right")
-axB.text(0.97, 0.06, "可替代", transform=axB.transAxes, fontsize=6.4,
-         color=GREY, va="bottom", ha="right")
-
-axB.legend(handles=[Line2D([], [], marker="o", ls="", color=GCOL[g], ms=5,
-                           label="%s 级（%d 个）" % (g, sum(1 for r in rows if r["grade"] == g)))
-                    for g in ("A", "B", "C")],
-           loc="lower left", handletextpad=0.35, labelspacing=0.25,
-           borderaxespad=0.25)
 
 for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     bb = ax_.get_position()

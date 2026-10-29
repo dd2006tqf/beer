@@ -96,11 +96,6 @@ for i, c in enumerate(big):
     r = max(sx[mem].max() - sx[mem].min(), sy[mem].max() - sy[mem].min()) / 2 + 0.045
     ax1.add_patch(plt.Circle((mx_, my_), r, fill=True, facecolor=ccol[c], alpha=0.055,
                              edgecolor=ccol[c], lw=0.8, ls=(0, (3, 2)), zorder=0))
-    hub = max((n for n in node_list if H.nodes[n]["comm"] == c),
-              key=lambda n: H.nodes[n]["deg"])
-    nm = H.nodes[hub]["name"]
-    ax1.text(mx_, my_ + r + 0.03, "M%d·%s" % (i + 1, nm if len(nm) <= 13 else nm[:12] + "…"),
-             ha="center", va="bottom", fontsize=6.0, color=ccol[c], zorder=6)
 
 ax1.set_xticks([]); ax1.set_yticks([])
 for sp in ax1.spines.values():
@@ -134,16 +129,8 @@ ax2.hist(below, bins=bins, color=CATEGORICAL[1], alpha=0.85, edgecolor="white",
          linewidth=0.5, zorder=3)
 ax2.axvline(rho_star, color="#222222", lw=1.0, ls=(0, (4, 3)), zorder=5)
 ax2.set_xlim(0.10, 0.90)
-ax2.set_xlabel("该化合物与其余 210 个化合物的最大 |r|")
-ax2.set_ylabel("化合物数")
 ax2.grid(axis="y", color="#F0F0F0", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
-ax2.annotate("阈值 ρ = 0.5\n左侧即孤立（%d 个）" % net["n_isolated"],
-             xy=(rho_star, ax2.get_ylim()[1] * 0.55), xytext=(0.13, ax2.get_ylim()[1] * 0.80),
-             fontsize=6.5, color="#333333", va="center",
-             arrowprops=dict(arrowstyle="->", lw=0.6, color="#888888"))
-ax2.text(0.555, ax2.get_ylim()[1] * 0.30, "孤立者最大 |r|\n中位 0.444", fontsize=6.2,
-         color=CATEGORICAL[1], va="center", ha="left")
 ax2.set_title(" ", loc="left",
               fontsize=8, fontweight="bold", pad=4)
 
