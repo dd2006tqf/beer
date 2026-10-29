@@ -637,7 +637,7 @@ ElasticNet & $+0.1065$ & [$0.0858$, $0.1273$] & $1.000$ & 显著 \\
 E=\big\{(p,q):\ p,q\in C,\ |R_{pq}|\ge \rho\big\},\qquad w_{pq}=R_{pq},\quad \rho=0.5,\ |C|=211.
 \end{equation}
 
-关于相关系数口径：附件 2 标称 Pearson，本文从 1.csv 重算 Pearson 与 Spearman，26565 对化合物相关系数的中位绝对差仅 0.062，二者对模块结构的刻画几乎一致。为与附件保持一致，边权沿用附件 2 的相关值；7.3 节的建图阈值灵敏度还会说明结论对该选择不敏感。在所得图上做 Louvain 贪心模块度社区检测\cite{b15}以识别化合物模块，模块度定义为
+关于相关系数口径：题面称附件 2 为 Pearson，但本文从 1.csv 逐对重算后发现它实际是 \textbf{Spearman}——重算的 Spearman 与附件 2 逐元素一致（最大差 $7.8\times10^{-16}$），而同口径 Pearson 的最大差达 1.12、平均绝对差 0.088。故边权即附件 2 的秩相关值，无需换算；7.3 节的建图阈值灵敏度还说明结论对阈值选择不敏感。在所得图上做 Louvain 贪心模块度社区检测\cite{b15}以识别化合物模块，模块度定义为
 
 \begin{equation}
 Q_{mod}=\frac{1}{2m}\sum_{p,q}\Big(w_{pq}-\frac{k_p k_q}{2m}\Big)\,\delta(c_p,c_q),\qquad k_p=\sum_q w_{pq}.
@@ -1270,7 +1270,7 @@ CVAE（本文） & 0.493$\pm$0.025 & 0.435 & 0.619 & \textbf{0.506} \\
 \toprule
 \textbf{题面表述} & \textbf{附件实测} & \textbf{处理方式} \\ \midrule
 226 种啤酒 & 1.csv 实为 250 个样本（4.csv 同为 250 行） & 以实测 $N=250$ 为准 \\
-附件 2 为 Pearson 相关 & 题面称 Pearson，实测为 Spearman；从 1.csv 重算的 Spearman 与附件 2 逐元素一致（最大差 $6.7\times10^{-16}$），而同口径 Pearson 的平均绝对差为 0.088 & 以附件 2 数值作 Spearman 边权 \\
+附件 2 为 Pearson 相关 & 题面称 Pearson，实测为 Spearman；从 1.csv 重算的 Spearman 与附件 2 逐元素一致（最大差 $7.8\times10^{-16}$），而同口径 Pearson 的最大差 1.12、平均绝对差 0.088 & 以附件 2 数值作 Spearman 边权 \\
 3.xlsx 为评分卡 & 12 张空白评分卡（100$\times$33 模板）+ 1 个全 0 的 summary & 原始 0–6 分数不可用，仅作填分模板，训练标签改用 4.csv 标准化连续值 \\
 化学-感官交叉相关 & 6.csv 实为 44 个化学行 $\times$ 50 个感官列 & 按实测维度使用，不臆测其行列数 \\
 7.csv 论坛文本 & 250$\times$189，其中 palate\_acetaldehyde、palate\_acetate、palate\_dentist 三列完全缺失 & 文本数据不进入三问建模，全缺失列仅登记 \\
