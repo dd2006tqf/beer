@@ -58,8 +58,11 @@ Z.\allowbreak{}nerolidol & --- & 25.000 & 0.0\% \\
 \noindent\footnotesize 注：阈值已按 5.3 节核实的尺度换算到 1.csv 取值空间（常用对数列取 $\log_{10}$）；超阈比例为该列取值不低于阈值的样本占比，与 9.3 节特征增广实验同一取数口径。数据源 \texttt{figures/derived/q1\_threshold\_cols.json}。
 
 % ---- 表 A.4 模块 PC1 ----
-\begin{table}[htbp]\centering\small
-\begin{threeparttable}
+
+
+% ---- 表 A.5 模块成员 ----
+\begin{table}[H]
+\centering\small
 \caption{8 个共表达模块的第一主成分（成员 $\ge 5$）}
 \begin{tabularx}{\textwidth}{@{}l r Y r@{}}
 \toprule
@@ -74,10 +77,9 @@ Z.\allowbreak{}nerolidol & --- & 25.000 & 0.0\% \\
 20 & 11 & X2Z.\allowbreak{}6E.\allowbreak{}farnesol、n.\allowbreak{}decanol、E.\allowbreak{}nerolidol & 0.343 $\pm$ 0.018 \\
 \bottomrule
 \end{tabularx}
-\tabnote[figures/derived/q1\_pc1\_modules.json]{PC1 解释率在每个训练折内单独拟合 PCA、取五折均值$\pm$标准差，与 9.3 节模块 PC1 增广实验同一防泄漏口径。模块编号为共表达网络的社区 id。}
-\end{threeparttable}\end{table}
+\par\vspace{0.3em}\noindent\footnotesize 注：PC1 解释率在每个训练折内单独拟合 PCA、取五折均值$\pm$标准差，与正文灵敏度实验同一防泄漏口径；模块编号为共表达网络的社区 id。
+\end{table}
 
-% ---- 表 A.5 模块成员 ----
 \begin{longtable}{@{}l r p{0.74\textwidth}@{}}
 \caption{55 个 Louvain 社区的成员构成（$\rho=0.5$，211 节点）}\\
 \toprule
