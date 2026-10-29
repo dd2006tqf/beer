@@ -1,0 +1,2201 @@
+﻿compound,R,sensory,r,r_eth
+Ethyl acetate,ethyl_acetate,A_malt_all,0.25606840225957406,0.023035311935821708
+Ethyl acetate,ethyl_acetate,A_malt_grain,0.09767121349229066,0.02361093571797123
+Ethyl acetate,ethyl_acetate,A_malt_bread,0.21030399486880422,0.03474442194835674
+Ethyl acetate,ethyl_acetate,A_malt_cara,0.24111634890716052,0.021471581932370778
+Ethyl acetate,ethyl_acetate,A_malt_burn,0.10282283941781689,-0.10241384003882299
+Ethyl acetate,ethyl_acetate,A_hops_all,0.1742974171540157,-0.1241532965207044
+Ethyl acetate,ethyl_acetate,A_hops_citrus,0.08001929351367737,-0.001172597484368914
+Ethyl acetate,ethyl_acetate,A_hops_tropical,0.06381387509908161,-0.06939018700331714
+Ethyl acetate,ethyl_acetate,A_hops_noble,0.21030700756492912,-0.05718213964812717
+Ethyl acetate,ethyl_acetate,A_hops_woody,-0.009571325660588822,-0.09074424619070443
+Ethyl acetate,ethyl_acetate,A_esters_all,0.32128296452743244,0.1919211437262174
+Ethyl acetate,ethyl_acetate,A_esters_ethac,0.35550458495645076,0.1771983195916299
+Ethyl acetate,ethyl_acetate,A_esters_isoaa,0.14247560503098716,0.07327692537481403
+Ethyl acetate,ethyl_acetate,A_esters_flower,0.137648228953611,0.08923045322305403
+Ethyl acetate,ethyl_acetate,A_esters_fruity,0.014304640339181244,0.07940532870618074
+Ethyl acetate,ethyl_acetate,F_malt_all,0.28259599005272185,-0.09308169737853328
+Ethyl acetate,ethyl_acetate,F_malt_grain,0.08578660505671065,-0.03278954807886509
+Ethyl acetate,ethyl_acetate,F_malt_bread,0.2835947188831665,0.02463036458293887
+Ethyl acetate,ethyl_acetate,F_malt_cara,0.25332412216941635,-0.03927661918611575
+Ethyl acetate,ethyl_acetate,F_malt_burn,0.23293488095201773,-0.12266944269195136
+Ethyl acetate,ethyl_acetate,F_hops_all,0.22494973357645148,-0.154548742396427
+Ethyl acetate,ethyl_acetate,F_hops_citrus,0.003573317135500853,0.02209370047047082
+Ethyl acetate,ethyl_acetate,F_hops_tropical,0.061461071966469175,-0.08407787728139464
+Ethyl acetate,ethyl_acetate,F_hops_noble,0.26168479466131495,-0.08040693138327491
+Ethyl acetate,ethyl_acetate,F_hops_woody,0.06921833585203492,-0.18704679193623786
+Ethyl acetate,ethyl_acetate,F_esters_all,0.37981548504776075,0.18961934983772422
+Ethyl acetate,ethyl_acetate,F_esters_ethac,0.5030965444139196,0.2727469403970259
+Ethyl acetate,ethyl_acetate,F_esters_isoaa,0.20226579594392533,0.10749871030653477
+Ethyl acetate,ethyl_acetate,F_esters_flower,0.015434328851294856,-0.013501140445865778
+Ethyl acetate,ethyl_acetate,F_esters_fruity,0.044201555499000594,0.049648341369514286
+Ethyl acetate,ethyl_acetate,acidity,-0.030989738901010887,0.21151754082953192
+Ethyl acetate,ethyl_acetate,bitternes,0.2701788144840737,-0.15696894744457554
+Ethyl acetate,ethyl_acetate,sweetness,-0.024096788054949213,-0.004492632689084769
+Ethyl acetate,ethyl_acetate,X4vg,0.13462622961538492,-0.0006090469356909061
+Ethyl acetate,ethyl_acetate,diacetyl,-0.02092238759695001,-0.03476097887216679
+Ethyl acetate,ethyl_acetate,dms,-0.013484863321961159,0.020715310379578567
+Ethyl acetate,ethyl_acetate,metallic,0.10406696639191348,0.077093551345468
+Ethyl acetate,ethyl_acetate,stale_hops,-0.10740364211714451,-0.10846978258444116
+Ethyl acetate,ethyl_acetate,t2n,-0.06963600039106299,0.04936482125329717
+Ethyl acetate,ethyl_acetate,orange,-0.19189060656042817,0.027385574398736
+Ethyl acetate,ethyl_acetate,coriander,-0.12101553270127123,-0.06433362545451073
+Ethyl acetate,ethyl_acetate,clove,0.05251921908240452,-0.010107839564820803
+Ethyl acetate,ethyl_acetate,lactic,-0.03820189005415399,0.16614624219895333
+Ethyl acetate,ethyl_acetate,acetic,0.062160248402639846,0.14296875208119722
+Ethyl acetate,ethyl_acetate,barnyard,-0.1100841508779895,-0.08853028151855213
+Ethyl acetate,ethyl_acetate,alcohol,0.5783531387817245,-0.02371635701563059
+Ethyl acetate,ethyl_acetate,co2,0.39684953437310944,0.06357672676651394
+Ethyl acetate,ethyl_acetate,aftertaste,0.43472529160466566,0.10511054445274408
+Ethyl acetate,ethyl_acetate,body,0.5046690391871371,-0.02620854683283848
+Ethyl acetate,ethyl_acetate,overall,0.3249986079777276,0.20087542258054536
+Ethyl decanoate,ethyl_decanoate,A_malt_all,0.08374946815128619,-0.0848570154667209
+Ethyl decanoate,ethyl_decanoate,A_malt_grain,-0.0351918725836404,-0.0991900426420244
+Ethyl decanoate,ethyl_decanoate,A_malt_bread,0.10860003394898514,-0.013330592109772822
+Ethyl decanoate,ethyl_decanoate,A_malt_cara,0.04055261387789883,-0.12487977132668487
+Ethyl decanoate,ethyl_decanoate,A_malt_burn,0.11389382437852906,0.004141710341679774
+Ethyl decanoate,ethyl_decanoate,A_hops_all,0.4276695071623276,0.3183360343631255
+Ethyl decanoate,ethyl_decanoate,A_hops_citrus,0.271580434477432,0.24926322583244873
+Ethyl decanoate,ethyl_decanoate,A_hops_tropical,0.04883668062645845,-0.025881559361285205
+Ethyl decanoate,ethyl_decanoate,A_hops_noble,0.46927926928157754,0.3726637901701391
+Ethyl decanoate,ethyl_decanoate,A_hops_woody,0.19906894238096362,0.1863782456767035
+Ethyl decanoate,ethyl_decanoate,A_esters_all,-0.0025248408822236114,-0.1477945345130054
+Ethyl decanoate,ethyl_decanoate,A_esters_ethac,0.16402194219631275,0.012370868242963566
+Ethyl decanoate,ethyl_decanoate,A_esters_isoaa,-0.059619315143594726,-0.13488246415833188
+Ethyl decanoate,ethyl_decanoate,A_esters_flower,0.060601836473518585,0.013394211918238376
+Ethyl decanoate,ethyl_decanoate,A_esters_fruity,-0.08457138775710131,-0.06595484415885224
+Ethyl decanoate,ethyl_decanoate,F_malt_all,0.23137881133518096,0.01716750761241046
+Ethyl decanoate,ethyl_decanoate,F_malt_grain,0.0293538249330677,-0.04579189821426286
+Ethyl decanoate,ethyl_decanoate,F_malt_bread,0.20475687790280858,0.04000265641348625
+Ethyl decanoate,ethyl_decanoate,F_malt_cara,0.08843577777506478,-0.11040131773824596
+Ethyl decanoate,ethyl_decanoate,F_malt_burn,0.3308229317219005,0.16484866974342535
+Ethyl decanoate,ethyl_decanoate,F_hops_all,0.45296162029182624,0.3110653841377233
+Ethyl decanoate,ethyl_decanoate,F_hops_citrus,0.15046951410659853,0.17817368446742685
+Ethyl decanoate,ethyl_decanoate,F_hops_tropical,-0.00895562625507007,-0.09758502099710414
+Ethyl decanoate,ethyl_decanoate,F_hops_noble,0.4577652113710503,0.322191851782347
+Ethyl decanoate,ethyl_decanoate,F_hops_woody,0.34208736094958864,0.25452068034044023
+Ethyl decanoate,ethyl_decanoate,F_esters_all,-0.0160249634762089,-0.2182352641888419
+Ethyl decanoate,ethyl_decanoate,F_esters_ethac,0.22743645434846438,0.01542416223711416
+Ethyl decanoate,ethyl_decanoate,F_esters_isoaa,-0.12356508490918798,-0.23631598204104132
+Ethyl decanoate,ethyl_decanoate,F_esters_flower,-0.05359907840178374,-0.0784208003702469
+Ethyl decanoate,ethyl_decanoate,F_esters_fruity,-0.17074162594988015,-0.1995370265775239
+Ethyl decanoate,ethyl_decanoate,acidity,-0.059976843828117264,0.059735875722448206
+Ethyl decanoate,ethyl_decanoate,bitternes,0.558886811414095,0.4250414181338061
+Ethyl decanoate,ethyl_decanoate,sweetness,-0.3911617061026004,-0.42598200327782626
+Ethyl decanoate,ethyl_decanoate,X4vg,0.21944037398324615,0.15238755118565397
+Ethyl decanoate,ethyl_decanoate,diacetyl,-0.28254176108108275,-0.32086043826757826
+Ethyl decanoate,ethyl_decanoate,dms,0.08613325617550623,0.11735125361275636
+Ethyl decanoate,ethyl_decanoate,metallic,0.05463482223085647,0.025007120018767127
+Ethyl decanoate,ethyl_decanoate,stale_hops,0.0849092149220751,0.11909328532212062
+Ethyl decanoate,ethyl_decanoate,t2n,-0.09268250632971241,-0.029861111966326116
+Ethyl decanoate,ethyl_decanoate,orange,-0.08719377890561833,0.05615476260954585
+Ethyl decanoate,ethyl_decanoate,coriander,0.03917923704843532,0.10014957997600366
+Ethyl decanoate,ethyl_decanoate,clove,-0.02562705176182224,-0.07220110680824057
+Ethyl decanoate,ethyl_decanoate,lactic,-0.08433443631217345,0.014530356740972762
+Ethyl decanoate,ethyl_decanoate,acetic,-0.026986328272513096,-0.0036459528832343954
+Ethyl decanoate,ethyl_decanoate,barnyard,0.07722632617473961,0.12260311672103523
+Ethyl decanoate,ethyl_decanoate,alcohol,0.47990743908797406,0.20070212614986882
+Ethyl decanoate,ethyl_decanoate,co2,0.428563940444501,0.25804329799721476
+Ethyl decanoate,ethyl_decanoate,aftertaste,0.48915019231992307,0.329674593137153
+Ethyl decanoate,ethyl_decanoate,body,0.39644724786331226,0.10452229345301417
+Ethyl decanoate,ethyl_decanoate,overall,0.222887192989433,0.11767393139499836
+Ethyl hexanoate,ethyl_hexanoate,A_malt_all,0.18977241679497622,-0.0918281861700749
+Ethyl hexanoate,ethyl_hexanoate,A_malt_grain,0.06517391929610243,-0.027768503237214703
+Ethyl hexanoate,ethyl_hexanoate,A_malt_bread,0.2036606413805976,0.017342031413924524
+Ethyl hexanoate,ethyl_hexanoate,A_malt_cara,0.20407215767584405,-0.04614789778268058
+Ethyl hexanoate,ethyl_hexanoate,A_malt_burn,0.10473837313988417,-0.11046139694914738
+Ethyl hexanoate,ethyl_hexanoate,A_hops_all,0.29540496063267646,0.05264832646807612
+Ethyl hexanoate,ethyl_hexanoate,A_hops_citrus,0.08991907451616855,0.010111573975798184
+Ethyl hexanoate,ethyl_hexanoate,A_hops_tropical,0.1036121514561962,-0.016613928657599992
+Ethyl hexanoate,ethyl_hexanoate,A_hops_noble,0.3297641834302953,0.11881764447725224
+Ethyl hexanoate,ethyl_hexanoate,A_hops_woody,0.08388043452356903,0.04332790242864309
+Ethyl hexanoate,ethyl_hexanoate,A_esters_all,0.18978466855469686,-0.013333875608393579
+Ethyl hexanoate,ethyl_hexanoate,A_esters_ethac,0.20775576198659396,-0.060872536432765696
+Ethyl hexanoate,ethyl_hexanoate,A_esters_isoaa,0.06671689470891015,-0.041887383350746474
+Ethyl hexanoate,ethyl_hexanoate,A_esters_flower,0.10010637155499164,0.032745876762160495
+Ethyl hexanoate,ethyl_hexanoate,A_esters_fruity,-0.009922737815479945,0.0476902187665143
+Ethyl hexanoate,ethyl_hexanoate,F_malt_all,0.2818506338408056,-0.11395363221672224
+Ethyl hexanoate,ethyl_hexanoate,F_malt_grain,0.11521376954135852,0.005691234948124365
+Ethyl hexanoate,ethyl_hexanoate,F_malt_bread,0.24349032210955163,-0.051201301875556625
+Ethyl hexanoate,ethyl_hexanoate,F_malt_cara,0.23536762251558446,-0.08250565776262389
+Ethyl hexanoate,ethyl_hexanoate,F_malt_burn,0.26280662796326887,-0.09223685494335551
+Ethyl hexanoate,ethyl_hexanoate,F_hops_all,0.36203076351205604,0.05274676118742088
+Ethyl hexanoate,ethyl_hexanoate,F_hops_citrus,0.039384828812448355,0.07659263385225888
+Ethyl hexanoate,ethyl_hexanoate,F_hops_tropical,0.09270178342602264,-0.04492655527881181
+Ethyl hexanoate,ethyl_hexanoate,F_hops_noble,0.37895390057679385,0.09561832465933524
+Ethyl hexanoate,ethyl_hexanoate,F_hops_woody,0.18779764079860184,-0.01873039526084581
+Ethyl hexanoate,ethyl_hexanoate,F_esters_all,0.24550396006336098,-0.02975952866594379
+Ethyl hexanoate,ethyl_hexanoate,F_esters_ethac,0.32989780587816275,-0.025726293058692076
+Ethyl hexanoate,ethyl_hexanoate,F_esters_isoaa,0.10011335891881316,-0.04898982738093838
+Ethyl hexanoate,ethyl_hexanoate,F_esters_flower,-0.010341011851102682,-0.05336734897186889
+Ethyl hexanoate,ethyl_hexanoate,F_esters_fruity,0.018896620024588813,0.013232794470292644
+Ethyl hexanoate,ethyl_hexanoate,acidity,-0.09608320563410117,0.12642504484014375
+Ethyl hexanoate,ethyl_hexanoate,bitternes,0.39375667091064237,0.03282383340631261
+Ethyl hexanoate,ethyl_hexanoate,sweetness,-0.056499251379463794,-0.051947610838919925
+Ethyl hexanoate,ethyl_hexanoate,X4vg,0.18697251134257986,0.07272231819359105
+Ethyl hexanoate,ethyl_hexanoate,diacetyl,-0.015973269849547257,-0.02868585527213715
+Ethyl hexanoate,ethyl_hexanoate,dms,0.05127827027095231,0.11898155263879708
+Ethyl hexanoate,ethyl_hexanoate,metallic,0.09652411205505992,0.06621062022691683
+Ethyl hexanoate,ethyl_hexanoate,stale_hops,-0.012915304574367268,0.029993118930583488
+Ethyl hexanoate,ethyl_hexanoate,t2n,-0.06053053699308414,0.06917185180756681
+Ethyl hexanoate,ethyl_hexanoate,orange,-0.17905191485159727,0.057686123261400546
+Ethyl hexanoate,ethyl_hexanoate,coriander,-0.06474935349349975,0.021006952795406
+Ethyl hexanoate,ethyl_hexanoate,clove,0.056112190580356124,-0.007644432088191485
+Ethyl hexanoate,ethyl_hexanoate,lactic,-0.22762578846794215,-0.1098635398132906
+Ethyl hexanoate,ethyl_hexanoate,acetic,-0.12165672211024406,-0.12445079524327678
+Ethyl hexanoate,ethyl_hexanoate,barnyard,-0.02683829961243268,0.034731854826316556
+Ethyl hexanoate,ethyl_hexanoate,alcohol,0.6187675046902604,0.035970055263420134
+Ethyl hexanoate,ethyl_hexanoate,co2,0.4673093398431483,0.1687795397109413
+Ethyl hexanoate,ethyl_hexanoate,aftertaste,0.3966003936062976,0.023637091918473165
+Ethyl hexanoate,ethyl_hexanoate,body,0.5546743672775246,0.047971240188245654
+Ethyl hexanoate,ethyl_hexanoate,overall,0.26299927998847983,0.10340568482611495
+Ethyl octanoate,ethyl_octanoate,A_malt_all,0.1053167975104104,-0.15996257845724388
+Ethyl octanoate,ethyl_octanoate,A_malt_grain,-0.04771047768846644,-0.16207881463368834
+Ethyl octanoate,ethyl_octanoate,A_malt_bread,0.15596868945031525,-0.019413027919555032
+Ethyl octanoate,ethyl_octanoate,A_malt_cara,0.08072408694828047,-0.17531983433881992
+Ethyl octanoate,ethyl_octanoate,A_malt_burn,0.10521881288638865,-0.06971906596020706
+Ethyl octanoate,ethyl_octanoate,A_hops_all,0.4637453760825004,0.32786719580691787
+Ethyl octanoate,ethyl_octanoate,A_hops_citrus,0.2655568088624197,0.2555962400438525
+Ethyl octanoate,ethyl_octanoate,A_hops_tropical,0.12068207420345206,0.025836133908713817
+Ethyl octanoate,ethyl_octanoate,A_hops_noble,0.48182899335354706,0.36142151075546597
+Ethyl octanoate,ethyl_octanoate,A_hops_woody,0.14454071635512514,0.12740534326268352
+Ethyl octanoate,ethyl_octanoate,A_esters_all,0.10073827115408836,-0.10259807292914463
+Ethyl octanoate,ethyl_octanoate,A_esters_ethac,0.2196919106888201,0.0025796945760993657
+Ethyl octanoate,ethyl_octanoate,A_esters_isoaa,0.0005322330266722207,-0.110917902303219
+Ethyl octanoate,ethyl_octanoate,A_esters_flower,0.08767320661037235,0.02462231548136778
+Ethyl octanoate,ethyl_octanoate,A_esters_fruity,-0.09074122750524805,-0.07108218452222469
+Ethyl octanoate,ethyl_octanoate,F_malt_all,0.248675994053282,-0.09047617926223343
+Ethyl octanoate,ethyl_octanoate,F_malt_grain,0.03982452448500915,-0.07855643755306334
+Ethyl octanoate,ethyl_octanoate,F_malt_bread,0.23991620147909457,-0.005220154250609492
+Ethyl octanoate,ethyl_octanoate,F_malt_cara,0.14909945797624946,-0.14958384518619203
+Ethyl octanoate,ethyl_octanoate,F_malt_burn,0.3097692349799957,0.0408433772442216
+Ethyl octanoate,ethyl_octanoate,F_hops_all,0.5007669567130837,0.30844542966908245
+Ethyl octanoate,ethyl_octanoate,F_hops_citrus,0.13649690057209957,0.19473575878351787
+Ethyl octanoate,ethyl_octanoate,F_hops_tropical,0.03189182975457973,-0.10250890397723346
+Ethyl octanoate,ethyl_octanoate,F_hops_noble,0.5050875132149668,0.32472059781664603
+Ethyl octanoate,ethyl_octanoate,F_hops_woody,0.3054392239340082,0.17672671191081551
+Ethyl octanoate,ethyl_octanoate,F_esters_all,0.09499891422242082,-0.19629921121683053
+Ethyl octanoate,ethyl_octanoate,F_esters_ethac,0.3032949427706587,-0.0029429107578249174
+Ethyl octanoate,ethyl_octanoate,F_esters_isoaa,-0.05271497925897261,-0.2284250979325062
+Ethyl octanoate,ethyl_octanoate,F_esters_flower,-0.035684139825404436,-0.07709870803791805
+Ethyl octanoate,ethyl_octanoate,F_esters_fruity,-0.12494028683881028,-0.17697012551543767
+Ethyl octanoate,ethyl_octanoate,acidity,-0.06950102822848765,0.12051462187021014
+Ethyl octanoate,ethyl_octanoate,bitternes,0.5926743859641476,0.400783429114419
+Ethyl octanoate,ethyl_octanoate,sweetness,-0.2946992700996698,-0.364707217128963
+Ethyl octanoate,ethyl_octanoate,X4vg,0.22488214410919305,0.13737698904758378
+Ethyl octanoate,ethyl_octanoate,diacetyl,-0.22731039515576948,-0.3045436840134657
+Ethyl octanoate,ethyl_octanoate,dms,0.10813045329321254,0.1766879798323941
+Ethyl octanoate,ethyl_octanoate,metallic,0.12595516955400599,0.10590816603633792
+Ethyl octanoate,ethyl_octanoate,stale_hops,0.08050157355839875,0.1452972050167399
+Ethyl octanoate,ethyl_octanoate,t2n,-0.07099447957704302,0.03105800331254749
+Ethyl octanoate,ethyl_octanoate,orange,-0.1307260505028303,0.08355622695704303
+Ethyl octanoate,ethyl_octanoate,coriander,-0.026714495365906542,0.057153338778308097
+Ethyl octanoate,ethyl_octanoate,clove,0.008244056441626292,-0.060929056451528074
+Ethyl octanoate,ethyl_octanoate,lactic,-0.18158950953271913,-0.05975577742502032
+Ethyl octanoate,ethyl_octanoate,acetic,-0.06143698871340319,-0.0367655075598415
+Ethyl octanoate,ethyl_octanoate,barnyard,0.07095869121670301,0.15285413086987137
+Ethyl octanoate,ethyl_octanoate,alcohol,0.6193708976112569,0.19394137421505833
+Ethyl octanoate,ethyl_octanoate,co2,0.5526871335738771,0.3454971593691518
+Ethyl octanoate,ethyl_octanoate,aftertaste,0.5061785640433183,0.2588919449343734
+Ethyl octanoate,ethyl_octanoate,body,0.5307378072150258,0.11431499373993208
+Ethyl octanoate,ethyl_octanoate,overall,0.28595599019939855,0.1545529331350411
+Ethyl propionate,ethyl_propionate,A_malt_all,0.10880667952194427,0.009556460312402258
+Ethyl propionate,ethyl_propionate,A_malt_grain,-0.03487791378309682,-0.07248069542837586
+Ethyl propionate,ethyl_propionate,A_malt_bread,0.022172619483228434,-0.06033162801897008
+Ethyl propionate,ethyl_propionate,A_malt_cara,0.13756225659750435,0.04768921326094947
+Ethyl propionate,ethyl_propionate,A_malt_burn,0.14224698436670288,0.07637263460001598
+Ethyl propionate,ethyl_propionate,A_hops_all,-0.01779773310783466,-0.1387590173097216
+Ethyl propionate,ethyl_propionate,A_hops_citrus,0.0006134997598721875,-0.03480247732874025
+Ethyl propionate,ethyl_propionate,A_hops_tropical,0.021965469311092552,-0.025853882943886658
+Ethyl propionate,ethyl_propionate,A_hops_noble,-0.001081205628315764,-0.11613185454036633
+Ethyl propionate,ethyl_propionate,A_hops_woody,0.0465593730132103,0.025641932941080355
+Ethyl propionate,ethyl_propionate,A_esters_all,0.07946841086897832,-0.0007918971949895652
+Ethyl propionate,ethyl_propionate,A_esters_ethac,0.1846678890776864,0.09457535486268999
+Ethyl propionate,ethyl_propionate,A_esters_isoaa,-0.04424415304729398,-0.08717460852782079
+Ethyl propionate,ethyl_propionate,A_esters_flower,-0.03663427286781511,-0.0719225047953461
+Ethyl propionate,ethyl_propionate,A_esters_fruity,0.05715166766837582,0.07778357126869521
+Ethyl propionate,ethyl_propionate,F_malt_all,0.13816051219749012,-0.003633835985976966
+Ethyl propionate,ethyl_propionate,F_malt_grain,-0.01402224735704844,-0.06260703159113161
+Ethyl propionate,ethyl_propionate,F_malt_bread,0.09112182150262131,-0.022813589616406265
+Ethyl propionate,ethyl_propionate,F_malt_cara,0.1692614056941338,0.06076100874002116
+Ethyl propionate,ethyl_propionate,F_malt_burn,0.11260860189883257,-0.01885032231966148
+Ethyl propionate,ethyl_propionate,F_hops_all,-0.0019742400280377535,-0.15863950780300853
+Ethyl propionate,ethyl_propionate,F_hops_citrus,-0.1271272099722417,-0.12811573662553025
+Ethyl propionate,ethyl_propionate,F_hops_tropical,-0.015915799322615557,-0.069523122946372
+Ethyl propionate,ethyl_propionate,F_hops_noble,0.04256083103755501,-0.10140380807788393
+Ethyl propionate,ethyl_propionate,F_hops_woody,0.12985337203241618,0.05338849917981518
+Ethyl propionate,ethyl_propionate,F_esters_all,0.09835943448404194,-0.00944740201789523
+Ethyl propionate,ethyl_propionate,F_esters_ethac,0.2137804944184934,0.08797922752057544
+Ethyl propionate,ethyl_propionate,F_esters_isoaa,-0.06277951826722301,-0.12392737764843532
+Ethyl propionate,ethyl_propionate,F_esters_flower,-0.06852715900129025,-0.08267587224379071
+Ethyl propionate,ethyl_propionate,F_esters_fruity,-0.0426386767625474,-0.04892489852755659
+Ethyl propionate,ethyl_propionate,acidity,0.01117907780498032,0.09001676843318372
+Ethyl propionate,ethyl_propionate,bitternes,0.1143225746573368,-0.04512063625971221
+Ethyl propionate,ethyl_propionate,sweetness,-0.0623830902995466,-0.05625896426034944
+Ethyl propionate,ethyl_propionate,X4vg,0.024971192698644767,-0.03327294244177899
+Ethyl propionate,ethyl_propionate,diacetyl,0.0006856715387425913,-0.000685796762908866
+Ethyl propionate,ethyl_propionate,dms,-0.03772991847211435,-0.027418570488008064
+Ethyl propionate,ethyl_propionate,metallic,0.005533281873516038,-0.016315010504480813
+Ethyl propionate,ethyl_propionate,stale_hops,0.017135125625850525,0.031993923339469425
+Ethyl propionate,ethyl_propionate,t2n,0.006861480431512502,0.052876391717983647
+Ethyl propionate,ethyl_propionate,orange,-0.061675064070636935,0.028146137386487406
+Ethyl propionate,ethyl_propionate,coriander,0.01241156049367667,0.04664711203223206
+Ethyl propionate,ethyl_propionate,clove,0.02601810086412546,0.0013342848899364488
+Ethyl propionate,ethyl_propionate,lactic,-0.007397368083664233,0.0593925835842926
+Ethyl propionate,ethyl_propionate,acetic,0.03360516833727294,0.05141718054468391
+Ethyl propionate,ethyl_propionate,barnyard,0.03535950484046804,0.058428008594728915
+Ethyl propionate,ethyl_propionate,alcohol,0.20817464568876773,-0.06595536729478377
+Ethyl propionate,ethyl_propionate,co2,0.08494227625226296,-0.07756508157681893
+Ethyl propionate,ethyl_propionate,aftertaste,0.19781639393081948,0.052686047984836205
+Ethyl propionate,ethyl_propionate,body,0.19129363880141215,-0.03593760751499623
+Ethyl propionate,ethyl_propionate,overall,0.12397846276919915,0.04866794499281919
+Isobutyl acetate,isobutyl_acetate,A_malt_all,0.165421410440991,-0.019072832999721616
+Isobutyl acetate,isobutyl_acetate,A_malt_grain,0.002811354863346175,-0.06949165500849507
+Isobutyl acetate,isobutyl_acetate,A_malt_bread,0.1854107300413105,0.055701198414190245
+Isobutyl acetate,isobutyl_acetate,A_malt_cara,0.21221874341617408,0.052760283379228536
+Isobutyl acetate,isobutyl_acetate,A_malt_burn,0.10762454635740493,-0.025879656185623053
+Isobutyl acetate,isobutyl_acetate,A_hops_all,0.18367992709054914,-0.009302461421258807
+Isobutyl acetate,isobutyl_acetate,A_hops_citrus,0.11903181897115839,0.06986157520233252
+Isobutyl acetate,isobutyl_acetate,A_hops_tropical,0.12718338274709942,0.052510146010969434
+Isobutyl acetate,isobutyl_acetate,A_hops_noble,0.1965805959671919,0.014000226883934363
+Isobutyl acetate,isobutyl_acetate,A_hops_woody,-0.016687109688643696,-0.06739434541510818
+Isobutyl acetate,isobutyl_acetate,A_esters_all,0.28803382998835164,0.1768896513693405
+Isobutyl acetate,isobutyl_acetate,A_esters_ethac,0.3097474015471603,0.1641124150498251
+Isobutyl acetate,isobutyl_acetate,A_esters_isoaa,0.20546653505137566,0.16344467251141476
+Isobutyl acetate,isobutyl_acetate,A_esters_flower,0.1917191684608025,0.16089629238681444
+Isobutyl acetate,isobutyl_acetate,A_esters_fruity,-0.06496483592929109,-0.04093504516011887
+Isobutyl acetate,isobutyl_acetate,F_malt_all,0.26737464491759416,0.01742801333936348
+Isobutyl acetate,isobutyl_acetate,F_malt_grain,0.09326029418455042,0.0145509178736278
+Isobutyl acetate,isobutyl_acetate,F_malt_bread,0.2967138064995554,0.12296257479608586
+Isobutyl acetate,isobutyl_acetate,F_malt_cara,0.2235460895428511,0.01918739096491891
+Isobutyl acetate,isobutyl_acetate,F_malt_burn,0.23900010392397125,0.00902879504453781
+Isobutyl acetate,isobutyl_acetate,F_hops_all,0.24873755898634647,0.010905913450560025
+Isobutyl acetate,isobutyl_acetate,F_hops_citrus,0.08997147062985204,0.11730067427048271
+Isobutyl acetate,isobutyl_acetate,F_hops_tropical,0.17534439807909097,0.10370046632735183
+Isobutyl acetate,isobutyl_acetate,F_hops_noble,0.21908854935586755,-0.01933923938965835
+Isobutyl acetate,isobutyl_acetate,F_hops_woody,0.1298699029814976,-0.0193768875438553
+Isobutyl acetate,isobutyl_acetate,F_esters_all,0.2926638667427747,0.12744359017783224
+Isobutyl acetate,isobutyl_acetate,F_esters_ethac,0.36734143720816337,0.1556402930413249
+Isobutyl acetate,isobutyl_acetate,F_esters_isoaa,0.2373482955396948,0.1699588151572797
+Isobutyl acetate,isobutyl_acetate,F_esters_flower,0.040656369927990016,0.02621781648030345
+Isobutyl acetate,isobutyl_acetate,F_esters_fruity,-0.07019634039468758,-0.09199069652152615
+Isobutyl acetate,isobutyl_acetate,acidity,-0.2798666366517067,-0.18328543513534026
+Isobutyl acetate,isobutyl_acetate,bitternes,0.3041955484480047,0.04312118566723774
+Isobutyl acetate,isobutyl_acetate,sweetness,0.039249163145101004,0.0652839250095475
+Isobutyl acetate,isobutyl_acetate,X4vg,0.23194606728440612,0.1580595860145346
+Isobutyl acetate,isobutyl_acetate,diacetyl,0.048057676124720665,0.05418856789505096
+Isobutyl acetate,isobutyl_acetate,dms,0.05770732121510226,0.09336446493820887
+Isobutyl acetate,isobutyl_acetate,metallic,0.13588877471453417,0.11656447901739177
+Isobutyl acetate,isobutyl_acetate,stale_hops,-0.08906711271989093,-0.07723426770435857
+Isobutyl acetate,isobutyl_acetate,t2n,-0.045214111071207964,0.03884869797248572
+Isobutyl acetate,isobutyl_acetate,orange,-0.11507922569677419,0.05253426645853617
+Isobutyl acetate,isobutyl_acetate,coriander,-0.1470529571990832,-0.10707095822756067
+Isobutyl acetate,isobutyl_acetate,clove,0.10356009605800308,0.07024915350835567
+Isobutyl acetate,isobutyl_acetate,lactic,-0.2810026924544223,-0.2038060695686363
+Isobutyl acetate,isobutyl_acetate,acetic,-0.17829025693274742,-0.1789800915292098
+Isobutyl acetate,isobutyl_acetate,barnyard,-0.06518597857767176,-0.03412117109266121
+Isobutyl acetate,isobutyl_acetate,alcohol,0.5241884711231531,0.17250148912613414
+Isobutyl acetate,isobutyl_acetate,co2,0.3079458742238065,0.05381685210401992
+Isobutyl acetate,isobutyl_acetate,aftertaste,0.20350081010049426,-0.10460789345118861
+Isobutyl acetate,isobutyl_acetate,body,0.40615257482311873,0.031712560903294516
+Isobutyl acetate,isobutyl_acetate,overall,0.24606396957521764,0.12726835458307237
+Isoamyl acetate,isopentyl_acetate,A_malt_all,0.19886760406424864,0.012746725078203498
+Isoamyl acetate,isopentyl_acetate,A_malt_grain,0.0571508773870077,-0.008107951141851906
+Isoamyl acetate,isopentyl_acetate,A_malt_bread,0.1874846516501227,0.05125310116454499
+Isoamyl acetate,isopentyl_acetate,A_malt_cara,0.25361968509786825,0.09656851107185131
+Isoamyl acetate,isopentyl_acetate,A_malt_burn,0.12503350668916477,-0.012152411389383461
+Isoamyl acetate,isopentyl_acetate,A_hops_all,0.18442136096851003,-0.020025663778300222
+Isoamyl acetate,isopentyl_acetate,A_hops_citrus,0.12574707282519598,0.07601693774562841
+Isoamyl acetate,isopentyl_acetate,A_hops_tropical,0.1897473462724989,0.12549912057260404
+Isoamyl acetate,isopentyl_acetate,A_hops_noble,0.14922114809172726,-0.05792499504589434
+Isoamyl acetate,isopentyl_acetate,A_hops_woody,-0.10834445720082031,-0.182304518219962
+Isoamyl acetate,isopentyl_acetate,A_esters_all,0.29239571833149325,0.1774796313194316
+Isoamyl acetate,isopentyl_acetate,A_esters_ethac,0.2615079861106513,0.09474578600802464
+Isoamyl acetate,isopentyl_acetate,A_esters_isoaa,0.28281459823526667,0.2572576335128686
+Isoamyl acetate,isopentyl_acetate,A_esters_flower,0.141698795757079,0.09998349510390835
+Isoamyl acetate,isopentyl_acetate,A_esters_fruity,-0.05085172726304628,-0.02291572651348121
+Isoamyl acetate,isopentyl_acetate,F_malt_all,0.30423666461353543,0.05217109107060209
+Isoamyl acetate,isopentyl_acetate,F_malt_grain,0.13005023377338765,0.055290170218199514
+Isoamyl acetate,isopentyl_acetate,F_malt_bread,0.3216093369670384,0.1457482322326505
+Isoamyl acetate,isopentyl_acetate,F_malt_cara,0.2857099519022203,0.08848334919613317
+Isoamyl acetate,isopentyl_acetate,F_malt_burn,0.2502472608967543,0.009824819202080995
+Isoamyl acetate,isopentyl_acetate,F_hops_all,0.21252674603822275,-0.05300366543593207
+Isoamyl acetate,isopentyl_acetate,F_hops_citrus,0.05982512447835958,0.08363741716150672
+Isoamyl acetate,isopentyl_acetate,F_hops_tropical,0.17567317451559997,0.10109368088780092
+Isoamyl acetate,isopentyl_acetate,F_hops_noble,0.18205064548655972,-0.0841087899928392
+Isoamyl acetate,isopentyl_acetate,F_hops_woody,0.06460316569419644,-0.1103668551152128
+Isoamyl acetate,isopentyl_acetate,F_esters_all,0.3105177362837805,0.14155433345875854
+Isoamyl acetate,isopentyl_acetate,F_esters_ethac,0.31382745561469216,0.0695057414081268
+Isoamyl acetate,isopentyl_acetate,F_esters_isoaa,0.2736296895926277,0.21250671155561643
+Isoamyl acetate,isopentyl_acetate,F_esters_flower,0.045563355358651955,0.03164305154214718
+Isoamyl acetate,isopentyl_acetate,F_esters_fruity,-0.07257970217576934,-0.09713251374020819
+Isoamyl acetate,isopentyl_acetate,acidity,-0.36936962378204724,-0.29110981263791696
+Isoamyl acetate,isopentyl_acetate,bitternes,0.2854853082045162,-9.773716621164052e-05
+Isoamyl acetate,isopentyl_acetate,sweetness,0.10643314467100122,0.14887450490082166
+Isoamyl acetate,isopentyl_acetate,X4vg,0.3466538047826679,0.2968604370813048
+Isoamyl acetate,isopentyl_acetate,diacetyl,0.1408182979175456,0.1674760984421396
+Isoamyl acetate,isopentyl_acetate,dms,0.06482380702966224,0.10503795572648517
+Isoamyl acetate,isopentyl_acetate,metallic,0.21167034178434035,0.20876313184328665
+Isoamyl acetate,isopentyl_acetate,stale_hops,-0.14387219169733825,-0.14386366482469917
+Isoamyl acetate,isopentyl_acetate,t2n,0.005618575132884675,0.1062490162649964
+Isoamyl acetate,isopentyl_acetate,orange,-0.06659420824865953,0.12424369271550424
+Isoamyl acetate,isopentyl_acetate,coriander,-0.12537484035477856,-0.07956817522687289
+Isoamyl acetate,isopentyl_acetate,clove,0.15003181261842022,0.12561188258933612
+Isoamyl acetate,isopentyl_acetate,lactic,-0.40988512806673993,-0.36101774209166654
+Isoamyl acetate,isopentyl_acetate,acetic,-0.3082377189685463,-0.33858562726236974
+Isoamyl acetate,isopentyl_acetate,barnyard,-0.1307377707119551,-0.11231341595215535
+Isoamyl acetate,isopentyl_acetate,alcohol,0.5410265680564819,0.16833202550840387
+Isoamyl acetate,isopentyl_acetate,co2,0.325099467267963,0.06141691364751735
+Isoamyl acetate,isopentyl_acetate,aftertaste,0.08632957327317237,-0.2908740638260718
+Isoamyl acetate,isopentyl_acetate,body,0.3724022199418218,-0.05786241189026826
+Isoamyl acetate,isopentyl_acetate,overall,0.2712554120865934,0.15312929523760613
+Octyl acetate,octyl_acetate,A_malt_all,0.21326048174676554,0.23021197872531227
+Octyl acetate,octyl_acetate,A_malt_grain,0.18428524375184846,0.18672277742589108
+Octyl acetate,octyl_acetate,A_malt_bread,0.1538590954650875,0.16226863239272932
+Octyl acetate,octyl_acetate,A_malt_cara,0.24827432002702418,0.2652620773347758
+Octyl acetate,octyl_acetate,A_malt_burn,0.05143873778254773,0.05564826075809838
+Octyl acetate,octyl_acetate,A_hops_all,-0.2190176730316045,-0.23011711862158996
+Octyl acetate,octyl_acetate,A_hops_citrus,-0.17173497228819776,-0.17161182035703584
+Octyl acetate,octyl_acetate,A_hops_tropical,-0.018678006497258256,-0.017204945956940512
+Octyl acetate,octyl_acetate,A_hops_noble,-0.21545023335002192,-0.2255032713465672
+Octyl acetate,octyl_acetate,A_hops_woody,-0.07369607165626148,-0.07309696932408118
+Octyl acetate,octyl_acetate,A_esters_all,0.13194149313687178,0.13998377710270823
+Octyl acetate,octyl_acetate,A_esters_ethac,-0.023157586476188718,-0.02072687297340348
+Octyl acetate,octyl_acetate,A_esters_isoaa,0.10891275099629999,0.11122078457018783
+Octyl acetate,octyl_acetate,A_esters_flower,0.04176127037597812,0.04315260359997171
+Octyl acetate,octyl_acetate,A_esters_fruity,0.08074718613402544,0.08026568188940397
+Octyl acetate,octyl_acetate,F_malt_all,0.1245835101508666,0.1471426925321022
+Octyl acetate,octyl_acetate,F_malt_grain,0.16714741627435045,0.17073781261562376
+Octyl acetate,octyl_acetate,F_malt_bread,0.07510416558420012,0.08527387723256473
+Octyl acetate,octyl_acetate,F_malt_cara,0.2147782954006533,0.23751124789410583
+Octyl acetate,octyl_acetate,F_malt_burn,-0.05073054048561404,-0.051032938428638486
+Octyl acetate,octyl_acetate,F_hops_all,-0.28451384644651384,-0.31252752793681804
+Octyl acetate,octyl_acetate,F_hops_citrus,-0.13230018352915968,-0.1325033788749354
+Octyl acetate,octyl_acetate,F_hops_tropical,0.07249679906608156,0.07533684261965136
+Octyl acetate,octyl_acetate,F_hops_noble,-0.25866361663311205,-0.28185943183694334
+Octyl acetate,octyl_acetate,F_hops_woody,-0.20656267254659244,-0.21150363908175066
+Octyl acetate,octyl_acetate,F_esters_all,0.19115222202390603,0.20879298637883023
+Octyl acetate,octyl_acetate,F_esters_ethac,-0.0036822449751738886,0.001561594292767118
+Octyl acetate,octyl_acetate,F_esters_isoaa,0.20349745462676513,0.20882792369749342
+Octyl acetate,octyl_acetate,F_esters_flower,0.12152051524452902,0.12197462215597928
+Octyl acetate,octyl_acetate,F_esters_fruity,0.19531727133396262,0.19549330793959194
+Octyl acetate,octyl_acetate,acidity,-0.009033873046085718,-0.012008856638886383
+Octyl acetate,octyl_acetate,bitternes,-0.3050950803465979,-0.34743092747712695
+Octyl acetate,octyl_acetate,sweetness,0.3197323198552954,0.31957045089154884
+Octyl acetate,octyl_acetate,X4vg,-0.10273455339425552,-0.10252500557605979
+Octyl acetate,octyl_acetate,diacetyl,0.2066185971748091,0.2066814864700597
+Octyl acetate,octyl_acetate,dms,-0.1442977255892143,-0.14483543976009192
+Octyl acetate,octyl_acetate,metallic,-0.07629141398467482,-0.07571936241566181
+Octyl acetate,octyl_acetate,stale_hops,-0.026106789082036945,-0.026619912504978856
+Octyl acetate,octyl_acetate,t2n,0.029761900233772294,0.028497386092625764
+Octyl acetate,octyl_acetate,orange,-0.01195044978517179,-0.01581113595424558
+Octyl acetate,octyl_acetate,coriander,-0.04577055423696871,-0.0471973084312428
+Octyl acetate,octyl_acetate,clove,0.16148663421055823,0.1629530405650243
+Octyl acetate,octyl_acetate,lactic,0.1536626389397445,0.1548432371047296
+Octyl acetate,octyl_acetate,acetic,0.10562464010712724,0.10521156606790005
+Octyl acetate,octyl_acetate,barnyard,-0.02878391438956782,-0.029589080813920473
+Octyl acetate,octyl_acetate,alcohol,-0.07401154668244025,-0.11301238449383753
+Octyl acetate,octyl_acetate,co2,-0.16413957839607674,-0.18310282423500923
+Octyl acetate,octyl_acetate,aftertaste,-0.16945151136629993,-0.19146974385540635
+Octyl acetate,octyl_acetate,body,0.04272295127533666,0.07272030529622756
+Octyl acetate,octyl_acetate,overall,-0.018748585341416227,-0.016462653041543252
+Phenethyl acetate,phenethyl_acetate,A_malt_all,0.14624415998544116,0.040370634405652375
+Phenethyl acetate,phenethyl_acetate,A_malt_grain,0.03472107420363414,-0.0027006368292944284
+Phenethyl acetate,phenethyl_acetate,A_malt_bread,0.11004311843898523,0.026797895875292743
+Phenethyl acetate,phenethyl_acetate,A_malt_cara,0.2821578135931001,0.19894479771717832
+Phenethyl acetate,phenethyl_acetate,A_malt_burn,0.11278031212821839,0.03717419560746116
+Phenethyl acetate,phenethyl_acetate,A_hops_all,-0.05829639032097564,-0.1982135220497083
+Phenethyl acetate,phenethyl_acetate,A_hops_citrus,0.05377003129003486,0.017869834893748476
+Phenethyl acetate,phenethyl_acetate,A_hops_tropical,0.03316132613393166,-0.01913846173092676
+Phenethyl acetate,phenethyl_acetate,A_hops_noble,-0.05703074914136462,-0.1921932188254571
+Phenethyl acetate,phenethyl_acetate,A_hops_woody,-0.1250597152664779,-0.1587216210704142
+Phenethyl acetate,phenethyl_acetate,A_esters_all,0.17729755676090816,0.0978485252185672
+Phenethyl acetate,phenethyl_acetate,A_esters_ethac,0.21760862757576263,0.12128739499594264
+Phenethyl acetate,phenethyl_acetate,A_esters_isoaa,0.16695332747344432,0.13330792419490053
+Phenethyl acetate,phenethyl_acetate,A_esters_flower,0.0727170440340824,0.04038305281214385
+Phenethyl acetate,phenethyl_acetate,A_esters_fruity,-0.0334028385789289,-0.0156377864096134
+Phenethyl acetate,phenethyl_acetate,F_malt_all,0.195939594274327,0.04862032724340315
+Phenethyl acetate,phenethyl_acetate,F_malt_grain,0.07990823787418912,0.03248849865925291
+Phenethyl acetate,phenethyl_acetate,F_malt_bread,0.19118594941290487,0.07830252798277074
+Phenethyl acetate,phenethyl_acetate,F_malt_cara,0.2517577286260464,0.14273883279504837
+Phenethyl acetate,phenethyl_acetate,F_malt_burn,0.09866197912740729,-0.0506747683643892
+Phenethyl acetate,phenethyl_acetate,F_hops_all,-0.03327030510068122,-0.21329942627053308
+Phenethyl acetate,phenethyl_acetate,F_hops_citrus,-0.028292376855549684,-0.024260037517139395
+Phenethyl acetate,phenethyl_acetate,F_hops_tropical,0.04097916829355448,-0.01452540549317472
+Phenethyl acetate,phenethyl_acetate,F_hops_noble,-0.022392196370274068,-0.19421268771670572
+Phenethyl acetate,phenethyl_acetate,F_hops_woody,0.012269486315771311,-0.08435509716011391
+Phenethyl acetate,phenethyl_acetate,F_esters_all,0.21659674554792874,0.11228904171059217
+Phenethyl acetate,phenethyl_acetate,F_esters_ethac,0.22986756524800528,0.09131339729740777
+Phenethyl acetate,phenethyl_acetate,F_esters_isoaa,0.17714635051163835,0.12721765943734503
+Phenethyl acetate,phenethyl_acetate,F_esters_flower,0.021174343116685222,0.010403907267033807
+Phenethyl acetate,phenethyl_acetate,F_esters_fruity,-0.04692263191783121,-0.054412275493150385
+Phenethyl acetate,phenethyl_acetate,acidity,-0.2208451395159674,-0.15429536714447345
+Phenethyl acetate,phenethyl_acetate,bitternes,0.049774521062469386,-0.1436405233377375
+Phenethyl acetate,phenethyl_acetate,sweetness,0.17229639306596975,0.19272978803262003
+Phenethyl acetate,phenethyl_acetate,X4vg,0.2218381587539682,0.17253677513212068
+Phenethyl acetate,phenethyl_acetate,diacetyl,0.21778959760773461,0.229097773149746
+Phenethyl acetate,phenethyl_acetate,dms,0.014474070746422145,0.028860552624600477
+Phenethyl acetate,phenethyl_acetate,metallic,0.2167789148035422,0.20553940645618146
+Phenethyl acetate,phenethyl_acetate,stale_hops,-0.08494683465398288,-0.07445931861508537
+Phenethyl acetate,phenethyl_acetate,t2n,0.06140494718907748,0.11646205461911813
+Phenethyl acetate,phenethyl_acetate,orange,-0.04646685426305721,0.05504788728554949
+Phenethyl acetate,phenethyl_acetate,coriander,-0.05967604117674398,-0.026219163355607582
+Phenethyl acetate,phenethyl_acetate,clove,0.11721997499009294,0.0956169682440039
+Phenethyl acetate,phenethyl_acetate,lactic,-0.28954489171611475,-0.23874311935176165
+Phenethyl acetate,phenethyl_acetate,acetic,-0.2300867561709494,-0.2260340711245749
+Phenethyl acetate,phenethyl_acetate,barnyard,-0.06451054213038926,-0.044797091723067374
+Phenethyl acetate,phenethyl_acetate,alcohol,0.2897673631838602,0.03793235036083677
+Phenethyl acetate,phenethyl_acetate,co2,0.12289089263452395,-0.05040912213252536
+Phenethyl acetate,phenethyl_acetate,aftertaste,-0.13303240051840828,-0.3755708048851714
+Phenethyl acetate,phenethyl_acetate,body,0.17535887808665312,-0.09369171645492853
+Phenethyl acetate,phenethyl_acetate,overall,0.16739327029232465,0.08808655577330333
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_malt_all,-0.04422787405064401,-0.08559411684475696
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_malt_grain,-0.10461087735638203,-0.11818867811939351
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_malt_bread,-0.047025914099862676,-0.07804339370648863
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_malt_cara,-0.034688721005967704,-0.0726596550576046
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_malt_burn,0.11759192503202288,0.09523861548319654
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_hops_all,0.11078932146082283,0.07825531282319033
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_hops_citrus,0.004808575472586384,-0.007339208718416398
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_hops_tropical,-0.036307956366825496,-0.0538907952109527
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_hops_noble,0.09836951222326078,0.06580646705897386
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_hops_woody,0.2319938632979159,0.2259662068633153
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_esters_all,0.0867483456494401,0.06052806343022403
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_esters_ethac,0.10156159755759189,0.07022498306145006
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_esters_isoaa,-0.03365918319771059,-0.0480541668896534
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_esters_flower,0.005361040106027775,-0.006048631347438573
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,A_esters_fruity,0.09794683541635232,0.10480108996171765
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_malt_all,-0.011403208012145505,-0.0708162527310444
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_malt_grain,-0.08062089239998162,-0.09846357783003849
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_malt_bread,-0.047045557531579935,-0.0942628991366963
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_malt_cara,0.03460446105612031,-0.007573876293118366
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_malt_burn,0.09123219988913646,0.05015860497614382
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_hops_all,0.07976682303555366,0.03582209424752314
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_hops_citrus,-0.05689777388695464,-0.055469402985705935
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_hops_tropical,-0.026846513576217024,-0.0454956550824523
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_hops_noble,0.0735998526248379,0.030194654117884953
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_hops_woody,0.15593130522601711,0.1326074286966737
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_esters_all,0.053042174475841156,0.015862335000187723
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_esters_ethac,0.11438127125298568,0.07314018710046356
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_esters_isoaa,-0.050295526855525685,-0.07106446591983102
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_esters_flower,-0.06749294610161803,-0.07165022048862482
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,F_esters_fruity,0.0023232741793677418,0.0008784479339174255
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,acidity,0.3063608484041355,0.34436042437991415
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,bitternes,0.05148291221608919,-0.0033292112270979146
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,sweetness,-0.12729316744150193,-0.12493796098923378
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,X4vg,-0.22057818978254282,-0.24650638648463816
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,diacetyl,-0.18851389751530404,-0.19009465047353416
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,dms,-0.03173888629135353,-0.027762960446848076
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,metallic,-0.10450400762381384,-0.11299223877774085
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,stale_hops,0.2027105700474589,0.2089191206118561
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,t2n,-0.07676645638210303,-0.06232015674297778
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,orange,-0.07977120332920079,-0.05092930509365676
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,coriander,0.031818805314177044,0.04374439920465348
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,clove,0.013825917953217064,0.004992296522730726
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,lactic,0.29508439653396035,0.3267458865534868
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,acetic,0.3337209132231711,0.3416669293596348
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,barnyard,0.20340948622391342,0.2123919330668041
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,alcohol,0.05688793825681126,-0.05377060592511819
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,co2,0.10102456345580363,0.055142518085626334
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,aftertaste,0.36446685480426855,0.36311719886787136
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,body,0.17628007906316914,0.14343750380388914
+Ethyl 2-methylbutyrate,ethyl_2.methyl_butyrate,overall,0.020467469394896805,-0.008288168340864219
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_malt_all,0.018762244077859362,-0.04496180712387913
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_malt_grain,-0.014908231808305543,-0.0361350319959036
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_malt_bread,-0.0018716599473768566,-0.05134193404039906
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_malt_cara,0.02186397292324465,-0.03755181357557425
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_malt_burn,0.11402565146383413,0.07425419888857174
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_hops_all,0.0844451931545087,0.022306915557920578
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_hops_citrus,-0.02920640025147564,-0.05062068564800333
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_hops_tropical,-0.00980898941662208,-0.03884990071483828
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_hops_noble,0.08087605747764084,0.020344513568433267
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_hops_woody,0.1353318621592382,0.12434561811138341
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_esters_all,0.17338161501981786,0.13193638030841529
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_esters_ethac,0.1620646907081433,0.10999611811658216
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_esters_isoaa,-0.015065123941457608,-0.0390907255309739
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_esters_flower,0.07950038687918405,0.06179283722493445
+Ethyl 3-methylbutyrate,ethyl_isovalerate,A_esters_fruity,0.14921950663562736,0.16236118432600002
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_malt_all,-0.025055192483680582,-0.1271028361208523
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_malt_grain,-0.07632947394195716,-0.10642649330342296
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_malt_bread,-0.058254309273335116,-0.13734221601221555
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_malt_cara,0.02773294817193186,-0.04641947143711667
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_malt_burn,0.04021483656876213,-0.042220603687969274
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_hops_all,0.11760705946307505,0.04215754463770866
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_hops_citrus,-0.06423747614764685,-0.062316324687496996
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_hops_tropical,0.04906528388470025,0.01980421172280339
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_hops_noble,0.0911169204749741,0.01453012050490069
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_hops_woody,0.0735791132938387,0.026243347582947385
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_esters_all,0.21959571632228864,0.16892156038246223
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_esters_ethac,0.19707274067881078,0.12980562719627045
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_esters_isoaa,0.04597224882167541,0.014130002338601502
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_esters_flower,-0.027614563652740277,-0.034419895056726386
+Ethyl 3-methylbutyrate,ethyl_isovalerate,F_esters_fruity,0.17758166270636896,0.17808213194748976
+Ethyl 3-methylbutyrate,ethyl_isovalerate,acidity,0.34680887038168656,0.40892458164465995
+Ethyl 3-methylbutyrate,ethyl_isovalerate,bitternes,0.008087521290231433,-0.09813431391504464
+Ethyl 3-methylbutyrate,ethyl_isovalerate,sweetness,-0.053246118973392854,-0.0488069311494127
+Ethyl 3-methylbutyrate,ethyl_isovalerate,X4vg,-0.36425218431338313,-0.41208091854801987
+Ethyl 3-methylbutyrate,ethyl_isovalerate,diacetyl,-0.15697586332166727,-0.16041726615834812
+Ethyl 3-methylbutyrate,ethyl_isovalerate,dms,-0.16809151364864985,-0.16391469215693583
+Ethyl 3-methylbutyrate,ethyl_isovalerate,metallic,-0.25035775772429764,-0.2681117891208932
+Ethyl 3-methylbutyrate,ethyl_isovalerate,stale_hops,0.16747189928431297,0.17863613546528925
+Ethyl 3-methylbutyrate,ethyl_isovalerate,t2n,-0.1120017512658142,-0.08838682274413592
+Ethyl 3-methylbutyrate,ethyl_isovalerate,orange,-0.1143343094211421,-0.06553909492889308
+Ethyl 3-methylbutyrate,ethyl_isovalerate,coriander,-0.027942161878002785,-0.008934762278633187
+Ethyl 3-methylbutyrate,ethyl_isovalerate,clove,-0.07145715177431518,-0.08812425524527144
+Ethyl 3-methylbutyrate,ethyl_isovalerate,lactic,0.3609492124578512,0.41471804247592453
+Ethyl 3-methylbutyrate,ethyl_isovalerate,acetic,0.39071639959979365,0.40720931777644154
+Ethyl 3-methylbutyrate,ethyl_isovalerate,barnyard,0.16795652376532716,0.18360344474133572
+Ethyl 3-methylbutyrate,ethyl_isovalerate,alcohol,0.08719789244814591,-0.10619713813456273
+Ethyl 3-methylbutyrate,ethyl_isovalerate,co2,0.036776867734927145,-0.06231530649538072
+Ethyl 3-methylbutyrate,ethyl_isovalerate,aftertaste,0.43927672089079056,0.4110039690484946
+Ethyl 3-methylbutyrate,ethyl_isovalerate,body,0.18271850600990058,0.07753594267770955
+Ethyl 3-methylbutyrate,ethyl_isovalerate,overall,0.06444035601043445,0.01758961302390067
+Ethanol,ethanol..v.v.,A_malt_all,0.3349948734932882,0.009258646065945089
+Ethanol,ethanol..v.v.,A_malt_grain,0.11311810945169633,0.020150053325692825
+Ethanol,ethanol..v.v.,A_malt_bread,0.2599418530531174,0.036441656946139475
+Ethanol,ethanol..v.v.,A_malt_cara,0.3154941197214236,-0.017626101638084875
+Ethanol,ethanol..v.v.,A_malt_burn,0.2389509133513364,-0.02350909065055862
+Ethanol,ethanol..v.v.,A_hops_all,0.35438032740238573,-0.03492215190884143
+Ethanol,ethanol..v.v.,A_hops_citrus,0.11235693798937683,-0.02236905294355137
+Ethanol,ethanol..v.v.,A_hops_tropical,0.15489605973616558,-0.024408785822562652
+Ethanol,ethanol..v.v.,A_hops_noble,0.3441788298284196,-0.04156700152220832
+Ethanol,ethanol..v.v.,A_hops_woody,0.07407219666749165,0.002204112042856725
+Ethanol,ethanol..v.v.,A_esters_all,0.2680781019126577,0.0008749737800165362
+Ethanol,ethanol..v.v.,A_esters_ethac,0.3328359767926044,-0.005553768793107407
+Ethanol,ethanol..v.v.,A_esters_isoaa,0.1278788883043224,0.014640263922025836
+Ethanol,ethanol..v.v.,A_esters_flower,0.10566612092471311,-0.007968410665624773
+Ethanol,ethanol..v.v.,A_esters_fruity,-0.05666187487449409,0.006761528241799014
+Ethanol,ethanol..v.v.,F_malt_all,0.47205695460061053,0.015303300767164092
+Ethanol,ethanol..v.v.,F_malt_grain,0.15054778792204074,0.009128471597901122
+Ethanol,ethanol..v.v.,F_malt_bread,0.37214108273699603,0.02412276452006055
+Ethanol,ethanol..v.v.,F_malt_cara,0.3871033520647378,-0.006756133015761786
+Ethanol,ethanol..v.v.,F_malt_burn,0.4306890353688525,-0.02048290631775965
+Ethanol,ethanol..v.v.,F_hops_all,0.446236995800528,-0.034923540206506336
+Ethanol,ethanol..v.v.,F_hops_citrus,-0.016362465799959675,-0.0042622757911234006
+Ethanol,ethanol..v.v.,F_hops_tropical,0.16549631607745938,-0.01064570893891996
+Ethanol,ethanol..v.v.,F_hops_noble,0.4337129772356037,-0.04140306334958502
+Ethanol,ethanol..v.v.,F_hops_woody,0.27010704482321435,-0.024991250554208717
+Ethanol,ethanol..v.v.,F_esters_all,0.3569422265354751,-0.00842024175575273
+Ethanol,ethanol..v.v.,F_esters_ethac,0.46638164155126194,-0.02716383008573957
+Ethanol,ethanol..v.v.,F_esters_isoaa,0.1790447269096385,0.018065361896362694
+Ethanol,ethanol..v.v.,F_esters_flower,0.034482904316734515,0.012003766144563758
+Ethanol,ethanol..v.v.,F_esters_fruity,0.013509647471601874,-0.00581814475234685
+Ethanol,ethanol..v.v.,acidity,-0.24127385096476542,0.03255793712251189
+Ethanol,ethanol..v.v.,bitternes,0.506267978804431,-0.03705196916100412
+Ethanol,ethanol..v.v.,sweetness,-0.02916007531977828,0.02648998660917333
+Ethanol,ethanol..v.v.,X4vg,0.18771663713525666,-0.020951227293066647
+Ethanol,ethanol..v.v.,diacetyl,0.004479498756986524,0.039507563834254925
+Ethanol,ethanol..v.v.,dms,-0.03873137281527849,-0.0098420160591755
+Ethanol,ethanol..v.v.,metallic,0.07040715013852727,-0.027554365708323963
+Ethanol,ethanol..v.v.,stale_hops,-0.04466999751007665,-0.044609141639643544
+Ethanol,ethanol..v.v.,t2n,-0.14396589287149048,0.009069478056764762
+Ethanol,ethanol..v.v.,orange,-0.29202953445581137,0.027465184429654798
+Ethanol,ethanol..v.v.,coriander,-0.10645526973269405,-0.003957614788984459
+Ethanol,ethanol..v.v.,clove,0.08273117385754086,0.022937007748757378
+Ethanol,ethanol..v.v.,lactic,-0.20994928339213112,0.005091613283335107
+Ethanol,ethanol..v.v.,acetic,-0.05145319771142156,-0.013458165638478155
+Ethanol,ethanol..v.v.,barnyard,-0.06774036369343546,-0.045814766385793584
+Ethanol,ethanol..v.v.,alcohol,0.8171474389230695,-0.026217846894177423
+Ethanol,ethanol..v.v.,co2,0.49842854090563177,-0.03234814432699094
+Ethanol,ethanol..v.v.,aftertaste,0.5174503923780842,-0.015487377838086505
+Ethanol,ethanol..v.v.,body,0.7191068880476088,-0.012652150139157745
+Ethanol,ethanol..v.v.,overall,0.2647345417987014,-0.045233839480027176
+Isoamyl alcohol,isoamyl_alcohol,A_malt_all,0.20699935947750567,-0.012936981945643966
+Isoamyl alcohol,isoamyl_alcohol,A_malt_grain,0.056501533721128476,-0.02179966649561334
+Isoamyl alcohol,isoamyl_alcohol,A_malt_bread,0.19197663229221187,0.03272772903826834
+Isoamyl alcohol,isoamyl_alcohol,A_malt_cara,0.20875571654446204,0.006956059237961778
+Isoamyl alcohol,isoamyl_alcohol,A_malt_burn,0.21648761054655188,0.08388260545173423
+Isoamyl alcohol,isoamyl_alcohol,A_hops_all,0.2534119932123209,0.03443487872745814
+Isoamyl alcohol,isoamyl_alcohol,A_hops_citrus,0.06808880127624313,-0.00587856476731373
+Isoamyl alcohol,isoamyl_alcohol,A_hops_tropical,0.14474663961839568,0.05929405080996754
+Isoamyl alcohol,isoamyl_alcohol,A_hops_noble,0.2543898689809112,0.044847263939462007
+Isoamyl alcohol,isoamyl_alcohol,A_hops_woody,0.07274769568680681,0.03272404781769495
+Isoamyl alcohol,isoamyl_alcohol,A_esters_all,0.2983766713150674,0.1702979874554911
+Isoamyl alcohol,isoamyl_alcohol,A_esters_ethac,0.3306770246341436,0.16077146402950676
+Isoamyl alcohol,isoamyl_alcohol,A_esters_isoaa,0.22314311250722516,0.185616950507716
+Isoamyl alcohol,isoamyl_alcohol,A_esters_flower,0.09478666071294667,0.03497598367706437
+Isoamyl alcohol,isoamyl_alcohol,A_esters_fruity,0.019576482569281524,0.07366999376809913
+Isoamyl alcohol,isoamyl_alcohol,F_malt_all,0.31928324443906564,0.021502858620666167
+Isoamyl alcohol,isoamyl_alcohol,F_malt_grain,0.13116579702041836,0.04498251919760312
+Isoamyl alcohol,isoamyl_alcohol,F_malt_bread,0.30778390871100764,0.09522661506326462
+Isoamyl alcohol,isoamyl_alcohol,F_malt_cara,0.2969009480208652,0.06668106283549532
+Isoamyl alcohol,isoamyl_alcohol,F_malt_burn,0.2788565964063383,0.001102099376461904
+Isoamyl alcohol,isoamyl_alcohol,F_hops_all,0.29787450556780976,0.01425051738267981
+Isoamyl alcohol,isoamyl_alcohol,F_hops_citrus,-0.05204025698815698,-0.054323108793204816
+Isoamyl alcohol,isoamyl_alcohol,F_hops_tropical,0.16007320277610856,0.07066080543873639
+Isoamyl alcohol,isoamyl_alcohol,F_hops_noble,0.2924361041597166,0.018002694340893216
+Isoamyl alcohol,isoamyl_alcohol,F_hops_woody,0.20818288505340285,0.04593814456632914
+Isoamyl alcohol,isoamyl_alcohol,F_esters_all,0.3395548100714909,0.15292020194227995
+Isoamyl alcohol,isoamyl_alcohol,F_esters_ethac,0.3964896671153016,0.1411571542579421
+Isoamyl alcohol,isoamyl_alcohol,F_esters_isoaa,0.23444065024020683,0.15817767690293993
+Isoamyl alcohol,isoamyl_alcohol,F_esters_flower,0.003710445472716838,-0.024314527510460916
+Isoamyl alcohol,isoamyl_alcohol,F_esters_fruity,-0.009604410863463078,-0.02400414809652352
+Isoamyl alcohol,isoamyl_alcohol,acidity,-0.17502740923674862,-0.025958751400178715
+Isoamyl alcohol,isoamyl_alcohol,bitternes,0.30795434777852626,-0.028768801118065943
+Isoamyl alcohol,isoamyl_alcohol,sweetness,-0.022781954381950097,-0.005179351631954407
+Isoamyl alcohol,isoamyl_alcohol,X4vg,0.1875399383262583,0.08843931619601374
+Isoamyl alcohol,isoamyl_alcohol,diacetyl,0.05165815445094779,0.06386449744377484
+Isoamyl alcohol,isoamyl_alcohol,dms,0.017287324683499507,0.055433023285856246
+Isoamyl alcohol,isoamyl_alcohol,metallic,0.0823047606658411,0.04836939115352886
+Isoamyl alcohol,isoamyl_alcohol,stale_hops,-0.012843875382660224,0.020974182152375564
+Isoamyl alcohol,isoamyl_alcohol,t2n,-0.09118483376970231,0.0023481462284623885
+Isoamyl alcohol,isoamyl_alcohol,orange,-0.20285589983882724,-0.01956943272641635
+Isoamyl alcohol,isoamyl_alcohol,coriander,-0.11102909073295808,-0.055700550505907546
+Isoamyl alcohol,isoamyl_alcohol,clove,0.08074336034379395,0.035906238391475616
+Isoamyl alcohol,isoamyl_alcohol,lactic,-0.13229604485562235,0.004378403670538142
+Isoamyl alcohol,isoamyl_alcohol,acetic,-0.05839794193132122,-0.0330123470824688
+Isoamyl alcohol,isoamyl_alcohol,barnyard,3.225988581342374e-05,0.05745654345056571
+Isoamyl alcohol,isoamyl_alcohol,alcohol,0.55322271643855,0.05813495385368053
+Isoamyl alcohol,isoamyl_alcohol,co2,0.32987733871971936,0.012146398365655356
+Isoamyl alcohol,isoamyl_alcohol,aftertaste,0.3129808117853101,-0.032350641123552945
+Isoamyl alcohol,isoamyl_alcohol,body,0.48723024497330536,0.04315904862018736
+Isoamyl alcohol,isoamyl_alcohol,overall,0.2101155301906687,0.053202922438204917
+Isobutanol,isobutanol,A_malt_all,0.20689643255071355,0.01970582947073208
+Isobutanol,isobutanol,A_malt_grain,0.0166098687290009,-0.059040537541775226
+Isobutanol,isobutanol,A_malt_bread,0.2125005736165875,0.08052729999537392
+Isobutanol,isobutanol,A_malt_cara,0.16447754727058425,-0.020601886262406503
+Isobutanol,isobutanol,A_malt_burn,0.24930260209115795,0.14137068944605347
+Isobutanol,isobutanol,A_hops_all,0.27112297524810697,0.08913957904134026
+Isobutanol,isobutanol,A_hops_citrus,0.10253737836407908,0.0469375831647237
+Isobutanol,isobutanol,A_hops_tropical,0.04963196717091674,-0.04812404504303573
+Isobutanol,isobutanol,A_hops_noble,0.331479278058059,0.17473932004440923
+Isobutanol,isobutanol,A_hops_woody,0.13604015033602357,0.11451305536527699
+Isobutanol,isobutanol,A_esters_all,0.17909078516249805,0.03253766872877067
+Isobutanol,isobutanol,A_esters_ethac,0.28869836494720125,0.12705823619550322
+Isobutanol,isobutanol,A_esters_isoaa,0.06855347675037236,-0.005671063269156746
+Isobutanol,isobutanol,A_esters_flower,0.08558564094672204,0.030811375747901507
+Isobutanol,isobutanol,A_esters_fruity,-0.07750863058794447,-0.05506563514873049
+Isobutanol,isobutanol,F_malt_all,0.29979985515406105,0.04109275975476396
+Isobutanol,isobutanol,F_malt_grain,0.06614647704666833,-0.024654709861662887
+Isobutanol,isobutanol,F_malt_bread,0.28666136604053544,0.09686748198351017
+Isobutanol,isobutanol,F_malt_cara,0.1833374871280479,-0.05044291036403612
+Isobutanol,isobutanol,F_malt_burn,0.32327216850947926,0.10382819164192456
+Isobutanol,isobutanol,F_hops_all,0.3936006641821831,0.1884084407921384
+Isobutanol,isobutanol,F_hops_citrus,0.03071413239869237,0.04887096734555769
+Isobutanol,isobutanol,F_hops_tropical,0.11346100387974435,0.023208212210684358
+Isobutanol,isobutanol,F_hops_noble,0.3873209730086987,0.1883242503599884
+Isobutanol,isobutanol,F_hops_woody,0.3224575474324363,0.21264139339768937
+Isobutanol,isobutanol,F_esters_all,0.19859453211698144,-0.007350436832616505
+Isobutanol,isobutanol,F_esters_ethac,0.34454826566942487,0.10710891834290613
+Isobutanol,isobutanol,F_esters_isoaa,0.12395108037002082,0.02665774108579035
+Isobutanol,isobutanol,F_esters_flower,-0.07058167077709307,-0.11018147823301615
+Isobutanol,isobutanol,F_esters_fruity,-0.0691934066444786,-0.0938003611597921
+Isobutanol,isobutanol,acidity,-0.1467255468845449,-0.01090540578606162
+Isobutanol,isobutanol,bitternes,0.3952727098897507,0.1493190147793061
+Isobutanol,isobutanol,sweetness,-0.11658134650893898,-0.12185605420870262
+Isobutanol,isobutanol,X4vg,0.13478803601591707,0.03399500688059841
+Isobutanol,isobutanol,diacetyl,-0.024034494961281207,-0.03243046099165105
+Isobutanol,isobutanol,dms,0.07518235701901949,0.11877850192427793
+Isobutanol,isobutanol,metallic,0.035951389464112755,-0.005295527167339697
+Isobutanol,isobutanol,stale_hops,0.06857772713253456,0.11489400285203032
+Isobutanol,isobutanol,t2n,-0.11752701873502021,-0.04331724188029647
+Isobutanol,isobutanol,orange,-0.20445893810227866,-0.04764576728812422
+Isobutanol,isobutanol,coriander,-0.07175716808897993,-0.013302966258058662
+Isobutanol,isobutanol,clove,0.052046245145013,0.005764210120648608
+Isobutanol,isobutanol,lactic,-0.0741870578893659,0.057286574959417504
+Isobutanol,isobutanol,acetic,0.02813125887168262,0.0702883825064155
+Isobutanol,isobutanol,barnyard,0.07501756575810231,0.1390452068003188
+Isobutanol,isobutanol,alcohol,0.5519225640540079,0.17850343066449198
+Isobutanol,isobutanol,co2,0.3185464686071282,0.04693137759651228
+Isobutanol,isobutanol,aftertaste,0.42770038957888273,0.18757095165880336
+Isobutanol,isobutanol,body,0.5303461352018117,0.2086372625621376
+Isobutanol,isobutanol,overall,0.15211885803926506,0.0008218438033599709
+Phenethyl alcohol,phenethyl_alcohol,A_malt_all,0.15997468631012365,0.12648135566095756
+Phenethyl alcohol,phenethyl_alcohol,A_malt_grain,0.1590219668836907,0.14701237519069135
+Phenethyl alcohol,phenethyl_alcohol,A_malt_bread,0.14338392074572304,0.11585754106608512
+Phenethyl alcohol,phenethyl_alcohol,A_malt_cara,0.12884016099975484,0.09509953094393517
+Phenethyl alcohol,phenethyl_alcohol,A_malt_burn,0.04287562018196589,0.013607056100663331
+Phenethyl alcohol,phenethyl_alcohol,A_hops_all,0.07722022400244588,0.03564896949091348
+Phenethyl alcohol,phenethyl_alcohol,A_hops_citrus,-0.046216259137546345,-0.0610717284616133
+Phenethyl alcohol,phenethyl_alcohol,A_hops_tropical,0.033611008984787825,0.014604553584565041
+Phenethyl alcohol,phenethyl_alcohol,A_hops_noble,0.13665952222287686,0.10067274925950602
+Phenethyl alcohol,phenethyl_alcohol,A_hops_woody,-0.1010814784566895,-0.11148068962283612
+Phenethyl alcohol,phenethyl_alcohol,A_esters_all,0.17200902414438626,0.14501100475643944
+Phenethyl alcohol,phenethyl_alcohol,A_esters_ethac,0.18851852001313565,0.1571734904149767
+Phenethyl alcohol,phenethyl_alcohol,A_esters_isoaa,0.07395618409731676,0.05896619655708516
+Phenethyl alcohol,phenethyl_alcohol,A_esters_flower,-0.002648152130898296,-0.01602460304140305
+Phenethyl alcohol,phenethyl_alcohol,A_esters_fruity,0.07738007465108038,0.08523812360021325
+Phenethyl alcohol,phenethyl_alcohol,F_malt_all,0.16237206830397907,0.1184047802858696
+Phenethyl alcohol,phenethyl_alcohol,F_malt_grain,0.12338196580079253,0.10666555746823206
+Phenethyl alcohol,phenethyl_alcohol,F_malt_bread,0.14948407389079094,0.11197953500383383
+Phenethyl alcohol,phenethyl_alcohol,F_malt_cara,0.16224020009087198,0.12463125756051
+Phenethyl alcohol,phenethyl_alcohol,F_malt_burn,0.08228084716115407,0.031972841602854296
+Phenethyl alcohol,phenethyl_alcohol,F_hops_all,0.09983280366066252,0.049829613227859
+Phenethyl alcohol,phenethyl_alcohol,F_hops_citrus,-0.1298306505969263,-0.1288128351000773
+Phenethyl alcohol,phenethyl_alcohol,F_hops_tropical,0.04579597747644319,0.02573293698882901
+Phenethyl alcohol,phenethyl_alcohol,F_hops_noble,0.15246370033055623,0.11010435971658972
+Phenethyl alcohol,phenethyl_alcohol,F_hops_woody,0.06921142346537815,0.03722763814609149
+Phenethyl alcohol,phenethyl_alcohol,F_esters_all,0.21575193203091247,0.1848068374823654
+Phenethyl alcohol,phenethyl_alcohol,F_esters_ethac,0.15997119940279048,0.11607118524130401
+Phenethyl alcohol,phenethyl_alcohol,F_esters_isoaa,0.14041952016050005,0.12099871341688576
+Phenethyl alcohol,phenethyl_alcohol,F_esters_flower,-0.0045875567280627095,-0.008958085244190775
+Phenethyl alcohol,phenethyl_alcohol,F_esters_fruity,0.060519949856636425,0.05930436702566914
+Phenethyl alcohol,phenethyl_alcohol,acidity,0.001630149588406191,0.03290603751539009
+Phenethyl alcohol,phenethyl_alcohol,bitternes,0.0826750344213843,0.022918251346406557
+Phenethyl alcohol,phenethyl_alcohol,sweetness,-0.04256365770742499,-0.039253549332234156
+Phenethyl alcohol,phenethyl_alcohol,X4vg,0.004748803250203525,-0.019120886074718978
+Phenethyl alcohol,phenethyl_alcohol,diacetyl,-0.04854459342317811,-0.04948855166257048
+Phenethyl alcohol,phenethyl_alcohol,dms,-0.17282444448794237,-0.16944570575824727
+Phenethyl alcohol,phenethyl_alcohol,metallic,-0.06077331731938866,-0.07026409569306868
+Phenethyl alcohol,phenethyl_alcohol,stale_hops,-0.011396421743810545,-0.005883621136461087
+Phenethyl alcohol,phenethyl_alcohol,t2n,-0.15362085320781363,-0.1381920517548106
+Phenethyl alcohol,phenethyl_alcohol,orange,-0.1298789843738635,-0.09853043514728008
+Phenethyl alcohol,phenethyl_alcohol,coriander,0.08291364748973948,0.09748350292570315
+Phenethyl alcohol,phenethyl_alcohol,clove,-0.03213779540717225,-0.04292378895583344
+Phenethyl alcohol,phenethyl_alcohol,lactic,0.20144459388764976,0.23461322249497177
+Phenethyl alcohol,phenethyl_alcohol,acetic,0.17700446755813964,0.18509888689407542
+Phenethyl alcohol,phenethyl_alcohol,barnyard,-0.01568828669587561,-0.007323736645950906
+Phenethyl alcohol,phenethyl_alcohol,alcohol,0.10916110545450212,0.012887095856987564
+Phenethyl alcohol,phenethyl_alcohol,co2,0.005073109065894314,-0.06628296407784592
+Phenethyl alcohol,phenethyl_alcohol,aftertaste,0.170261796188739,0.12461485020241508
+Phenethyl alcohol,phenethyl_alcohol,body,0.19361761975492023,0.1508946148523999
+Phenethyl alcohol,phenethyl_alcohol,overall,0.0901542744683915,0.05975772416796325
+Glycerol,glycerol,A_malt_all,0.21418237390690056,-0.048976733136405506
+Glycerol,glycerol,A_malt_grain,0.04727918775837104,-0.052741314641653846
+Glycerol,glycerol,A_malt_bread,0.2666356638832631,0.11584231746570434
+Glycerol,glycerol,A_malt_cara,0.11886992439747872,-0.17415499725908287
+Glycerol,glycerol,A_malt_burn,0.1964694575457043,0.032257665852856984
+Glycerol,glycerol,A_hops_all,0.3205640295678817,0.09556743873677107
+Glycerol,glycerol,A_hops_citrus,0.11932435911093443,0.05468640687048804
+Glycerol,glycerol,A_hops_tropical,0.1070918302260068,-0.009607213697864358
+Glycerol,glycerol,A_hops_noble,0.3384540768353743,0.1349044685855216
+Glycerol,glycerol,A_hops_woody,0.05280151061868959,-0.0022078105951992273
+Glycerol,glycerol,A_esters_all,0.24155893531670786,0.06873887475005348
+Glycerol,glycerol,A_esters_ethac,0.3004834153440139,0.0880839340207324
+Glycerol,glycerol,A_esters_isoaa,0.1281691098308064,0.05103400821343605
+Glycerol,glycerol,A_esters_flower,0.11234370439798899,0.05157681687294579
+Glycerol,glycerol,A_esters_fruity,-0.045967481801946146,-0.006525274769411221
+Glycerol,glycerol,F_malt_all,0.3476777247206834,0.0027243207594274876
+Glycerol,glycerol,F_malt_grain,0.07742029877417318,-0.04898700936899588
+Glycerol,glycerol,F_malt_bread,0.36685722142494137,0.14898556036786031
+Glycerol,glycerol,F_malt_cara,0.23673047671433603,-0.07500393355597766
+Glycerol,glycerol,F_malt_burn,0.3643800818139234,0.07927137048322183
+Glycerol,glycerol,F_hops_all,0.3999723127659509,0.11969193640942234
+Glycerol,glycerol,F_hops_citrus,-0.024339828646333418,-0.01815268080717142
+Glycerol,glycerol,F_hops_tropical,0.1379096348282835,0.024734404491241244
+Glycerol,glycerol,F_hops_noble,0.4204793513980107,0.16731779742402278
+Glycerol,glycerol,F_hops_woody,0.23684466214856237,0.05930961249924798
+Glycerol,glycerol,F_esters_all,0.30340599484779074,0.06570628377070106
+Glycerol,glycerol,F_esters_ethac,0.44274631373139156,0.16763869063462186
+Glycerol,glycerol,F_esters_isoaa,0.12831297681053702,-0.004388722913956964
+Glycerol,glycerol,F_esters_flower,0.025911107344187854,0.0009315110749456016
+Glycerol,glycerol,F_esters_fruity,-0.04020926420850563,-0.07368347906323114
+Glycerol,glycerol,acidity,-0.08067809120701513,0.14572477309267107
+Glycerol,glycerol,bitternes,0.44018730586990695,0.11774484249943695
+Glycerol,glycerol,sweetness,-0.10481731958200309,-0.12272969907325544
+Glycerol,glycerol,X4vg,0.17211066353158488,0.051646519707289146
+Glycerol,glycerol,diacetyl,-0.050608847222380036,-0.07923496599770714
+Glycerol,glycerol,dms,0.07765320758351424,0.1560277129503348
+Glycerol,glycerol,metallic,-0.05946242992970551,-0.16371117446419775
+Glycerol,glycerol,stale_hops,-0.03253761990428034,0.0003060970968152531
+Glycerol,glycerol,t2n,-0.17854851056753543,-0.10847618719335755
+Glycerol,glycerol,orange,-0.2378332256154702,-0.036523473559335745
+Glycerol,glycerol,coriander,-0.13634510635341768,-0.08621492524368142
+Glycerol,glycerol,clove,-0.024974320030305544,-0.12631495929048706
+Glycerol,glycerol,lactic,-0.1492218114574531,0.0070416653939246775
+Glycerol,glycerol,acetic,-0.004009551444567905,0.04962482600761559
+Glycerol,glycerol,barnyard,-0.03429834754023973,0.022633360034584035
+Glycerol,glycerol,alcohol,0.624851315319894,0.06589787626152065
+Glycerol,glycerol,co2,0.38118754283396,0.02681467713888936
+Glycerol,glycerol,aftertaste,0.47400027270446904,0.162672582611052
+Glycerol,glycerol,body,0.5726252913087868,0.09622301768570296
+Glycerol,glycerol,overall,0.1668106072003202,-0.041552986520223954
+Iso-alpha acids,bitterness,A_malt_all,0.19184071111821094,0.10263881940841421
+Iso-alpha acids,bitterness,A_malt_grain,0.015291898542465718,-0.01929404714783496
+Iso-alpha acids,bitterness,A_malt_bread,0.11825478686633972,0.044520160977547525
+Iso-alpha acids,bitterness,A_malt_cara,0.12256720327823119,0.031853571862294594
+Iso-alpha acids,bitterness,A_malt_burn,0.2016182195697737,0.1409036068701966
+Iso-alpha acids,bitterness,A_hops_all,0.3839423099446815,0.31211426945242093
+Iso-alpha acids,bitterness,A_hops_citrus,0.21770613005030873,0.19427658818779145
+Iso-alpha acids,bitterness,A_hops_tropical,0.20823622531284214,0.17197300173388544
+Iso-alpha acids,bitterness,A_hops_noble,0.32799051964197007,0.2518208795257786
+Iso-alpha acids,bitterness,A_hops_woody,0.07635384040165638,0.05707920001134385
+Iso-alpha acids,bitterness,A_esters_all,-0.11184949106696139,-0.2081378981348062
+Iso-alpha acids,bitterness,A_esters_ethac,0.03208479656255542,-0.07415364509314183
+Iso-alpha acids,bitterness,A_esters_isoaa,-0.07421444267696012,-0.11847033990506509
+Iso-alpha acids,bitterness,A_esters_flower,-0.08856450044388968,-0.12632392636126474
+Iso-alpha acids,bitterness,A_esters_fruity,-0.14799973657144974,-0.1375905477872461
+Iso-alpha acids,bitterness,F_malt_all,0.30911091582254635,0.20065162168800565
+Iso-alpha acids,bitterness,F_malt_grain,-0.05606799061795828,-0.10676148814997098
+Iso-alpha acids,bitterness,F_malt_bread,0.16562747326585173,0.06216729631862261
+Iso-alpha acids,bitterness,F_malt_cara,0.1747660057959439,0.06791345205107498
+Iso-alpha acids,bitterness,F_malt_burn,0.40607431116819626,0.3227710363508037
+Iso-alpha acids,bitterness,F_hops_all,0.5419305190402937,0.479086195150812
+Iso-alpha acids,bitterness,F_hops_citrus,0.12822201046789777,0.13938960379837678
+Iso-alpha acids,bitterness,F_hops_tropical,0.14706362962617572,0.10397050773428455
+Iso-alpha acids,bitterness,F_hops_noble,0.5130879095099216,0.44662420204450803
+Iso-alpha acids,bitterness,F_hops_woody,0.36371910311309835,0.308353732357145
+Iso-alpha acids,bitterness,F_esters_all,-0.14546347534459544,-0.2819347037002252
+Iso-alpha acids,bitterness,F_esters_ethac,0.028803292639024886,-0.12989273273099422
+Iso-alpha acids,bitterness,F_esters_isoaa,-0.1093639207911652,-0.17301891270073888
+Iso-alpha acids,bitterness,F_esters_flower,-0.12487288800640257,-0.14158401364071962
+Iso-alpha acids,bitterness,F_esters_fruity,-0.216373233758657,-0.23082170172112132
+Iso-alpha acids,bitterness,acidity,-0.28098484872894874,-0.22589009283706124
+Iso-alpha acids,bitterness,bitternes,0.6821667025713191,0.6458114737446746
+Iso-alpha acids,bitterness,sweetness,-0.2661399377333881,-0.2697617326485456
+Iso-alpha acids,bitterness,X4vg,0.18685042855164638,0.13977710553059705
+Iso-alpha acids,bitterness,diacetyl,-0.07645904535480817,-0.08146646491926336
+Iso-alpha acids,bitterness,dms,-0.015413743957327886,-0.0040980558360996094
+Iso-alpha acids,bitterness,metallic,-0.051569409019136585,-0.07609506101905025
+Iso-alpha acids,bitterness,stale_hops,0.010730880455157635,0.02515746725123581
+Iso-alpha acids,bitterness,t2n,-0.16284116941268825,-0.12708071122650677
+Iso-alpha acids,bitterness,orange,-0.19960061933932158,-0.12358631391489301
+Iso-alpha acids,bitterness,coriander,-0.10692212283084335,-0.07931338746140704
+Iso-alpha acids,bitterness,clove,-0.18839579715950322,-0.22379923343230673
+Iso-alpha acids,bitterness,lactic,-0.38943358118782223,-0.35034207000446793
+Iso-alpha acids,bitterness,acetic,-0.2150421359953703,-0.20947777065604545
+Iso-alpha acids,bitterness,barnyard,-0.010609277923759892,0.00998255080367185
+Iso-alpha acids,bitterness,alcohol,0.3967304923769255,0.2798435062113105
+Iso-alpha acids,bitterness,co2,0.18872998486057455,0.04915670979059849
+Iso-alpha acids,bitterness,aftertaste,0.37528006053474705,0.271194629361066
+Iso-alpha acids,bitterness,body,0.31971082768021064,0.1599445316528498
+Iso-alpha acids,bitterness,overall,0.062016620173114975,-0.018040506014185165
+Alpha-humulene,alpha.humulene,A_malt_all,0.11742026926900215,0.06760433636969186
+Alpha-humulene,alpha.humulene,A_malt_grain,0.024797585522505234,0.0064977962512313405
+Alpha-humulene,alpha.humulene,A_malt_bread,0.12193971329821306,0.08354284513031486
+Alpha-humulene,alpha.humulene,A_malt_cara,0.09886233818409042,0.050698056940911056
+Alpha-humulene,alpha.humulene,A_malt_burn,0.016150314892048826,-0.02377353842239733
+Alpha-humulene,alpha.humulene,A_hops_all,0.17841972548539925,0.1308122600439988
+Alpha-humulene,alpha.humulene,A_hops_citrus,0.15865840110381416,0.14316149819264748
+Alpha-humulene,alpha.humulene,A_hops_tropical,0.09005407909724827,0.06650066093027497
+Alpha-humulene,alpha.humulene,A_hops_noble,0.20215569818861193,0.15769924133417654
+Alpha-humulene,alpha.humulene,A_hops_woody,0.09825201579149859,0.08759265825718107
+Alpha-humulene,alpha.humulene,A_esters_all,0.07201075217203474,0.029813901631147714
+Alpha-humulene,alpha.humulene,A_esters_ethac,0.13896004228783554,0.09107891379485245
+Alpha-humulene,alpha.humulene,A_esters_isoaa,0.10960311782511202,0.09071745968323254
+Alpha-humulene,alpha.humulene,A_esters_flower,-0.021155648063126163,-0.039107845221887545
+Alpha-humulene,alpha.humulene,A_esters_fruity,0.008058384406263414,0.017551285223547576
+Alpha-humulene,alpha.humulene,F_malt_all,0.03201575654615761,-0.051605073103355464
+Alpha-humulene,alpha.humulene,F_malt_grain,-0.168937775440463,-0.19834302579621113
+Alpha-humulene,alpha.humulene,F_malt_bread,0.015697148750575075,-0.04905917065534552
+Alpha-humulene,alpha.humulene,F_malt_cara,0.009701732404927488,-0.05865561245400317
+Alpha-humulene,alpha.humulene,F_malt_burn,0.12870269484403274,0.06574292205152513
+Alpha-humulene,alpha.humulene,F_hops_all,0.205700650199468,0.15063591314094718
+Alpha-humulene,alpha.humulene,F_hops_citrus,0.08996080302659105,0.09389304416447473
+Alpha-humulene,alpha.humulene,F_hops_tropical,0.06052943048694371,0.03449914498067131
+Alpha-humulene,alpha.humulene,F_hops_noble,0.19271489444730333,0.13729811046033924
+Alpha-humulene,alpha.humulene,F_hops_woody,0.1117583154022561,0.0713244566152678
+Alpha-humulene,alpha.humulene,F_esters_all,0.03105956895310325,-0.029391748208753503
+Alpha-humulene,alpha.humulene,F_esters_ethac,0.12053204306788437,0.051050494774525335
+Alpha-humulene,alpha.humulene,F_esters_isoaa,0.04594223456864559,0.01728094605677166
+Alpha-humulene,alpha.humulene,F_esters_flower,-0.06274960399844691,-0.06933399961289796
+Alpha-humulene,alpha.humulene,F_esters_fruity,-0.01610834231119209,-0.018558748941182267
+Alpha-humulene,alpha.humulene,acidity,0.06656194542003145,0.11056701698570368
+Alpha-humulene,alpha.humulene,bitternes,0.24883689272037504,0.19552338379838236
+Alpha-humulene,alpha.humulene,sweetness,-0.18870268416666375,-0.18652223252818692
+Alpha-humulene,alpha.humulene,X4vg,0.04522384489381918,0.015110356419300731
+Alpha-humulene,alpha.humulene,diacetyl,-0.17818321528701975,-0.1813371596290899
+Alpha-humulene,alpha.humulene,dms,-0.08703681303429954,-0.08188163975240015
+Alpha-humulene,alpha.humulene,metallic,-0.1303820888991544,-0.14413019046173062
+Alpha-humulene,alpha.humulene,stale_hops,-0.03084042622196144,-0.0239062663400376
+Alpha-humulene,alpha.humulene,t2n,-0.0842459854181013,-0.062264659744533206
+Alpha-humulene,alpha.humulene,orange,-0.17950664011957584,-0.1398138487502914
+Alpha-humulene,alpha.humulene,coriander,-0.025981473614903543,-0.008806168572863819
+Alpha-humulene,alpha.humulene,clove,-0.10803725392707586,-0.12358364653078525
+Alpha-humulene,alpha.humulene,lactic,0.1860845602731391,0.22835894444508595
+Alpha-humulene,alpha.humulene,acetic,0.15356978004280908,0.1643623218787011
+Alpha-humulene,alpha.humulene,barnyard,-0.07089761424884965,-0.06081241917089771
+Alpha-humulene,alpha.humulene,alcohol,0.17474440056321272,0.07319013062430088
+Alpha-humulene,alpha.humulene,co2,0.18152790786001252,0.1172974780276435
+Alpha-humulene,alpha.humulene,aftertaste,0.34747448759180144,0.31171828145231933
+Alpha-humulene,alpha.humulene,body,0.18413496292905612,0.09770383242644978
+Alpha-humulene,alpha.humulene,overall,0.15674477991647864,0.11941659878398606
+Caryophyllene,E.caryophyllene,A_malt_all,0.092449880948474,0.05453883488780399
+Caryophyllene,E.caryophyllene,A_malt_grain,0.037993959198188036,0.02433710450617665
+Caryophyllene,E.caryophyllene,A_malt_bread,0.08706709960046621,0.05729272580693838
+Caryophyllene,E.caryophyllene,A_malt_cara,0.10858305899846998,0.07384942197062794
+Caryophyllene,E.caryophyllene,A_malt_burn,-0.07031483429091323,-0.10366297296041843
+Caryophyllene,E.caryophyllene,A_hops_all,-0.04724622315340283,-0.09818010605284969
+Caryophyllene,E.caryophyllene,A_hops_citrus,-0.12050244312074578,-0.13631154643110768
+Caryophyllene,E.caryophyllene,A_hops_tropical,-0.10782327198778358,-0.12953967618259307
+Caryophyllene,E.caryophyllene,A_hops_noble,0.040223161630551646,-0.0025445572376931918
+Caryophyllene,E.caryophyllene,A_hops_woody,0.054845800467232204,0.046159657385794924
+Caryophyllene,E.caryophyllene,A_esters_all,0.19591724667594682,0.17023293215173266
+Caryophyllene,E.caryophyllene,A_esters_ethac,0.07886823760365724,0.04026572646339497
+Caryophyllene,E.caryophyllene,A_esters_isoaa,0.10285842873016328,0.08843303773424988
+Caryophyllene,E.caryophyllene,A_esters_flower,0.18129588955427256,0.1704767059949628
+Caryophyllene,E.caryophyllene,A_esters_fruity,0.12325161666919789,0.13148417554180905
+Caryophyllene,E.caryophyllene,F_malt_all,0.0318487138093294,-0.0303738175462594
+Caryophyllene,E.caryophyllene,F_malt_grain,-0.07448683809088373,-0.09492110055435342
+Caryophyllene,E.caryophyllene,F_malt_bread,0.04630345913828295,0.00027045030849272213
+Caryophyllene,E.caryophyllene,F_malt_cara,0.1516794281280826,0.11341995090820896
+Caryophyllene,E.caryophyllene,F_malt_burn,0.004102867382315903,-0.05493429524843253
+Caryophyllene,E.caryophyllene,F_hops_all,-0.0669353686690852,-0.13756149455800956
+Caryophyllene,E.caryophyllene,F_hops_citrus,-0.16071709056373967,-0.159942914254712
+Caryophyllene,E.caryophyllene,F_hops_tropical,-0.02281177541911464,-0.044238197036146044
+Caryophyllene,E.caryophyllene,F_hops_noble,-0.06785820093269826,-0.13592335241962872
+Caryophyllene,E.caryophyllene,F_hops_woody,-0.03141718137651226,-0.06786932637942877
+Caryophyllene,E.caryophyllene,F_esters_all,0.2263781500504008,0.19656462707475664
+Caryophyllene,E.caryophyllene,F_esters_ethac,0.10623888176996471,0.05527759397110435
+Caryophyllene,E.caryophyllene,F_esters_isoaa,0.09272966893238802,0.07228675843861132
+Caryophyllene,E.caryophyllene,F_esters_flower,0.13996118680336572,0.1368263104229969
+Caryophyllene,E.caryophyllene,F_esters_fruity,0.11548638473033063,0.11470665862279443
+Caryophyllene,E.caryophyllene,acidity,0.15746707401053567,0.19452392349864114
+Caryophyllene,E.caryophyllene,bitternes,-0.10221443030641374,-0.1926593886206344
+Caryophyllene,E.caryophyllene,sweetness,0.1162836778447444,0.12087256468239399
+Caryophyllene,E.caryophyllene,X4vg,-0.12662937704525407,-0.153754461778674
+Caryophyllene,E.caryophyllene,diacetyl,-0.09520830705687928,-0.09650548679836052
+Caryophyllene,E.caryophyllene,dms,-0.09199283439303148,-0.08794112943972714
+Caryophyllene,E.caryophyllene,metallic,-0.19463037256077848,-0.20542867699741352
+Caryophyllene,E.caryophyllene,stale_hops,0.015943853247381252,0.021659953472872927
+Caryophyllene,E.caryophyllene,t2n,-0.01398134669113972,0.0039055650277670943
+Caryophyllene,E.caryophyllene,orange,-0.06317877597827655,-0.028489986986686904
+Caryophyllene,E.caryophyllene,coriander,0.0955333630466813,0.11017595619972072
+Caryophyllene,E.caryophyllene,clove,0.10732019590605227,0.09817039721359676
+Caryophyllene,E.caryophyllene,lactic,0.28959482430851,0.325271381517697
+Caryophyllene,E.caryophyllene,acetic,0.24338834487882005,0.25202457124963357
+Caryophyllene,E.caryophyllene,barnyard,0.004406929983725155,0.012918903788065025
+Caryophyllene,E.caryophyllene,alcohol,0.0327012140553296,-0.11962456612386113
+Caryophyllene,E.caryophyllene,co2,0.061231746733947295,-0.0005246464138058435
+Caryophyllene,E.caryophyllene,aftertaste,0.1933989343829501,0.1523453589233235
+Caryophyllene,E.caryophyllene,body,0.12383518824484968,0.05052809095756125
+Caryophyllene,E.caryophyllene,overall,0.002382758124129986,-0.031747549257383705
+Alpha-terpineol,X1.alpha.terpineol,A_malt_all,-0.14535521349981795,-0.18548790376069205
+Alpha-terpineol,X1.alpha.terpineol,A_malt_grain,-0.19983802614622037,-0.21168843914323315
+Alpha-terpineol,X1.alpha.terpineol,A_malt_bread,-0.04511605902478879,-0.07009978367551131
+Alpha-terpineol,X1.alpha.terpineol,A_malt_cara,-0.08616086375676867,-0.11979376706350885
+Alpha-terpineol,X1.alpha.terpineol,A_malt_burn,-0.10361376582773747,-0.12831228353139082
+Alpha-terpineol,X1.alpha.terpineol,A_hops_all,0.2178441648109716,0.2011597976130383
+Alpha-terpineol,X1.alpha.terpineol,A_hops_citrus,0.22102564296453941,0.21351219838862784
+Alpha-terpineol,X1.alpha.terpineol,A_hops_tropical,0.12438475813210319,0.11285623087704923
+Alpha-terpineol,X1.alpha.terpineol,A_hops_noble,0.1481421178202764,0.1267686870937583
+Alpha-terpineol,X1.alpha.terpineol,A_hops_woody,0.06455000959683355,0.05856532373051718
+Alpha-terpineol,X1.alpha.terpineol,A_esters_all,0.1405904364403494,0.12248712694425447
+Alpha-terpineol,X1.alpha.terpineol,A_esters_ethac,0.014594209549204614,-0.014890754392361134
+Alpha-terpineol,X1.alpha.terpineol,A_esters_isoaa,0.07142405935205845,0.06116810558086175
+Alpha-terpineol,X1.alpha.terpineol,A_esters_flower,0.18360652970456967,0.1761653210595214
+Alpha-terpineol,X1.alpha.terpineol,A_esters_fruity,0.14111257183111167,0.14675581533583268
+Alpha-terpineol,X1.alpha.terpineol,F_malt_all,-0.11088951810465413,-0.17241039506479777
+Alpha-terpineol,X1.alpha.terpineol,F_malt_grain,-0.17508613261119665,-0.1908880452241945
+Alpha-terpineol,X1.alpha.terpineol,F_malt_bread,-0.1386373734110129,-0.18447964652666451
+Alpha-terpineol,X1.alpha.terpineol,F_malt_cara,-0.01814121392257618,-0.055937442915076394
+Alpha-terpineol,X1.alpha.terpineol,F_malt_burn,-0.030764790928067734,-0.07535041533579945
+Alpha-terpineol,X1.alpha.terpineol,F_hops_all,0.15059424025012913,0.12591987110776368
+Alpha-terpineol,X1.alpha.terpineol,F_hops_citrus,0.06583199650933316,0.06749557962196735
+Alpha-terpineol,X1.alpha.terpineol,F_hops_tropical,0.0832198703975026,0.07023133747062363
+Alpha-terpineol,X1.alpha.terpineol,F_hops_noble,0.06559449426509495,0.03157664432552369
+Alpha-terpineol,X1.alpha.terpineol,F_hops_woody,0.09092286339029061,0.07060133842433007
+Alpha-terpineol,X1.alpha.terpineol,F_esters_all,0.12903837738940904,0.10571252783100939
+Alpha-terpineol,X1.alpha.terpineol,F_esters_ethac,0.01623970090397379,-0.02702022166489511
+Alpha-terpineol,X1.alpha.terpineol,F_esters_isoaa,0.03176968781180485,0.016724294822208954
+Alpha-terpineol,X1.alpha.terpineol,F_esters_flower,0.13951094485863647,0.1371374560080703
+Alpha-terpineol,X1.alpha.terpineol,F_esters_fruity,0.09005359208311249,0.0892311599342729
+Alpha-terpineol,X1.alpha.terpineol,acidity,0.050247594634496545,0.07339990467329055
+Alpha-terpineol,X1.alpha.terpineol,bitternes,0.0664615304269471,0.026749650486877524
+Alpha-terpineol,X1.alpha.terpineol,sweetness,-0.009374750995778443,-0.006898883279895058
+Alpha-terpineol,X1.alpha.terpineol,X4vg,-0.0012304034073274683,-0.01773112891210054
+Alpha-terpineol,X1.alpha.terpineol,diacetyl,-0.2215010944374244,-0.22271083722871918
+Alpha-terpineol,X1.alpha.terpineol,dms,-0.12908122543063238,-0.1263160702850487
+Alpha-terpineol,X1.alpha.terpineol,metallic,-0.03792087990365367,-0.04424030563605045
+Alpha-terpineol,X1.alpha.terpineol,stale_hops,0.03936691585487237,0.043406729756896884
+Alpha-terpineol,X1.alpha.terpineol,t2n,-0.11949641342366764,-0.10866180742548287
+Alpha-terpineol,X1.alpha.terpineol,orange,0.21253225568887982,0.24936289419332455
+Alpha-terpineol,X1.alpha.terpineol,coriander,0.162710901348179,0.17347637745856814
+Alpha-terpineol,X1.alpha.terpineol,clove,0.09744079122195388,0.09098269032575672
+Alpha-terpineol,X1.alpha.terpineol,lactic,0.05769404881524028,0.07773798455487055
+Alpha-terpineol,X1.alpha.terpineol,acetic,0.10279982892766994,0.1077589799299558
+Alpha-terpineol,X1.alpha.terpineol,barnyard,0.02104227861432501,0.02702151973800633
+Alpha-terpineol,X1.alpha.terpineol,alcohol,0.09177101081631614,0.03760073034679395
+Alpha-terpineol,X1.alpha.terpineol,co2,0.18635490457921258,0.1661977904103237
+Alpha-terpineol,X1.alpha.terpineol,aftertaste,0.15198159688601953,0.1261422005804442
+Alpha-terpineol,X1.alpha.terpineol,body,0.09740211864116766,0.05148530852205397
+Alpha-terpineol,X1.alpha.terpineol,overall,0.017607069093663084,-0.0053379052800543135
+Citronellol,citronellol,A_malt_all,-0.10422429961092482,-0.13772128205237882
+Citronellol,citronellol,A_malt_grain,-0.1557360555795346,-0.16576571642232943
+Citronellol,citronellol,A_malt_bread,-0.0484498326884597,-0.07060243824341336
+Citronellol,citronellol,A_malt_cara,-0.045638203514120554,-0.07328487360945092
+Citronellol,citronellol,A_malt_burn,-0.04679521516003153,-0.06687147848908194
+Citronellol,citronellol,A_hops_all,0.35268380180201464,0.34967224815822867
+Citronellol,citronellol,A_hops_citrus,0.36973609647866107,0.36462645004558675
+Citronellol,citronellol,A_hops_tropical,0.25518373838205116,0.2472186111204427
+Citronellol,citronellol,A_hops_noble,0.268903403490262,0.2595896702342745
+Citronellol,citronellol,A_hops_woody,0.054704875466105835,0.04941392535002899
+Citronellol,citronellol,A_esters_all,0.028208712755477452,0.008394614067422633
+Citronellol,citronellol,A_esters_ethac,-0.0143910695189052,-0.04190218705097121
+Citronellol,citronellol,A_esters_isoaa,0.06614857787989181,0.05716903014052072
+Citronellol,citronellol,A_esters_flower,0.11246142832534878,0.10540779749547266
+Citronellol,citronellol,A_esters_fruity,0.004291277723628537,0.008587063332465788
+Citronellol,citronellol,F_malt_all,-0.03961563266872784,-0.08541639664470811
+Citronellol,citronellol,F_malt_grain,-0.13962391959829867,-0.15310952725623855
+Citronellol,citronellol,F_malt_bread,-0.05550471698112548,-0.09018247095682776
+Citronellol,citronellol,F_malt_cara,0.019234502295759945,-0.010717144304458501
+Citronellol,citronellol,F_malt_burn,0.04768240178211792,0.017022163513893455
+Citronellol,citronellol,F_hops_all,0.3074189837770807,0.3069162213660578
+Citronellol,citronellol,F_hops_citrus,0.2322687305733573,0.2341916376836484
+Citronellol,citronellol,F_hops_tropical,0.2001762287136993,0.19090511185195264
+Citronellol,citronellol,F_hops_noble,0.20397477690182306,0.19074405900096938
+Citronellol,citronellol,F_hops_woody,0.19215593748023077,0.17899988377775794
+Citronellol,citronellol,F_esters_all,-0.03305064715607935,-0.0642762652848486
+Citronellol,citronellol,F_esters_ethac,-0.08034178253555196,-0.13081218565548305
+Citronellol,citronellol,F_esters_isoaa,-0.007718545726167352,-0.021581291625316516
+Citronellol,citronellol,F_esters_flower,0.07475422435510864,0.07241073516991667
+Citronellol,citronellol,F_esters_fruity,-0.06767939677066291,-0.06889560826940792
+Citronellol,citronellol,acidity,-0.10328391685061071,-0.08799490249757778
+Citronellol,citronellol,bitternes,0.25694485245130483,0.2545558752368318
+Citronellol,citronellol,sweetness,-0.09802342247726147,-0.0961448371929656
+Citronellol,citronellol,X4vg,0.19358999777717606,0.18325087450203806
+Citronellol,citronellol,diacetyl,-0.1606297761290906,-0.16142438056147615
+Citronellol,citronellol,dms,-0.08494013969339612,-0.0823240894159141
+Citronellol,citronellol,metallic,-0.0112958508766352,-0.01667487347894768
+Citronellol,citronellol,stale_hops,0.01726822254047439,0.02070400999647953
+Citronellol,citronellol,t2n,-0.07091921193043739,-0.060906044703709375
+Citronellol,citronellol,orange,0.14145261453196475,0.17132821894169067
+Citronellol,citronellol,coriander,0.16147262728884879,0.17092378306333791
+Citronellol,citronellol,clove,0.01823678229758869,0.012095647368241005
+Citronellol,citronellol,lactic,-0.1682993713696766,-0.15644230829811953
+Citronellol,citronellol,acetic,-0.15252158421671771,-0.1492744332716634
+Citronellol,citronellol,barnyard,0.013950672406137194,0.019138844079236758
+Citronellol,citronellol,alcohol,0.15330189856624646,0.1598800156747108
+Citronellol,citronellol,co2,0.17303371865189704,0.15683447913996473
+Citronellol,citronellol,aftertaste,0.13872723827144465,0.11701055371523274
+Citronellol,citronellol,body,0.08646906711746469,0.04680543808006475
+Citronellol,citronellol,overall,0.04941737616615578,0.03070356332432982
+Geraniol,geraniol,A_malt_all,-0.060042717322647994,-0.11061656483023219
+Geraniol,geraniol,A_malt_grain,-0.136045675743321,-0.1529260937850431
+Geraniol,geraniol,A_malt_bread,-0.04584808903607354,-0.08297791849130515
+Geraniol,geraniol,A_malt_cara,0.026012707784182697,-0.01570095809940847
+Geraniol,geraniol,A_malt_burn,0.04667570812618524,0.016392836508271537
+Geraniol,geraniol,A_hops_all,0.2870774683873602,0.26019136505763163
+Geraniol,geraniol,A_hops_citrus,0.2888832950741014,0.2784428552134492
+Geraniol,geraniol,A_hops_tropical,0.23510414057165321,0.21954929333966705
+Geraniol,geraniol,A_hops_noble,0.17894752607586378,0.14441334575577672
+Geraniol,geraniol,A_hops_woody,0.017486946528121536,0.007999895579839704
+Geraniol,geraniol,A_esters_all,0.10151543923807431,0.06998607754981136
+Geraniol,geraniol,A_esters_ethac,0.06799734417656293,0.026702405091480204
+Geraniol,geraniol,A_esters_isoaa,0.08074207752863306,0.06528946212335802
+Geraniol,geraniol,A_esters_flower,0.16765643844169908,0.15617357498212142
+Geraniol,geraniol,A_esters_fruity,0.032764209707483075,0.04049372049423557
+Geraniol,geraniol,F_malt_all,-0.004563580713788204,-0.07503185649637156
+Geraniol,geraniol,F_malt_grain,-0.13419896963099717,-0.15674853552480678
+Geraniol,geraniol,F_malt_bread,-0.042591707228248316,-0.09854735126121386
+Geraniol,geraniol,F_malt_cara,0.10165598296214141,0.0564494489917767
+Geraniol,geraniol,F_malt_burn,0.030055445392418004,-0.028632042024858237
+Geraniol,geraniol,F_hops_all,0.23237435033920287,0.1968495897561383
+Geraniol,geraniol,F_hops_citrus,0.23780292172148335,0.24198100776936507
+Geraniol,geraniol,F_hops_tropical,0.28482523387699327,0.26937394285071237
+Geraniol,geraniol,F_hops_noble,0.12422751415364496,0.07628241664829143
+Geraniol,geraniol,F_hops_woody,0.13592089844681518,0.10578862622894186
+Geraniol,geraniol,F_esters_all,0.14671998523206875,0.10857845423114226
+Geraniol,geraniol,F_esters_ethac,0.027569003150956388,-0.037307118992762796
+Geraniol,geraniol,F_esters_isoaa,0.09730771542553991,0.07601696949226813
+Geraniol,geraniol,F_esters_flower,0.10825615643776912,0.10473895090276338
+Geraniol,geraniol,F_esters_fruity,0.07248583765432161,0.07134448475642638
+Geraniol,geraniol,acidity,-0.23656187131560272,-0.21341308472149273
+Geraniol,geraniol,bitternes,0.21635501010150693,0.17646855954331173
+Geraniol,geraniol,sweetness,0.043814846199286474,0.048007742259901204
+Geraniol,geraniol,X4vg,0.21654603164350042,0.19741482265689797
+Geraniol,geraniol,diacetyl,-0.04715211407370644,-0.04813563940146286
+Geraniol,geraniol,dms,-0.04138088877211328,-0.03670910362910968
+Geraniol,geraniol,metallic,0.001016119081918518,-0.008174760902099685
+Geraniol,geraniol,stale_hops,0.13079164466933377,0.1378598760563805
+Geraniol,geraniol,t2n,-0.20090475760727866,-0.1857709386529554
+Geraniol,geraniol,orange,0.08562524419295549,0.13009350591235339
+Geraniol,geraniol,coriander,0.14114709272822037,0.15711327699154237
+Geraniol,geraniol,clove,0.10638307805282454,0.09682940024001715
+Geraniol,geraniol,lactic,-0.14953861200043705,-0.12624613882778085
+Geraniol,geraniol,acetic,-0.06562829097593677,-0.05955446404579414
+Geraniol,geraniol,barnyard,0.12903094542185764,0.13927433292148908
+Geraniol,geraniol,alcohol,0.2123213630953245,0.18663923476859123
+Geraniol,geraniol,co2,0.17572403767363048,0.12945614426176477
+Geraniol,geraniol,aftertaste,0.08778207720554525,0.024615010467565476
+Geraniol,geraniol,body,0.11310498008700168,0.02922729117377315
+Geraniol,geraniol,overall,0.1297094788999674,0.09985565601339116
+Linalool,linalool,A_malt_all,-0.10758179055435053,-0.17241529764855348
+Linalool,linalool,A_malt_grain,-0.190049348705505,-0.21188637869285823
+Linalool,linalool,A_malt_bread,-0.05533364079776817,-0.10102761076425087
+Linalool,linalool,A_malt_cara,-0.10516387832744026,-0.16533378421557496
+Linalool,linalool,A_malt_burn,-0.0029716158506457617,-0.04240452315696176
+Linalool,linalool,A_hops_all,0.4120716403239162,0.3857239927692
+Linalool,linalool,A_hops_citrus,0.32674255944666003,0.3149321107974916
+Linalool,linalool,A_hops_tropical,0.22488358543135561,0.20547306300244353
+Linalool,linalool,A_hops_noble,0.33373218878714406,0.30140245846449004
+Linalool,linalool,A_hops_woody,0.09317481465954087,0.08275191524885972
+Linalool,linalool,A_esters_all,0.03991557229572195,-0.002488796708826399
+Linalool,linalool,A_esters_ethac,-0.02280623874862435,-0.08086889652076021
+Linalool,linalool,A_esters_isoaa,0.03376381153016004,0.01388008140504409
+Linalool,linalool,A_esters_flower,0.1098205064391602,0.09486597514781554
+Linalool,linalool,A_esters_fruity,0.06509155792378263,0.07508770736789806
+Linalool,linalool,F_malt_all,-0.03210258511464371,-0.12240647109232107
+Linalool,linalool,F_malt_grain,-0.15142883145608887,-0.17943997199760767
+Linalool,linalool,F_malt_bread,-0.05955877270600403,-0.12902143216606646
+Linalool,linalool,F_malt_cara,-0.007664547867423971,-0.07547691670229645
+Linalool,linalool,F_malt_burn,0.04011533668058686,-0.031211861470491306
+Linalool,linalool,F_hops_all,0.3709908969267916,0.3401637564589218
+Linalool,linalool,F_hops_citrus,0.20295911777085393,0.20817321483032003
+Linalool,linalool,F_hops_tropical,0.20294104960338225,0.18158329810637505
+Linalool,linalool,F_hops_noble,0.24000410119664314,0.19285347011407544
+Linalool,linalool,F_hops_woody,0.1843046371068677,0.14903723016850584
+Linalool,linalool,F_esters_all,0.0627086716192572,0.006948039513403958
+Linalool,linalool,F_esters_ethac,0.014352317817811473,-0.06778259314044416
+Linalool,linalool,F_esters_isoaa,0.07476898577239052,0.04789242209345899
+Linalool,linalool,F_esters_flower,0.010144980976752326,0.004768572597932138
+Linalool,linalool,F_esters_fruity,-0.01632110434534843,-0.018687547603073874
+Linalool,linalool,acidity,-0.0412626168887993,-0.0033466452365608656
+Linalool,linalool,bitternes,0.28735810945740625,0.24367105385801657
+Linalool,linalool,sweetness,-0.10076419304108108,-0.09742526338843141
+Linalool,linalool,X4vg,0.16770006858737768,0.14237340427449005
+Linalool,linalool,diacetyl,-0.14275946710590584,-0.1452860359657391
+Linalool,linalool,dms,-0.10711295239667086,-0.10236108341426067
+Linalool,linalool,metallic,-0.09634682587157506,-0.10908473181661389
+Linalool,linalool,stale_hops,0.12526921372730782,0.13412600110568684
+Linalool,linalool,t2n,-0.18005731492885177,-0.1610219363301281
+Linalool,linalool,orange,0.17895345233368354,0.2382523744602354
+Linalool,linalool,coriander,0.17735070058689378,0.19772612693445113
+Linalool,linalool,clove,0.13262288214830395,0.12150616117620153
+Linalool,linalool,lactic,-0.05816271408458189,-0.025943694816326995
+Linalool,linalool,acetic,0.019196872478530667,0.02769534807350181
+Linalool,linalool,barnyard,0.1288870333458514,0.14166615906002447
+Linalool,linalool,alcohol,0.21126445785914716,0.14472239779200144
+Linalool,linalool,co2,0.24533781955862857,0.1947506687655979
+Linalool,linalool,aftertaste,0.24038087316608128,0.18788686508702263
+Linalool,linalool,body,0.20814985797501573,0.13804552430007486
+Linalool,linalool,overall,0.08362397837435645,0.04396751141581569
+Z-nerolidol,Z.nerolidol,A_malt_all,0.14034815546417911,0.07990350947321939
+Z-nerolidol,Z.nerolidol,A_malt_grain,0.11179498364901208,0.0917246036429636
+Z-nerolidol,Z.nerolidol,A_malt_bread,0.11608859240262176,0.06809046332592143
+Z-nerolidol,Z.nerolidol,A_malt_cara,0.15071824412040213,0.09465562372999699
+Z-nerolidol,Z.nerolidol,A_malt_burn,0.037353106766430236,-0.01064006167468085
+Z-nerolidol,Z.nerolidol,A_hops_all,0.028825635348255645,-0.04538004798058755
+Z-nerolidol,Z.nerolidol,A_hops_citrus,-0.004713716018709476,-0.027764658068382332
+Z-nerolidol,Z.nerolidol,A_hops_tropical,-0.0036264567185456116,-0.035532699949441006
+Z-nerolidol,Z.nerolidol,A_hops_noble,0.0746630052905103,0.006819893811915892
+Z-nerolidol,Z.nerolidol,A_hops_woody,0.13714736124915194,0.12526432016494202
+Z-nerolidol,Z.nerolidol,A_esters_all,0.13795730580469812,0.08969705418048457
+Z-nerolidol,Z.nerolidol,A_esters_ethac,0.1787862671206074,0.12189433968422984
+Z-nerolidol,Z.nerolidol,A_esters_isoaa,0.030202112227828398,0.0049308982983597245
+Z-nerolidol,Z.nerolidol,A_esters_flower,0.05434857116330912,0.03422313468218889
+Z-nerolidol,Z.nerolidol,A_esters_fruity,0.08611048763328058,0.099509879254203
+Z-nerolidol,Z.nerolidol,F_malt_all,0.060750575001532345,-0.03824803684737044
+Z-nerolidol,Z.nerolidol,F_malt_grain,0.05792696507539578,0.028912961752646828
+Z-nerolidol,Z.nerolidol,F_malt_bread,0.053984231808254526,-0.021941218753661156
+Z-nerolidol,Z.nerolidol,F_malt_cara,0.12756087059474921,0.05604418392115015
+Z-nerolidol,Z.nerolidol,F_malt_burn,0.03194085174525865,-0.06063949762325054
+Z-nerolidol,Z.nerolidol,F_hops_all,-0.019930314364891278,-0.12381718643346523
+Z-nerolidol,Z.nerolidol,F_hops_citrus,-0.060714721213085646,-0.058640474533863104
+Z-nerolidol,Z.nerolidol,F_hops_tropical,-0.05604212439301883,-0.09200368872169226
+Z-nerolidol,Z.nerolidol,F_hops_noble,0.042479592922169664,-0.049483425840465584
+Z-nerolidol,Z.nerolidol,F_hops_woody,-0.0315514029420648,-0.09031164096422842
+Z-nerolidol,Z.nerolidol,F_esters_all,0.1915204130985324,0.13172779860988781
+Z-nerolidol,Z.nerolidol,F_esters_ethac,0.19727204513686594,0.12065714638654447
+Z-nerolidol,Z.nerolidol,F_esters_isoaa,0.026019371245810174,-0.00991093167014136
+Z-nerolidol,Z.nerolidol,F_esters_flower,0.033900729685133586,0.027615795424177175
+Z-nerolidol,Z.nerolidol,F_esters_fruity,0.0741215061083726,0.07289719971362968
+Z-nerolidol,Z.nerolidol,acidity,0.25387021404389526,0.3173257141641249
+Z-nerolidol,Z.nerolidol,bitternes,-0.04033738037719714,-0.1667471251299102
+Z-nerolidol,Z.nerolidol,sweetness,-0.004483276036362321,0.0013379924098695709
+Z-nerolidol,Z.nerolidol,X4vg,-0.09970645439191299,-0.14232264987370288
+Z-nerolidol,Z.nerolidol,diacetyl,0.0013144656503764729,0.0004330393813137431
+Z-nerolidol,Z.nerolidol,dms,-0.060248350250306275,-0.05366195974005486
+Z-nerolidol,Z.nerolidol,metallic,-0.06616626734556122,-0.08199021596636788
+Z-nerolidol,Z.nerolidol,stale_hops,0.02745184422215126,0.03710377377760467
+Z-nerolidol,Z.nerolidol,t2n,-0.10578522113677516,-0.07957876726771636
+Z-nerolidol,Z.nerolidol,orange,-0.05073298585927331,0.007780038455466341
+Z-nerolidol,Z.nerolidol,coriander,-0.020921416074071098,0.00023701986558649364
+Z-nerolidol,Z.nerolidol,clove,-0.04202106756479537,-0.05985407242661841
+Z-nerolidol,Z.nerolidol,lactic,0.33274490610865215,0.3907894302114032
+Z-nerolidol,Z.nerolidol,acetic,0.29796601512708304,0.3148767673490002
+Z-nerolidol,Z.nerolidol,barnyard,0.011481446979501384,0.02550729966429043
+Z-nerolidol,Z.nerolidol,alcohol,0.07792450663813306,-0.14946952447371709
+Z-nerolidol,Z.nerolidol,co2,0.1402034658508041,0.0484519904196569
+Z-nerolidol,Z.nerolidol,aftertaste,0.2558011339319653,0.1824180225444843
+Z-nerolidol,Z.nerolidol,body,0.17251687900955961,0.043509946014131835
+Z-nerolidol,Z.nerolidol,overall,0.10820373603489586,0.05883190712140825
+Acetic acid,acetic_acid.g.L.,A_malt_all,-0.0430950340815848,-0.06878256291554516
+Acetic acid,acetic_acid.g.L.,A_malt_grain,0.0020058984812174278,-0.005325770665592698
+Acetic acid,acetic_acid.g.L.,A_malt_bread,-0.006874450775515007,-0.02451030264696005
+Acetic acid,acetic_acid.g.L.,A_malt_cara,-0.09997054085463684,-0.1270312183776115
+Acetic acid,acetic_acid.g.L.,A_malt_burn,-0.018181270168862222,-0.03464681028905203
+Acetic acid,acetic_acid.g.L.,A_hops_all,-0.04468421447010249,-0.07234734543815861
+Acetic acid,acetic_acid.g.L.,A_hops_citrus,-0.14536437313137363,-0.15389389131078848
+Acetic acid,acetic_acid.g.L.,A_hops_tropical,-0.12400958232015757,-0.13590633096030683
+Acetic acid,acetic_acid.g.L.,A_hops_noble,0.009163577041040163,-0.013881876100594062
+Acetic acid,acetic_acid.g.L.,A_hops_woody,0.08630734055315487,0.08193074405833953
+Acetic acid,acetic_acid.g.L.,A_esters_all,0.057088109471415696,0.04141878860160709
+Acetic acid,acetic_acid.g.L.,A_esters_ethac,0.0019951509184749226,-0.020663033579059766
+Acetic acid,acetic_acid.g.L.,A_esters_isoaa,-0.07953060783347954,-0.0886786447641932
+Acetic acid,acetic_acid.g.L.,A_esters_flower,0.12819264265486263,0.1223235934514552
+Acetic acid,acetic_acid.g.L.,A_esters_fruity,0.08251833148867235,0.08648647625956521
+Acetic acid,acetic_acid.g.L.,F_malt_all,-0.1293861421759695,-0.1816379491619958
+Acetic acid,acetic_acid.g.L.,F_malt_grain,-0.05614192016281681,-0.06673708734851984
+Acetic acid,acetic_acid.g.L.,F_malt_bread,-0.08744808473819753,-0.1202911808097013
+Acetic acid,acetic_acid.g.L.,F_malt_cara,-0.1067206007807091,-0.14308528617370506
+Acetic acid,acetic_acid.g.L.,F_malt_burn,-0.11678813094412693,-0.1604782976048335
+Acetic acid,acetic_acid.g.L.,F_hops_all,-0.03574129612422994,-0.07220779746073185
+Acetic acid,acetic_acid.g.L.,F_hops_citrus,-0.025470622282941686,-0.02447072497559721
+Acetic acid,acetic_acid.g.L.,F_hops_tropical,-0.06949616625073422,-0.08144653174392996
+Acetic acid,acetic_acid.g.L.,F_hops_noble,-0.0030262311805832613,-0.03443563548083758
+Acetic acid,acetic_acid.g.L.,F_hops_woody,-0.08122358452064586,-0.10264296778321118
+Acetic acid,acetic_acid.g.L.,F_esters_all,0.1282200021855355,0.11288255417731621
+Acetic acid,acetic_acid.g.L.,F_esters_ethac,0.10947397443458806,0.08998282926698067
+Acetic acid,acetic_acid.g.L.,F_esters_isoaa,0.01682635193027018,0.005391331001481478
+Acetic acid,acetic_acid.g.L.,F_esters_flower,0.10199610462539316,0.10004203019631162
+Acetic acid,acetic_acid.g.L.,F_esters_fruity,0.24405781303049312,0.24371593405168981
+Acetic acid,acetic_acid.g.L.,acidity,0.4159997997607498,0.445603976791955
+Acetic acid,acetic_acid.g.L.,bitternes,-0.181217873910096,-0.24846939990971967
+Acetic acid,acetic_acid.g.L.,sweetness,0.03207941475373518,0.03404290608827934
+Acetic acid,acetic_acid.g.L.,X4vg,-0.25700262518959527,-0.2745347415829402
+Acetic acid,acetic_acid.g.L.,diacetyl,-0.0339653883103448,-0.034325565930127096
+Acetic acid,acetic_acid.g.L.,dms,-0.03684466529194346,-0.03444711933471711
+Acetic acid,acetic_acid.g.L.,metallic,-0.07693352275746779,-0.081841444480322
+Acetic acid,acetic_acid.g.L.,stale_hops,0.09160367280933897,0.09477231661688115
+Acetic acid,acetic_acid.g.L.,t2n,-0.0716327492295027,-0.0631467939522044
+Acetic acid,acetic_acid.g.L.,orange,-0.043558028519323666,-0.02592871544801567
+Acetic acid,acetic_acid.g.L.,coriander,0.07807987603926256,0.08560037533922092
+Acetic acid,acetic_acid.g.L.,clove,0.04024310630674287,0.03510699308325741
+Acetic acid,acetic_acid.g.L.,lactic,0.410343889777278,0.43443238896962166
+Acetic acid,acetic_acid.g.L.,acetic,0.3543263650185447,0.3588603572593801
+Acetic acid,acetic_acid.g.L.,barnyard,0.09100178845469759,0.09578376358205565
+Acetic acid,acetic_acid.g.L.,alcohol,-0.08638694632847997,-0.2416825736371674
+Acetic acid,acetic_acid.g.L.,co2,-0.0030938289273516463,-0.040687596148535975
+Acetic acid,acetic_acid.g.L.,aftertaste,0.1867803198718425,0.1796958695467819
+Acetic acid,acetic_acid.g.L.,body,0.05148086233001822,0.007440460563221017
+Acetic acid,acetic_acid.g.L.,overall,-0.03660816837404595,-0.05576222563453734
+Lactic acid,lactic_acid.mg.L.,A_malt_all,-0.02457427465200894,-0.0678459690146124
+Lactic acid,lactic_acid.mg.L.,A_malt_grain,-0.045912479820515974,-0.059840891286006094
+Lactic acid,lactic_acid.mg.L.,A_malt_bread,-0.012054605354248077,-0.044056396373216906
+Lactic acid,lactic_acid.mg.L.,A_malt_cara,0.009189375288940146,-0.029139215619373188
+Lactic acid,lactic_acid.mg.L.,A_malt_burn,0.03284049582598833,0.005267122756837835
+Lactic acid,lactic_acid.mg.L.,A_hops_all,-0.13949838025143466,-0.1945253670986156
+Lactic acid,lactic_acid.mg.L.,A_hops_citrus,-0.13633018211895884,-0.1513603359534322
+Lactic acid,lactic_acid.mg.L.,A_hops_tropical,-0.09836395140694394,-0.11858381161046996
+Lactic acid,lactic_acid.mg.L.,A_hops_noble,-0.09160925040870298,-0.14111351461166297
+Lactic acid,lactic_acid.mg.L.,A_hops_woody,-0.03867855024112235,-0.0477375371974032
+Lactic acid,lactic_acid.mg.L.,A_esters_all,0.28296382744912546,0.26316886760800207
+Lactic acid,lactic_acid.mg.L.,A_esters_ethac,0.15764363253117109,0.12702952203459053
+Lactic acid,lactic_acid.mg.L.,A_esters_isoaa,0.1331915816201604,0.12012804459012986
+Lactic acid,lactic_acid.mg.L.,A_esters_flower,0.11501626030803593,0.10402309544939015
+Lactic acid,lactic_acid.mg.L.,A_esters_fruity,0.18561887777371727,0.1938234332188592
+Lactic acid,lactic_acid.mg.L.,F_malt_all,-0.08554292305965709,-0.1603303894276038
+Lactic acid,lactic_acid.mg.L.,F_malt_grain,-0.016236413175738006,-0.034348003374828996
+Lactic acid,lactic_acid.mg.L.,F_malt_bread,-0.028091667486570066,-0.07736909773773612
+Lactic acid,lactic_acid.mg.L.,F_malt_cara,0.020071761805035886,-0.02719034401257824
+Lactic acid,lactic_acid.mg.L.,F_malt_burn,-0.13774422591546684,-0.20948531386102062
+Lactic acid,lactic_acid.mg.L.,F_hops_all,-0.1781989025512481,-0.25880640498321184
+Lactic acid,lactic_acid.mg.L.,F_hops_citrus,-0.15821010391143644,-0.15739589235786616
+Lactic acid,lactic_acid.mg.L.,F_hops_tropical,-0.07478226009848989,-0.09597347023043208
+Lactic acid,lactic_acid.mg.L.,F_hops_noble,-0.15397114992473904,-0.22834647467321398
+Lactic acid,lactic_acid.mg.L.,F_hops_woody,-0.1469616816084894,-0.18648952073888164
+Lactic acid,lactic_acid.mg.L.,F_esters_all,0.2780715149649671,0.25501486336918233
+Lactic acid,lactic_acid.mg.L.,F_esters_ethac,0.19715595531599786,0.16272956011066275
+Lactic acid,lactic_acid.mg.L.,F_esters_isoaa,0.17913803291119312,0.16203498281303985
+Lactic acid,lactic_acid.mg.L.,F_esters_flower,0.04951687067075706,0.045848294490041096
+Lactic acid,lactic_acid.mg.L.,F_esters_fruity,0.17737993155837167,0.17702518811394094
+Lactic acid,lactic_acid.mg.L.,acidity,0.318740361063481,0.3597634400858506
+Lactic acid,lactic_acid.mg.L.,bitternes,-0.2449686723116149,-0.354667056931611
+Lactic acid,lactic_acid.mg.L.,sweetness,0.14747914190916717,0.15196004540690203
+Lactic acid,lactic_acid.mg.L.,X4vg,-0.22427241330508377,-0.25224250411657945
+Lactic acid,lactic_acid.mg.L.,diacetyl,0.028659850902585677,0.028331565030183074
+Lactic acid,lactic_acid.mg.L.,dms,-0.06722699563621126,-0.06320237830623553
+Lactic acid,lactic_acid.mg.L.,metallic,0.07017875669024526,0.06257705144395921
+Lactic acid,lactic_acid.mg.L.,stale_hops,0.056732382392169746,0.06240646177293937
+Lactic acid,lactic_acid.mg.L.,t2n,-0.07305237728464321,-0.057307872383728906
+Lactic acid,lactic_acid.mg.L.,orange,-0.04908476546948767,-0.015956565032784073
+Lactic acid,lactic_acid.mg.L.,coriander,0.06516457218011756,0.07850692201428215
+Lactic acid,lactic_acid.mg.L.,clove,0.1245241799147335,0.11609414029051768
+Lactic acid,lactic_acid.mg.L.,lactic,0.4475322568342476,0.48597213510496184
+Lactic acid,lactic_acid.mg.L.,acetic,0.34367324795395854,0.35250163570245185
+Lactic acid,lactic_acid.mg.L.,barnyard,0.06932695680894882,0.07790206688642218
+Lactic acid,lactic_acid.mg.L.,alcohol,-0.029470631518864577,-0.21729046481172584
+Lactic acid,lactic_acid.mg.L.,co2,0.014168132474947722,-0.05079524092712419
+Lactic acid,lactic_acid.mg.L.,aftertaste,0.14759308019810236,0.10292427923853212
+Lactic acid,lactic_acid.mg.L.,body,0.06487965246002297,-0.02704165141263137
+Lactic acid,lactic_acid.mg.L.,overall,0.046028826631763504,0.015945827840920582
+Diacetyl,X2.3.butanedione,A_malt_all,-0.0071143867972551416,-0.03379681592784092
+Diacetyl,X2.3.butanedione,A_malt_grain,-0.08080360807474728,-0.09093467850557688
+Diacetyl,X2.3.butanedione,A_malt_bread,0.0512417354814308,0.034066997211212986
+Diacetyl,X2.3.butanedione,A_malt_cara,0.0035538928878309567,-0.021821235878839215
+Diacetyl,X2.3.butanedione,A_malt_burn,0.02898110868838805,0.013246756344317588
+Diacetyl,X2.3.butanedione,A_hops_all,0.15032997867869638,0.13273428548041297
+Diacetyl,X2.3.butanedione,A_hops_citrus,0.163672013995727,0.15831126832114698
+Diacetyl,X2.3.butanedione,A_hops_tropical,0.020154633029160495,0.0073567665784957815
+Diacetyl,X2.3.butanedione,A_hops_noble,0.18967274728710937,0.17487321458433694
+Diacetyl,X2.3.butanedione,A_hops_woody,0.06819970546000964,0.06409714386326255
+Diacetyl,X2.3.butanedione,A_esters_all,0.12586679377714274,0.10937594441495202
+Diacetyl,X2.3.butanedione,A_esters_ethac,0.18297368350068288,0.16782302851111866
+Diacetyl,X2.3.butanedione,A_esters_isoaa,0.05975154283745471,0.05106302718749836
+Diacetyl,X2.3.butanedione,A_esters_flower,0.08642039609053741,0.08151584846363708
+Diacetyl,X2.3.butanedione,A_esters_fruity,0.055616377052592945,0.05922047721518863
+Diacetyl,X2.3.butanedione,F_malt_all,-0.006594215385459503,-0.047582113240530265
+Diacetyl,X2.3.butanedione,F_malt_grain,-0.20006828473922267,-0.21439698837599216
+Diacetyl,X2.3.butanedione,F_malt_bread,-0.005215046734461229,-0.03554220807011097
+Diacetyl,X2.3.butanedione,F_malt_cara,-0.06489740385716632,-0.10159915596835153
+Diacetyl,X2.3.butanedione,F_malt_burn,0.06593333345480142,0.03755104160848632
+Diacetyl,X2.3.butanedione,F_hops_all,0.15940524965300368,0.1406196074532646
+Diacetyl,X2.3.butanedione,F_hops_citrus,0.07715432973379781,0.07960821668118018
+Diacetyl,X2.3.butanedione,F_hops_tropical,-0.01652396397938872,-0.030632562764233977
+Diacetyl,X2.3.butanedione,F_hops_noble,0.17206908036730476,0.15477047654079015
+Diacetyl,X2.3.butanedione,F_hops_woody,0.12127807153938215,0.10456144992974002
+Diacetyl,X2.3.butanedione,F_esters_all,0.09327487623662435,0.07068766963466858
+Diacetyl,X2.3.butanedione,F_esters_ethac,0.16728093097319127,0.14930679345750208
+Diacetyl,X2.3.butanedione,F_esters_isoaa,-0.0019765327988324225,-0.015774652444365284
+Diacetyl,X2.3.butanedione,F_esters_flower,-0.027270046129891746,-0.029206407183206946
+Diacetyl,X2.3.butanedione,F_esters_fruity,-0.019551020941897847,-0.021530359891223306
+Diacetyl,X2.3.butanedione,acidity,0.08427154379633138,0.10580811855174709
+Diacetyl,X2.3.butanedione,bitternes,0.20589100799335197,0.19381199911172742
+Diacetyl,X2.3.butanedione,sweetness,-0.09514860834927019,-0.09423511233696326
+Diacetyl,X2.3.butanedione,X4vg,-0.021541951584425647,-0.036913722385029976
+Diacetyl,X2.3.butanedione,diacetyl,-0.1010210231623724,-0.10120792946268896
+Diacetyl,X2.3.butanedione,dms,-0.11335463765844142,-0.10996090842316635
+Diacetyl,X2.3.butanedione,metallic,0.0040770599062121575,-0.001771323622729206
+Diacetyl,X2.3.butanedione,stale_hops,-0.05274826249639979,-0.049505313404447054
+Diacetyl,X2.3.butanedione,t2n,-0.06951070945343672,-0.05777054001839218
+Diacetyl,X2.3.butanedione,orange,-0.021997922239441522,-0.00029053008317974683
+Diacetyl,X2.3.butanedione,coriander,-0.04704830519399322,-0.041541616148481446
+Diacetyl,X2.3.butanedione,clove,-0.19099896702757765,-0.2005410701556694
+Diacetyl,X2.3.butanedione,lactic,-0.0014200331375842465,0.014685427118229642
+Diacetyl,X2.3.butanedione,acetic,0.07658643296320561,0.07974349494827151
+Diacetyl,X2.3.butanedione,barnyard,-0.05893509215433229,-0.05407227272118349
+Diacetyl,X2.3.butanedione,alcohol,0.13350805314294187,0.12319821419925865
+Diacetyl,X2.3.butanedione,co2,0.0503691364782673,0.013567595498787137
+Diacetyl,X2.3.butanedione,aftertaste,0.22280581204599456,0.21391359056521717
+Diacetyl,X2.3.butanedione,body,0.14632021883716112,0.13143433416353079
+Diacetyl,X2.3.butanedione,overall,0.11169803491738059,0.09626032489816212
+4-vinylguaiacol,X4VG,A_malt_all,-0.16766942251288153,-0.14366646751340703
+4-vinylguaiacol,X4VG,A_malt_grain,-0.045795535489325495,-0.03505966597642805
+4-vinylguaiacol,X4VG,A_malt_bread,-0.12201989618360977,-0.10036401709209433
+4-vinylguaiacol,X4VG,A_malt_cara,-0.1996003990824564,-0.17849640906569578
+4-vinylguaiacol,X4VG,A_malt_burn,-0.04156926681230722,-0.01868779695379278
+4-vinylguaiacol,X4VG,A_hops_all,0.19855322275527248,0.2508386697637578
+4-vinylguaiacol,X4VG,A_hops_citrus,0.17480812700822262,0.18795959204080356
+4-vinylguaiacol,X4VG,A_hops_tropical,0.16092600159594592,0.17918818530132394
+4-vinylguaiacol,X4VG,A_hops_noble,0.05458721299103412,0.09466671318625133
+4-vinylguaiacol,X4VG,A_hops_woody,0.08642904205410792,0.09443353772411367
+4-vinylguaiacol,X4VG,A_esters_all,-0.08670327089199018,-0.0629238484553177
+4-vinylguaiacol,X4VG,A_esters_ethac,-0.095739553192326,-0.0671254465332385
+4-vinylguaiacol,X4VG,A_esters_isoaa,0.054531737865315136,0.06799954069258614
+4-vinylguaiacol,X4VG,A_esters_flower,-0.08668061282699988,-0.07708742033667587
+4-vinylguaiacol,X4VG,A_esters_fruity,0.07671873174424067,0.07160558364522572
+4-vinylguaiacol,X4VG,F_malt_all,-0.17431924325161366,-0.14575854679703087
+4-vinylguaiacol,X4VG,F_malt_grain,-0.08202209496543397,-0.06831570656061933
+4-vinylguaiacol,X4VG,F_malt_bread,-0.10465729182737592,-0.0736641668806075
+4-vinylguaiacol,X4VG,F_malt_cara,-0.13798068679154352,-0.10886757071012125
+4-vinylguaiacol,X4VG,F_malt_burn,-0.00021211971896135294,0.04694719071110995
+4-vinylguaiacol,X4VG,F_hops_all,0.12632849805942653,0.19115197298252962
+4-vinylguaiacol,X4VG,F_hops_citrus,0.17615318563415247,0.17541779355421644
+4-vinylguaiacol,X4VG,F_hops_tropical,0.10193008385153769,0.12045098102937814
+4-vinylguaiacol,X4VG,F_hops_noble,0.06379961182030526,0.11874209026829433
+4-vinylguaiacol,X4VG,F_hops_woody,0.053911315907301374,0.08400250906833633
+4-vinylguaiacol,X4VG,F_esters_all,-0.07895312418719615,-0.0471526777473841
+4-vinylguaiacol,X4VG,F_esters_ethac,-0.09422358322277553,-0.054908326640289405
+4-vinylguaiacol,X4VG,F_esters_isoaa,0.00021441332655688998,0.018212230735916237
+4-vinylguaiacol,X4VG,F_esters_flower,-0.004544295204423818,-0.0011577536456538644
+4-vinylguaiacol,X4VG,F_esters_fruity,-0.013710497821757336,-0.012442761260751412
+4-vinylguaiacol,X4VG,acidity,-0.04314412557497661,-0.06925569595583483
+4-vinylguaiacol,X4VG,bitternes,0.06142215655858089,0.12961545697464602
+4-vinylguaiacol,X4VG,sweetness,-0.039507650076826176,-0.04260151271343854
+4-vinylguaiacol,X4VG,X4vg,0.4726175296122828,0.5024131528466493
+4-vinylguaiacol,X4VG,diacetyl,-0.03382945097709949,-0.03355184146982883
+4-vinylguaiacol,X4VG,dms,0.1455155973115227,0.14250260539420417
+4-vinylguaiacol,X4VG,metallic,0.07470716596446161,0.08223680060358406
+4-vinylguaiacol,X4VG,stale_hops,0.07777795711196937,0.07381427443849004
+4-vinylguaiacol,X4VG,t2n,-0.062484927735100226,-0.07783460114650997
+4-vinylguaiacol,X4VG,orange,0.1539433455739601,0.1315550455023099
+4-vinylguaiacol,X4VG,coriander,0.19110863151425445,0.18255239248264507
+4-vinylguaiacol,X4VG,clove,0.17027647631621465,0.17990324134597974
+4-vinylguaiacol,X4VG,lactic,-0.15176277323023782,-0.1772104445963676
+4-vinylguaiacol,X4VG,acetic,-0.11432366167913914,-0.12012748776935062
+4-vinylguaiacol,X4VG,barnyard,0.08064853789401376,0.07451532405255898
+4-vinylguaiacol,X4VG,alcohol,-0.05023909884298943,0.05258030780627249
+4-vinylguaiacol,X4VG,co2,0.02143807069271021,0.08169411325845058
+4-vinylguaiacol,X4VG,aftertaste,-0.08962959083039494,-0.045465411136792165
+4-vinylguaiacol,X4VG,body,-0.08817111663883812,-0.02518583115080261
+4-vinylguaiacol,X4VG,overall,-0.07988071239408673,-0.05609687958912895
+Acetaldehyde,acetaldehyde,A_malt_all,0.3612112247321575,0.19053474530712347
+Acetaldehyde,acetaldehyde,A_malt_grain,0.15319428852192254,0.10447173797107602
+Acetaldehyde,acetaldehyde,A_malt_bread,0.23210225849643715,0.07525787003831465
+Acetaldehyde,acetaldehyde,A_malt_cara,0.35015716080772585,0.19270901122883807
+Acetaldehyde,acetaldehyde,A_malt_burn,0.15475423359739077,-0.014670141205292427
+Acetaldehyde,acetaldehyde,A_hops_all,0.1576580373396531,-0.12885775015625617
+Acetaldehyde,acetaldehyde,A_hops_citrus,0.06781421031335251,-0.013633798506696207
+Acetaldehyde,acetaldehyde,A_hops_tropical,0.11553431523730703,0.011954866435097314
+Acetaldehyde,acetaldehyde,A_hops_noble,0.12928429030684782,-0.15974922015718995
+Acetaldehyde,acetaldehyde,A_hops_woody,0.01345108425266589,-0.05230017167903095
+Acetaldehyde,acetaldehyde,A_esters_all,0.35302952047232755,0.24095364202571695
+Acetaldehyde,acetaldehyde,A_esters_ethac,0.33502815063533303,0.15416819881559993
+Acetaldehyde,acetaldehyde,A_esters_isoaa,0.1788229665035551,0.12617969721861144
+Acetaldehyde,acetaldehyde,A_esters_flower,0.17094597710764106,0.1362320610999576
+Acetaldehyde,acetaldehyde,A_esters_fruity,-0.00010598589926751022,0.05406739866303215
+Acetaldehyde,acetaldehyde,F_malt_all,0.47121028030926726,0.2276823051450822
+Acetaldehyde,acetaldehyde,F_malt_grain,0.1916037424478012,0.12256087175392161
+Acetaldehyde,acetaldehyde,F_malt_bread,0.3777257701291537,0.1797932787740987
+Acetaldehyde,acetaldehyde,F_malt_cara,0.43276316208056576,0.2480384693837903
+Acetaldehyde,acetaldehyde,F_malt_burn,0.3275323946756033,0.046023747290255365
+Acetaldehyde,acetaldehyde,F_hops_all,0.236419233492739,-0.11098294149934124
+Acetaldehyde,acetaldehyde,F_hops_citrus,-0.0210627940083773,-0.013499958954146971
+Acetaldehyde,acetaldehyde,F_hops_tropical,0.13835413604123645,0.03370785472749163
+Acetaldehyde,acetaldehyde,F_hops_noble,0.21001209044988642,-0.13747954816908725
+Acetaldehyde,acetaldehyde,F_hops_woody,0.06848869503826448,-0.16961229355872987
+Acetaldehyde,acetaldehyde,F_esters_all,0.4038719339509432,0.23289933053645492
+Acetaldehyde,acetaldehyde,F_esters_ethac,0.3854411051794281,0.09894485363829023
+Acetaldehyde,acetaldehyde,F_esters_isoaa,0.2438238205804399,0.16888835164608396
+Acetaldehyde,acetaldehyde,F_esters_flower,0.11090282061392583,0.12050362939915799
+Acetaldehyde,acetaldehyde,F_esters_fruity,0.0325496190360345,0.0321119037993333
+Acetaldehyde,acetaldehyde,acidity,-0.2282793128686071,-0.08781099358041677
+Acetaldehyde,acetaldehyde,bitternes,0.3010571503233737,-0.07801145752771282
+Acetaldehyde,acetaldehyde,sweetness,0.12306676758359514,0.1981341782236108
+Acetaldehyde,acetaldehyde,X4vg,0.10473326967665428,-0.03510301812276546
+Acetaldehyde,acetaldehyde,diacetyl,0.07635035591322203,0.10131009660695313
+Acetaldehyde,acetaldehyde,dms,-0.059426559222675,-0.04521874620142379
+Acetaldehyde,acetaldehyde,metallic,0.07318435027493138,0.03403676253889461
+Acetaldehyde,acetaldehyde,stale_hops,-0.09991138291579658,-0.0955954825542396
+Acetaldehyde,acetaldehyde,t2n,-0.10129564017511133,-0.0025874654649295885
+Acetaldehyde,acetaldehyde,orange,-0.2465724722103618,-0.06485723868641498
+Acetaldehyde,acetaldehyde,coriander,-0.19292797762542396,-0.1660590270769027
+Acetaldehyde,acetaldehyde,clove,0.08874850838243391,0.0438542658144754
+Acetaldehyde,acetaldehyde,lactic,-0.1478557834384646,-0.004008243021610906
+Acetaldehyde,acetaldehyde,acetic,-0.1050829348981184,-0.09629982451711883
+Acetaldehyde,acetaldehyde,barnyard,-0.12034778519738425,-0.10195832379316992
+Acetaldehyde,acetaldehyde,alcohol,0.6033738415248973,0.09340138862555114
+Acetaldehyde,acetaldehyde,co2,0.35639138397083153,0.019306737923403754
+Acetaldehyde,acetaldehyde,aftertaste,0.3740154562473,0.02680779351420951
+Acetaldehyde,acetaldehyde,body,0.5187954867716947,0.0439299662723514
+Acetaldehyde,acetaldehyde,overall,0.22359410550568806,0.05841024758387856
+Carbon disulfide,CS2,A_malt_all,0.04599005754335078,0.03586052411777932
+Carbon disulfide,CS2,A_malt_grain,0.052908815617439174,0.04912894454966345
+Carbon disulfide,CS2,A_malt_bread,0.03893160918730586,0.030514850570237454
+Carbon disulfide,CS2,A_malt_cara,-0.051395644649032846,-0.06633808995340844
+Carbon disulfide,CS2,A_malt_burn,-0.003097748176952986,-0.012177781276128433
+Carbon disulfide,CS2,A_hops_all,0.012593371408767628,-0.0003617723775613419
+Carbon disulfide,CS2,A_hops_citrus,-0.0060828730392985305,-0.010254528760780039
+Carbon disulfide,CS2,A_hops_tropical,-0.053880984008378124,-0.06030064299088104
+Carbon disulfide,CS2,A_hops_noble,0.04404794851473549,0.03356013564764961
+Carbon disulfide,CS2,A_hops_woody,-0.04625739675826906,-0.04912790158346718
+Carbon disulfide,CS2,A_esters_all,0.01336284282538487,0.003719112090844659
+Carbon disulfide,CS2,A_esters_ethac,0.11684028309912316,0.11109912091684412
+Carbon disulfide,CS2,A_esters_isoaa,-0.03216506693121736,-0.03716105006285274
+Carbon disulfide,CS2,A_esters_flower,0.08287225993878426,0.07951427985803777
+Carbon disulfide,CS2,A_esters_fruity,0.029149122972783503,0.031287801209024795
+Carbon disulfide,CS2,F_malt_all,0.037952227267425385,0.023526880719086627
+Carbon disulfide,CS2,F_malt_grain,-0.04452018624035946,-0.05062402475215258
+Carbon disulfide,CS2,F_malt_bread,0.07868937288055824,0.07019489517445342
+Carbon disulfide,CS2,F_malt_cara,-0.002618187601453096,-0.0181715819433915
+Carbon disulfide,CS2,F_malt_burn,0.0645741803293266,0.054172579971059225
+Carbon disulfide,CS2,F_hops_all,0.07282653867084266,0.0632249051840465
+Carbon disulfide,CS2,F_hops_citrus,-0.04700257499520009,-0.046442647690561896
+Carbon disulfide,CS2,F_hops_tropical,0.006758261217038138,0.000729796023926746
+Carbon disulfide,CS2,F_hops_noble,0.08792794557689382,0.08007280271858272
+Carbon disulfide,CS2,F_hops_woody,0.0791343934255505,0.07200051689569577
+Carbon disulfide,CS2,F_esters_all,0.07744516944328216,0.0690090471235492
+Carbon disulfide,CS2,F_esters_ethac,0.11413948695853753,0.10986616832355628
+Carbon disulfide,CS2,F_esters_isoaa,-0.056329920872716065,-0.06393839342274686
+Carbon disulfide,CS2,F_esters_flower,0.043030923393905456,0.04182534514349605
+Carbon disulfide,CS2,F_esters_fruity,-0.010358217275480896,-0.010859410840795999
+Carbon disulfide,CS2,acidity,0.04571551909536755,0.05621681440477987
+Carbon disulfide,CS2,bitternes,0.1016492629553755,0.09651336476196867
+Carbon disulfide,CS2,sweetness,-0.12097917327022632,-0.1200460785551866
+Carbon disulfide,CS2,X4vg,-0.04213177436110472,-0.04990133631038053
+Carbon disulfide,CS2,diacetyl,-0.17654996573380766,-0.17683296630979853
+Carbon disulfide,CS2,dms,0.014988868755270848,0.016425443372756407
+Carbon disulfide,CS2,metallic,-0.08941264324533406,-0.09227210864308377
+Carbon disulfide,CS2,stale_hops,-0.05625449799847856,-0.05471549783127642
+Carbon disulfide,CS2,t2n,-0.032303065726280486,-0.027352678255483685
+Carbon disulfide,CS2,orange,-0.17926472834540172,-0.17641072013191034
+Carbon disulfide,CS2,coriander,0.01039949012250176,0.014375280563279361
+Carbon disulfide,CS2,clove,-0.05013160466794495,-0.05336886415305076
+Carbon disulfide,CS2,lactic,0.09869584805322482,0.1088539442984513
+Carbon disulfide,CS2,acetic,0.12922975915470167,0.1313686858139878
+Carbon disulfide,CS2,barnyard,-0.05644404854114471,-0.05413249546244496
+Carbon disulfide,CS2,alcohol,0.07501825786939562,0.07846666038845017
+Carbon disulfide,CS2,co2,0.020513292727089436,0.0026842302800364174
+Carbon disulfide,CS2,aftertaste,0.19312187471978312,0.20375527661721698
+Carbon disulfide,CS2,body,0.06388882714109999,0.05421431688744168
+Carbon disulfide,CS2,overall,0.02854634841839471,0.01959792320577289
+Dimethyl sulfide,DMS,A_malt_all,-0.08911977902746364,-0.25018555255782604
+Dimethyl sulfide,DMS,A_malt_grain,-0.15537352380810035,-0.21665829018070965
+Dimethyl sulfide,DMS,A_malt_bread,-0.06820112772057584,-0.1883604002102076
+Dimethyl sulfide,DMS,A_malt_cara,-0.027995890997112177,-0.17012181041321722
+Dimethyl sulfide,DMS,A_malt_burn,0.04645591707267023,-0.05045914316204786
+Dimethyl sulfide,DMS,A_hops_all,0.39642666716850083,0.30159453691276006
+Dimethyl sulfide,DMS,A_hops_citrus,0.18193876589426455,0.15128865505461447
+Dimethyl sulfide,DMS,A_hops_tropical,0.31418123458289887,0.2792299045394642
+Dimethyl sulfide,DMS,A_hops_noble,0.3291766532401711,0.22732327090017623
+Dimethyl sulfide,DMS,A_hops_woody,0.013802078942674646,-0.015880698229917226
+Dimethyl sulfide,DMS,A_esters_all,0.11514923438775018,0.013791772142458369
+Dimethyl sulfide,DMS,A_esters_ethac,0.06898849148633979,-0.06746035930804016
+Dimethyl sulfide,DMS,A_esters_isoaa,0.15385909190929853,0.11441124179639005
+Dimethyl sulfide,DMS,A_esters_flower,0.11002734172636018,0.07566061003347875
+Dimethyl sulfide,DMS,A_esters_fruity,0.06469133526884725,0.09375419399291997
+Dimethyl sulfide,DMS,F_malt_all,0.0050412345955879855,-0.21634468388423023
+Dimethyl sulfide,DMS,F_malt_grain,-0.10050364335499504,-0.17337944590264456
+Dimethyl sulfide,DMS,F_malt_bread,-0.01931528451219942,-0.18916101027996404
+Dimethyl sulfide,DMS,F_malt_cara,0.06178786985247122,-0.10190999928882684
+Dimethyl sulfide,DMS,F_malt_burn,0.12196621977658742,-0.05197799570499146
+Dimethyl sulfide,DMS,F_hops_all,0.417728956071247,0.29825797281982147
+Dimethyl sulfide,DMS,F_hops_citrus,0.18128180909390693,0.20314085099648238
+Dimethyl sulfide,DMS,F_hops_tropical,0.2754041276206145,0.232670410328747
+Dimethyl sulfide,DMS,F_hops_noble,0.3383064115867081,0.20655001451879104
+Dimethyl sulfide,DMS,F_hops_woody,0.12300630457874882,0.021761177801652706
+Dimethyl sulfide,DMS,F_esters_all,0.08168309892958286,-0.06410818431083128
+Dimethyl sulfide,DMS,F_esters_ethac,0.04578296828626779,-0.16306423307499787
+Dimethyl sulfide,DMS,F_esters_isoaa,0.11008180120909869,0.04553647624039212
+Dimethyl sulfide,DMS,F_esters_flower,-0.05099461392260565,-0.069595172022088
+Dimethyl sulfide,DMS,F_esters_fruity,0.013856522932131578,0.00939189003284602
+Dimethyl sulfide,DMS,acidity,-0.1103739916842656,-0.019841486506065847
+Dimethyl sulfide,DMS,bitternes,0.4255942546504357,0.29045876815079447
+Dimethyl sulfide,DMS,sweetness,-0.0922348905946727,-0.08780167593854078
+Dimethyl sulfide,DMS,X4vg,0.17340620272055657,0.11175862804667606
+Dimethyl sulfide,DMS,diacetyl,-0.18429511457842743,-0.2014404099713732
+Dimethyl sulfide,DMS,dms,0.08786012853043476,0.11132531430042496
+Dimethyl sulfide,DMS,metallic,0.027786674172999144,0.0008323372313213621
+Dimethyl sulfide,DMS,stale_hops,0.03135888180255602,0.05257599570570717
+Dimethyl sulfide,DMS,t2n,-0.056241049997368064,-0.0010851466194047024
+Dimethyl sulfide,DMS,orange,-0.09752858446031684,0.016466535998763594
+Dimethyl sulfide,DMS,coriander,0.005200442786651006,0.05015835517705178
+Dimethyl sulfide,DMS,clove,-0.01592698397098398,-0.051807430589547836
+Dimethyl sulfide,DMS,lactic,-0.22502045943550342,-0.15999221305563857
+Dimethyl sulfide,DMS,acetic,-0.1210352386990591,-0.10983349661045881
+Dimethyl sulfide,DMS,barnyard,0.015361847437821891,0.044890927358785256
+Dimethyl sulfide,DMS,alcohol,0.3553187857642518,0.07838591191235267
+Dimethyl sulfide,DMS,co2,0.34338278184258725,0.18999708126988546
+Dimethyl sulfide,DMS,aftertaste,0.3039673594777516,0.1333686504683194
+Dimethyl sulfide,DMS,body,0.2546577589957099,-0.0332124109955587
+Dimethyl sulfide,DMS,overall,0.22734584553352852,0.14121474508805554
+Diethyl sulfide,DES,A_malt_all,0.15793820132230385,0.052116179397231274
+Diethyl sulfide,DES,A_malt_grain,0.01699746625370265,-0.02209717880772254
+Diethyl sulfide,DES,A_malt_bread,0.11244215434161853,0.02835374675074148
+Diethyl sulfide,DES,A_malt_cara,0.18424483209166836,0.08841495227012314
+Diethyl sulfide,DES,A_malt_burn,0.24289691276844594,0.17832890098464838
+Diethyl sulfide,DES,A_hops_all,0.3138008869066593,0.22197123069197316
+Diethyl sulfide,DES,A_hops_citrus,0.26060829409687014,0.23820321747407075
+Diethyl sulfide,DES,A_hops_tropical,0.12920697249481117,0.08329576798532184
+Diethyl sulfide,DES,A_hops_noble,0.28727207582474523,0.19494451296032975
+Diethyl sulfide,DES,A_hops_woody,0.1687987927731668,0.15327229670785783
+Diethyl sulfide,DES,A_esters_all,0.01884827991479006,-0.07760598179440574
+Diethyl sulfide,DES,A_esters_ethac,0.12134501160292484,0.011724610784546355
+Diethyl sulfide,DES,A_esters_isoaa,0.09657882186558744,0.05770746230234006
+Diethyl sulfide,DES,A_esters_flower,-0.07222499747673625,-0.11459497723267971
+Diethyl sulfide,DES,A_esters_fruity,-0.11494763462171247,-0.10205294195983526
+Diethyl sulfide,DES,F_malt_all,0.29460013091276605,0.16516707571873598
+Diethyl sulfide,DES,F_malt_grain,0.05345080369056454,0.003518174884567642
+Diethyl sulfide,DES,F_malt_bread,0.26050501722352726,0.15596234334777
+Diethyl sulfide,DES,F_malt_cara,0.2597803781381283,0.1504314971234523
+Diethyl sulfide,DES,F_malt_burn,0.29418657830319606,0.17705204231542448
+Diethyl sulfide,DES,F_hops_all,0.2839902112122798,0.16032730416280733
+Diethyl sulfide,DES,F_hops_citrus,0.1085652719079953,0.12094745694314629
+Diethyl sulfide,DES,F_hops_tropical,0.10866897936778137,0.05755403838548844
+Diethyl sulfide,DES,F_hops_noble,0.2814356151908117,0.161141375072664
+Diethyl sulfide,DES,F_hops_woody,0.20648616662641803,0.12830091900887378
+Diethyl sulfide,DES,F_esters_all,0.0012985694328081477,-0.13358960429199376
+Diethyl sulfide,DES,F_esters_ethac,0.12114338986148894,-0.041105836337213826
+Diethyl sulfide,DES,F_esters_isoaa,0.03497269404504979,-0.026623280577191575
+Diethyl sulfide,DES,F_esters_flower,-0.11323767083792584,-0.13237063496249007
+Diethyl sulfide,DES,F_esters_fruity,-0.2915945449808182,-0.31407807390675113
+Diethyl sulfide,DES,acidity,-0.20169638958845346,-0.13255957349036426
+Diethyl sulfide,DES,bitternes,0.3640304577176973,0.24021249880649015
+Diethyl sulfide,DES,sweetness,-0.09042300619533958,-0.08563476799620917
+Diethyl sulfide,DES,X4vg,0.32578440618090565,0.28423846124671365
+Diethyl sulfide,DES,diacetyl,-0.011749877292301005,-0.014045774795839246
+Diethyl sulfide,DES,dms,0.1284087121572662,0.1499970266435507
+Diethyl sulfide,DES,metallic,0.17656298719953922,0.16278563262656337
+Diethyl sulfide,DES,stale_hops,0.08505271811241527,0.10610478170259922
+Diethyl sulfide,DES,t2n,0.03600908151558956,0.09001711436227745
+Diethyl sulfide,DES,orange,-0.0818986694129038,0.0171037654238238
+Diethyl sulfide,DES,coriander,-0.031863925883193256,0.0038543372688736367
+Diethyl sulfide,DES,clove,0.1416601063097086,0.12142270390922567
+Diethyl sulfide,DES,lactic,-0.29782589703193013,-0.24718261294451913
+Diethyl sulfide,DES,acetic,-0.2791415907467738,-0.27824783996079866
+Diethyl sulfide,DES,barnyard,0.07554357353316721,0.10430735647918045
+Diethyl sulfide,DES,alcohol,0.3720697562119522,0.18353527349212287
+Diethyl sulfide,DES,co2,0.2770658923261872,0.13575155825064755
+Diethyl sulfide,DES,aftertaste,0.16621189142352502,-0.0077263723934903475
+Diethyl sulfide,DES,body,0.30141443399325357,0.0942722881009884
+Diethyl sulfide,DES,overall,0.11150441789941404,0.02560393636952951
+Hydrogen sulfide,H2S,A_malt_all,0.08359619395844174,-0.11939700488817666
+Hydrogen sulfide,H2S,A_malt_grain,0.031234903292775784,-0.034654590686283016
+Hydrogen sulfide,H2S,A_malt_bread,0.023247289586533538,-0.14136346506966124
+Hydrogen sulfide,H2S,A_malt_cara,0.13034197183987925,-0.04734269580230108
+Hydrogen sulfide,H2S,A_malt_burn,0.04345207933554476,-0.10233625615360208
+Hydrogen sulfide,H2S,A_hops_all,0.10669167656515674,-0.10418185116936267
+Hydrogen sulfide,H2S,A_hops_citrus,0.10545699562789869,0.05414905293633408
+Hydrogen sulfide,H2S,A_hops_tropical,0.03725803819222906,-0.05432289467492818
+Hydrogen sulfide,H2S,A_hops_noble,0.0837535459723777,-0.1257914653766124
+Hydrogen sulfide,H2S,A_hops_woody,-0.0004954020735149795,-0.04744642290658005
+Hydrogen sulfide,H2S,A_esters_all,0.15786570311594714,0.01819821418345934
+Hydrogen sulfide,H2S,A_esters_ethac,0.24374460701896042,0.08294808294410291
+Hydrogen sulfide,H2S,A_esters_isoaa,0.12374826741518656,0.0661842350180975
+Hydrogen sulfide,H2S,A_esters_flower,0.05571222707204722,-0.0007940246920881596
+Hydrogen sulfide,H2S,A_esters_fruity,-0.06919255198122025,-0.04613888369841014
+Hydrogen sulfide,H2S,F_malt_all,0.1449548711819192,-0.1434019246782456
+Hydrogen sulfide,H2S,F_malt_grain,0.10399429046623052,0.028305650941064627
+Hydrogen sulfide,H2S,F_malt_bread,0.11174449057048245,-0.11059442538068669
+Hydrogen sulfide,H2S,F_malt_cara,0.14712219352080302,-0.07620180156237343
+Hydrogen sulfide,H2S,F_malt_burn,0.1326010484082053,-0.12734328624664595
+Hydrogen sulfide,H2S,F_hops_all,0.09750324644378865,-0.18575494668599682
+Hydrogen sulfide,H2S,F_hops_citrus,0.07612328315702994,0.10034216048293332
+Hydrogen sulfide,H2S,F_hops_tropical,0.0690874751188634,-0.023038148406082246
+Hydrogen sulfide,H2S,F_hops_noble,0.06794483495885445,-0.21450815079554672
+Hydrogen sulfide,H2S,F_hops_woody,-0.004554447042587316,-0.18257522851674826
+Hydrogen sulfide,H2S,F_esters_all,0.15602011111719444,-0.043583247972864225
+Hydrogen sulfide,H2S,F_esters_ethac,0.32670168942269373,0.10406504573838779
+Hydrogen sulfide,H2S,F_esters_isoaa,0.09536429134870725,-0.0002021125137466841
+Hydrogen sulfide,H2S,F_esters_flower,-0.02777506818932393,-0.05462737293576082
+Hydrogen sulfide,H2S,F_esters_fruity,-0.12005123593863497,-0.1504818743723463
+Hydrogen sulfide,H2S,acidity,-0.10369903989149085,0.030504080252817544
+Hydrogen sulfide,H2S,bitternes,0.16861716087128403,-0.13917802673294075
+Hydrogen sulfide,H2S,sweetness,0.038544331414184806,0.06399733442155134
+Hydrogen sulfide,H2S,X4vg,0.23195831551333745,0.15865561104420808
+Hydrogen sulfide,H2S,diacetyl,0.10307686047737764,0.11905039615556501
+Hydrogen sulfide,H2S,dms,0.1384884347596352,0.18832084448390374
+Hydrogen sulfide,H2S,metallic,0.2173239991319101,0.21306846060679685
+Hydrogen sulfide,H2S,stale_hops,0.002007638824436593,0.030585512696151847
+Hydrogen sulfide,H2S,t2n,0.09495024594287545,0.20522901875588487
+Hydrogen sulfide,H2S,orange,-0.13923790853760604,0.020496714509323787
+Hydrogen sulfide,H2S,coriander,-0.052179301025633326,0.005495897901538856
+Hydrogen sulfide,H2S,clove,0.12584498109809253,0.09693483257022713
+Hydrogen sulfide,H2S,lactic,-0.20247328225054942,-0.10938485212259198
+Hydrogen sulfide,H2S,acetic,-0.10967205818619633,-0.09734156297708656
+Hydrogen sulfide,H2S,barnyard,-0.007286931166367748,0.03419842419359529
+Hydrogen sulfide,H2S,alcohol,0.37828513471045716,-0.11839187653996927
+Hydrogen sulfide,H2S,co2,0.22082605868640173,-0.06153635950778189
+Hydrogen sulfide,H2S,aftertaste,0.13032429392773578,-0.2014167220736901
+Hydrogen sulfide,H2S,body,0.2863788576027709,-0.16557865254789647
+Hydrogen sulfide,H2S,overall,0.14043472799830603,-0.0010042512740774103
+Methanethiol,MeSH,A_malt_all,0.28260169588666495,0.13455207153052587
+Methanethiol,MeSH,A_malt_grain,0.053843431832849224,-0.005926977571400143
+Methanethiol,MeSH,A_malt_bread,0.19243030191455118,0.06930450239148123
+Methanethiol,MeSH,A_malt_cara,0.2512975107698726,0.10749273659075717
+Methanethiol,MeSH,A_malt_burn,0.20554813561883245,0.0979148449425892
+Methanethiol,MeSH,A_hops_all,0.31878288414514044,0.16825366637417574
+Methanethiol,MeSH,A_hops_citrus,0.2281112461794782,0.19992693427550864
+Methanethiol,MeSH,A_hops_tropical,0.11608422628976307,0.04204547220574828
+Methanethiol,MeSH,A_hops_noble,0.2969696306415421,0.1469866909784033
+Methanethiol,MeSH,A_hops_woody,0.08141387118229308,0.05033564229803346
+Methanethiol,MeSH,A_esters_all,0.11620909134546153,-0.028337213259804137
+Methanethiol,MeSH,A_esters_ethac,0.2476963867402549,0.09248897612629452
+Methanethiol,MeSH,A_esters_isoaa,0.09599239360048421,0.034760668078694594
+Methanethiol,MeSH,A_esters_flower,0.020707121136083063,-0.04037913189215765
+Methanethiol,MeSH,A_esters_fruity,-0.0871188731703678,-0.06759868311324145
+Methanethiol,MeSH,F_malt_all,0.35636398266751823,0.14703571037340973
+Methanethiol,MeSH,F_malt_grain,0.013161045103642558,-0.07722577921854147
+Methanethiol,MeSH,F_malt_bread,0.30959176546841455,0.14624951944563366
+Methanethiol,MeSH,F_malt_cara,0.2967488214285046,0.12102061518351072
+Methanethiol,MeSH,F_malt_burn,0.4034753793060814,0.2326958153958433
+Methanethiol,MeSH,F_hops_all,0.4027216061908255,0.2230925881680234
+Methanethiol,MeSH,F_hops_citrus,0.12331957138871386,0.1544137821822948
+Methanethiol,MeSH,F_hops_tropical,0.07547524859974333,-0.012654717402036143
+Methanethiol,MeSH,F_hops_noble,0.3589091369203949,0.17310140614730893
+Methanethiol,MeSH,F_hops_woody,0.22889293153755758,0.10742082807388037
+Methanethiol,MeSH,F_esters_all,0.09450660010560169,-0.11441535408394159
+Methanethiol,MeSH,F_esters_ethac,0.31881802341855997,0.10073756708817441
+Methanethiol,MeSH,F_esters_isoaa,0.049096853522176,-0.0524778183691033
+Methanethiol,MeSH,F_esters_flower,-0.07624537715216428,-0.11037427948163776
+Methanethiol,MeSH,F_esters_fruity,-0.20906476342471625,-0.2530940794102356
+Methanethiol,MeSH,acidity,-0.22008017886105455,-0.1140505283797096
+Methanethiol,MeSH,bitternes,0.5108267714646485,0.3358889498896634
+Methanethiol,MeSH,sweetness,-0.13309394371928754,-0.13815277803991566
+Methanethiol,MeSH,X4vg,0.28324925535428735,0.22123464732148646
+Methanethiol,MeSH,diacetyl,-0.000944279992307835,-0.0038361357979950607
+Methanethiol,MeSH,dms,-0.009857513426208648,0.012071567734896838
+Methanethiol,MeSH,metallic,0.11124654101169833,0.08758576285802051
+Methanethiol,MeSH,stale_hops,0.039745956931893124,0.07384669733572725
+Methanethiol,MeSH,t2n,-0.116226280675867,-0.04887544480499966
+Methanethiol,MeSH,orange,-0.1272051690734692,0.030343470397608943
+Methanethiol,MeSH,coriander,-0.0006256662702699032,0.06451818642239719
+Methanethiol,MeSH,clove,0.07727634818533989,0.04021210985169137
+Methanethiol,MeSH,lactic,-0.24027909147776524,-0.15692598444541328
+Methanethiol,MeSH,acetic,-0.1500993828734296,-0.14461312945539026
+Methanethiol,MeSH,barnyard,0.0271731878865772,0.07327861145263768
+Methanethiol,MeSH,alcohol,0.5127218428773526,0.1776482200816999
+Methanethiol,MeSH,co2,0.2760073160907576,0.022426733519062023
+Methanethiol,MeSH,aftertaste,0.37670580329285264,0.14698521328740768
+Methanethiol,MeSH,body,0.46741234331355797,0.15699373164703498
+Methanethiol,MeSH,overall,0.2462112993807901,0.13168244769833745
+Sulfur dioxide,SO2.mg.L.,A_malt_all,-0.17186963054394416,-0.16487933461248405
+Sulfur dioxide,SO2.mg.L.,A_malt_grain,0.056934179446057165,0.06305955533913375
+Sulfur dioxide,SO2.mg.L.,A_malt_bread,-0.05915825719585784,-0.047895693880671976
+Sulfur dioxide,SO2.mg.L.,A_malt_cara,-0.22301082133265498,-0.21870110192728154
+Sulfur dioxide,SO2.mg.L.,A_malt_burn,-0.20549231901560794,-0.19959606477182273
+Sulfur dioxide,SO2.mg.L.,A_hops_all,-0.11147133277489683,-0.10042848345359771
+Sulfur dioxide,SO2.mg.L.,A_hops_citrus,-0.05563937945150061,-0.05041632459688768
+Sulfur dioxide,SO2.mg.L.,A_hops_tropical,-0.10087151673098656,-0.09440033151093793
+Sulfur dioxide,SO2.mg.L.,A_hops_noble,-0.030035118098812624,-0.01372089310602561
+Sulfur dioxide,SO2.mg.L.,A_hops_woody,-0.07954865176199982,-0.07615749691641797
+Sulfur dioxide,SO2.mg.L.,A_esters_all,-0.034563257769258636,-0.022023341005167174
+Sulfur dioxide,SO2.mg.L.,A_esters_ethac,0.0402327988607591,0.060347088910799006
+Sulfur dioxide,SO2.mg.L.,A_esters_isoaa,-0.1225009884084236,-0.11722926928047817
+Sulfur dioxide,SO2.mg.L.,A_esters_flower,-0.054522872126264665,-0.049590983624226426
+Sulfur dioxide,SO2.mg.L.,A_esters_fruity,-0.010091787059599127,-0.012955147206273263
+Sulfur dioxide,SO2.mg.L.,F_malt_all,-0.17214483781455797,-0.16877041547734184
+Sulfur dioxide,SO2.mg.L.,F_malt_grain,0.017964094988308744,0.025799615292325544
+Sulfur dioxide,SO2.mg.L.,F_malt_bread,-0.13816449534834754,-0.12901665967870724
+Sulfur dioxide,SO2.mg.L.,F_malt_cara,-0.20171644749143366,-0.1980768689314587
+Sulfur dioxide,SO2.mg.L.,F_malt_burn,-0.18478630395458887,-0.1811699421073058
+Sulfur dioxide,SO2.mg.L.,F_hops_all,-0.08201979126993385,-0.06686088323328578
+Sulfur dioxide,SO2.mg.L.,F_hops_citrus,-0.020967057190065405,-0.021813332717920846
+Sulfur dioxide,SO2.mg.L.,F_hops_tropical,-0.0015520301741325131,0.00680556650464707
+Sulfur dioxide,SO2.mg.L.,F_hops_noble,-0.03644516775808508,-0.016457307605337736
+Sulfur dioxide,SO2.mg.L.,F_hops_woody,-0.06651914614375949,-0.05516196347265768
+Sulfur dioxide,SO2.mg.L.,F_esters_all,-0.06792673313406412,-0.05372290047926331
+Sulfur dioxide,SO2.mg.L.,F_esters_ethac,-0.03471358922474275,-0.012959212612418107
+Sulfur dioxide,SO2.mg.L.,F_esters_isoaa,-0.06439534441992475,-0.05644535690295244
+Sulfur dioxide,SO2.mg.L.,F_esters_flower,-0.04532525310549654,-0.04368548702234193
+Sulfur dioxide,SO2.mg.L.,F_esters_fruity,-0.008171528023025738,-0.007507661664935538
+Sulfur dioxide,SO2.mg.L.,acidity,0.07879504717286889,0.06887773108386186
+Sulfur dioxide,SO2.mg.L.,bitternes,-0.06142244239302669,-0.04199273479916833
+Sulfur dioxide,SO2.mg.L.,sweetness,-0.008481438850581256,-0.009952637973421979
+Sulfur dioxide,SO2.mg.L.,X4vg,-0.048332088483582246,-0.03972300430782308
+Sulfur dioxide,SO2.mg.L.,diacetyl,-0.030064740660762233,-0.029878787315640552
+Sulfur dioxide,SO2.mg.L.,dms,0.15169414017127253,0.15006138720979165
+Sulfur dioxide,SO2.mg.L.,metallic,0.06521978365052283,0.06898875782300645
+Sulfur dioxide,SO2.mg.L.,stale_hops,-0.009335842202721581,-0.011590083663248946
+Sulfur dioxide,SO2.mg.L.,t2n,0.032816681949088586,0.02593743421836001
+Sulfur dioxide,SO2.mg.L.,orange,0.03037833828887955,0.01655236791207165
+Sulfur dioxide,SO2.mg.L.,coriander,0.13621703982326466,0.13181900197239418
+Sulfur dioxide,SO2.mg.L.,clove,-0.0761974360898103,-0.07240864329586162
+Sulfur dioxide,SO2.mg.L.,lactic,0.014725776022529813,0.004355320260886334
+Sulfur dioxide,SO2.mg.L.,acetic,0.0880813060575281,0.08573483902142866
+Sulfur dioxide,SO2.mg.L.,barnyard,-0.012916866077306998,-0.016353812389860767
+Sulfur dioxide,SO2.mg.L.,alcohol,-0.11063083171709015,-0.1213618236160177
+Sulfur dioxide,SO2.mg.L.,co2,-0.12486195767730374,-0.11549210963724742
+Sulfur dioxide,SO2.mg.L.,aftertaste,-0.04634793225089894,-0.024028765402671893
+Sulfur dioxide,SO2.mg.L.,body,-0.09697008639716265,-0.08803472673061248
+Sulfur dioxide,SO2.mg.L.,overall,-0.11356800737465776,-0.10420535325122769
+Carbon dioxide,CO2.PSI.,A_malt_all,0.0735212085004537,-0.033330456503992904
+Carbon dioxide,CO2.PSI.,A_malt_grain,-0.021588528998929452,-0.05978498767517861
+Carbon dioxide,CO2.PSI.,A_malt_bread,0.21277377055675215,0.14430932440153768
+Carbon dioxide,CO2.PSI.,A_malt_cara,0.10819881981384692,0.011993012228716071
+Carbon dioxide,CO2.PSI.,A_malt_burn,0.029338068431946647,-0.04808402244182657
+Carbon dioxide,CO2.PSI.,A_hops_all,0.34421988425214645,0.2640333154883158
+Carbon dioxide,CO2.PSI.,A_hops_citrus,0.3293824141573758,0.31180522847150477
+Carbon dioxide,CO2.PSI.,A_hops_tropical,0.22415067807770747,0.18765969179262523
+Carbon dioxide,CO2.PSI.,A_hops_noble,0.28504767866754177,0.20023214835867012
+Carbon dioxide,CO2.PSI.,A_hops_woody,0.09872392580681157,0.07997579113003057
+Carbon dioxide,CO2.PSI.,A_esters_all,0.09073421809526151,0.008724427052411417
+Carbon dioxide,CO2.PSI.,A_esters_ethac,0.21255293179021015,0.1224448909378651
+Carbon dioxide,CO2.PSI.,A_esters_isoaa,0.09134591951086457,0.05499164339212215
+Carbon dioxide,CO2.PSI.,A_esters_flower,0.12058598529052819,0.09300932820849803
+Carbon dioxide,CO2.PSI.,A_esters_fruity,-0.1261446203014902,-0.11441733304245719
+Carbon dioxide,CO2.PSI.,F_malt_all,0.13533429077087475,-0.012356279763795722
+Carbon dioxide,CO2.PSI.,F_malt_grain,0.03287821683872858,-0.014448808078385913
+Carbon dioxide,CO2.PSI.,F_malt_bread,0.2506860393852912,0.15385038512514532
+Carbon dioxide,CO2.PSI.,F_malt_cara,0.11954955109474327,8.459511160805251e-05
+Carbon dioxide,CO2.PSI.,F_malt_burn,0.15938553211964063,0.030820939148392297
+Carbon dioxide,CO2.PSI.,F_hops_all,0.3768754374618484,0.280947228000836
+Carbon dioxide,CO2.PSI.,F_hops_citrus,0.21440583777069927,0.2307507818010636
+Carbon dioxide,CO2.PSI.,F_hops_tropical,0.0719245045886906,0.022222197366422138
+Carbon dioxide,CO2.PSI.,F_hops_noble,0.32221717024190855,0.21976994614198886
+Carbon dioxide,CO2.PSI.,F_hops_woody,0.22847427569636486,0.15844592381241432
+Carbon dioxide,CO2.PSI.,F_esters_all,0.1180665742355527,0.00889131766171398
+Carbon dioxide,CO2.PSI.,F_esters_ethac,0.21218473391222142,0.08110432001135169
+Carbon dioxide,CO2.PSI.,F_esters_isoaa,-0.06681767219398503,-0.13045177212254827
+Carbon dioxide,CO2.PSI.,F_esters_flower,0.09732655744999136,0.09118719599600851
+Carbon dioxide,CO2.PSI.,F_esters_fruity,-0.16712825843363663,-0.1801064599586186
+Carbon dioxide,CO2.PSI.,acidity,-0.16644414208962952,-0.09964214085731435
+Carbon dioxide,CO2.PSI.,bitternes,0.4365593268502788,0.34172115991585167
+Carbon dioxide,CO2.PSI.,sweetness,-0.19480480237202838,-0.19542470759730293
+Carbon dioxide,CO2.PSI.,X4vg,0.30326864183644814,0.2625920014461947
+Carbon dioxide,CO2.PSI.,diacetyl,-0.05366359641462749,-0.05787206432310997
+Carbon dioxide,CO2.PSI.,dms,0.0675398862592679,0.08363683212360562
+Carbon dioxide,CO2.PSI.,metallic,0.1475735811460328,0.13263141931298578
+Carbon dioxide,CO2.PSI.,stale_hops,0.015719337388028526,0.03105171513179748
+Carbon dioxide,CO2.PSI.,t2n,0.023262170413654623,0.07191953132420216
+Carbon dioxide,CO2.PSI.,orange,-0.10245287246027053,-0.013543825669930799
+Carbon dioxide,CO2.PSI.,coriander,-0.060241385614452796,-0.02895521620456732
+Carbon dioxide,CO2.PSI.,clove,0.07018546846792696,0.04710465274256959
+Carbon dioxide,CO2.PSI.,lactic,-0.25450602779209985,-0.20399094920860292
+Carbon dioxide,CO2.PSI.,acetic,-0.19614198203554625,-0.1897650863957443
+Carbon dioxide,CO2.PSI.,barnyard,-0.0009039771275789216,0.0210784951010486
+Carbon dioxide,CO2.PSI.,alcohol,0.44762122040006846,0.356414277111964
+Carbon dioxide,CO2.PSI.,co2,0.4611183774867171,0.3726428202333937
+Carbon dioxide,CO2.PSI.,aftertaste,0.09925973065519017,-0.07426361078465865
+Carbon dioxide,CO2.PSI.,body,0.20724988364237137,-0.022232133164037427
+Carbon dioxide,CO2.PSI.,overall,0.2286408098244918,0.16019026860674296
+pH,pH,A_malt_all,0.36131665734504853,0.3249752221076675
+pH,pH,A_malt_grain,0.058742310765311744,0.03934007860199706
+pH,pH,A_malt_bread,0.2111923706652577,0.1732376832801543
+pH,pH,A_malt_cara,0.2622992964158606,0.22035813319505815
+pH,pH,A_malt_burn,0.26475609259920196,0.23228499559379745
+pH,pH,A_hops_all,0.17270872798902318,0.1186471189168589
+pH,pH,A_hops_citrus,0.12884307055886282,0.11118664566224527
+pH,pH,A_hops_tropical,0.10841626037195869,0.0829649396754851
+pH,pH,A_hops_noble,0.11522719248732458,0.057916389618583676
+pH,pH,A_hops_woody,0.08833105035885652,0.07649278398183731
+pH,pH,A_esters_all,-0.12547747228629386,-0.18312293760314866
+pH,pH,A_esters_ethac,-0.017162982689599173,-0.08285023794515714
+pH,pH,A_esters_isoaa,-0.041189772391459524,-0.06572241012167311
+pH,pH,A_esters_flower,-0.08344844510811514,-0.10467435767137953
+pH,pH,A_esters_fruity,-0.17066301720447655,-0.1634083923212989
+pH,pH,F_malt_all,0.4462057518700706,0.41686874166129473
+pH,pH,F_malt_grain,-0.014011439323325858,-0.04216997080245573
+pH,pH,F_malt_bread,0.24668171000137634,0.19705456707488037
+pH,pH,F_malt_cara,0.2902484071441977,0.2434376378464427
+pH,pH,F_malt_burn,0.40739829241879427,0.3718480118012212
+pH,pH,F_hops_all,0.29594536011392386,0.24523933778195733
+pH,pH,F_hops_citrus,0.024263589829373017,0.02765034111963811
+pH,pH,F_hops_tropical,0.08236826684491579,0.05430250103644845
+pH,pH,F_hops_noble,0.22587665276284574,0.16705817424933617
+pH,pH,F_hops_woody,0.27315298069801375,0.23722891077033215
+pH,pH,F_esters_all,-0.12044692811951994,-0.20073066160124592
+pH,pH,F_esters_ethac,-0.01177659191680972,-0.10965448911392531
+pH,pH,F_esters_isoaa,-0.03533815068709878,-0.06968909351306032
+pH,pH,F_esters_flower,-0.08440986857195229,-0.09214273523504525
+pH,pH,F_esters_fruity,-0.18230962037461687,-0.1877948242598047
+pH,pH,acidity,-0.5012346296199789,-0.4796802269886313
+pH,pH,bitternes,0.40536135186690697,0.37077016157911663
+pH,pH,sweetness,-0.08618836634471982,-0.08232776003048421
+pH,pH,X4vg,0.21121227211968013,0.18373664671540543
+pH,pH,diacetyl,-0.07689588251740985,-0.07898084989674359
+pH,pH,dms,-0.0654459695779319,-0.05950812086687523
+pH,pH,metallic,-0.03693756064068579,-0.050507960226713576
+pH,pH,stale_hops,-0.09073992796851701,-0.08417568706521064
+pH,pH,t2n,-0.1229846026645079,-0.0998045138261954
+pH,pH,orange,-0.11603941788116358,-0.06766045790713834
+pH,pH,coriander,-0.17245660529423001,-0.15678190345185478
+pH,pH,clove,-0.12023117901219388,-0.13776831523002891
+pH,pH,lactic,-0.43888517537387234,-0.4171398897771101
+pH,pH,acetic,-0.3344588872946006,-0.33102972968236755
+pH,pH,barnyard,-0.13158368833604195,-0.12168212165209075
+pH,pH,alcohol,0.28760207526944187,0.24871311417528358
+pH,pH,co2,0.059136784426410335,-0.03548021902652361
+pH,pH,aftertaste,0.15233776674708951,0.07071341449796023
+pH,pH,body,0.2268824453818699,0.1432135832192706
+pH,pH,overall,-0.006790735334610617,-0.05720858149717913
+Ammonia,ammonia.mg.L.,A_malt_all,-0.03066541838231918,-0.007776787358228982
+Ammonia,ammonia.mg.L.,A_malt_grain,0.007175207153797258,0.015196064811423948
+Ammonia,ammonia.mg.L.,A_malt_bread,-0.07346276316314962,-0.05744950674771658
+Ammonia,ammonia.mg.L.,A_malt_cara,-0.03225011152665382,-0.010832133562763394
+Ammonia,ammonia.mg.L.,A_malt_burn,-0.04033517475086377,-0.024441321289278957
+Ammonia,ammonia.mg.L.,A_hops_all,-0.02854723599915674,-0.0041163946908301975
+Ammonia,ammonia.mg.L.,A_hops_citrus,-0.044681820569129393,-0.03717357904083476
+Ammonia,ammonia.mg.L.,A_hops_tropical,0.0061999839491107015,0.017248968374724154
+Ammonia,ammonia.mg.L.,A_hops_noble,-0.05371484922152484,-0.03172979374420536
+Ammonia,ammonia.mg.L.,A_hops_woody,0.08524527276143354,0.09087977405363726
+Ammonia,ammonia.mg.L.,A_esters_all,-0.03624928550440701,-0.01827049402750535
+Ammonia,ammonia.mg.L.,A_esters_ethac,-0.10894486649371908,-0.09114540612707796
+Ammonia,ammonia.mg.L.,A_esters_isoaa,-0.13018563579411085,-0.12257209376288233
+Ammonia,ammonia.mg.L.,A_esters_flower,0.0348492153525172,0.042557475642937534
+Ammonia,ammonia.mg.L.,A_esters_fruity,0.043469119771837275,0.03967880618801806
+Ammonia,ammonia.mg.L.,F_malt_all,-0.10280862277125302,-0.07948038315113606
+Ammonia,ammonia.mg.L.,F_malt_grain,-0.06903674428164396,-0.059359909907180215
+Ammonia,ammonia.mg.L.,F_malt_bread,-0.21667668298092202,-0.2059913938242101
+Ammonia,ammonia.mg.L.,F_malt_cara,-0.06551864834363136,-0.041889708708652405
+Ammonia,ammonia.mg.L.,F_malt_burn,-0.1544346536394892,-0.13818335558391887
+Ammonia,ammonia.mg.L.,F_hops_all,-0.02948114045369265,0.0018263522242936106
+Ammonia,ammonia.mg.L.,F_hops_citrus,0.03967063038988959,0.03862899946080338
+Ammonia,ammonia.mg.L.,F_hops_tropical,-0.02714125933885522,-0.01585963327700106
+Ammonia,ammonia.mg.L.,F_hops_noble,-0.03794051157025627,-0.008568748076309826
+Ammonia,ammonia.mg.L.,F_hops_woody,-0.04979296297522457,-0.03223481304607079
+Ammonia,ammonia.mg.L.,F_esters_all,-0.07819303857393632,-0.05720542395632578
+Ammonia,ammonia.mg.L.,F_esters_ethac,-0.10943038154565711,-0.08716182898488194
+Ammonia,ammonia.mg.L.,F_esters_isoaa,-0.0526953751196289,-0.040972566568748175
+Ammonia,ammonia.mg.L.,F_esters_flower,0.0635705239656615,0.0661749570579455
+Ammonia,ammonia.mg.L.,F_esters_fruity,0.1572193135600191,0.1585614819222779
+Ammonia,ammonia.mg.L.,acidity,0.15726159039926818,0.14506832711297996
+Ammonia,ammonia.mg.L.,bitternes,-0.06296289896278906,-0.032159327424599204
+Ammonia,ammonia.mg.L.,sweetness,0.05034782590431061,0.04845324888000827
+Ammonia,ammonia.mg.L.,X4vg,-0.2768449843654089,-0.26918605224038256
+Ammonia,ammonia.mg.L.,diacetyl,-0.08924968568601793,-0.08915521745164436
+Ammonia,ammonia.mg.L.,dms,-0.12468902242688706,-0.12779600439905148
+Ammonia,ammonia.mg.L.,metallic,-0.09955931862399318,-0.09511747325867098
+Ammonia,ammonia.mg.L.,stale_hops,0.0908985823930222,0.0880862575734396
+Ammonia,ammonia.mg.L.,t2n,-0.039937058928215516,-0.0506236123993573
+Ammonia,ammonia.mg.L.,orange,-0.05308840000835613,-0.07698360048980463
+Ammonia,ammonia.mg.L.,coriander,-0.08572783432854937,-0.09391075540062035
+Ammonia,ammonia.mg.L.,clove,-0.08065116497943108,-0.07532403975975464
+Ammonia,ammonia.mg.L.,lactic,0.14089579690501264,0.1294513165951365
+Ammonia,ammonia.mg.L.,acetic,0.16500559405117327,0.16202665441586608
+Ammonia,ammonia.mg.L.,barnyard,0.05213656035840434,0.04763879454011622
+Ammonia,ammonia.mg.L.,alcohol,-0.12242229096245856,-0.1138224351089891
+Ammonia,ammonia.mg.L.,co2,-0.09327889875574348,-0.0676770144953618
+Ammonia,ammonia.mg.L.,aftertaste,0.11947975246321584,0.18222903083432726
+Ammonia,ammonia.mg.L.,body,-0.061053245186444526,-0.01574878839022034
+Ammonia,ammonia.mg.L.,overall,-0.05835168415878324,-0.0414713812271637
+Betaglucan,betaglucan.mg.L.,A_malt_all,0.1334370226915609,0.04643306238832923
+Betaglucan,betaglucan.mg.L.,A_malt_grain,0.06005668348365306,0.030558905115315074
+Betaglucan,betaglucan.mg.L.,A_malt_bread,0.1186727177803048,0.0514438881916813
+Betaglucan,betaglucan.mg.L.,A_malt_cara,0.17690215673446608,0.09953765524794363
+Betaglucan,betaglucan.mg.L.,A_malt_burn,0.054312954258285716,-0.011606263417637335
+Betaglucan,betaglucan.mg.L.,A_hops_all,0.13966225817812597,0.047830600717293184
+Betaglucan,betaglucan.mg.L.,A_hops_citrus,0.1651724154873863,0.1407254281372343
+Betaglucan,betaglucan.mg.L.,A_hops_tropical,0.028361406287691588,-0.014597536467689042
+Betaglucan,betaglucan.mg.L.,A_hops_noble,0.13167407691826558,0.04187318786718217
+Betaglucan,betaglucan.mg.L.,A_hops_woody,0.029532496881405572,0.009729254220391797
+Betaglucan,betaglucan.mg.L.,A_esters_all,0.01804035081366762,-0.05940059700182521
+Betaglucan,betaglucan.mg.L.,A_esters_ethac,0.08272953487880198,-0.008847064760696377
+Betaglucan,betaglucan.mg.L.,A_esters_isoaa,0.0577767103061393,0.024006670215379732
+Betaglucan,betaglucan.mg.L.,A_esters_flower,0.02516037993614499,-0.0038173433293865323
+Betaglucan,betaglucan.mg.L.,A_esters_fruity,-0.0854543058108359,-0.07287831309206881
+Betaglucan,betaglucan.mg.L.,F_malt_all,0.21721587671466205,0.10434061018668098
+Betaglucan,betaglucan.mg.L.,F_malt_grain,0.05820929068197187,0.018040098144131003
+Betaglucan,betaglucan.mg.L.,F_malt_bread,0.25248366070069933,0.1691034800038647
+Betaglucan,betaglucan.mg.L.,F_malt_cara,0.20832743696058334,0.115854351944061
+Betaglucan,betaglucan.mg.L.,F_malt_burn,0.2100848437932814,0.10669881808361048
+Betaglucan,betaglucan.mg.L.,F_hops_all,0.15319922025474494,0.0366102639438861
+Betaglucan,betaglucan.mg.L.,F_hops_citrus,0.1177621039683955,0.12705468836821412
+Betaglucan,betaglucan.mg.L.,F_hops_tropical,-0.019651308669273018,-0.06827080771920319
+Betaglucan,betaglucan.mg.L.,F_hops_noble,0.16103308221858112,0.049336788848051386
+Betaglucan,betaglucan.mg.L.,F_hops_woody,0.09454760316849842,0.022557650501162693
+Betaglucan,betaglucan.mg.L.,F_esters_all,0.06991211990326442,-0.030506529806660545
+Betaglucan,betaglucan.mg.L.,F_esters_ethac,0.11865669890797557,-0.010003851324088221
+Betaglucan,betaglucan.mg.L.,F_esters_isoaa,0.027228037952859625,-0.022812070742511566
+Betaglucan,betaglucan.mg.L.,F_esters_flower,-0.010178714627698912,-0.020364687797153374
+Betaglucan,betaglucan.mg.L.,F_esters_fruity,-0.09508120817499696,-0.1026643054497971
+Betaglucan,betaglucan.mg.L.,acidity,-0.2192424281221165,-0.16435248416329223
+Betaglucan,betaglucan.mg.L.,bitternes,0.2696854656480812,0.15865884570044048
+Betaglucan,betaglucan.mg.L.,sweetness,-0.03550199062959744,-0.028648072339013255
+Betaglucan,betaglucan.mg.L.,X4vg,0.28895112617960633,0.25160288247502066
+Betaglucan,betaglucan.mg.L.,diacetyl,0.10563704839913317,0.10852923329952897
+Betaglucan,betaglucan.mg.L.,dms,0.019068170514068825,0.030819358497239144
+Betaglucan,betaglucan.mg.L.,metallic,0.16661184456907055,0.15360083499714539
+Betaglucan,betaglucan.mg.L.,stale_hops,-0.030196416417805207,-0.018744320249387117
+Betaglucan,betaglucan.mg.L.,t2n,0.010436827075624946,0.0521936575525807
+Betaglucan,betaglucan.mg.L.,orange,0.05101522507511447,0.14197893457754066
+Betaglucan,betaglucan.mg.L.,coriander,0.028983959897614615,0.06064110704179184
+Betaglucan,betaglucan.mg.L.,clove,0.05837484806220549,0.037354846391696096
+Betaglucan,betaglucan.mg.L.,lactic,-0.19296550003777427,-0.14427863518331227
+Betaglucan,betaglucan.mg.L.,acetic,-0.12363460092717056,-0.11407261920890624
+Betaglucan,betaglucan.mg.L.,barnyard,-0.06331411561608971,-0.04671652107001622
+Betaglucan,betaglucan.mg.L.,alcohol,0.2953811521312265,0.13084630230008837
+Betaglucan,betaglucan.mg.L.,co2,0.2521461246540828,0.13935977051552534
+Betaglucan,betaglucan.mg.L.,aftertaste,0.058293574826699786,-0.10057514371095515
+Betaglucan,betaglucan.mg.L.,body,0.22241140204360396,0.03938114375039786
+Betaglucan,betaglucan.mg.L.,overall,0.12389760857048437,0.05573643056559622
+Color,color.EBC.,A_malt_all,0.5414840303219527,0.5054865009761813
+Color,color.EBC.,A_malt_grain,0.15481329570733543,0.13284656486402718
+Color,color.EBC.,A_malt_bread,0.3294521898562672,0.28609637572962743
+Color,color.EBC.,A_malt_cara,0.5635764910945125,0.5308108483383047
+Color,color.EBC.,A_malt_burn,0.32405219180823114,0.2839900620421774
+Color,color.EBC.,A_hops_all,-0.13266772999180643,-0.2372184541766825
+Color,color.EBC.,A_hops_citrus,-0.2014777782028182,-0.23579727378564272
+Color,color.EBC.,A_hops_tropical,-0.07356979307397532,-0.11436475315941583
+Color,color.EBC.,A_hops_noble,-0.05398253486003592,-0.1474382059643653
+Color,color.EBC.,A_hops_woody,0.08387147815808647,0.06861671230931173
+Color,color.EBC.,A_esters_all,0.20801273374766982,0.1550648301322287
+Color,color.EBC.,A_esters_ethac,0.18836770771424766,0.1204511699570585
+Color,color.EBC.,A_esters_isoaa,0.03228578132355306,0.0024263756993748824
+Color,color.EBC.,A_esters_flower,0.11044465181802796,0.08864752633946439
+Color,color.EBC.,A_esters_fruity,0.07405456779816415,0.08996554374514971
+Color,color.EBC.,F_malt_all,0.4711251931691881,0.4207202678950648
+Color,color.EBC.,F_malt_grain,-0.0005030520088716592,-0.03720456461278892
+Color,color.EBC.,F_malt_bread,0.3170002037185585,0.2547227245076121
+Color,color.EBC.,F_malt_cara,0.49113477428399566,0.4467704288318389
+Color,color.EBC.,F_malt_burn,0.36297617633031226,0.2987431478179189
+Color,color.EBC.,F_hops_all,-0.0483957245960048,-0.1757339626606915
+Color,color.EBC.,F_hops_citrus,-0.2657055311929555,-0.2693997967635423
+Color,color.EBC.,F_hops_tropical,-0.03757201462323823,-0.07960819464294064
+Color,color.EBC.,F_hops_noble,-0.027531568950534057,-0.1473715764629081
+Color,color.EBC.,F_hops_woody,0.09620580027824234,0.03520407918720152
+Color,color.EBC.,F_esters_all,0.283221682697799,0.21982457356050114
+Color,color.EBC.,F_esters_ethac,0.22447551306354302,0.13402512274552267
+Color,color.EBC.,F_esters_isoaa,0.1367216210774082,0.09910621265039722
+Color,color.EBC.,F_esters_flower,0.1174991518739778,0.11262070000515591
+Color,color.EBC.,F_esters_fruity,0.11094788538090553,0.11087711984382538
+Color,color.EBC.,acidity,-0.10217986661398154,-0.04841601229657613
+Color,color.EBC.,bitternes,-0.002483196232470476,-0.1443699004276711
+Color,color.EBC.,sweetness,0.19321278767084857,0.20585035553359962
+Color,color.EBC.,X4vg,-0.08963194960359237,-0.1398985920735027
+Color,color.EBC.,diacetyl,0.09130151698473032,0.09283478535426397
+Color,color.EBC.,dms,-0.24774997743929253,-0.2456908838936992
+Color,color.EBC.,metallic,-0.06800640853151825,-0.08712696692276106
+Color,color.EBC.,stale_hops,0.03962010369571525,0.05156461298308444
+Color,color.EBC.,t2n,-0.1046704308768327,-0.073754775365416
+Color,color.EBC.,orange,-0.2518853597420232,-0.19734978668073946
+Color,color.EBC.,coriander,-0.06399224722392567,-0.040409791849616274
+Color,color.EBC.,clove,0.08926115875409871,0.0721336020288675
+Color,color.EBC.,lactic,0.1789590173833997,0.23999785436890742
+Color,color.EBC.,acetic,0.1461493995695933,0.16293902939840296
+Color,color.EBC.,barnyard,0.013814439428554088,0.030596743507905883
+Color,color.EBC.,alcohol,0.23329583482965666,0.07483761738956908
+Color,color.EBC.,co2,0.01004722163471454,-0.1265660969087266
+Color,color.EBC.,aftertaste,0.2839152031203831,0.19562046297671395
+Color,color.EBC.,body,0.36909991063013214,0.29708215916103664
+Color,color.EBC.,overall,0.0910481720233987,0.030990198563998168
+Iron,iron,A_malt_all,-0.010829032107928476,-0.009660669055813977
+Iron,iron,A_malt_grain,0.026421786011526224,0.027179645319679275
+Iron,iron,A_malt_bread,-0.03899588454569845,-0.038997109813708665
+Iron,iron,A_malt_cara,0.06866189785540135,0.0740720377165769
+Iron,iron,A_malt_burn,-0.10057935406891398,-0.10231287462352748
+Iron,iron,A_hops_all,-0.360616201990463,-0.3836956934682869
+Iron,iron,A_hops_citrus,-0.23911225050483767,-0.24005635119081323
+Iron,iron,A_hops_tropical,-0.1473139222341179,-0.14830743762209342
+Iron,iron,A_hops_noble,-0.33534550772839183,-0.35528220522468773
+Iron,iron,A_hops_woody,-0.11721394500448186,-0.1171555437684418
+Iron,iron,A_esters_all,0.20400792618726246,0.21319599466821373
+Iron,iron,A_esters_ethac,-0.01435170486386999,-0.013400346816329954
+Iron,iron,A_esters_isoaa,0.0843069977609508,0.0856706316477152
+Iron,iron,A_esters_flower,0.15599568744840853,0.157423716901591
+Iron,iron,A_esters_fruity,0.12650029686982497,0.12641301069321795
+Iron,iron,F_malt_all,-0.13239047344180713,-0.14741806571607646
+Iron,iron,F_malt_grain,-0.027707819988451978,-0.027242695344658126
+Iron,iron,F_malt_bread,-0.06444355360616848,-0.06736462713413552
+Iron,iron,F_malt_cara,0.021099302388985185,0.02504768109105658
+Iron,iron,F_malt_burn,-0.22462662644888726,-0.24643719265511904
+Iron,iron,F_hops_all,-0.40845249640638265,-0.4538508276777303
+Iron,iron,F_hops_citrus,-0.16430324564510657,-0.16441177756274583
+Iron,iron,F_hops_tropical,-0.10434095158805397,-0.1049363309784854
+Iron,iron,F_hops_noble,-0.4258424998429318,-0.47013163902297683
+Iron,iron,F_hops_woody,-0.2864899053872299,-0.2961077035566223
+Iron,iron,F_esters_all,0.22896085958192913,0.2470797445149229
+Iron,iron,F_esters_ethac,0.02233200514442021,0.027963692272173456
+Iron,iron,F_esters_isoaa,0.18179500023446954,0.18572136869609374
+Iron,iron,F_esters_flower,0.1633440788042505,0.16362129524409552
+Iron,iron,F_esters_fruity,0.22562025110347264,0.22571348096331575
+Iron,iron,acidity,0.2557328177129202,0.26223992575997257
+Iron,iron,bitternes,-0.49937081439442926,-0.5760454979926125
+Iron,iron,sweetness,0.3593089210197288,0.3593161886214935
+Iron,iron,X4vg,-0.2197366662682478,-0.2227314638306417
+Iron,iron,diacetyl,0.1198924241815821,0.11991830913140882
+Iron,iron,dms,-0.09081269133107205,-0.09108187752030182
+Iron,iron,metallic,0.2441312687216218,0.2451056886837416
+Iron,iron,stale_hops,-0.12894446716886887,-0.1293055006021041
+Iron,iron,t2n,-0.013602977131996836,-0.014496229324964211
+Iron,iron,orange,0.020380373722027785,0.01973569741909311
+Iron,iron,coriander,0.04549309010348673,0.04520184015165558
+Iron,iron,clove,0.17173127383120246,0.17275219717849186
+Iron,iron,lactic,0.2603491887608931,0.26518075760086396
+Iron,iron,acetic,0.15860838024413262,0.1585552975604785
+Iron,iron,barnyard,-0.11563564875273032,-0.1162533823807788
+Iron,iron,alcohol,-0.15600229913851218,-0.26333257673247706
+Iron,iron,co2,-0.09208830473357772,-0.10326132653937611
+Iron,iron,aftertaste,-0.15366269174461458,-0.17645816439844847
+Iron,iron,body,-0.091686400482498,-0.1266097468083685
+Iron,iron,overall,-0.06142275299557724,-0.062281126551531694
+Protein,protein.g.L.,A_malt_all,0.4312648509193008,0.4029436883213456
+Protein,protein.g.L.,A_malt_grain,0.15474094612409453,0.1383396645087168
+Protein,protein.g.L.,A_malt_bread,0.2605601445768788,0.22722614062595387
+Protein,protein.g.L.,A_malt_cara,0.43323452165694604,0.40576157769707794
+Protein,protein.g.L.,A_malt_burn,0.21136475713786573,0.17828772857170513
+Protein,protein.g.L.,A_hops_all,-0.1802621042039055,-0.2612860254852681
+Protein,protein.g.L.,A_hops_citrus,-0.26198166994945926,-0.2871624629224598
+Protein,protein.g.L.,A_hops_tropical,-0.036535674011324216,-0.06469020626350425
+Protein,protein.g.L.,A_hops_noble,-0.15760667232063177,-0.23385682113367545
+Protein,protein.g.L.,A_hops_woody,-0.017327740283688147,-0.030499681542172596
+Protein,protein.g.L.,A_esters_all,0.3132125699938054,0.28175525381989214
+Protein,protein.g.L.,A_esters_ethac,0.08225911843415999,0.02739495413962716
+Protein,protein.g.L.,A_esters_isoaa,0.08325636965866144,0.06286211820262999
+Protein,protein.g.L.,A_esters_flower,0.12509053387632474,0.10926228020385241
+Protein,protein.g.L.,A_esters_fruity,0.18829371929839664,0.20123522989206627
+Protein,protein.g.L.,F_malt_all,0.3336238434020228,0.29132859013118917
+Protein,protein.g.L.,F_malt_grain,-0.027191568507303313,-0.05429181265419314
+Protein,protein.g.L.,F_malt_bread,0.21442891318320614,0.16501475780937672
+Protein,protein.g.L.,F_malt_cara,0.3988547954926242,0.36630135438719413
+Protein,protein.g.L.,F_malt_burn,0.2172612344223131,0.16165765339352176
+Protein,protein.g.L.,F_hops_all,-0.07443485938159637,-0.17078329117308166
+Protein,protein.g.L.,F_hops_citrus,-0.296037045394937,-0.29765078514798243
+Protein,protein.g.L.,F_hops_tropical,0.0036276020348341956,-0.025333552968964626
+Protein,protein.g.L.,F_hops_noble,-0.11943060008932715,-0.2178932343206057
+Protein,protein.g.L.,F_hops_woody,0.033072395322268924,-0.013731122611465554
+Protein,protein.g.L.,F_esters_all,0.40666455988823225,0.37563806625203816
+Protein,protein.g.L.,F_esters_ethac,0.16021183321339344,0.09248967824345479
+Protein,protein.g.L.,F_esters_isoaa,0.2739887237718383,0.25111366820564146
+Protein,protein.g.L.,F_esters_flower,0.11017395515190355,0.10590462349858756
+Protein,protein.g.L.,F_esters_fruity,0.28408609805080465,0.2860022786404406
+Protein,protein.g.L.,acidity,0.0164498601850186,0.06026661079203137
+Protein,protein.g.L.,bitternes,-0.12979919873070572,-0.25444030856537203
+Protein,protein.g.L.,sweetness,0.36059532105797143,0.3711733579553976
+Protein,protein.g.L.,X4vg,-0.20431614753913618,-0.24421444663744196
+Protein,protein.g.L.,diacetyl,0.0693981244926088,0.06965627672131501
+Protein,protein.g.L.,dms,-0.32211025026958134,-0.3204382686075816
+Protein,protein.g.L.,metallic,-0.09538524223847882,-0.10927203930929776
+Protein,protein.g.L.,stale_hops,-0.03976756335473246,-0.0326549591048585
+Protein,protein.g.L.,t2n,-0.16251484758405366,-0.14147197307869336
+Protein,protein.g.L.,orange,-0.17915280270296233,-0.13721908864746832
+Protein,protein.g.L.,coriander,-0.01794593351313381,0.00022739507549290587
+Protein,protein.g.L.,clove,0.1392085048166233,0.12738807483246023
+Protein,protein.g.L.,lactic,0.289622188822564,0.3378297696866913
+Protein,protein.g.L.,acetic,0.19818992579532166,0.21033189609524072
+Protein,protein.g.L.,barnyard,-0.06932155931425957,-0.0587553381769519
+Protein,protein.g.L.,alcohol,0.13120297820263296,-0.014542211134430922
+Protein,protein.g.L.,co2,-0.062292029993593866,-0.17250861054209973
+Protein,protein.g.L.,aftertaste,0.26291040521966635,0.20707515527968362
+Protein,protein.g.L.,body,0.27305681318373015,0.2195501036052124
+Protein,protein.g.L.,overall,-0.009863508403177087,-0.05793234034269159
+Sugars,GFS,A_malt_all,0.26608391250523633,0.2792662022536378
+Sugars,GFS,A_malt_grain,0.17798450064507204,0.1781339067622413
+Sugars,GFS,A_malt_bread,0.12864643937126186,0.13084947302902425
+Sugars,GFS,A_malt_cara,0.3075086190445429,0.3211299641327412
+Sugars,GFS,A_malt_burn,-0.01725844443408498,-0.01995139277039601
+Sugars,GFS,A_hops_all,-0.22636128114802528,-0.24543415083175346
+Sugars,GFS,A_hops_citrus,-0.2039646702991637,-0.20627296322844765
+Sugars,GFS,A_hops_tropical,-0.054068477672175756,-0.05611847047942083
+Sugars,GFS,A_hops_noble,-0.2383838234253837,-0.257149325141744
+Sugars,GFS,A_hops_woody,-0.017079493013322584,-0.017784431925307303
+Sugars,GFS,A_esters_all,0.11873837132361537,0.12079231817402178
+Sugars,GFS,A_esters_ethac,-0.001042720637943428,-0.004228912740366204
+Sugars,GFS,A_esters_isoaa,0.046979902277402966,0.04622978439212541
+Sugars,GFS,A_esters_flower,0.02891736106146713,0.02814106869991008
+Sugars,GFS,A_esters_fruity,-0.020407716682519776,-0.019939187033889912
+Sugars,GFS,F_malt_all,0.2008907089089517,0.2231497183143861
+Sugars,GFS,F_malt_grain,0.1310762522156102,0.13124512424057758
+Sugars,GFS,F_malt_bread,0.08099038625519597,0.08371334649780442
+Sugars,GFS,F_malt_cara,0.2588731681910544,0.2770585927612119
+Sugars,GFS,F_malt_burn,-0.03258442625585223,-0.040328598089813386
+Sugars,GFS,F_hops_all,-0.12858758210488927,-0.14810466774210707
+Sugars,GFS,F_hops_citrus,-0.12029947747695581,-0.12017549475159829
+Sugars,GFS,F_hops_tropical,0.06609648151572708,0.06553845331251201
+Sugars,GFS,F_hops_noble,-0.17536715646636766,-0.19889177796900295
+Sugars,GFS,F_hops_woody,-0.10122304284079738,-0.10761709363310126
+Sugars,GFS,F_esters_all,0.195360199938767,0.2057639054006965
+Sugars,GFS,F_esters_ethac,-0.013444198652553857,-0.01986405580650698
+Sugars,GFS,F_esters_isoaa,0.17754097293269502,0.17885378807582103
+Sugars,GFS,F_esters_flower,0.04428954670855229,0.044012339406281
+Sugars,GFS,F_esters_fruity,0.1595872761916029,0.15948854050580394
+Sugars,GFS,acidity,-0.11737137774352646,-0.11874930665553031
+Sugars,GFS,bitternes,-0.22045235698937243,-0.2608381394262961
+Sugars,GFS,sweetness,0.37296070305413775,0.3733921037372756
+Sugars,GFS,X4vg,-0.0829203116561824,-0.08611538806188533
+Sugars,GFS,diacetyl,0.20261791754717023,0.2025882456852402
+Sugars,GFS,dms,-0.09380010867441745,-0.09353125336220598
+Sugars,GFS,metallic,-0.14100719671198936,-0.14198806790301324
+Sugars,GFS,stale_hops,-0.1655030897009433,-0.16527929627070162
+Sugars,GFS,t2n,0.06211028914104318,0.06405384788523039
+Sugars,GFS,orange,-0.025457091057194854,-0.023916661260131342
+Sugars,GFS,coriander,-0.12694147334529585,-0.1267246059662237
+Sugars,GFS,clove,0.05751659070537348,0.0569821509393531
+Sugars,GFS,lactic,0.0003902948744082034,0.0022992533874852355
+Sugars,GFS,acetic,-0.032737716483006114,-0.03232654325746909
+Sugars,GFS,barnyard,-0.17228765016213513,-0.17209030043063067
+Sugars,GFS,alcohol,0.00497374296036095,-0.003914522348710876
+Sugars,GFS,co2,-0.07131074854004783,-0.08734698965103992
+Sugars,GFS,aftertaste,-0.12263578953051921,-0.14867031978906817
+Sugars,GFS,body,0.07876955526128507,0.10420176496703912
+Sugars,GFS,overall,-0.1274080913278179,-0.13455632540797297
+Caloric value,kcalperc,A_malt_all,0.3860011301303061,0.20383888725445984
+Caloric value,kcalperc,A_malt_grain,0.11917248964095446,0.04369572048325821
+Caloric value,kcalperc,A_malt_bread,0.2995672412091001,0.1544295106509036
+Caloric value,kcalperc,A_malt_cara,0.3941175682863056,0.2524847061927564
+Caloric value,kcalperc,A_malt_burn,0.2130159521303241,0.017899903985986
+Caloric value,kcalperc,A_hops_all,0.21108407492966108,-0.1876197395797738
+Caloric value,kcalperc,A_hops_citrus,-0.007779194839499748,-0.20028280116747188
+Caloric value,kcalperc,A_hops_tropical,0.1455086917732409,0.025829967598602385
+Caloric value,kcalperc,A_hops_noble,0.20803983224303832,-0.17528185444111363
+Caloric value,kcalperc,A_hops_woody,-0.02215452369944751,-0.16433392972491198
+Caloric value,kcalperc,A_esters_all,0.36542370277924446,0.27216043253777794
+Caloric value,kcalperc,A_esters_ethac,0.3253922493090797,0.08405508109172104
+Caloric value,kcalperc,A_esters_isoaa,0.18377434552828,0.1444170506240958
+Caloric value,kcalperc,A_esters_flower,0.1552801757474328,0.125634524591282
+Caloric value,kcalperc,A_esters_fruity,0.028460670015259135,0.14769944084188127
+Caloric value,kcalperc,F_malt_all,0.48798981922523416,0.1851969685909873
+Caloric value,kcalperc,F_malt_grain,0.12051459137226571,-0.015509274958308785
+Caloric value,kcalperc,F_malt_bread,0.36935782315594673,0.10693626772798162
+Caloric value,kcalperc,F_malt_cara,0.48252947030636445,0.31665648044938305
+Caloric value,kcalperc,F_malt_burn,0.3715859923447472,0.008431043823482047
+Caloric value,kcalperc,F_hops_all,0.3328274690452773,-0.1030928049357884
+Caloric value,kcalperc,F_hops_citrus,-0.1241939876291798,-0.21160415446403458
+Caloric value,kcalperc,F_hops_tropical,0.18773228652716586,0.09044413000342541
+Caloric value,kcalperc,F_hops_noble,0.29636059607844606,-0.15730122492878396
+Caloric value,kcalperc,F_hops_woody,0.18104692718530152,-0.09869537046155107
+Caloric value,kcalperc,F_esters_all,0.4757563481015696,0.351540605355419
+Caloric value,kcalperc,F_esters_ethac,0.4208662260223497,0.049426523790762546
+Caloric value,kcalperc,F_esters_isoaa,0.30154470726857885,0.2901448565872493
+Caloric value,kcalperc,F_esters_flower,0.04830068202512031,0.03623617166245851
+Caloric value,kcalperc,F_esters_fruity,0.14352737291207632,0.25338233165771834
+Caloric value,kcalperc,acidity,-0.23031421573526537,-0.048202665008835896
+Caloric value,kcalperc,bitternes,0.35497164401003,-0.1717440835527764
+Caloric value,kcalperc,sweetness,0.21567836849494657,0.46195463781037077
+Caloric value,kcalperc,X4vg,0.12736208904601326,-0.0642273927028398
+Caloric value,kcalperc,diacetyl,0.049632493064580334,0.0879286858721198
+Caloric value,kcalperc,dms,-0.14528331231312028,-0.21556873456741274
+Caloric value,kcalperc,metallic,0.03428461930251237,-0.04966912149298388
+Caloric value,kcalperc,stale_hops,-0.08998468673267897,-0.09963400126202335
+Caloric value,kcalperc,t2n,-0.15805050696748998,-0.06820984298483135
+Caloric value,kcalperc,orange,-0.30225058561801205,-0.10633496592961203
+Caloric value,kcalperc,coriander,-0.1133880885875266,-0.04347569836228212
+Caloric value,kcalperc,clove,0.08490397126917944,0.027518225137467225
+Caloric value,kcalperc,lactic,-0.124625605068732,0.10715176075244198
+Caloric value,kcalperc,acetic,-0.020535071773034406,0.04494321898960322
+Caloric value,kcalperc,barnyard,-0.12583810947166182,-0.1308559225871296
+Caloric value,kcalperc,alcohol,0.7296808311895788,0.10719257196164599
+Caloric value,kcalperc,co2,0.3826305439490738,-0.0947876100187307
+Caloric value,kcalperc,aftertaste,0.4394009504152066,-0.005108587335816407
+Caloric value,kcalperc,body,0.6873754978887608,0.2032139836004826
+Caloric value,kcalperc,overall,0.24283511736187777,0.03357220772174287
