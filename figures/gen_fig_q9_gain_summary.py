@@ -64,7 +64,29 @@ def collect():
 def main():
     rows = sorted(collect(), key=lambda r: r["gain"])
     gains = [r["gain"] for r in rows]
-    labels = ["%s\n%s" % (r["env"], r["change"]) for r in rows]
+
+    def _w(s):
+        # 全角字符按 2、半角按 1 计算显示宽度（SimHei 为等宽字体）
+        return sum(2 if ord(c) > 0x2E7F else 1 for c in s)
+
+    def _pad_right(s, width):
+        return s + " " * (width - _w(s))
+
+    def _pad_left(s, width):
+        return " " * (width - _w(s)) + s
+
+    parsed = []
+    for r in rows:
+        q, huan = r["env"].split("  ")
+        frm, to = r["change"].split(" → ")
+        parsed.append((q, huan, frm, to))
+    w_frm = max(_w(f) for _, _, f, _ in parsed)
+    w_to = max(_w(t) for _, _, _, t in parsed)
+    labels = []
+    for q, huan, frm, to in parsed:
+        line1 = q + " " + huan
+        line2 = _pad_right(frm, w_frm) + " → " + _pad_left(to, w_to)
+        labels.append(line1 + "\n" + line2)
     colors = ["#2E5C8A" if r["kind"] == "实质改进" else "#A9C3DD" for r in rows]
 
     # 图宽与论文中的占宽对齐（0.82\textwidth≈13cm），保证打印后字号不缩水
@@ -77,7 +99,7 @@ def main():
 
     ax.set_xscale("log")
     top = max(gains)
-    ax.set_xlim(0.15, top * 3.2)
+    ax.set_xlim(0.15, top * 1.6)
     ax.set_xticks([0.3, 1, 3, 10, 30])
     ax.set_xticklabels(["0.3%", "1%", "3%", "10%", "30%"], fontsize=7.6)
 
@@ -85,20 +107,12 @@ def main():
         ax.text(r["gain"] * 1.12, bar.get_y() + bar.get_height() / 2,
                 "+%.1f%%" % r["gain"], va="center", ha="left",
                 fontsize=8.4, color="#222222", fontweight="bold")
-        ax.text(top * 2.05, bar.get_y() + bar.get_height() / 2, r["metric"],
-                va="center", ha="left", fontsize=7.0, color="#555555")
 
     ax.set_yticks(yy)
     ax.set_yticklabels(labels, fontsize=7.6)
     ax.set_xlabel("相对改进幅度（对数轴）", fontsize=8.4)
     ax.set_ylim(-0.6, len(rows) - 0.4)
     declutter_axes(ax, grid_axis="x")
-
-    # 分组图例：实质改进 / 正确性修正
-    from matplotlib.patches import Patch
-    handles = [Patch(facecolor="#2E5C8A", label="实质改进（提升主要指标）"),
-               Patch(facecolor="#A9C3DD", label="正确性修正（消除偏差与外推）")]
-    ax.legend(handles=handles, loc="lower right", fontsize=7.2, frameon=False)
 
     fig.tight_layout()
     save_fig(fig, "figures/fig_q9_gain_summary.png")

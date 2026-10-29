@@ -74,7 +74,7 @@ for sp in ax.spines.values():
 # 组标签
 gl = [(0, 15, "香气 Aroma (15)"), (15, 30, "风味 Flavour (15)"), (30, 50, "口感 / 缺陷 / 总体 (20)")]
 for lo, hi, name in gl:
-    ax.text(-3.0, (lo + hi - 1) / 2, name, rotation=90, va="center", ha="center",
+    ax.text(-6.0, (lo + hi - 1) / 2, name, rotation=90, va="center", ha="center",
             fontsize=6.2, color="#333333")
 
 cb = fig.colorbar(im, ax=ax, shrink=0.62, pad=0.02, aspect=28)

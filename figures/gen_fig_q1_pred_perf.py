@@ -95,9 +95,8 @@ ax2.set_ylabel("±1 级准确率（%）")
 ax2.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax2.set_axisbelow(True)
 ax2.set_title("分级判别力与相邻命中", loc="left", fontsize=8, fontweight="bold", pad=4)
-ax2.text(0.015, 42.8, "随机 ±1 命中 3/7 ≈ 42.9%", fontsize=6.2, color=GREY)
-# 标出四个端点和代表维
-pick = [0, 1, len(names) - 1, len(names) - 2]
+# 标出右上两个端点（未重叠，保留）；左下与点重叠的弱信号维标签已省略
+pick = [0, 1]
 for i in pick:
     ax2.annotate(dim_zh(names[i]), (vals[i], acc[i] * 100),
                  xytext=(4, 5), textcoords="offset points", fontsize=6.0, color="#333333")

@@ -94,12 +94,17 @@ def paired_panel(ax, key, ylabel, ref=None, ref_label=None):
 fig, axes = plt.subplots(1, 2, figsize=(6.6, 3.0), layout="constrained",
                          gridspec_kw={"wspace": 0.26})
 
-paired_panel(axes[0], "coverage", "实测覆盖率", ref=target, ref_label="名义 90%")
+paired_panel(axes[0], "coverage", "实测覆盖率", ref=target, ref_label="90%")
 axes[0].set_ylim(0.60, 1.0)
-axes[0].set_title("(a) 逐维覆盖率", loc="left", fontsize=8.2, pad=4)
 
 paired_panel(axes[1], "width", "区间宽度（标准化单位）")
-axes[1].set_title("(b) 逐维区间宽度", loc="left", fontsize=8.2, pad=4)
+
+# 子图编号与标题置于各自下方（面板底部居中，位于刻度标签之下）
+for ax_, tag in ((axes[0], "(a) 逐维覆盖率"),
+                 (axes[1], "(b) 逐维区间宽度")):
+    bb = ax_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, -0.06, tag, ha="center", va="bottom",
+             fontsize=8.2, color="#222222")
 
 save_fig(fig, "figures/fig_q1_interval.png")
 

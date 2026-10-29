@@ -104,7 +104,6 @@ for k, v in enumerate([inside, between]):
     axB.scatter(k + rng.normal(0, 0.045, s.size), s, s=1.4,
                 color=CATEGORICAL[[0, 1][k]], alpha=0.20, edgecolor="none", zorder=3)
     axB.plot([k - 0.24, k + 0.24], [np.median(v)] * 2, color="#222222", lw=1.3, zorder=5)
-    axB.text(k, 0.98, "中位 %.2f" % np.median(v), ha="center", fontsize=6.4, color="#222222")
 axB.set_xticks([0, 1])
 axB.set_xticklabels(["模块内", "模块间"], fontsize=7.2)
 axB.set_ylabel("|Pearson r|")
@@ -112,8 +111,6 @@ axB.set_ylim(0, 1.05)
 axB.grid(axis="y", color="#F3F3F3", lw=0.4, zorder=0)
 axB.set_axisbelow(True)
 ratio = np.median(inside) / max(np.median(between), 1e-9)
-axB.text(0.03, 0.97, "中位比 %.1f×" % ratio, transform=axB.transAxes, fontsize=6.8,
-         color="#333333", va="top")
 
 for ax_, tag in ((ax, "(a)"), (axB, "(b)")):
     bb = ax_.get_position()

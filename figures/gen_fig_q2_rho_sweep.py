@@ -51,8 +51,6 @@ ax2 = fig.add_subplot(gs[0, 1])
 # ---- (a) edges + largest component ----
 ax1.plot(rho, edges, "-o", color=CATEGORICAL[0], ms=4.5, lw=1.6, zorder=3,
          label="边数")
-ax1.set_xlabel("建图阈值 ρ")
-ax1.set_ylabel("边数", color=AXIS_BLACK)
 ax1.tick_params(axis="y", colors=AXIS_BLACK)
 ax1.spines["left"].set_color(AXIS_BLACK)
 ax1.set_ylim(0, edges.max() * 1.12)
@@ -60,9 +58,7 @@ ax1.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax1.set_axisbelow(True)
 
 ax1b = ax1.twinx()
-ax1b.plot(rho, largest, "--s", color=CATEGORICAL[3], ms=4, lw=1.4, zorder=3,
-          label="最大连通分量")
-ax1b.set_ylabel("最大连通分量节点数", color=AXIS_BLACK)
+ax1b.plot(rho, largest, "--s", color=CATEGORICAL[3], ms=4, lw=1.4, zorder=3)
 ax1b.tick_params(axis="y", colors=AXIS_BLACK)
 ax1b.set_ylim(0, 235)
 ax1b.spines["right"].set_visible(True)
@@ -72,19 +68,13 @@ ax1b.spines["top"].set_visible(False)
 
 for ax in (ax1, ax1b):
     ax.axvline(CHOSEN, color="#222222", lw=0.9, ls=(0, (4, 3)), zorder=2)
-ax1.annotate("采用 ρ = 0.5", xy=(CHOSEN, edges.max() * 0.55),
-             xytext=(0.545, edges.max() * 0.68), fontsize=6.4, color="#222222",
-             arrowprops=dict(arrowstyle="-", lw=0.5, color="#999999"))
 ax1.legend(loc="upper right", handletextpad=0.4, borderaxespad=0.3)
-ax1b.legend(loc="center right", handletextpad=0.4, borderaxespad=0.3)
 
 # ---- (b) isolated + modularity ----
 ax2.bar(rho, iso, width=0.028, color=CATEGORICAL[1], alpha=0.30,
         edgecolor="none", zorder=2)
 ax2.plot(rho, iso, "-o", color=CATEGORICAL[1], ms=4, lw=1.4, zorder=3,
          label="孤立化合物数")
-ax2.set_xlabel("建图阈值 ρ")
-ax2.set_ylabel("孤立节点数", color=AXIS_BLACK)
 ax2.tick_params(axis="y", colors=AXIS_BLACK)
 ax2.spines["left"].set_color(AXIS_BLACK)
 ax2.set_ylim(0, iso.max() * 1.20)
@@ -94,7 +84,6 @@ ax2.set_axisbelow(True)
 ax2b = ax2.twinx()
 ax2b.plot(rho, mod, "--^", color=CATEGORICAL[2], ms=4.5, lw=1.5, zorder=4,
           label="模块度 Q")
-ax2b.set_ylabel("模块度 $Q_{mod}$", color=AXIS_BLACK)
 ax2b.tick_params(axis="y", colors=AXIS_BLACK)
 ax2b.set_ylim(0.35, 0.78)
 ax2b.spines["right"].set_visible(True)
@@ -105,9 +94,6 @@ ax2b.spines["top"].set_visible(False)
 for ax in (ax2, ax2b):
     ax.axvline(CHOSEN, color="#222222", lw=0.9, ls=(0, (4, 3)), zorder=2)
 k = int(np.argmin(np.abs(rho - CHOSEN)))
-ax2.annotate("%d 个孤立\nQ=%.3f" % (iso[k], mod[k]), xy=(CHOSEN, iso[k]),
-             xytext=(0.545, iso.max() * 0.62), fontsize=6.4, color="#333333",
-             arrowprops=dict(arrowstyle="-", lw=0.5, color="#999999"))
 ax2.legend(loc="upper left", handletextpad=0.4, borderaxespad=0.3)
 ax2b.legend(loc="lower right", handletextpad=0.4, borderaxespad=0.3)
 

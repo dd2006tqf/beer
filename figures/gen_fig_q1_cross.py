@@ -68,10 +68,6 @@ ax.set_ylabel("问题二：Top-1 bootstrap 入选频率")
 ax.grid(color="#F3F3F3", lw=0.4, zorder=0)
 ax.set_axisbelow(True)
 ax.text(0.02, 0.715, "可预测性低 · 归因稳", fontsize=6.0, color="#888888")
-ax.text(0.62, 0.715, "可预测性高 · 归因稳", fontsize=6.0, color="#888888")
-ax.text(0.02, 1.005, "可预测性低 · 归因也稳", fontsize=6.0, color="#888888")
-ax.set_title("两问结论是否同一现象", loc="left", fontsize=8,
-             fontweight="bold", pad=4)
 for i in range(len(dims)):
     if qwk[i] < 0.22 and f1[i] < 0.95:
         ax.annotate(dim_zh(dims[i]), (qwk[i], f1[i]), xytext=(4, -7),

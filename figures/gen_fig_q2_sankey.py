@@ -69,8 +69,8 @@ for c in right_cats:
     a, b = rp[c]
     ax.add_patch(plt.Rectangle((x1, a), 0.02, b - a, color=color.get(c, '#999')))
     ax.text(x1 + 0.03, (a + b) / 2, f'{zh.get(c, c)} {rt[c]}', ha='left', va='center', fontsize=9)
-ax.text(x0 - 0.02, 0.985, '感官维度类别', ha='center', va='top', fontsize=10, fontweight='bold')
-ax.text(x1 + 0.02, 0.985, 'Top3 化合物来源', ha='center', va='top', fontsize=10, fontweight='bold')
+ax.text(x0 - 0.02, 1.03, '感官维度类别', ha='center', va='top', fontsize=10, fontweight='bold')
+ax.text(x1 + 0.02, 1.03, 'Top3 化合物来源', ha='center', va='top', fontsize=10, fontweight='bold')
 
 fig.tight_layout()
 save_fig(fig, 'figures/fig_q2_sankey.png')
