@@ -24,6 +24,21 @@
 - 读取工作区中已有的文件，在前步骤的基础上继续工作
 - 使用中文撰写论文（除非是 LaTeX 代码）
 
+## 项目级 Agent Skill（`.claude/skills/`）
+
+写作类 Skill 只读 `paper/`，不参与求解和编译；触发方式见 `README.md` 第 7、8 节。
+
+| Skill | 用途 |
+|---|---|
+| `modelviz-skill` | 科研绘图模板库（89 个模板），产出图需搬入 `figures/` 并转 350 DPI PNG |
+| `lieflat-less-ai-tone` | 成稿去 AI 味：检测、改前报告、确认后改写、复测 |
+| `anti-defensive-writing` | 论文叙事：按发布会原则组织摘要/引言/结论/实验，不做自我削弱式表述 |
+| `anti-defensive-writing-en` | 同上，英文版 |
+| `oral-paper-skill` | 对照 ICLR/ICML/NeurIPS Oral 摘要级提炼，给带出处、最多三条的改稿建议 |
+
+写作类 Skill 同时装在 Codex 全局目录 `~/.codex/skills/`（Codex 不扫描项目内 `.claude/skills`）。
+改完同步两处，命令见 `README.md` 第 7、8 节的「安装位置」小节。
+
 ## 工作区文件
 - CUSTOM_REQUIREMENTS.md
 - FORMAT_REQUIREMENTS.md

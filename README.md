@@ -108,7 +108,10 @@ python figures/gen_fig_<name>.py
 ├── user_data/                 # 📥 原始数据（只读，不入库）
 ├── .claude/skills/            # 🤖 项目级 Agent Skill（见下节）
 │   ├── modelviz-skill/        #   ModelViz：科研绘图模板库（89 个模板）
-│   └── lieflat-less-ai-tone/  #   Less AI Tone：成稿去 AI 味检测与改写
+│   ├── lieflat-less-ai-tone/  #   Less AI Tone：成稿去 AI 味检测与改写
+│   ├── anti-defensive-writing/    #   Anti-Defensive：按发布会原则组织论文叙事
+│   ├── anti-defensive-writing-en/ #   Anti-Defensive 英文版
+│   └── oral-paper-skill/          #   Oral Paper：对照顶会 Oral 改进叙事与证据
 └── 提交包/                     # 📦 最终提交打包
 ```
 
@@ -234,6 +237,49 @@ python .claude\skills\lieflat-less-ai-tone\scripts\detect.py paper\main.md --max
 - 检测只覆盖成稿；论文结构、图表和 `main.tex` 的编译流程不受影响。
 - 运行 Python 时建议设置 `PYTHONIOENCODING=utf-8`，避免 Windows 默认 GBK 控制台把中文报告显示成乱码。
 
+### 7️⃣ 用 Anti-Defensive Writing 组织论文叙事（可选）
+
+`.claude/skills/anti-defensive-writing/` 是从 [Adkid-Zephyr/anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill)
+迁入的项目级 Skill（MIT），英文版在同目录的 `anti-defensive-writing-en/`：按「学术发布会」原则组织摘要、引言、
+结论与实验，避免把论文写成工作汇报或提前替审稿人否定自己。
+
+对 Agent 说「按发布会原则改这段摘要」即可触发。它按自身 `SKILL.md` 的完整规则工作：
+围绕最强证据组织主线，该收缩主张、重排主结果或重构故事时照做。
+
+### 8️⃣ 用 Oral Paper Skill 对照顶会 Oral 改稿（可选）
+
+`.claude/skills/oral-paper-skill/` 是从 [Adkid-Zephyr/oral-paper-skill](https://github.com/Adkid-Zephyr/oral-paper-skill)
+迁入的项目级 Skill：基于 883 篇 ICLR/ICML/NeurIPS Oral 摘要的语义提炼，按「研究张力 → 贡献增量 → 证据对应 →
+有解释力的比较 → 条件紧随结论」给出带出处的改稿建议。**证据层级是摘要级**，不用于断言实验严谨性或预测录用。
+
+只迁入了 Skill 本体（`SKILL.md`、`references/`、`agents/`）；上游 `research/` 的 999 个蒸馏过程文件（7.8MB）
+未随仓库提交，需要溯源时按 `references/oral-patterns.md` 里的链接回上游仓库查阅。
+
+两个写作 Skill 都只读 `paper/`，不参与 `code/` 求解和 `main.tex` 编译；改完照常重编 PDF。
+
+#### 安装位置：项目内 + Codex 全局
+
+同一份内容装了两份，因为两种 Agent 的查找路径不同：
+
+| 位置 | 谁读它 |
+|---|---|
+| `.claude/skills/<name>/SKILL.md` | Claude 工作流；随仓库提交，clone 即可用 |
+| `~/.codex/skills/<name>/SKILL.md` | Codex（`C:\Users\40461\.codex\skills\`）；只在本机生效，不入库 |
+
+Codex 不扫描项目内的 `.claude/skills`，所以要单独装到全局目录。已装：
+`anti-defensive-writing`、`anti-defensive-writing-en`、`oral-paper-skill`。
+
+改完 skill 内容后同步两处，避免版本漂移：
+
+```powershell
+$names = "anti-defensive-writing","anti-defensive-writing-en","oral-paper-skill"
+foreach ($n in $names) {
+    Copy-Item -Recurse -Force ".claude\skills\$n" "$env:USERPROFILE\.codex\skills\$n"
+}
+```
+
+目录名必须和 frontmatter 里的 `name` 一致，否则 Codex 加载时会对不上。
+
 ---
 
 ## 🛠️ 技术栈
@@ -247,6 +293,8 @@ python .claude\skills\lieflat-less-ai-tone\scripts\detect.py paper\main.md --max
 | 图表 | matplotlib / seaborn（350 DPI PNG） |
 | 绘图模板 | ModelViz Skill（`.claude/skills/modelviz-skill`，89 个科研模板） |
 | 成稿润色 | Less AI Tone Skill（`.claude/skills/lieflat-less-ai-tone`，检测 → 确认 → 改写 → 复测） |
+| 叙事组织 | Anti-Defensive Writing Skill（`.claude/skills/anti-defensive-writing`，发布会原则，中/英双语） |
+| 对照改稿 | Oral Paper Skill（`.claude/skills/oral-paper-skill`，883 篇顶会 Oral 摘要级提炼） |
 
 ---
 
